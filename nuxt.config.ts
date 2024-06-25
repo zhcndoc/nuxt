@@ -62,6 +62,7 @@ export default defineNuxtConfig({
     '@nuxthq/studio',
     '@vueuse/nuxt',
     'nuxt-og-image',
+    '@nuxtjs/sitemap',
     () => {
       if (docsSourceBase) {
         logger.success(`Using local Nuxt docs from ${docsSourceBase}`)
@@ -207,5 +208,8 @@ export default defineNuxtConfig({
   },
   devtools: {
     enabled: false
+  },
+  site: {
+    url: 'https://nuxt.zhcndoc.com'
   }
 })
