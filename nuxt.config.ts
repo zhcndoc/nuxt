@@ -17,8 +17,8 @@ const examplesSourceBase = normalizedDirPath(process.env.NUXT_EXAMPLES_PATH)
 const docsSource: any = {
   name: 'nuxt-docs',
   driver: 'github',
-  repo: 'nuxt/nuxt',
-  branch: '3.x',
+  repo: 'zhcndoc/nuxt-docs',
+  branch: 'main',
   dir: 'docs',
   prefix: '/1.docs',
   token: process.env.NUXT_GITHUB_TOKEN || ''
@@ -31,7 +31,7 @@ if (docsSourceBase) {
 const examplesSource: any = {
   name: 'nuxt-examples',
   driver: 'github',
-  repo: 'nuxt/examples',
+  repo: 'zhcndoc/nuxt-examples',
   branch: 'main',
   dir: '.docs',
   prefix: '/docs/4.examples',
