@@ -47,45 +47,45 @@ const titleTemplate = computed(() => {
 
 const communityLinks = computed(() => [{
   icon: 'i-ph-pen-duotone',
-  label: 'Edit this page',
+  label: '编辑此页面',
   to: `https://github.com/nuxt/nuxt/edit/main/docs/${page?.value?._file?.split('/').slice(1).join('/')}`,
   target: '_blank'
 }, {
   icon: 'i-ph-shooting-star-duotone',
-  label: 'Star on GitHub',
+  label: 'GitHub Star',
   to: 'https://go.nuxt.com/github',
   target: '_blank'
 }, {
   icon: 'i-ph-chat-centered-text-duotone',
-  label: 'Chat on Discord',
+  label: 'Discord 社区',
   to: 'https://go.nuxt.com/discord',
   target: '_blank'
 }, {
   icon: 'i-ph-hand-heart-duotone',
-  label: 'Become a Sponsor',
+  label: '成为赞助商',
   to: 'https://go.nuxt.com/sponsor',
   target: '_blank'
 }])
 
 const ecosystemLinks = [{
   icon: 'i-ph-buildings-duotone',
-  label: 'Enterprise Support',
+  label: '企业支持',
   to: '/enterprise/support'
 }, {
   icon: 'i-ph-handshake-duotone',
-  label: 'Nuxt Agencies',
+  label: 'Nuxt 机构',
   to: '/enterprise/agencies'
 }, {
   icon: 'i-ph-briefcase-duotone',
-  label: 'Find a Nuxt Job',
+  label: '寻找 Nuxt 工作',
   to: '/enterprise/jobs'
 }, {
   icon: 'i-ph-graduation-cap-duotone',
-  label: 'Video Courses',
+  label: '视频课程',
   to: 'https://masteringnuxt.com/nuxt3?ref=nuxt',
   target: '_blank'
 }, {
-  label: 'Nuxt Certification',
+  label: 'Nuxt 认证',
   icon: 'i-ph-medal-duotone',
   to: 'https://certification.nuxt.com',
   target: '_blank'
@@ -133,15 +133,15 @@ defineOgImageComponent('Docs', {
           <div class="hidden lg:block space-y-6" :class="{ '!mt-6': page.body?.toc?.links?.length }">
             <UDivider v-if="page.body?.toc?.links?.length" type="dashed" />
 
-            <UPageLinks title="Community" :links="communityLinks" />
+            <UPageLinks title="社区" :links="communityLinks" />
 
             <UDivider type="dashed" />
 
-            <UPageLinks title="Ecosystem" :links="ecosystemLinks" />
+            <UPageLinks title="生态系统" :links="ecosystemLinks" />
 
             <UDivider type="dashed" />
 
-            <Ads />
+            <!-- <Ads /> -->
           </div>
         </template>
       </UContentToc>

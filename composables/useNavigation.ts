@@ -5,126 +5,126 @@ const _useNavigation = () => {
     const route = useRoute()
 
     return [{
-      label: 'Docs',
+      label: '文档',
       icon: 'i-ph-book-bookmark-duotone',
       to: '/docs',
       search: false,
       children: [{
-        label: 'Get Started',
-        description: 'Learn how to get started with Nuxt.',
+        label: '开始使用',
+        description: '学习如何开始使用 Nuxt。',
         icon: 'i-ph-rocket-launch-duotone',
         to: '/docs/getting-started',
         active: route.path.startsWith('/docs/getting-started')
       }, {
-        label: 'Guide',
-        description: 'Learn how to build and deploy Nuxt applications.',
+        label: '指南',
+        description: '学习如何构建和部署 Nuxt 应用程序。',
         icon: 'i-ph-book-open-duotone',
         to: '/docs/guide',
         active: route.path.startsWith('/docs/guide')
       }, {
         label: 'API',
-        description: 'Explore the Nuxt API.',
+        description: '探索 Nuxt API。',
         icon: 'i-ph-code',
         to: '/docs/api',
         active: route.path.startsWith('/docs/api')
       }, {
-        label: 'Examples',
-        description: 'Discover and explore official and community examples.',
+        label: '示例',
+        description: '发现并探索官方和社区示例。',
         icon: 'i-ph-app-window-duotone',
         to: '/docs/examples',
         active: route.path.startsWith('/docs/examples')
       }, {
-        label: 'Community',
-        description: 'Find answers and support from the community.',
+        label: '社区',
+        description: '从社区中寻找答案和支持。',
         icon: 'i-ph-chats-teardrop-duotone',
         to: '/docs/community',
         active: route.path.startsWith('/docs/community')
       }]
     }, {
-      label: 'Integrations',
+      label: '集成',
       to: '/modules',
       search: false,
       active: route.path.startsWith('/modules') || route.path.startsWith('/deploy'),
       children: [{
-        label: 'Modules',
-        description: 'Supercharge your Nuxt project with modules.',
+        label: '模块',
+        description: '使用集成模块增强您的 Nuxt 项目。',
         icon: 'i-ph-puzzle-piece-duotone',
         to: '/modules'
       }, {
-        label: 'Hosting',
-        description: 'Deploy your Nuxt project anywhere.',
+        label: '托管',
+        description: '将您的 Nuxt 项目部署到任何地方。',
         icon: 'i-ph-rocket-launch-duotone',
         to: '/deploy'
       }]
     }, {
-      label: 'Resources',
+      label: '资源',
       to: '/templates',
       search: false,
       active: route.path.startsWith('/templates') || route.path.startsWith('/video-courses'),
       children: [{
-        label: 'Templates',
+        label: '模板',
         icon: 'i-ph-browsers-duotone',
-        description: 'Start your next project with a Nuxt template.',
+        description: '使用 Nuxt 模板开始您的下一个项目。',
         to: '/templates'
       }, {
-        label: 'Video Courses',
-        description: 'Learn Nuxt by watching video courses.',
+        label: '视频课程',
+        description: '通过观看视频课程学习 Nuxt。',
         icon: 'i-ph-graduation-cap-duotone',
         to: '/video-courses'
       }, {
-        label: 'Nuxt Certification',
-        description: 'Obtain your Certification of Competence.',
+        label: 'Nuxt 认证',
+        description: '获得您的能力认证。',
         icon: 'i-ph-medal-duotone',
         to: 'https://certification.nuxt.com',
         target: '_blank'
       }]
     }, {
-      label: 'Showcase',
+      label: '展示',
       icon: 'i-ph-projector-screen-duotone',
       to: '/showcase'
     }, {
-      label: 'Enterprise',
+      label: '企业',
       icon: 'i-ph-buildings-duotone',
       to: '/enterprise',
       search: false,
       children: [{
-        label: 'Support',
+        label: '支持',
         to: '/enterprise/support',
-        description: 'Get help with Nuxt.js directly from the team that creates it.',
+        description: '直接从创建 Nuxt.js 的团队那里获取帮助。',
         icon: 'i-ph-lifebuoy-duotone'
       }, {
-        label: 'Agencies',
+        label: '机构',
         to: '/enterprise/agencies',
-        description: 'Find an agency that specializes in Nuxt.js development.',
+        description: '寻找一家专门从事 Nuxt.js 开发的机构。',
         icon: 'i-ph-handshake-duotone'
       }, {
-        label: 'Sponsors',
+        label: '赞助商',
         to: '/enterprise/sponsors',
-        description: 'Become a sponsor and get your logo on our README on GitHub with a link to your site.',
+        description: '成为赞助商，您的标志将出现在我们 GitHub 上的 README 中，并附带指向您网站的链接。',
         icon: 'i-ph-hand-heart-duotone'
       }]
     }, {
-      label: 'Blog',
+      label: '博客',
       icon: 'i-ph-newspaper-duotone',
       to: '/blog'
     }]
   })
 
   const footerLinks = [{
-    label: 'Community',
+    label: '社区',
     children: [{
       label: 'Nuxters',
       to: 'https://nuxters.nuxt.com',
       target: '_blank'
     }, {
-      label: 'Team',
+      label: '团队',
       to: '/team'
     }, {
-      label: 'Design Kit',
+      label: '设计套件',
       to: '/design-kit'
     }]
   }, {
-    label: 'Products',
+    label: '产品',
     children: [{
       label: 'Nuxt UI Pro',
       to: 'https://ui.nuxt.com/pro?utm_source=nuxt-website&utm_medium=footer',
@@ -139,15 +139,15 @@ const _useNavigation = () => {
       target: '_blank'
     }]
   }, {
-    label: 'Enterprise',
+    label: '企业',
     children: [{
-      label: 'Support',
+      label: '支持',
       to: '/enterprise/support'
     }, {
-      label: 'Agencies',
+      label: '机构',
       to: '/enterprise/agencies'
     }, {
-      label: 'Sponsors',
+      label: '赞助商',
       to: '/enterprise/sponsors'
     }]
   }]

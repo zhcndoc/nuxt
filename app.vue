@@ -15,7 +15,7 @@ const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', {
 })
 
 useHead({
-  titleTemplate: title => title ? `${title} · Nuxt` : 'Nuxt: The Intuitive Web Framework',
+  titleTemplate: title => title ? `${title} - Nuxt 中文文档` : 'Nuxt 中文文档 - 基于 Vue.js 的全栈 Web 框架',
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { key: 'theme-color', name: 'theme-color', content: color }
@@ -24,12 +24,12 @@ useHead({
     { rel: 'icon', type: 'image/png', href: '/icon.png' }
   ],
   htmlAttrs: {
-    lang: 'en'
+    lang: 'zh-CN'
   }
 })
 
 useSeoMeta({
-  ogSiteName: 'Nuxt',
+  ogSiteName: 'Nuxt 中文文档',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterSite: 'nuxt_js'

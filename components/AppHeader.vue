@@ -87,11 +87,11 @@ defineProps<{
     </template>
 
     <template #right>
-      <UTooltip text="Search" :shortcuts="[metaSymbol, 'K']">
+      <UTooltip text="搜索" :shortcuts="[metaSymbol, 'K']">
         <UContentSearchButton :label="null" />
       </UTooltip>
 
-      <UTooltip :text="$colorMode.preference === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+      <UTooltip :text="$colorMode.preference === 'dark' ? '切换到浅色模式' : '切换到深色模式'">
         <UColorModeButton />
       </UTooltip>
 

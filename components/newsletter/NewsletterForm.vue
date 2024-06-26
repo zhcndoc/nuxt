@@ -2,11 +2,11 @@
 defineProps({
   label: {
     type: String,
-    default: 'Subscribe to our newsletter'
+    default: '订阅我们的时事通讯'
   },
   description: {
     type: String,
-    default: 'Stay updated on new releases and features, guides, and community updates.'
+    default: '随时了解新版本和功能、指南和社区更新。'
   }
 })
 
@@ -49,7 +49,7 @@ function onSubmit() {
         class="max-w-sm"
       >
         <template #trailing>
-          <UButton type="submit" size="xs" color="black" :label="loading ? 'Subscribing' : 'Subscribe'" :loading="loading" />
+          <UButton type="submit" size="xs" color="black" :label="loading ? '订阅中' : '订阅'" :loading="loading" />
         </template>
       </UInput>
     </UFormGroup>

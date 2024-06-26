@@ -1,7 +1,7 @@
 navigation: false
 hero:
   cta:
-    label: Nuxt v3.12 is out
+    label: Nuxt v3.12 已发布
     to: /blog/v3-12
     variant: outline
     icon: i-ph-arrow-right
@@ -9,19 +9,19 @@ hero:
     trailing: true
     class: 'font-semibold hover:bg-primary-100 dark:hover:bg-primary-900 rounded-full'
 logos:
-  title: 'Trusted by the best front-end teams'
+  title: '受到最好的前端团队信任'
 sections:
-  - title: 'The power of<br><span class="text-primary">Vue Components</span>'
-    description: 'We love Vue Single-File Components as much as you do. Simple, intuitive and powerful, Nuxt lets you write Vue components in a way that makes sense. Every repetitive task is automated, so you can focus on writing your full-stack Vue application with confidence.'
+  - title: '强大的<br><span class="text-primary">Vue 组件</span>'
+    description: '我们和您一样喜欢 Vue 单文件组件。简单、直观且功能强大，Nuxt 允许您以有意义的方式编写 Vue 组件。每个重复的任务都是自动化的，因此您可以自信地专注于编写全栈 Vue 应用程序。'
     class: 'dark:bg-gray-900'
     align: left
     links:
-      - label: 'Learn about Views'
+      - label: '了解视图'
         icon: i-ph-layout-duotone
         to: '/docs/getting-started/views'
         color: black
         size: md
-      - label: 'Hello World Example'
+      - label: 'Hello World 示例'
         icon: i-ph-app-window-duotone
         to: '/docs/examples/hello-world'
         color: gray
@@ -51,17 +51,17 @@ sections:
       }
       </style>
       ```
-  - title: 'Static or Dynamic,<br><span class="text-primary">the choice is yours</span>'
-    description: 'Decide what rendering strategy you need at the route level. By leveraging the hybrid rendering, you can get the best of both worlds: the performance of a static site and the interactivity of a dynamic one.'
+  - title: '静态还是动态<br><span class="text-primary">由你选择</span>'
+    description: '在路由级别决定您需要的渲染策略。通过利用混合渲染，您可以兼顾静态站点的性能和动态站点的交互性。'
     class: 'dark:bg-gray-900'
     align: right
     links:
-      - label: 'Learn about Hybrid Rendering'
+      - label: '了解混合渲染'
         icon: i-ph-rocket-launch-duotone
         to: '/docs/guide/concepts/rendering#hybrid-rendering'
         color: black
         size: md
-      - label: 'Nuxt on the Edge'
+      - label: 'Nuxt 在边缘运行'
         icon: i-ph-newspaper-duotone
         to: '/blog/nuxt-on-the-edge'
         color: gray
@@ -103,69 +103,69 @@ sections:
       </template>
       ```
       ::
-  - title: 'Compose with<br><span class="text-primary">everything you need.</span>'
+  - title: '结合你<br><span class="text-primary">所需要的一切</span>'
     class: 'dark:bg-gradient-to-b from-gray-900 to-gray-950'
     slot: features
     features:
-      - title: 'Routing & Layouts'
-        description: 'File based routing system to build complex views and interfaces with a powerful and conventional approach.'
+      - title: '路由和布局'
+        description: '基于文件的路由系统，以强大而传统的方法构建复杂的视图和接口。'
         icon: 'i-ph-signpost-duotone'
         to: '/docs/getting-started/routing'
-      - title: 'Data Fetching'
-        description: 'Composables that run on the server to fetch data for your components and enable you to render content in different ways.'
+      - title: '数据获取'
+        description: '在服务器上运行的可组合项，用于为您的组件获取数据并使您能够以不同方式呈现内容。'
         icon: ' i-ph-plugs-connected-duotone'
         to: '/docs/getting-started/data-fetching'
-      - title: 'Assets & Style'
-        description: 'Image, Font and Script optimizations with a built-in support for CSS Modules, Sass, PostCSS, CSS-in-JS and more.'
+      - title: '资源和样式'
+        description: '图像、字体和脚本优化，内置支持 CSS 模块、Sass、PostCSS、CSS-in-JS 等。'
         icon: 'i-ph-image-duotone'
         to: '/docs/getting-started/styling'
-      - title: 'SEO & Meta Tags'
-        description: 'Production ready and indexable by search engines while giving the feeling of an app to the end-users.'
+      - title: 'SEO 和元标签'
+        description: '生产准备就绪，可由搜索引擎进行索引，同时给最终用户带来应用程序的感觉。'
         icon: 'i-ph-trophy-duotone'
         to: '/docs/getting-started/seo-meta'
-      - title: 'Middleware'
-        description: 'Run custom code such as authentication, localization or A/B testing before rendering a page or a group of pages.'
+      - title: '中间件'
+        description: '在渲染页面或一组页面之前，运行自定义代码，如身份验证、本地化或 A/B 测试。'
         icon: 'i-ph-shield-check-duotone'
         to: '/docs/getting-started/routing#route-middleware'
-      - title: 'State Management'
-        description: 'Nuxt provides a simple way to share a reactive and SSR-friendly state between components.'
+      - title: '状态管理'
+        description: 'Nuxt 提供了一种简单的方式，在组件之间共享一个响应式且支持 SSR 的状态。'
         icon: 'i-ph-database-duotone'
         to: '/docs/getting-started/state-management'
-      - title: 'Transitions'
-        description: 'Create smooth transitions between layouts, pages and components with a built-in support for Vue & browser transitions.'
+      - title: '过渡'
+        description: '在布局、页面和组件之间创建流畅的过渡，内置对 Vue 和浏览器过渡的支持。'
         icon: 'i-ph-exclude-square-duotone'
         to: '/docs/getting-started/transitions'
-      - title: 'Error Handling'
-        description: 'Built-in error handling and logging to help you debug your application and provide a better user experience.'
+      - title: '错误处理'
+        description: '内置错误处理和日志记录，帮助您调试应用程序并提供更好的用户体验。'
         icon: 'i-ph-bug-beetle-duotone'
         to: '/docs/getting-started/error-handling'
-      - title: 'Layers'
-        description: 'Extend your Nuxt application with another Nuxt application to reuse components, composables, layouts, pages and more.'
+      - title: '层级'
+        description: '使用另一个 Nuxt 应用程序扩展您的 Nuxt 应用程序，以重复使用组件、可组合项、布局、页面等。'
         icon: 'i-ph-stack-duotone'
         to: '/docs/getting-started/layers'
-      - title: 'Server Routes'
-        description: 'Create API endpoints and server routes to securely connect with third party services and consume from your frontend.'
+      - title: '服务器路由'
+        description: '创建 API 端点和服务器路由，以安全地连接到第三方服务，并从您的前端使用。'
         icon: 'i-ph-computer-tower-duotone'
         to: '/docs/getting-started/server'
-      - title: 'Auto Imports'
-        description: 'Nuxt auto-imports helpers, composables, and Vue APIs to use across your app without explicitly importing them.'
+      - title: '自动导入'
+        description: 'Nuxt 会自动导入帮助函数、组合式和 Vue API，以便在整个应用程序中使用，无需显式导入它们。'
         icon: 'i-ph-magic-wand-duotone'
         to: '/docs/guide/concepts/auto-imports'
       - title: 'TypeScript'
-        description: 'Nuxt provides helpful shortcuts to ensure you have access to accurate type information when you are coding.'
+        description: 'Nuxt 提供有用的快捷方式，以确保您在编码时可以访问准确的类型信息。'
         icon: 'i-ph-file-ts-duotone'
         to: '/docs/guide/concepts/typescript'
-  - title: 'Ship faster with<br><span class="text-primary">endless integrations</span>'
-    description: 'Integrate with your favorite tools and services. Nuxt is built to be flexible and can be extended with a robust modules ecosystem. Connect your application with popular headless CMS, eCommerce, Database or UI/UX libraries with a single line of code.'
+  - title: '使用集成<br><span class="text-primary">提高开发效率</span>'
+    description: '与您最喜欢的工具和服务集成。Nuxt 具有灵活性，可以通过强大的模块生态系统进行扩展。用一行代码将您的应用程序与流行的无头 CMS、电子商务、数据库或 UI/UX 库连接起来。'
     class: 'dark:bg-gray-900 dark:!bg-gradient-to-b from-gray-950 to-gray-900'
     align: left
     links:
-      - label: 'Explore Nuxt Modules'
+      - label: '探索 Nuxt 模块'
         icon: i-ph-puzzle-piece-duotone
         to: '/modules'
         color: black
         size: md
-      - label: 'Learn about Modules'
+      - label: '了解模块'
         icon: i-ph-info-duotone
         to: '/docs/guide/concepts/modules'
         color: gray
@@ -232,8 +232,8 @@ sections:
       - src: /assets/integrations/algolia.svg
         alt: Algolia
         to: /modules/algolia
-  - title: 'Built by developers<br><span class="text-primary">around the world.</span>'
-    description: 'The development of Nuxt and its ecosystem is led by an international team. From contributors to developer advocates, the community is made up of members with different horizons and skills. We are happy to see new members every day and encourage anyone to join us and help in many ways: answering questions, giving a talk, creating modules and contributing to the core.'
+  - title: '由世界各地的<br><span class="text-primary">开发人员共同构建</span>'
+    description: 'Nuxt 及其生态系统的开发由一个国际团队领导。从贡献者到开发人员倡导者，社区由具有不同视野和技能的成员组成。我们很高兴每天都能看到新成员，并鼓励任何人加入我们，并以多种方式提供帮助：回答问题、发表演讲、创建模块和为核心做出贡献。'
     class: 'dark:bg-gray-900'
     align: right
     slot: contributors
@@ -262,69 +262,69 @@ sections:
         size: md
         target: _blank
         to: 'https://go.nuxt.com/x'
-  - title: 'Trusted by the<br><span class="text-primary">World Wide Web.</span>'
+  - title: '深受全球<br><span class="text-primary">开发者们的信赖</span>'
     class: 'dark:bg-gradient-to-b from-gray-900 to-gray-950'
     slot: testimonials
     align: center
     testimonials:
-      - quote: "Nuxt offers a compelling solution and a great ecosystem to help you ship fullstack Vue apps that are performant and SEO friendly. The flexibility to choose between SSR and SSG is icing on the cake."
+      - quote: "Nuxt 提供了一个引人注目的解决方案和一个伟大的生态系统，帮助您提供高性能和 SEO 友好的全栈 Vue 应用程序。在 SSR 和 SSG 之间进行选择的灵活性是锦上添花。"
         author:
           name: 'Evan You'
-          description: 'Creator of Vue.js and Vite'
+          description: 'Vue.js 和 Vite 的创建者'
           to: 'https://twitter.com/youyuxi'
           target: '_blank'
           avatar:
             src: 'https://ipx.nuxt.com/f_auto,s_40x40/gh_avatar/yyx990803'
             srcset: 'https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/yyx990803 2x'
-      - quote: "Nuxt is a fantastic choice for teams building a production-grade product on the web. It aims to bake in performance best-practices while maintaining excellent Vue.js DX."
+      - quote: "对于在网络上构建生产级产品的团队来说，Nuxt 是一个绝佳的选择。它的目标是在保持出色的 Vue.js DX 的同时，融入性能方面的最佳实践。"
         author:
           name: 'Addy Osmani'
-          description:  'Chief Engineer of Chrome'
+          description:  'Chrome 首席工程师'
           to: 'https://twitter.com/addyosmani'
           target: '_blank'
           avatar:
             src: 'https://ipx.nuxt.com/f_auto,s_40x40/gh_avatar/addyosmani'
             srcset: 'https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/addyosmani 2x'
-      - quote: "Nuxt has been an incredible source of innovation and inspiration for developers and framework authors alike. It's been amazing to see its growth in web projects of all sizes on the web."
+      - quote: "Nuxt 已经成为开发人员和框架作者的创新和灵感的不可思议的来源。看到它在各种规模的 Web 项目中的增长真是令人惊讶。"
         author:
           name: 'Guillermo Rauch'
-          description:  'Co-founder and CEO of Vercel'
+          description:  'Vercel 联合创始人兼首席技术官'
           to: 'https://twitter.com/rauchg'
           target: '_blank'
           avatar:
             src: 'https://ipx.nuxt.com/f_auto,s_40x40/gh_avatar/rauchg'
             srcset: 'https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/rauchg 2x'
-      - quote: "Nuxt has outstanding developer productivity, experience, and performance right out of the gate! There’s so much attention to detail, ensuring teams have everything at their fingertips to productively build all manners of applications."
+      - quote: "Nuxt 具有出色的开发者生产力、体验和性能！非常注重细节，确保团队可以轻松构建各种类型的应用程序。"
         author:
           name: 'Sarah Drasner'
-          description:  'Director of Engineering, Google'
+          description:  'Google 工程总监'
           to: 'https://twitter.com/sarah_edo'
           target: '_blank'
           avatar:
             src: 'https://ipx.nuxt.com/f_auto,s_40x40/gh_avatar/sdras'
             srcset: 'https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/sdras 2x'
-      - quote: "Nuxt has a unique approach of combining a great developer experience with reusable, fully integrated features that speed up the development and performance of your next website or application."
+      - quote: "Nuxt 以独特的方式将出色的开发者体验与可重复使用、完全集成的功能相结合，从而加快您下一个网站或应用程序的开发和性能。"
         author:
           name: 'Dominik Angerer'
-          description:  'Co-founder of Storyblok'
+          description:  'Storyblok 联合创始人'
           to: 'https://twitter.com/domangerer'
           target: '_blank'
           avatar:
             src: 'https://ipx.nuxt.com/f_auto,s_40x40/gh_avatar/DominikAngerer'
             srcset: 'https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/DominikAngerer 2x'
-      - quote: "The moment I used Nuxt for the first time I felt in love with it. Apart from its scalability, performance and developer experience, the team behind of it is also fantastic. Thanks for developing such a great framework and making our lives much easier!"
+      - quote: "第一次使用 Nuxt 的时候，我就爱上了它。除了它的可扩展性、性能和开发经验之外，背后的团队也很棒。感谢开发这样一个伟大的框架，让我们的生活变得更轻松！"
         author:
           name: 'Savas Vedova'
-          description:  'Senior Frontend Engineer at GitLab'
+          description:  'GitLab 高级前端工程师'
           to: 'https://twitter.com/savasvedova'
           target: '_blank'
           avatar:
             src: 'https://ipx.nuxt.com/f_auto,s_40x40/gh_avatar/svedova'
             srcset: 'https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/svedova 2x'
-      - quote: "Nuxt’s blend of high performance and focused developer experience is a game changer. Its SSR and SSG flexibility, coupled with a community that’s as vibrant as the Vue.js ecosystem, makes it a great choice for modern web projects."
+      - quote: "Nuxt 将高性能和专注的开发人员体验相结合，改变了游戏规则。它的 SSR 和 SSG 灵活性，加上像 Vue.js 生态系统一样充满活力的社区，使其成为现代网络项目的绝佳选择。"
         author:
           name: 'Rijk van Zanten'
-          description:  'CTO at Directus'
+          description:  'Directus 首席技术官'
           to: 'https://github.com/rijkvanzanten'
           target: '_blank'
           avatar:

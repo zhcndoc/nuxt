@@ -16,10 +16,10 @@ const { data: page } = await useAsyncData('index', () => queryContent('/').findO
 const videoModalOpen = ref(false)
 
 const site = useSiteConfig()
-const title = 'Nuxt: The Intuitive Vue Framework'
-const description = 'Nuxt is an open source framework that makes web development intuitive and powerful. Create performant and production-grade full-stack web apps and websites with confidence.'
+const title = 'Nuxt 中文文档 - 基于 Vue.js 的全栈 Web 框架'
+const description = 'Nuxt 是一个开源框架，使 Web 开发直观且强大。自信的创建高性能和生产级全栈 Web 应用程序和网站。'
 useSeoMeta({
-  title,
+  // title,
   ogTitle: title,
   description: description,
   ogDescription: description,
@@ -44,26 +44,23 @@ useSeoMeta({
       </template>
 
       <template #title>
-        The Intuitive<br><span class="text-primary block lg:inline-block">Vue Framework</span>
+        基于 Vue.js 的<br><span class="text-primary block lg:inline-block">全栈 Web 应用框架</span>
       </template>
 
       <template #description>
-        Nuxt is an
-        <NuxtLink
+        Nuxt 是一个<NuxtLink
           to="https://go.nuxt.com/github"
           target="_blank"
           class="font-medium hover:underline underline-offset-2"
-        >
-          open source framework
-        </NuxtLink> that makes web development intuitive and powerful.<br>Create performant and production-grade full-stack web apps and websites with confidence.
+        >开源框架</NuxtLink>，使 Web 开发直观而强大。<br>自信地创建高性能和生产级全栈网络应用程序和网站。
       </template>
 
       <template #links>
         <UButton to="/docs/getting-started/installation" icon="i-ph-rocket-launch-duotone" size="xl">
-          Get Started
+          开始使用
         </UButton>
         <UButton size="xl" color="white" icon="i-ph-video-duotone" @click="videoModalOpen = true">
-          What is Nuxt?
+          Nuxt 是什么？
         </UButton>
 
         <UModal v-model="videoModalOpen">
