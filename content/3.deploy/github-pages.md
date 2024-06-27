@@ -1,35 +1,35 @@
 ---
 title: GitHub Pages
-description: 'Deploy your Nuxt Application to GitHub Pages infrastructure.'
+description: '将你的 Nuxt 应用部署到 GitHub Pages 基础设施。'
 logoIcon: 'i-simple-icons-github'
 category: Hosting
 nitroPreset: 'github-pages'
 website: 'https://pages.github.com/'
 ---
 
-Nuxt supports deploying to [GitHub Pages](https://pages.github.com/) with minimal configuration.
+Nuxt 支持通过最小化配置部署到 [GitHub Pages](https://pages.github.com/)。
 
 ::caution
-GitHub Pages only support static sites, Nuxt will pre-render your application to static HTML files.
+GitHub Pages 仅支持静态站点，Nuxt 将会将您的应用预渲染为静态 HTML 文件。
 ::
 
 ::caution
-If you are **not** using a custom domain, you need to set `NUXT_APP_BASE_URL` to your repository-slug for your build step.
+如果您**没有**使用自定义域名，您需要将 `NUXT_APP_BASE_URL` 设置为您的存储库标识以进行构建步骤。
 
-**Example**: `https://<user>.github.io/<repository>/`: `NUXT_APP_BASE_URL=/<repository>/ npx nuxt build --preset github_pages`
+**示例**: `https://<user>.github.io/<repository>/`: `NUXT_APP_BASE_URL=/<repository>/ npx nuxt build --preset github_pages`
 ::
 
-## Setup
+## 设置
 
-Follow the steps to [create a GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
+按照以下步骤来[创建一个 GitHub Pages 站点](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)。
 
-## Deployment
+## 部署
 
-Here is an example GitHub Actions workflow to deploy your site to GitHub Pages using the `github_pages` preset:
+下面是一个示例的 GitHub Actions 工作流程，使用 `github_pages` 预设将您的网站部署到 GitHub Pages：
 
 ```yaml [.github/workflows/deploy.yml]
 # https://github.com/actions/deploy-pages#usage
-name: Deploy to GitHub Pages
+name: 部署到 GitHub Pages
 on:
   workflow_dispatch:
   push:
@@ -44,33 +44,33 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "20"
-      # Pick your own package manager and build script
+      # 选择您自己的包管理器和构建脚本
       - run: npm install
       - run: npx nuxt build --preset github_pages
-      - name: Upload artifact
+      - name: 上传构建产物
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./.output/public
-  # Deployment job
+  # 部署任务
   deploy:
-    # Add a dependency to the build job
+    # 添加对构建任务的依赖
     needs: build
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    # 授予 GITHUB_TOKEN 所需的权限以进行部署到 Pages
     permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
-    # Deploy to the github_pages environment
+      pages: write      # 部署到 Pages
+      id-token: write   # 验证部署源是否合适
+    # 部署到 github_pages 环境
     environment:
       name: github_pages
       url: ${{ steps.deployment.outputs.page_url }}
-    # Specify runner + deployment step
+    # 指定运行环境和部署步骤
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
+      - name: 部署到 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
 ```
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/github-pages" target="_blank"}
-Head over **Nitro documentation** to learn more about the github-pages deployment preset.
+请访问 **Nitro 文档** 了解更多关于 github-pages 部署预设的信息。
 ::

@@ -1,6 +1,6 @@
 ---
 title: Cleavr
-description: 'Deploy your Nuxt Application to Cleavr infrastructure.'
+description: '将你的 Nuxt 应用部署到 Cleavr 基础设施。'
 logoSrc: '/assets/integrations/cleavr.svg'
 category: Hosting
 nitroPreset: 'cleavr'
@@ -8,24 +8,24 @@ website: 'https://cleavr.io/'
 ---
 
 ::tip
-**Zero Configuration ✨**
+**零配置 ✨**
 :br
-Integration with this provider is possible with zero configuration, [learn more](https://nitro.unjs.io/deploy#zero-config-providers).
+可以零配置集成此提供商，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
 ::
 
-## Setup
+## 设置
 
-**In your [Cleavr.io](https://cleavr.io/) panel:**
+**在你的 [Cleavr.io](https://cleavr.io/) 面板中：**
 
-1. Provision a new server
-2. Add a website, selecting **Nuxt 3** as the app type
-3. In web app > settings > Code Repo, point to your project's code repository
-4. In web app > settings > Environment variables, set `SERVER_PRESET=cleavr`
+1. 筹备一台新服务器
+2. 添加一个网站，选择 **Nuxt 3** 作为应用类型
+3. 在网站应用 > 设置 > 代码库中，指向你的项目代码仓库
+4. 在网站应用 > 设置 > 环境变量中，设置 `SERVER_PRESET=cleavr`
 
-You're now all set to deploy your project!
+现在你已经设置好可以部署你的项目了！
 
-## Learn more
+## 了解更多
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/cleavr" target="_blank"}
-Head over **Nitro documentation** to learn more about the cleavr deployment preset.
+请访问 **Nitro 文档** 了解有关 cleavr 部署预设的更多信息。
 ::

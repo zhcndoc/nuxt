@@ -1,6 +1,6 @@
 ---
 title: Deno Deploy
-description: 'Deploy your Nuxt Application to Deno Deploy infrastructure.'
+description: '将你的 Nuxt 应用部署到 Deno Deploy 基础设施。'
 logoIcon: 'i-logos-deno'
 category: Hosting
 nitroPreset: 'deno-deploy'
@@ -8,29 +8,29 @@ website: 'https://deno.com/deploy'
 ---
 
 ::important
-Deno deploy preset is experimental.
+Deno deploy 预设是实验性的。
 ::
 
-## Deploy with the CLI
+## 使用 CLI 进行部署
 
-You can use [deployctl](https://deno.com/deploy/docs/deployctl) to deploy your app.
+你可以使用 [deployctl](https://deno.com/deploy/docs/deployctl) 来部署你的应用程序。
 
-Login to [Deno Deploy](https://dash.deno.com/account#access-tokens) to obtain a `DENO_DEPLOY_TOKEN` access token, and set it as an environment variable.
+登录到 [Deno Deploy](https://dash.deno.com/account#access-tokens) 获取 `DENO_DEPLOY_TOKEN` 访问令牌，并将其设置为环境变量。
 
 ```bash
-# Build with the deno_deploy preset
+# 使用 deno_deploy 预设进行构建
 npm run build --preset=deno_deploy
 
-# Make sure to run the deployctl command from the output directory
+# 确保从输出目录运行 deployctl 命令
 cd .output
 deployctl deploy --project=my-project server/index.ts --token=<DENO_DEPLOY_TOKEN>
 ```
 
-## Deploy within CI/CD using GitHub Actions
+## 使用 GitHub Actions 在 CI/CD 中部署
 
-Link your GitHub repository to your Deno Deploy project and choose the "GitHub Actions" deployment mode. You can do this in your project settings on https://dash.deno.com.
+将你的 GitHub 仓库链接到 Deno Deploy 项目并选择 "GitHub Actions" 部署模式。你可以在 https://dash.deno.com 上的项目设置中完成这个步骤。
 
-Create a GitHub action file in your repository:
+在你的仓库中创建一个 GitHub action 文件：
 
 ```yaml [.github/workflows/deno_deploy.yml]
 name: deno-deploy
@@ -63,10 +63,10 @@ jobs:
 ```
 
 ::important
-Make sure to rename `<my-project>` with your project name.
+确保将 `<my-project>` 重命名为你的项目名称。
 ::
 
-## Templates
+## 模板
 
 ::card-group
   ::card
@@ -77,12 +77,12 @@ Make sure to rename `<my-project>` with your project name.
   target: _blank
   ui.icon.base: text-black dark:text-white
   ---
-  A collaborative todo-list app built with Deno KV and Nuxt.
+  使用 Deno KV 和 Nuxt 构建的协作待办事项应用。
   ::
 ::
 
-## Learn more
+## 了解更多
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/deno-deploy" target="_blank"}
-Head over **Nitro documentation** to learn more about the deno-deploy deployment preset.
+详细了解 deno-deploy 部署预设，请参阅 **Nitro 文档**。
 ::

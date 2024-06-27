@@ -3,7 +3,7 @@ import { joinURL } from 'ufo'
 import { serverQueryContent } from '#content/server'
 
 export default defineEventHandler(async (event) => {
-  const baseUrl = 'https://nuxt.com'
+  const baseUrl = 'https://nuxt.zhcndoc.com'
   const siteUrl = joinURL(baseUrl, 'blog')
   const feed = new Feed({
     title: 'The Nuxt Blog',

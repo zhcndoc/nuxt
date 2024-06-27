@@ -1,6 +1,6 @@
 ---
 title: Cloudflare
-description: 'Deploy your Nuxt Application to Cloudflare infrastructure.'
+description: '在 Cloudflare 基础设施上部署你的 Nuxt 应用。'
 logoSrc: '/assets/integrations/cloudflare.svg'
 category: Hosting
 nitroPreset: 'cloudflare'
@@ -10,28 +10,28 @@ website: 'https://pages.cloudflare.com/'
 ## Cloudflare Pages
 
 ::tip
-**Zero Configuration ✨**
+**零配置 ✨**
 :br
-Integration with Cloudflare Pages is possible with zero configuration, [learn more](https://nitro.unjs.io/deploy#zero-config-providers).
+与 Cloudflare Pages 的集成可以零配置完成，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
 ::
 
-### Git Integration
+### Git 集成
 
-If you use the GitHub/GitLab integration with Cloudflare Pages, **no configuration is required**. Pushing to your repository will automatically build your project and deploy it.
+如果你在 Cloudflare Pages 上使用 GitHub/GitLab 集成，**无需配置**。推送到你的仓库会自动构建项目并部署。
 
 ::note
-Nuxt will detect the environment to set the correct [Server/Nitro preset](https://nitro.unjs.io/deploy/providers/cloudflare).
+Nuxt 会检测环境并自动设置正确的 [服务器/Nitro 预设](https://nitro.unjs.io/deploy/providers/cloudflare)。
 ::
 
-To leverage server-side rendering on the edge, set the build command to: `nuxt build`
+为了在边缘服务器上进行服务器端渲染，请将构建命令设置为：`nuxt build`
 
-To statically generate your website, set the build command to: `nuxt generate`
+为了静态生成你的网站，请将构建命令设置为：`nuxt generate`
 
-### Route matching
+### 路由匹配
 
-On CloudFlare Pages, if an HTML file is found with a matching path to the current route requested, it will serve it. It will also redirect HTML pages to their extension-less counterparts: for instance, `/contact.html` will be redirected to `/contact`, and `/about/index.html` will be redirected to `/about/`.
+在 Cloudflare Pages 上，如果找到与当前请求路径相匹配的 HTML 文件，将会提供它。同时，它还会将 HTML 页面重定向至没有扩展名的对应页面：例如，`/contact.html` 会被重定向至 `/contact`，`/about/index.html` 会被重定向至 `/about/`。
 
-To match Cloudflare [route matching](https://developers.cloudflare.com/pages/configuration/serving-pages/#route-matching) rules, set the nitro option `autoSubfolderIndex` to `false`.
+为了匹配 Cloudflare 的 [路由匹配](https://developers.cloudflare.com/pages/configuration/serving-pages/#route-matching) 规则，请将 nitro 选项 `autoSubfolderIndex` 设置为 `false`。
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -43,41 +43,41 @@ export default defineNuxtConfig({
 })
 ```
 
-### Direct Upload
+### 直接上传
 
-Alternatively, you can use [wrangler](https://github.com/cloudflare/workers-sdk) to upload your project to Cloudflare.
+或者，你可以使用 [wrangler](https://github.com/cloudflare/workers-sdk) 将你的项目上传至 Cloudflare。
 
-In this case, you will have to set the preset manually.
+在这种情况下，你需要手动设置预设。
 
-1. Build your project for Cloudflare Pages:
+1. 为 Cloudflare Pages 构建你的项目：
 
-    ```bash [Terminal]
+    ```bash [终端]
     npx nuxi build --preset=cloudflare_pages
     ```
 
-2. Deploy, it will ask you to create a project for the first time:
+2. 部署，首次部署时会要求你创建一个项目：
 
-    ```bash [Terminal]
+    ```bash [终端]
     wrangler pages deploy dist/
     ```
 
-## Disable Auto Minify
+## 禁用自动缩小
 
-Make sure to disable the minification of HTML, CSS and JavaScript in **CloudFlare -> Speed -> Optimization -> Auto Minify** to avoid any Vue hydration.
+确保在 **CloudFlare -> 速度 -> 优化 -> 自动缩小** 中禁用 HTML、CSS 和 JavaScript 的缩小，以避免任何 Vue 的 hydration。
 
-![Disable Cloudflare auto minify](/assets/deploy/cloudflare-auto-minify.png)
+![禁用 Cloudflare 自动缩小](/assets/deploy/cloudflare-auto-minify.png)
 
-## Learn more
+## 了解更多
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/cloudflare" target="_blank"}
-Head over **Nitro documentation** to learn more about the Cloudflare deployment preset.
+请参阅 **Nitro 文档** 以了解更多关于 Cloudflare 部署预设的信息。
 ::
 
 ::read-more{to="https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/#use-bindings-in-your-nuxt-application" target="_blank"}
-Head over **CloudFlare Pages** documentation to learn more about it.
+请参阅 **CloudFlare Pages 文档** 以了解更多信息。
 ::
 
-## Templates
+## 模板
 
 ::card-group
   ::card
@@ -88,7 +88,7 @@ Head over **CloudFlare Pages** documentation to learn more about it.
   target: _blank
   ui.icon.base: text-black dark:text-white
   ---
-  A todos application with user authentication, SSR and Cloudflare D1.
+  包含用户认证、SSR 和 Cloudflare D1 的待办事项应用。
   ::
   ::card
   ---
@@ -98,12 +98,12 @@ Head over **CloudFlare Pages** documentation to learn more about it.
   target: _blank
   ui.icon.base: text-black dark:text-white
   ---
-  An editable website with universal rendering based on Cloudflare KV.
+  基于 Cloudflare KV 的可编辑网站，具有通用渲染。
   ::
 ::
 
-## Learn more
+## 了解更多
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/cloudflare" target="_blank"}
-Head over **Nitro documentation** to learn more about the cloudflare deployment preset.
+请参阅 **Nitro 文档** 以了解更多关于 cloudflare 部署预设的信息。
 ::

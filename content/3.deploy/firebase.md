@@ -1,6 +1,6 @@
 ---
 title: Firebase
-description: 'Deploy your Nuxt Application to Firebase infrastructure.'
+description: '在 Firebase 基础设施上部署您的 Nuxt 应用程序。'
 logoIcon: 'i-logos-firebase'
 category: Hosting
 nitroPreset: 'firebase'
@@ -9,7 +9,7 @@ website: 'https://firebase.google.com/'
 
 ## Firebase Functions
 
-To use the more recent and recommended generation of firebase functions, set the `firebase.gen` option to `2`:
+要使用最新的和推荐的生成的 Firebase 函数，请将 `firebase.gen` 选项设置为 `2`:
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -21,38 +21,38 @@ export default defineNuxtConfig({
 })
 ```
 
-::note
-If you cannot use configuration for any reason, alternatively you can use `NITRO_FIREBASE_GEN=2` environment variable.
+::注意
+如果由于任何原因您不能使用配置的方式，您可以使用 `NITRO_FIREBASE_GEN=2` 环境变量。
 ::
 
-If you already have a deployed version of your website and want to upgrade to 2nd gen, [see the Migration process on Firebase docs](https://firebase.google.com/docs/functions/2nd-gen-upgrade). Namely, the CLI will ask you to delete your existing functions before deploying the new ones.
+如果您已经部署了网站的旧版本并希望升级到第二代，请参阅[在 Firebase 文档中的迁移过程](https://firebase.google.com/docs/functions/2nd-gen-upgrade)。具体而言，CLI 将要求您在部署新函数之前删除现有函数。
 
-::tip{to="https://firebase.google.com/docs/functions/version-comparison" target="_blank"}
-Comparison between 1st and 2nd generation functions
+::提示{to="https://firebase.google.com/docs/functions/version-comparison" target="_blank"}
+第一代和第二代函数之间的比较
 ::
 
-## Project Setup
+## 项目设置
 
-You may instead prefer to set up your project with the Firebase CLI, which will fetch your project ID for you, add required dependencies (see above) and even set up automated deployments via GitHub Actions (for hosting only). [Learn about installing the firebase CLI](https://firebase.google.com/docs/cli#windows-npm).
+您可以选择使用 Firebase CLI 设置项目，它将为您提取项目 ID，添加所需的依赖项（参见上文），甚至通过 GitHub Actions 设置自动部署（仅适用于托管）。[了解如何安装 Firebase CLI](https://firebase.google.com/docs/cli#windows-npm)。
 
-1. Install the latest version of the Firebase CLI.
+1. 安装最新版本的 Firebase CLI。
 
-    ```bash [Terminal]
+    ```bash [命令行]
     npm install -g firebase-tools@latest
     ```
 
-2. Initialize your Firebase Project
+2. 初始化 Firebase 项目
 
-    ```bash [Terminal]
+    ```bash [命令行]
     firebase login
     firebase init hosting
     ```
 
-::note
-When prompted, you can enter `.output/public` as the public directory. In the next step, **do not** configure your project as a single-page app.
+::注意
+当提示时，您可以将 `.output/public` 输入为公共目录。在下一步中，**不要**将您的项目配置为单页面应用程序。
 ::
 
-Once complete, add the following to your `firebase.json` to enable server rendering in Cloud Functions:
+完成后，将以下内容添加到您的 `firebase.json` 文件中，以在 Cloud Functions 中启用服务器端呈现：
 
 ```json [firebase.json]
 {
@@ -68,27 +68,27 @@ Once complete, add the following to your `firebase.json` to enable server render
 }
 ```
 
-## Local Preview
+## 本地预览
 
-You can preview a local version of your site if you need to test things out without deploying.
+如果您需要在不部署的情况下测试，请预览您网站的本地版本。
 
 ```bash
 npm run build -- --preset=firebase
 firebase emulators:start
 ```
 
-## Build and Deploy
+## 构建和部署
 
-Deploy to Firebase Hosting by running a Nitro build and then running the `firebase deploy` command.
+通过运行 Nitro 构建，然后运行 `firebase deploy` 命令，将项目部署到 Firebase 托管。
 
 ```bash
 npm run build -- --preset=firebase
 firebase deploy
 ```
 
-## Options
+## 选项
 
-You can set options for the firebase functions in your `nuxt.config.ts` file:
+您可以在 `nuxt.config.ts` 文件中为 Firebase 函数设置选项：
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -104,23 +104,23 @@ export default defineNuxtConfig({
 });
 ```
 
-### Runtime Node.js Version
+### 运行时 Node.js 版本
 
-You can set custom Node.js version in configuration:
+您可以在配置中设置自定义 Node.js 版本：
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
   nitro: {
     firebase: {
-      nodeVersion: '18' // Can be '16' or '18' or '20'
+      nodeVersion: '18' // 可以是 '16' 或 '18' 或 '20'
     },
   },
 });
 ```
 
-Firebase tools use the `engines.node` version in  `package.json` to determine which node version to use for your functions. Nuxt automatically writes to the `.output/server/package.json` with configured Node.js version.
+Firebase 工具使用 `package.json` 中的 `engines.node` 版本来确定要为函数使用哪个 Node.js 版本。Nuxt 会自动将配置的 Node.js 版本写入 `.output/server/package.json` 中。
 
-You might also need to add a runtime key to your `firebase.json` file:
+您可能还需要向您的 `firebase.json` 文件中添加一个运行时键：
 
 ```json [firebase.json]
 {
@@ -131,26 +131,26 @@ You might also need to add a runtime key to your `firebase.json` file:
 }
 ```
 
-::read-more{to="https://firebase.google.com/docs/functions/manage-functions?gen=2nd#set_nodejs_version" target="_blank"}
-You can read more about this in **Firebase Docs**.
+::阅读更多{to="https://firebase.google.com/docs/functions/manage-functions?gen=2nd#set_nodejs_version" target="_blank"}
+您可以在 **Firebase 文档** 中了解更多信息。
 ::
 
-## If your firebase project has other cloud functions
+## 如果您的 Firebase 项目有其他云函数
 
-You may be warned that other cloud functions will be deleted when you deploy your Nuxt project. This is because nitro will deploy your entire project to firebase functions. If you want to deploy only your Nuxt project, you can use the `--only` flag:
+在部署您的 Nuxt 项目时，您可能会收到有关删除其他云函数的警告。这是因为 nitro 会将整个项目部署到 Firebase 函数。如果您只想部署您的 Nuxt 项目，您可以使用 `--only` 标志：
 
 ```bash
 firebase deploy --only functions:server,hosting
 ```
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/firebase" target="_blank"}
-Head over **Nitro documentation** to learn more about the Firebase deployment preset.
+::阅读更多{to="https://nitro.unjs.io/deploy/providers/firebase" target="_blank"}
+请参阅 **Nitro 文档** 以了解有关 Firebase 部署预设的更多信息。
 ::
 
-## Using Cookies in production
+## 在生产环境中使用 Cookies
 
-When using Firebase Hosting together with Cloud Functions or Cloud Run, cookies are generally stripped from incoming requests to allow for efficient CDN cache behavior. Only the specially-named `__session` cookie is permitted to pass through to your app.
+在使用 Firebase 托管与 Cloud Functions 或 Cloud Run 一起时，为了实现高效的 CDN 缓存行为，通常会从传入请求中删除 cookie。只有名为 `__session` 的特别命名 cookie 可以传递到您的应用程序。
 
-::read-more{to="https://firebase.google.com/docs/hosting/manage-cache#using_cookies" target="\_blank"}
-For more information, refer to the **Firebase documentation**.
+::阅读更多{to="https://firebase.google.com/docs/hosting/manage-cache#using_cookies" target="\_blank"}
+有关更多信息，请参阅 **Firebase 文档**。
 ::

@@ -1,6 +1,6 @@
 ---
 title: Vercel
-description: 'Deploy your Nuxt Application to Vercel infrastructure.'
+description: '将你的 Nuxt 应用部署到 Vercel 基础设施。'
 componentImg: Vercel
 logoSrc: '/assets/integrations/vercel.svg'
 category: Hosting
@@ -10,55 +10,55 @@ website: 'https://vercel.com/'
 ---
 
 ::tip
-**Zero Configuration ✨**
+**无需配置 ✨**
 :br
-Integration with Vercel is possible with zero configuration, [learn more](https://nitro.unjs.io/deploy#zero-config-providers).
+与 Vercel 的集成可以零配置完成，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
 ::
 
-## Deploy using Git
+## 使用 Git 进行部署
 
-1. Push your code to your git repository (GitHub, GitLab, Bitbucket).
-2. [Import your project](https://vercel.com/new) into Vercel.
-3. Vercel will detect that you are using Nitro and will enable the correct settings for your deployment.
-4. Your application is deployed!
+1. 将你的代码推送到 Git 代码仓库（GitHub、GitLab、Bitbucket）。
+2. [将你的项目导入](https://vercel.com/new) 到 Vercel。
+3. Vercel 将会检测到你正在使用 Nitro 并为你的部署启用正确的设置。
+4. 你的应用将被部署！
 
-After your project has been imported and deployed, all subsequent pushes to branches will generate [Preview Deployments](https://vercel.com/docs/concepts/deploy/environments#preview), and all changes made to the Production Branch (commonly “main”) will result in a [Production Deployment](https://vercel.com/docs/concepts/deploy/environments#production).
+在导入和部署你的项目之后，对分支的后续推送将会生成[预览部署](https://vercel.com/docs/concepts/deploy/environments#preview)，而对生产分支（通常为“main”）所做的所有更改都将导致[生产部署](https://vercel.com/docs/concepts/deploy/environments#production)。
 
-Learn more about Vercel’s [Git Integration](https://vercel.com/docs/concepts/git).
+了解更多关于 Vercel 的[Git 集成](https://vercel.com/docs/concepts/git)的内容。
 
-## Vercel Edge Functions
+## Vercel 边缘函数
 
-It is possible to deploy your Nuxt applications directly on [Vercel Edge Functions](https://vercel.com/docs/concepts/functions/edge-functions).
+可以直接在[Vercel 边缘函数](https://vercel.com/docs/concepts/functions/edge-functions)上部署你的 Nuxt 应用程序。
 
-> Vercel Edge Functions allow you to deliver content to your site's visitors with speed and personalization.
-> They are deployed globally by default on Vercel's Edge Network and enable you to move server-side logic to the Edge, close to your visitor's origin.
-> Edge Functions use the Vercel Edge Runtime, which is built on the same high-performance V8 JavaScript and WebAssembly engine that is used by the Chrome browser.
-> By taking advantage of this small runtime, Edge Functions can have faster cold boots and higher scalability than Serverless Functions.
-> Edge Functions run after the cache, and can both cache and return responses. [Read More](https://vercel.com/docs/concepts/functions/edge-functions)
+> Vercel 边缘函数可以让你以高速和个性化服务，向站点的访问者提供内容。
+> 它们默认在 Vercel 的边缘网络上全球部署，并且可以将服务器端逻辑移至边缘，靠近访问者的源。
+> 边缘函数使用的是 Vercel 边缘运行时，它构建在与 Chrome 浏览器使用相同高性能的 V8 JavaScript 和 WebAssembly 引擎上。
+> 通过利用这个小型运行时，边缘函数可以具有更快的冷启动和更高的可扩展性，优于无服务器函数。
+> 边缘函数在缓存后运行，可以缓存并返回响应。[了解更多](https://vercel.com/docs/concepts/functions/edge-functions)。
 
-In order to enable this target, set the following environment variable:
+为了启用此目标，请设置以下环境变量：
 
 ```bash
 SERVER_PRESET=vercel_edge
 ```
 
-Or update the build command to `nuxt build --preset=vercel_edge`.
+或将构建命令更新为 `nuxt build --preset=vercel_edge`。
 
-## Vercel KV Storage
+## Vercel KV 存储
 
-You can easily use [Vercel KV Storage](https://vercel.com/docs/storage/vercel-kv) with [Nuxt Server Storage](/docs/guide/directory-structure/server#server-storage).
+你可以轻松使用[Vercel KV 存储](https://vercel.com/docs/storage/vercel-kv)与[Nuxt 服务器存储](/docs/guide/directory-structure/server#server-storage)结合使用。
 
 ::read-more{to="https://unstorage.unjs.io/drivers/vercel-kv" target="_blank"}
-Read more about the Vercel KV driver on Unstorage documentation.
+在 Unstorage 文档中阅读有关 Vercel KV 驱动的更多信息。
 ::
 
-1. Install `@vercel/kv` dependency:
+1. 安装 `@vercel/kv` 依赖：
 
-    ```bash [Terminal]
+    ```bash [终端]
     npm i @vercel/kv
     ```
 
-2. Update your `nuxt.config`:
+2. 更新 `nuxt.config` 文件：
 
     ```ts [nuxt.config.ts]
     export default defineNuxtConfig({
@@ -66,7 +66,7 @@ Read more about the Vercel KV driver on Unstorage documentation.
         storage: {
           data: {
             driver: 'vercelKV'
-            /* Vercel KV driver options */
+            /* Vercel KV 驱动选项 */
           }
         }
       }
@@ -74,10 +74,10 @@ Read more about the Vercel KV driver on Unstorage documentation.
     ```
 
 ::caution
-You need to either set `KV_REST_API_URL` and `KV_REST_API_TOKEN` environment variables or pass `url` and `token` to driver options. Check [driver docs](https://unstorage.unjs.io/drivers/vercel-kv) for more information about usage.
+你需要设置 `KV_REST_API_URL` 和 `KV_REST_API_TOKEN` 环境变量，或者将 `url` 和 `token` 传递给驱动选项。请查阅[驱动文档](https://unstorage.unjs.io/drivers/vercel-kv)以了解更多有关使用方法的信息。
 ::
 
-You can now access your data store anywhere in your `server/` directory:
+现在你可以在 `server/` 目录的任何地方访问你的数据存储：
 
 ```ts [server/routes/hello.ts]
 export default defineEventHandler(async (event) => {
@@ -90,11 +90,11 @@ export default defineEventHandler(async (event) => {
 })
 ```
 
-## Custom Build Output Configuration
+## 自定义构建输出配置
 
-You can provide additional [build output configuration](https://vercel.com/docs/build-output-api/v3) using `nitro.vercel.config` key inside `nuxt.config`. It will be merged with built-in auto generated config.
+你可以使用 `nuxt.config` 中的 `nitro.vercel.config` 键提供附加的[构建输出配置](https://vercel.com/docs/build-output-api/v3)，它将与内置的自动生成配置合并。
 
-## Templates
+## 模板
 
 ::card-group
   ::card
@@ -105,7 +105,7 @@ You can provide additional [build output configuration](https://vercel.com/docs/
   target: _blank
   ui.icon.base: text-black dark:text-white
   ---
-  Example of a Nuxt application with hybrid rendering deployed on Vercel.
+  在 Vercel 上部署的 Nuxt 应用程序的示例，使用混合渲染。
   ::
   ::card
   ---
@@ -115,12 +115,12 @@ You can provide additional [build output configuration](https://vercel.com/docs/
   target: _blank
   ui.icon.base: text-black dark:text-white
   ---
-  Example of a Nuxt application running on Vercel Edge Functions.
+  在 Vercel Edge Functions 上运行的 Nuxt 应用程序的示例。
   ::
 ::
 
-## Learn More
+## 了解更多
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/vercel" target="_blank"}
-Head over **Nitro documentation** to learn more about On-Demand Incremental Static Regeneration or more advanced options.
+请前往**Nitro 文档**，了解更多关于按需增量静态再生（On-Demand Incremental Static Regeneration）或更高级选项的内容。
 ::

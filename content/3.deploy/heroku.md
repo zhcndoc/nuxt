@@ -1,35 +1,35 @@
 ---
 title: Heroku
-description: 'Deploy your Nuxt Application to Heroku infrastructure.'
+description: '将你的 Nuxt 应用部署到 Heroku 基础设施上。'
 logoSrc: '/assets/integrations/heroku.svg'
 category: Hosting
 nitroPreset: 'heroku'
 website: 'https://www.heroku.com/'
 ---
 
-Nuxt supports deploying on [Heroku](https://heroku.com/) with minimal configuration.
+Nuxt 支持在 [Heroku](https://heroku.com/) 上进行部署，只需进行最少的配置。
 
-## Using the Heroku CLI
+## 使用 Heroku CLI
 
-1. Create a new Heroku app.
+1. 创建一个新的 Heroku 应用。
 
     ```bash [Terminal]
     heroku create myapp
     ```
 
-2. Configure Heroku to use the nodejs buildpack.
+2. 配置 Heroku 使用 nodejs buildpack。
 
-    ```bash [Terminal]
+    ```bash [Terinal]
     heroku buildpacks:set heroku/nodejs
     ```
 
-3. Configure your app.
+3. 配置你的应用。
 
     ```bash [Terminal]
     heroku config:set SERVER_PRESET=heroku
     ```
 
-4. Ensure you have `start` and `build` commands in your `package.json` file.
+4. 确保你的 `package.json` 文件中有 `start` 和 `build` 命令。
 
     ```json [package.json]
     {
@@ -40,8 +40,8 @@ Nuxt supports deploying on [Heroku](https://heroku.com/) with minimal configurat
     }
     ```
 
-## Learn more
+## 了解更多
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/heroku" target="_blank"}
-Head over **Nitro documentation** to learn more about the Heroku deployment preset.
+请访问 **Nitro 文档** 以了解更多关于 Heroku 部署预设的信息。
 ::

@@ -1,26 +1,26 @@
 ---
 title: Zeabur
-description: 'Deploy your Nuxt Application to Zeabur.'
+description: '将你的 Nuxt 应用部署到 Zeabur。'
 logoSrc: '/assets/integrations/zeabur.svg'
 category: Hosting
 nitroPreset: 'zeabur'
 website: 'https://zeabur.com/'
 ---
 
-Nuxt supports deploying on [Zeabur](https://zeabur.com) with minimal configuration.
+Nuxt 支持只需进行最小的配置即可在 [Zeabur](https://zeabur.com) 上进行部署。
 
-## Setup
+## 设置
 
-1. Create a new Zeabur app for Nuxt following the [guide](https://zeabur.com/docs/guides/nodejs/nuxt).
+1. 根据[指南](https://zeabur.com/docs/guides/nodejs/nuxt)为 Nuxt 创建一个新的 Zeabur 应用。
 
-2. During the deployment proces, you can configure environment variables in Zeabur dashboard. In your service page, open the variables tab set the following [environment variable](https://zeabur.com/docs/deploy/variables):
+2. 在部署过程中，你可以在 Zeabur 仪表板上配置环境变量。在服务页面上，打开变量选项卡，并设置以下环境变量的值[环境变量](https://zeabur.com/docs/deploy/variables)：
 
     ```bash
     SERVER_PRESET=zeabur
     ```
 
-## Learn more
+## 了解更多
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/zeabur" target="_blank"}
-Head over **Nitro documentation** to learn more about the Zeabur deployment preset.
+请访问 **Nitro 文档** 以了解有关 Zeabur 部署预设的更多信息。
 ::

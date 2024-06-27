@@ -1,50 +1,50 @@
 ---
 title: Azure
-description: 'Deploy your Nuxt Application to Azure infrastructure.'
+description: '将您的 Nuxt 应用程序部署到 Azure 基础结构。'
 logoIcon: 'i-logos-azure-icon'
 category: Hosting
 nitroPreset: 'azure'
 website: 'https://azure.microsoft.com/en-us/services/app-service/static/'
 ---
 
-## Azure Static Web Apps
+## Azure 静态网站
 
 ::tip
-**Zero Configuration ✨**
+**零配置 ✨**
 :br
-Integration with Azure Static Web Apps provider is possible with zero configuration, [learn more](https://nitro.unjs.io/deploy#zero-config-providers).
+与 Azure 静态网站供应商的集成可实现零配置，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
 ::
 
-Azure Static Web Apps are designed to be deployed continuously in a [GitHub Actions workflow](https://docs.microsoft.com/en-us/azure/static-web-apps/github-actions-workflow). By default, Nuxt will detect this deployment environment to enable the `azure` preset.
+Azure 静态网站的设计初衷是在 [GitHub Actions 工作流程](https://docs.microsoft.com/en-us/azure/static-web-apps/github-actions-workflow) 中连续部署。默认情况下，Nuxt 会检测此部署环境以启用 `azure` 预设。
 
-### Local preview
+### 本地预览
 
-Install [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local) if you want to test locally.
+如果您要进行本地测试，请安装 [Azure Functions Core Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local)。
 
-You can invoke a development environment to preview before deploying.
+您可以在部署之前调用一个开发环境进行预览。
 
 ```bash [Terminal]
 npx nuxi build --preset=azure
 npx @azure/static-web-apps-cli start .output/public --api-location .output/server
 ```
 
-### Configuration
+### 配置
 
-Azure Static Web Apps are [configured](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration) using the `staticwebapp.config.json` file.
+Azure 静态网站使用 `staticwebapp.config.json` 文件进行[配置](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration)。
 
-Nuxt automatically generates this configuration file whenever the application is built with the `azure` preset.
+当使用 `azure` 预设构建应用程序时，Nuxt 会自动生成此配置文件。
 
-It adds the following properties based on the following criteria:
+它会根据以下标准添加以下属性：
 
-| Property | Criteria | Default |
+| 属性 | 标准 | 默认值 |
 | --- | --- | --- |
-| **[platform.apiRuntime](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#platform)** | Will automatically set to `node:16` or `node:14` depending on your package configuration. | `node:16` |
-| **[navigationFallback.rewrite](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#fallback-routes)** | Is always `/api/server` | `/api/server` |
-| **[routes](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#routes)** | All prerendered routes are added. Additionally, if you do not have an `index.html` file an empty one is created for you for compatibility purposes and also requests to `/index.html` are redirected to the root directory which is handled by `/api/server`.  | `[]` |
+| **[platform.apiRuntime](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#platform)** | 根据包的配置自动设置为 `node:16` 或 `node:14`。 | `node:16` |
+| **[navigationFallback.rewrite](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#fallback-routes)** | 始终为 `/api/server` | `/api/server` |
+| **[routes](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#routes)** | 添加所有预渲染路由。此外，如果没有 `index.html` 文件，将为您创建一个空白文件以实现兼容性，还会重定向到 `/index.html` 的请求将重定向到由 `/api/server` 处理的根目录。  | `[]` |
 
-### Custom Configuration
+### 自定义配置
 
-You can alter the generated configuration using `azure.config` option. For instance, if you wanted to specify a Node runtime for your Azure Functions, edit your `nuxt.config.ts` file to the following:
+您可以使用 `azure.config` 选项更改生成的配置。例如，如果您想为 Azure Functions 指定一个 Node 运行时，请编辑您的 `nuxt.config.ts` 文件如下：
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -62,38 +62,38 @@ export default defineNuxtConfig({
 })
 ```
 
-Custom routes will be added and matched first. In the case of a conflict (determined if an object has the same route property), custom routes will override generated ones.
+自定义路由将首先添加并匹配。在冲突的情况下（如果对象具有相同的路由属性），自定义路由将覆盖生成的路由。
 
-### Deploy from CI/CD via GitHub Actions
+### 通过 GitHub Actions 部署 CI/CD
 
-When you link your GitHub repository to Azure Static Web Apps, a workflow file is added to the repository.
+当将您的 GitHub 存储库连接到 Azure 静态网站时，会向存储库添加一个工作流文件。
 
-When you are asked to select your framework, select custom and provide the following information:
+当要求选择框架时，请选择自定义并提供以下信息：
 
-| Input | Value |
+| 输入 | 值 |
 | --- | --- |
 | **app_location** | '/' |
 | **api_location** | '.output/server' |
 | **output_location** | '.output/public' |
 
-If you miss this step, you can always find the build configuration section in your workflow and update the build configuration:
+如果您错过了这一步，您可以随时在工作流程中找到构建配置部分并更新构建配置：
 
 ```yaml [.github/workflows/azure-static-web-apps-<RANDOM_NAME>.yml]
-###### Repository/Build Configurations ######
+###### 存储库/构建配置 ######
 app_location: '/'
 api_location: '.output/server'
 output_location: '.output/public'
-###### End of Repository/Build Configurations ######
+###### 存储库/构建配置结尾 ######
 ```
 
 ::alert
-That's it! Now Azure Static Web Apps will automatically deploy your Nitro-powered application on push.
+就是这样！现在，Azure 静态网站将在推送时自动部署您的 Nitro 强化应用程序。
 ::
 
-If you are using `runtimeConfig`, you will likely want to configure the corresponding [environment variables on Azure](https://docs.microsoft.com/en-us/azure/static-web-apps/application-settings).
+如果您使用 `runtimeConfig`，您可能想要在 Azure 上配置相应的[环境变量](https://docs.microsoft.com/en-us/azure/static-web-apps/application-settings)。
 
-## More options
+## 更多选项
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/azure" target="_blank"}
-Learn about the other Azure deployment presets on Nitro documentation.
+在 Nitro 文档中了解其他 Azure 部署预设的信息。
 ::

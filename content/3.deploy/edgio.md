@@ -1,56 +1,56 @@
 ---
 title: Edgio
-description: 'Deploy your Nuxt Application to Edgio infrastructure.'
+description: '在 Edgio 基础设施上部署你的 Nuxt 应用程序。'
 logoIcon: 'i-logos-edgio-icon'
 category: Hosting
 nitroPreset: 'edgio'
 website: https://edgio.app
 ---
 
-Nuxt provides a built-in preset to generate output format compatible with [Edgio (formerly Layer0)](https://edg.io/).
+Nuxt 提供了一个内置预设，用于生成与 [Edgio (以前是 Layer0)](https://edg.io/) 兼容的输出格式。
 
-Edgio (formerly Layer0) extends the capabilities of a traditional CDN by not only hosting your static content, but also providing server-side rendering for progressive web applications as well as caching both your APIs and HTML at the network edge to provide your users with the fastest browsing experience.
+Edgio（以前是 Layer0）通过不仅托管您的静态内容，还为渐进式Web应用程序提供服务器端渲染以及在网络边缘缓存API和HTML，以提供最快的浏览体验，扩展了传统CDN的功能。
 
-If this is your first time deploying to Edgio, the interactive CLI as part of the `deploy` command will prompt to authenticate using your browser. You may also [sign up](https://edgio.app/signup) prior to deployment.
+如果这是您第一次部署到Edgio，请使用`deploy`命令的交互式CLI提示您使用浏览器进行身份验证。您也可以在部署前[注册](https://edgio.app/signup)。
 
-## Install the Edgio CLI
+## 安装 Edgio CLI
 
 ```bash
 npm i -g @edgio/cli
 ```
 
-## Testing production build locally with Edgio
+## 使用 Edgio 在本地测试生产构建
 
-You can use Nitropack to test your app's developement experience locally:
+您可以使用Nitropack在本地测试应用的开发体验：
 
 ```bash
 npx nuxi build --preset=edgio
 ```
 
-To simulate on local how your app would run in production with Edgio, run the following command:
+要在本地模拟应用在使用Edgio的生产环境中运行的情况，请运行以下命令：
 
 ```bash
 edgio build && edgio run --production
 ```
 
-## Deploying from your local machine
+## 从本地机器部署
 
-Once you have tested your application locally, you may deploy using:
+在本地测试应用程序后，您可以使用以下命令部署：
 
 ```bash
 edgio deploy
 ```
 
-## Deploying using CI/CD
+## 使用 CI/CD 部署
 
-If you are deploying from a non-interactive environment, you will need to create an account on [Edgio Developer Console](https://app.layer0.co) first and setup a [deploy token](https://docs.edg.io/guides/basics/deploy#deploy-from-ci). Once the deploy token is created, save it as a secret to your environment. You can start the deploy by running:
+如果要从非交互式环境部署，您需要首先在[Edgio Developer Console](https://app.layer0.co)上创建一个帐户，并设置一个[部署令牌](https://docs.edg.io/guides/basics/deploy#deploy-from-ci)。创建部署令牌后，将其保存为环境的秘密。您可以通过运行以下命令开始部署：
 
 ```bash
 edgio deploy --token=XXX
 ```
 
-## Learn more
+## 了解更多
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/edgio" target="_blank"}
-Head over **Nitro documentation** to learn more about the edgio deployment preset.
+前往 **Nitro 文档** 了解更多关于 Edgio 部署预设的信息。
 ::

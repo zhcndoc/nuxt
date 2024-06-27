@@ -1,19 +1,19 @@
 ---
 title: Koyeb
-description: 'Deploy your Nuxt Application to Koyeb infrastructure.'
+description: '将你的 Nuxt 应用部署到 Koyeb 基础设施上。'
 logoIcon: 'i-simple-icons-koyeb'
 category: Hosting
 nitroPreset: 'koyeb'
 website: 'https://www.koyeb.com/'
 ---
 
-Nuxt supports deploying on the [Koyeb serverless platform](https://www.koyeb.com/docs) with minimal configuration.
+Nuxt 支持在 [Koyeb 无服务器平台](https://www.koyeb.com/docs) 上进行部署，只需进行最小配置即可。
 
-## Setup
+## 设置
 
-1. Create a new Koyeb app for Nuxt following the [guide](https://www.koyeb.com/docs/deploy/nuxt).
+1. 按照 [指南](https://www.koyeb.com/docs/deploy/nuxt) 为 Nuxt 创建一个新的 Koyeb 应用。
 
-2. Set the `engines.node` field in your project's `package.json` file to a [Koyeb-supported version of Node.js](https://www.koyeb.com/docs/build-and-deploy/build-from-git/nodejs#runtime):
+2. 在项目的 `package.json` 文件中设置 `engines.node` 字段为 [Koyeb 支持的 Node.js 版本](https://www.koyeb.com/docs/build-and-deploy/build-from-git/nodejs#runtime)：
 
     ```json [package.json]
     {
@@ -23,7 +23,7 @@ Nuxt supports deploying on the [Koyeb serverless platform](https://www.koyeb.com
     }
     ```
 
-3. Ensure that `build` and `start` scripts are defined within the project's `package.json` file to define how to build and run the application:
+3. 确保项目的 `package.json` 文件中定义了 `build` 和 `start` 脚本，以定义如何构建和运行应用程序：
 
     ```json [package.json]
     {
@@ -34,16 +34,16 @@ Nuxt supports deploying on the [Koyeb serverless platform](https://www.koyeb.com
     }
     ```
 
-4. During deployment, you'll need to configure environment variables. In your service settings, set the following [environment variable](https://www.koyeb.com/docs/build-and-deploy/environment-variables):
+4. 在部署过程中，您需要配置环境变量。在您的服务设置中，设置以下 [环境变量](https://www.koyeb.com/docs/build-and-deploy/environment-variables)：
 
     ```bash
     SERVER_PRESET=koyeb
     ```
 
-5. Click "Deploy" to build and deploy your Nuxt app.
+5. 点击 "部署" 来构建和部署您的 Nuxt 应用。
 
-## Learn more
+## 了解更多
 
 ::read-more{to="https://nitro.unjs.io/deploy/providers/koyeb" target="_blank"}
-Head over **Nitro documentation** to learn more about the Koyeb deployment preset.
+前往 **Nitro 文档** 了解更多关于 Koyeb 部署预设的信息。
 ::
