@@ -1,19 +1,13 @@
-FROM node:18-alpine as builder
+FROM node:lts-alpine
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm i -g pnpm \
+RUN npm install --global pnpm serve \
   && pnpm install \
-  && npx nuxi build --preset=node-server
-
-FROM node:18-alpine
-
-COPY --from=builder /app/.output /app/.output
-
-WORKDIR /app
+  && npx nuxi build --prerender=true --preset=node-server
 
 EXPOSE 3000
 
-CMD ["node", "/app/.output/server/index.mjs"]
+CMD ["npx", "serve", "/app/dist"]
