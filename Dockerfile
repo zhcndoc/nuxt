@@ -10,4 +10,4 @@ RUN npm install --global pnpm serve \
 
 EXPOSE 3000
 
-CMD ["npx", "serve", "/app/dist"]
+CMD ["npx", "serve", "/app/dist", "--no-request-logging"]
