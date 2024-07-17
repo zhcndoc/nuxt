@@ -55,7 +55,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/ui',
     '@nuxt/image',
-    '@nuxtjs/plausible',
+    // '@nuxtjs/plausible',
     '@nuxt/fonts',
     '@nuxt/eslint',
     '@nuxtjs/turnstile',
