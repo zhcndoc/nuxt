@@ -15,6 +15,10 @@ website: 'https://pages.cloudflare.com/'
 与 Cloudflare Pages 的集成可以零配置完成，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
 ::
 
+::important
+查看 [@nuxthub/core](/modules/hub) 模块以使用 Cloudflare 构建全栈 Nuxt 应用程序，详细信息请查看 [hub.nuxt.com](https://hub.nuxt.com)。
+::
+
 ### Git 集成
 
 如果你在 Cloudflare Pages 上使用 GitHub/GitLab 集成，**无需配置**。推送到你的仓库会自动构建项目并部署。
@@ -83,8 +87,8 @@ export default defineNuxtConfig({
   ::card
   ---
   icon: i-simple-icons-github
-  title: Nuxt Todos Edge
-  to: https://github.com/atinux/nuxt-todos-edge
+  title: Atidone
+  to: https://github.com/atinux/atidone
   target: _blank
   ui.icon.base: text-black dark:text-white
   ---
@@ -99,6 +103,26 @@ export default defineNuxtConfig({
   ui.icon.base: text-black dark:text-white
   ---
   基于 Cloudflare KV 的可编辑网站，具有通用渲染。
+  ::
+  ::card
+  ---
+  icon: i-simple-icons-github
+  title: Atidraw
+  to: https://github.com/atinux/atidraw
+  target: _blank
+  ui.icon.base: text-black dark:text-white
+  ---
+  通过 Cloudflare R2 和人工智能，让您可以绘制并与世界分享您的绘画的网络应用程序。
+  ::
+  ::card
+  ---
+  icon: i-simple-icons-github
+  title: Nuxt Image Gallery
+  to: https://github.com/flosciante/nuxt-image-gallery
+  target: _blank
+  ui.icon.base: text-black dark:text-white
+  ---
+  使用 Cloudflare R2 上传、编辑和共享图像的图像库。
   ::
 ::
 
