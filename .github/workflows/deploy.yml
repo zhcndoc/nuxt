@@ -27,8 +27,21 @@ jobs:
         run: |
           corepack enable
           pnpm install --no-frozen-lockfile
-          pnpm run generate
+          npx nuxi build --prerender=true --preset=node-server
           cd .output/public && zip -rq ../../build.zip .
+
+      - name: Deploy to Zeabur
+        env:
+          PROJECT_ID: 6679137b1ec5614c11f64d0c
+          SERVICE_ID: 667913811ec5614c11f64d0e
+          ENVIRONMENT_ID: 6679137bb749b5d1f1c99845
+          API_TOKEN: ${{ secrets.ZEABUR_TOKEN }}
+        run: |
+          curl --request POST \
+            --url https://gateway.zeabur.com/projects/${{ env.PROJECT_ID }}/services/${{ env.SERVICE_ID }}/deploy \
+            --header "Authorization: Bearer ${{ env.API_TOKEN }}" \
+            --form "code=@build.zip" \
+            --form "environment=${{ env.ENVIRONMENT_ID }}"
 
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
