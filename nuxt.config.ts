@@ -136,11 +136,11 @@ export default defineNuxtConfig({
     }
   },
   $production: {
-    image: {
-      ipx: {
-        baseURL: 'https://ipx.nuxt.com'
-      }
-    }
+    // image: {
+    //   ipx: {
+    //     baseURL: 'https://ipx.nuxt.com'
+    //   }
+    // }
   },
   $development: {
     runtimeConfig: {
@@ -216,5 +216,10 @@ export default defineNuxtConfig({
   },
   site: {
     url: 'https://nuxt.zhcndoc.com'
+  },
+  ogImage: {
+    fonts: [
+      'Noto+Sans+SC:400'
+    ]
   }
 })
