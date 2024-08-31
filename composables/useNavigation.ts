@@ -43,6 +43,7 @@ const _useNavigation = () => {
     }, {
       label: '集成',
       to: '/modules',
+      icon: 'i-ph-plugs-connected-duotone',
       search: false,
       active: route.path.startsWith('/modules') || route.path.startsWith('/deploy'),
       children: [{
@@ -58,6 +59,7 @@ const _useNavigation = () => {
       }]
     }, {
       label: '资源',
+      icon: 'i-ph-books-duotone',
       to: '/templates',
       search: false,
       active: route.path.startsWith('/templates') || route.path.startsWith('/video-courses'),
@@ -72,6 +74,11 @@ const _useNavigation = () => {
         icon: 'i-ph-graduation-cap-duotone',
         to: '/video-courses'
       }, {
+        label: '展示',
+        description: '发现并探索使用 Nuxt 构建的项目。',
+        icon: 'i-ph-projector-screen-duotone',
+        to: '/showcase'
+      }, {
         label: 'Nuxt 认证',
         description: '获得您的能力认证。',
         icon: 'i-ph-medal-duotone',
@@ -79,28 +86,44 @@ const _useNavigation = () => {
         target: '_blank'
       }]
     }, {
-      label: '展示',
-      icon: 'i-ph-projector-screen-duotone',
-      to: '/showcase'
+      label: '产品',
+      icon: 'i-ph-sparkle-duotone',
+      search: false,
+      children: [{
+        label: 'Nuxt UI Pro',
+        to: 'https://ui.nuxt.com/pro?utm_source=nuxt-website&utm_medium=header',
+        description: 'Nuxt 的高级 Vue 组件。',
+        icon: 'i-ph-layout-duotone'
+      }, {
+        label: 'Nuxt Studio',
+        to: 'https://nuxt.studio/?utm_source=nuxt-website&utm_medium=header',
+        description: '基于 Git 的 Nuxt CMS。',
+        icon: 'i-ph-pen-duotone'
+      }, {
+        label: 'NuxtHub',
+        to: 'https://hub.nuxt.com/?utm_source=nuxt-website&utm_medium=header',
+        description: '构建、部署和管理可扩展的 Nuxt 应用程序。',
+        icon: 'i-ph-rocket-launch-duotone'
+      }]
     }, {
-      label: '企业',
+      label: '服务',
       icon: 'i-ph-buildings-duotone',
       to: '/enterprise',
       search: false,
       children: [{
         label: '支持',
         to: '/enterprise/support',
-        description: '直接从创建 Nuxt.js 的团队那里获取帮助。',
+        description: 'Nuxt 专家提供的专业支持。',
         icon: 'i-ph-lifebuoy-duotone'
       }, {
         label: '机构',
         to: '/enterprise/agencies',
-        description: '寻找一家专门从事 Nuxt.js 开发的机构。',
+        description: '专门从事 Nux t开发的机构。',
         icon: 'i-ph-handshake-duotone'
       }, {
         label: '赞助商',
         to: '/enterprise/sponsors',
-        description: '成为赞助商，您的标志将出现在我们 GitHub 上的 README 中，并附带指向您网站的链接。',
+        description: '帮助我们支持 Nuxt 的开发。',
         icon: 'i-ph-hand-heart-duotone'
       }]
     }, {
