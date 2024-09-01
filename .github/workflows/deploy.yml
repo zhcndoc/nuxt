@@ -41,7 +41,7 @@ jobs:
             --url https://gateway.zeabur.com/projects/${{ env.PROJECT_ID }}/services/${{ env.SERVICE_ID }}/deploy \
             --header "Authorization: Bearer ${{ env.API_TOKEN }}" \
             --form "code=@build.zip" \
-            --form "environment=${{ env.ENVIRONMENT_ID }}"
+            --form "environment=${{ env.ENVIRONMENT_ID }}" || true
 
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
