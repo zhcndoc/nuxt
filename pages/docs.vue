@@ -4,6 +4,9 @@ import type { NavItem } from '@nuxt/content'
 const navigation = inject<Ref<NavItem[]>>('navigation')
 
 defineOgImageComponent('Docs')
+definePageMeta({
+  heroBackground: 'opacity-30 z-20'
+})
 
 const route = useRoute()
 const { navPageFromPath } = useContentHelpers()
@@ -20,12 +23,12 @@ const navigationLinks = computed(() => {
 
 <template>
   <UContainer>
-    <UPage>
+    <UPage class="z-30">
       <template #left>
         <UAside :links="links">
           <UDivider type="dashed" class="mb-6" />
 
-          <UNavigationTree :links="navigationLinks" default-open :multiple="false" />
+          <UNavigationTree :links="navigationLinks" default-open :multiple="false" class="pb-10" />
         </UAside>
       </template>
 

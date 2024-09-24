@@ -46,50 +46,21 @@ const titleTemplate = computed(() => {
 })
 
 const communityLinks = computed(() => [{
-  icon: 'i-ph-pen-duotone',
+  icon: 'i-ph-pen',
   label: '编辑此页面',
   to: `https://github.com/nuxt/nuxt/edit/main/docs/${page?.value?._file?.split('/').slice(1).join('/')}`,
   target: '_blank'
 }, {
-  icon: 'i-ph-shooting-star-duotone',
-  label: 'GitHub Star',
-  to: 'https://go.nuxt.com/github',
-  target: '_blank'
-}, {
-  icon: 'i-ph-chat-centered-text-duotone',
-  label: 'Discord 社区',
+  icon: 'i-ph-chat-centered-text',
+  label: '在 Discord 上聊天',
   to: 'https://go.nuxt.com/discord',
   target: '_blank'
 }, {
-  icon: 'i-ph-hand-heart-duotone',
+  icon: 'i-ph-hand-heart',
   label: '成为赞助商',
   to: 'https://go.nuxt.com/sponsor',
   target: '_blank'
 }])
-
-const ecosystemLinks = [{
-  icon: 'i-ph-buildings-duotone',
-  label: '企业支持',
-  to: '/enterprise/support'
-}, {
-  icon: 'i-ph-handshake-duotone',
-  label: 'Nuxt 机构',
-  to: '/enterprise/agencies'
-}, {
-  icon: 'i-ph-briefcase-duotone',
-  label: '寻找 Nuxt 工作',
-  to: '/enterprise/jobs'
-}, {
-  icon: 'i-ph-graduation-cap-duotone',
-  label: '视频课程',
-  to: 'https://masteringnuxt.com/nuxt3?ref=nuxt',
-  target: '_blank'
-}, {
-  label: 'Nuxt 认证',
-  icon: 'i-ph-medal-duotone',
-  to: 'https://certification.nuxt.com',
-  target: '_blank'
-}]
 
 const title = page.value.head?.title || page.value.title
 const description = page.value.head?.description || page.value.description
@@ -134,12 +105,6 @@ defineOgImageComponent('Docs', {
             <UDivider v-if="page.body?.toc?.links?.length" type="dashed" />
 
             <UPageLinks title="社区" :links="communityLinks" />
-
-            <UDivider type="dashed" />
-
-            <UPageLinks title="生态系统" :links="ecosystemLinks" />
-
-            <UDivider type="dashed" />
 
             <!-- <Ads /> -->
           </div>

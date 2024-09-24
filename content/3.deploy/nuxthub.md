@@ -2,7 +2,7 @@
 title: NuxtHub
 description: '部署 Nuxt 应用到您的 Cloudflare 账户，完全无需配置。'
 componentImg: NuxtHub
-logoSrc: '/assets/integrations/nuxthub.svg'
+logoSrc: '/assets/integrations/nuxthub-logo.svg'
 category: Hosting
 featured: true
 nitroPreset: 'cloudflare-pages'

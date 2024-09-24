@@ -3,11 +3,7 @@ hero:
   cta:
     label: Nuxt v3.13 已发布
     to: /blog/v3-13
-    variant: outline
     icon: i-ph-arrow-right
-    size: xs
-    trailing: true
-    class: 'font-semibold hover:bg-primary-100 dark:hover:bg-primary-900 rounded-full'
 logos:
   title: '受到最好的前端团队信任'
 sections:
@@ -17,15 +13,16 @@ sections:
     align: left
     links:
       - label: '了解视图'
-        icon: i-ph-layout-duotone
+        icon: i-ph-layout
         to: '/docs/getting-started/views'
         color: black
         size: md
       - label: 'Hello World 示例'
-        icon: i-ph-app-window-duotone
+        icon: i-ph-app-window
         to: '/docs/examples/hello-world'
         color: gray
         size: md
+        variant: ghost
     slot: code
     code: |
       ```vue [app.vue]
@@ -57,39 +54,22 @@ sections:
     align: right
     links:
       - label: '了解混合渲染'
-        icon: i-ph-rocket-launch-duotone
+        icon: i-ph-rocket-launch
         to: '/docs/guide/concepts/rendering#hybrid-rendering'
         color: black
         size: md
       - label: 'Nuxt 在边缘运行'
-        icon: i-ph-newspaper-duotone
+        icon: i-ph-newspaper
         to: '/blog/nuxt-on-the-edge'
         color: gray
+        variant: ghost
         size: md
     slot: code
     code: |
       ::code-group
-      ```ts [nuxt.config.ts]
-      export default defineNuxtConfig({
-        routeRules: {
-          // Homepage pre-rendered at build time
-          '/': { prerender: true },
-          // Product page generated on-demand, revalidates in background
-          '/products/**': { swr: true },
-          // Blog post generated on-demand once until next deploy
-          '/blog/**': { isr: true },
-          // Admin dashboard renders only on client-side
-          '/admin/**': { ssr: false },
-          // Add cors headers on API routes
-          '/api/**': { cors: true },
-          // Redirects legacy urls
-          '/old-page': { redirect: '/new-page' }
-        }
-      })
-      ```
       ```vue [pages/index.vue]
       <script setup>
-      // Or set at the page level
+      // Pre-render the homepage at build time
       defineRouteRules({
         prerender: true
       })
@@ -102,6 +82,25 @@ sections:
         </div>
       </template>
       ```
+      ```ts [nuxt.config.ts]
+      export default defineNuxtConfig({
+        // Or specify the route rules globally
+        routeRules: {
+          // Homepage pre-rendered at build time
+          '/': { prerender: true },
+          // Product page generated on-demand with background revalidation
+          '/products/**': { swr: true },
+          // Blog post generated on-demand once until next deploy
+          '/blog/**': { isr: true },
+          // Admin dashboard renders only on client-side
+          '/admin/**': { ssr: false },
+          // Add cors headers on API routes
+          '/api/**': { cors: true },
+          // Redirects legacy urls
+          '/old-page': { redirect: '/new-page' }
+        }
+      })
+      ```
       ::
   - title: '结合你<br><span class="text-primary">所需要的一切</span>'
     class: 'dark:bg-gradient-to-b from-gray-900 to-gray-950'
@@ -109,51 +108,51 @@ sections:
     features:
       - title: '路由和布局'
         description: '基于文件的路由系统，以强大而传统的方法构建复杂的视图和接口。'
-        icon: 'i-ph-signpost-duotone'
+        icon: 'i-ph-signpost'
         to: '/docs/getting-started/routing'
       - title: '数据获取'
         description: '在服务器上运行的可组合项，用于为您的组件获取数据并使您能够以不同方式呈现内容。'
-        icon: ' i-ph-plugs-connected-duotone'
+        icon: 'i-ph-plugs-connected'
         to: '/docs/getting-started/data-fetching'
       - title: '资源和样式'
         description: '图像、字体和脚本优化，内置支持 CSS 模块、Sass、PostCSS、CSS-in-JS 等。'
-        icon: 'i-ph-image-duotone'
+        icon: 'i-ph-image'
         to: '/docs/getting-started/styling'
       - title: 'SEO 和元标签'
         description: '生产准备就绪，可由搜索引擎进行索引，同时给最终用户带来应用程序的感觉。'
-        icon: 'i-ph-trophy-duotone'
+        icon: 'i-ph-trophy'
         to: '/docs/getting-started/seo-meta'
       - title: '中间件'
         description: '在渲染页面或一组页面之前，运行自定义代码，如身份验证、本地化或 A/B 测试。'
-        icon: 'i-ph-shield-check-duotone'
+        icon: 'i-ph-shield-check'
         to: '/docs/getting-started/routing#route-middleware'
       - title: '状态管理'
         description: 'Nuxt 提供了一种简单的方式，在组件之间共享一个响应式且支持 SSR 的状态。'
-        icon: 'i-ph-database-duotone'
+        icon: 'i-ph-database'
         to: '/docs/getting-started/state-management'
       - title: '过渡'
         description: '在布局、页面和组件之间创建流畅的过渡，内置对 Vue 和浏览器过渡的支持。'
-        icon: 'i-ph-exclude-square-duotone'
+        icon: 'i-ph-exclude-square'
         to: '/docs/getting-started/transitions'
       - title: '错误处理'
         description: '内置错误处理和日志记录，帮助您调试应用程序并提供更好的用户体验。'
-        icon: 'i-ph-bug-beetle-duotone'
+        icon: 'i-ph-bug-beetle'
         to: '/docs/getting-started/error-handling'
       - title: '层级'
         description: '使用另一个 Nuxt 应用程序扩展您的 Nuxt 应用程序，以重复使用组件、可组合项、布局、页面等。'
-        icon: 'i-ph-stack-duotone'
+        icon: 'i-ph-stack'
         to: '/docs/getting-started/layers'
       - title: '服务器路由'
         description: '创建 API 端点和服务器路由，以安全地连接到第三方服务，并从您的前端使用。'
-        icon: 'i-ph-computer-tower-duotone'
+        icon: 'i-ph-computer-tower'
         to: '/docs/getting-started/server'
       - title: '自动导入'
         description: 'Nuxt 会自动导入帮助函数、组合式和 Vue API，以便在整个应用程序中使用，无需显式导入它们。'
-        icon: 'i-ph-magic-wand-duotone'
+        icon: 'i-ph-magic-wand'
         to: '/docs/guide/concepts/auto-imports'
       - title: 'TypeScript'
         description: 'Nuxt 提供有用的快捷方式，以确保您在编码时可以访问准确的类型信息。'
-        icon: 'i-ph-file-ts-duotone'
+        icon: 'i-ph-file-ts'
         to: '/docs/guide/concepts/typescript'
   - title: '使用集成<br><span class="text-primary">提高开发效率</span>'
     description: '与您最喜欢的工具和服务集成。Nuxt 具有灵活性，可以通过强大的模块生态系统进行扩展。用一行代码将您的应用程序与流行的无头 CMS、电子商务、数据库或 UI/UX 库连接起来。'
@@ -161,35 +160,38 @@ sections:
     align: left
     links:
       - label: '探索 Nuxt 模块'
-        icon: i-ph-puzzle-piece-duotone
+        icon: i-ph-puzzle-piece
         to: '/modules'
         color: black
         size: md
       - label: '了解模块'
-        icon: i-ph-info-duotone
+        icon: i-ph-info
         to: '/docs/guide/concepts/modules'
         color: gray
         size: md
     slot: integrations
     integrations:
-      - src: /assets/integrations/cloudflare.svg
-        alt: Cloudflare
-        to: /deploy/cloudflare
+      - src: /assets/integrations/netlify.svg
+        alt: Netlify
+        to: /deploy/netlify
+      - src: /assets/integrations/nuxthub.svg
+        alt: NuxtHub
+        to: /deploy/nuxthub
       - src: /assets/integrations/vercel.svg
         alt: Vercel
         to: /deploy/vercel
       - src: /assets/integrations/heroku.svg
         alt: Heroku
         to: /deploy/heroku
+      - src: /assets/integrations/cloudflare.svg
+        alt: Cloudflare
+        to: /deploy/cloudflare
       - src: /assets/integrations/aws-amplify.svg
         alt: Amplify
         to: /deploy/aws-amplify
       - src: /assets/integrations/digitalocean.svg
         alt: DigitalOcean
         to: /deploy/digitalocean
-      - src: /assets/integrations/netlify.svg
-        alt: Netlify
-        to: /deploy/netlify
       - src: /assets/integrations/tailwind.svg
         alt: Tailwind CSS
         to: /modules/tailwindcss
@@ -219,13 +221,10 @@ sections:
         to: /modules/sanity
       - src: /assets/integrations/sentry.svg
         alt: Sentry
-        to: https://sentry.io/
+        to: /modules/sentry
       - src: /assets/integrations/shopify.svg
         alt: Shopify
         to: https://www.shopify.com/
-      - src: /assets/integrations/snipcart.svg
-        alt: Snipcart
-        to: /modules/snipcart
       - src: /assets/integrations/meilisearch.svg
         alt: Meilisearch
         to: /modules/meilisearch

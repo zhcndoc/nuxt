@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  heroBackground: 'opacity-80 -z-10'
+})
 const route = useRoute()
 const { fetchList, selectedShowcases, categories } = useShowcase()
 
@@ -38,7 +41,10 @@ await fetchList()
             target="_blank"
             :title="showcase.title || showcase.hostname"
             :description="showcase.hostname"
-            :ui="{ header: { base: 'aspect-w-4 aspect-h-2', padding: '' }, body: { padding: '!p-4' } }"
+            :ui="{
+              header: { base: 'aspect-w-4 aspect-h-2', padding: '' },
+              body: { padding: '!p-4' }
+            }"
             class="overflow-hidden"
           >
             <template #header>

@@ -27,7 +27,7 @@ Nuxt 会自动检测您是否在 [Netlify](https://www.netlify.com) 构建环境
 
 如果您想添加自定义重定向，可以使用 [`routeRules`](/docs/guide/concepts/rendering#hybrid-rendering) 或向 `public` 目录添加一个 [`_redirects`](https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file) 文件来实现。
 
-::tip{color="green" icon="i-ph-check-circle-duotone"}
+::tip{color="green" icon="i-ph-check-circle"}
 要部署，请将其推送到您的 git 仓库中，[就像正常情况下为 Netlify 做的那样](https://docs.netlify.com/configure-builds/get-started/)。
 ::
 

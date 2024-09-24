@@ -27,7 +27,7 @@ const mobileNav = computed(() => {
     ...headerLinks.value.slice(1),
     {
       label: 'Design Kit',
-      icon: 'i-ph-palette-duotone',
+      icon: 'i-ph-palette',
       to: '/design-kit'
     }
   ]
@@ -48,7 +48,7 @@ const dropdownItems = [
   }],
   [{
     label: 'Browse Design Kit',
-    icon: 'i-ph-shapes-duotone',
+    icon: 'i-ph-shapes',
     to: '/design-kit'
   }]
 ]
@@ -93,7 +93,18 @@ defineProps<{
     </template>
 
     <template #center>
-      <UHeaderLinks :links="links" :ui="{ default: { popover: { popper: { strategy: 'absolute' }, ui: { width: 'w-[256px]' } } } }" class="hidden lg:flex" />
+      <UHeaderLinks
+        :links="links"
+        :ui="{
+          default: {
+            popover: {
+              popper: { strategy: 'absolute' },
+              ui: { width: 'w-[256px]' }
+            }
+          }
+        }"
+        class="hidden lg:flex"
+      />
     </template>
 
     <template #right>
