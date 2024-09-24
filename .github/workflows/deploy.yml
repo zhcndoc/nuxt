@@ -32,9 +32,9 @@ jobs:
 
       - name: Deploy to Zeabur
         env:
-          PROJECT_ID: 66c211434b036528feae97f9
-          SERVICE_ID: 66c214d74b036528feae9838
-          ENVIRONMENT_ID: 66c21143812c32a5722b56ea
+          PROJECT_ID: 66e2444d723926097b6fd1c7
+          SERVICE_ID: 66e24687723926097b6fd1ff
+          ENVIRONMENT_ID: 66e2444dbc556e0e05b26a38
           API_TOKEN: ${{ secrets.ZEABUR_TOKEN }}
         run: |
           curl --request POST \
@@ -52,4 +52,4 @@ jobs:
           REMOTE_PORT: ${{ secrets.SERVER_PORT }}
           SOURCE: ".output/public/"
           ARGS: "-azr --delete"
-          TARGET: "/www/web/nuxt/"
+          TARGET: "${{ secrets.SERVER_PATH }}/nuxt/"
