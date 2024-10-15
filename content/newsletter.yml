@@ -1,18 +1,18 @@
-title: The Nuxt Newsletter
-head.title: Nuxt Newsletter
-description: 'Get the latest releases and news about Nuxt and its ecosystem with our newsletter.'
+title: Nuxt 新闻通讯
+head.title: Nuxt 新闻通讯
+description: '通过我们的新闻通讯获取关于 Nuxt 及其生态系统的最新版本和新闻。'
 navigation: false
 align: 'center'
 cta:
-  headline: Getting Started
-  title: Start your Nuxt Journey
-  description: Learn everything you need to know, from beginner to master.
+  headline: 开始使用
+  title: 开启您的 Nuxt 之旅
+  description: '学习您需要了解的一切，从初学者到大师。'
   links:
-    - label: 'Get started'
+    - label: '开始使用'
       size: 'lg'
       color: 'black'
       to: '/docs/getting-started/introduction'
-    - label: 'Explore examples'
+    - label: '探索示例'
       size: 'lg'
       color: 'white'
       to: '/docs/examples'

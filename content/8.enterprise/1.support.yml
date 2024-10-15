@@ -1,12 +1,12 @@
-title: 'Nuxt Professional Service'
-navigation.title: 'Support'
-description: 'Get professional support by the Nuxt experts to optimize your site performance and overcome any challenge'
-head.title: 'Nuxt professional services'
-head.description: 'Vue and Nuxt professional support and consulting services by the creators and maintainers of Vue and Nuxt for code audit and performance optimization.'
+title: 'Nuxt 专业服务'
+navigation.title: '支持'
+description: '获得 Nuxt 专家的专业支持，以优化您的网站性能并克服任何挑战。'
+head.title: 'Nuxt 专业服务'
+head.description: '由 Vue 和 Nuxt 的创造者和维护者提供的 Vue 和 Nuxt 专业支持与咨询服务，包括代码审核和性能优化。'
 navigation.icon: i-ph-lifebuoy
 hero:
   links:
-  - label: Talk to an expert
+  - label: 与专家沟通
     color: black
     to: 'https://calendly.com/ferdinand-nuxt/nuxtlabs-ferdinand'
     size: sm
@@ -68,24 +68,24 @@ logos:
     height: '89'
     alt: 'realtruck logo'
 service:
-  title: Our services
-  description: We provide expertise and guidance to companies using Vue and Nuxt, including assistance with project architecture, performance optimization, best practices, and troubleshooting.
+  title: 我们的服务
+  description: '我们为使用 Vue 和 Nuxt 的公司提供专业知识和指导，包括项目架构、性能优化、最佳实践和故障排除的帮助。'
   services:
     - icon: i-ph-chart-line
-      title: Performance optimizations
-      description: Optimize your Nuxt application with tailored recommendations to make it faster and more reliable than ever.
+      title: 性能优化
+      description: '根据量身定制的建议优化您的 Nuxt 应用，使其比以往更快、更可靠。'
     - icon: i-ph-code
-      title: Migration to Nuxt
-      description: Make any migration project a successful and painless experience from the first steps to the deployment.
+      title: 向 Nuxt 迁移
+      description: '让任何迁移项目从第一步到部署都成为成功且轻松的体验。'
     - icon: i-ph-rocket-launch
-      title: Nuxt Workshop
-      description: Bring your team’s skills to the expert level with custom workshops session and continuous support.
+      title: Nuxt 工作坊
+      description: '通过定制的工作坊和持续的支持将您团队的技能提升到专家水平。'
     - icon: i-ph-pencil-ruler
-      title: Custom services
-      description: Tell us what you’re looking for and we’ll find the most effective way to help you achieve your goals.
+      title: 自定义服务
+      description: '告诉我们您的需求，我们将找到最有效的方法来帮助您实现目标。'
 expertise:
-  title: 'The highest level of expertise'
-  description: 'The Nuxt experts are Vue, Nuxt and Vite core team members or chosen contributors.'
+  title: '最高水平的专业知识'
+  description: 'Nuxt 专家是 Vue、Nuxt 和 Vite 的核心团队成员或选定的贡献者。'
   logos:
     - src: '/assets/enterprise/support/nuxt.svg'
       width: 32
@@ -108,12 +108,12 @@ expertise:
       color: '#42b883'
       alt: 'vue logo'
 testimonials:
-  title: 'What our clients say'
-  description: 'Hear from our clients about how our consulting services have transformed their projects and boosted their performance.'
+  title: '客户的声音'
+  description: '听听我们的客户如何评价我们的咨询服务，如何改变了他们的项目并提升了他们的性能。'
   items:
-    - quote: "“I'd highly recommend their services for anyone looking into Nuxt, to ensure you get all the benefits that it can provide and make sure your team follow all the best practice design patterns.“"
+    - quote: "“我会强烈推荐他们的服务给任何想了解 Nuxt 的人，以确保您获得它可以提供的所有好处，并确保您的团队遵循所有最佳实践设计模式。”"
       author: 'James Baddiley'
-      job: 'CEO/CTO @ Chillisauce'
+      job: '首席执行官/首席技术官 @ Chillisauce'
       logo:
         light: '/assets/enterprise/support/light/chillisauce.svg'
         dark: '/assets/enterprise/support/dark/chillisauce.svg'
@@ -121,15 +121,15 @@ testimonials:
         width: 134
         height: 28
       achievements:
-        - label: 'Migration to Nuxt'
+        - label: '向 Nuxt 迁移'
           color: 'blue'
-        - label: 'Performance optimization'
+        - label: '性能优化'
           color: 'orange'
-        - label: 'Long-term support'
+        - label: '长期支持'
           color: 'yellow'
-    - quote: "“Choosing NuxtLabs for an audit of our Nuxt project was a game-changer. Their detailed insights significantly enhanced our site's performance and the quality of our code. We're grateful for their support and highly recommend them to others.“"
+    - quote: "“选择 NuxtLabs 对我们的 Nuxt 项目进行审核是一个改变游戏规则的决定。他们的详细见解显著提升了我们网站的性能和代码质量。我们对他们的支持深表感谢，并强烈推荐给其他人。”"
       author: 'Melene Ulm'
-      job: 'Web Developer @ Mobile Industrial Robots'
+      job: '网页开发者 @ Mobile Industrial Robots'
       logo:
         light: '/assets/enterprise/support/light/mir.svg'
         dark: '/assets/enterprise/support/dark/mir.svg'
@@ -137,15 +137,15 @@ testimonials:
         width: 54
         height: 24
       achievements:
-        - label: 'Codebase audit'
+        - label: '代码库审核'
           color: 'pink'
-        - label: 'Performance optimization'
+        - label: '性能优化'
           color: 'orange'
-        - label: 'Long-term support'
+        - label: '长期支持'
           color: 'yellow'
-    - quote: "“The expert provided us with valuable feedback, which included improvements on how we can utilize Nuxt and the ecosystem more effectively, raising questions about the background of historic implementation and finding bugs that we did not yet catch.“"
+    - quote: "“专家为我们提供了宝贵的反馈，包括如何更有效地利用 Nuxt 和生态系统，提出了关于历史实现背景的问题，并发现了我们尚未捕捉到的错误。”"
       author: 'Robert K Pauls'
-      job: 'Lead dev at @ ABOUT YOU group'
+      job: '负责人 @ ABOUT YOU group'
       logo:
         light: '/assets/enterprise/support/light/about-you.svg'
         dark: '/assets/enterprise/support/dark/about-you.svg'
@@ -153,13 +153,13 @@ testimonials:
         width: 120
         height: 24
       achievements:
-        - label: 'Performance optimization'
+        - label: '性能优化'
           color: 'orange'
-        - label: 'Codebase audit'
+        - label: '代码库审核'
           color: 'pink'
-    - quote: "“They provided excellent feedback on how to make the core of our app more efficient as well some very valuable tips for the features we are planing to implement in the near future.“"
+    - quote: "“他们提供了关于如何使我们应用的核心更高效的优秀反馈，并给出了我们计划在不久的将来实施的功能的一些非常有价值的建议。”"
       author: 'Maxime Casadei'
-      job: 'CEO at @NAKWEB for Otypo'
+      job: '首席执行官 @ NAKWEB for Otypo'
       width: 80
       height: 20
       logo:
@@ -167,15 +167,15 @@ testimonials:
         dark: '/assets/enterprise/support/dark/otypo.svg'
         alt: 'otypo logo'
       achievements:
-        - label: 'Migration to Nuxt'
+        - label: '向 Nuxt 迁移'
           color: 'blue'
-        - label: 'Performance optimizations'
+        - label: '性能优化'
           color: 'orange'
-        - label: 'Codebase audit'
+        - label: '代码库审核'
           color: 'pink'
-    - quote: "“NuxtLabs was amazing to work with. They found hidden opportunities buried deep within our codebase. Our enterprise application is now faster, more secure and reliable than ever!“"
+    - quote: "“与 NuxtLabs 合作非常棒。他们在我们的代码库中发现了隐藏的机会。我们的企业应用现在比以往更快、更安全、更可靠！”"
       author: 'Josh Deltener'
-      job: 'Director of software engineering @ RealTruck.com'
+      job: '软件工程总监 @ RealTruck.com'
       logo:
         light: '/assets/enterprise/support/light/realtruck.svg'
         dark: '/assets/enterprise/support/dark/realtruck.svg'
@@ -183,44 +183,44 @@ testimonials:
         width: 140
         height: 30
       achievements:
-        - label: 'Migration to Nuxt'
+        - label: '向 Nuxt 迁移'
           color: 'blue'
-        - label: 'Performance optimizations'
+        - label: '性能优化'
           color: 'orange'
-        - label: 'Codebase audit'
+        - label: '代码库审核'
           color: 'pink'
 project:
-  title: 'How do we proceed?'
-  description: "3 easy steps to get professionnal support and consulting services from a Vue & Nuxt expert."
+  title: '我们如何进行？'
+  description: "获取 Vue 和 Nuxt 专家的专业支持和咨询服务的 3 个简单步骤。"
   steps:
-    - title: 'Introduction meeting'
-      description: "This first meeting is dedicated to gather as much information as possible about your needs and context, for us to determine the right service by the right expert."
+    - title: '介绍会议'
+      description: "第一次会议致力于收集尽可能多的信息，以了解您的需求和背景，以确定合适的服务和专家。"
       number: 1
-    - title: 'A quote suited to your needs'
-      description: "Based on the information you provided and from previous similar consulting engagements, we will present a custom quote to answer your demand."
+    - title: '符合您需求的报价'
+      description: "根据您提供的信息和先前类似的咨询项目，我们将提供一份定制的报价以满足您的需求。"
       number: 2
-    - title: 'Nuxt Expert onboarding'
-      description: "Once an agreement is reached, the expert will be introduced to your team to start performing the consulting engagement."
+    - title: 'Nuxt 专家入驻'
+      description: "达成协议后，专家将被引入您的团队，以开始进行咨询合作。"
       number: 3
 form:
-  title: 'Get in Touch with Us'
-  description: "Have questions or need assistance? Fill out the form below, and we'll get back to you as soon as possible."
+  title: '与我们联系'
+  description: "有问题或需要帮助？请填写以下表格，我们会尽快与您联系。"
   name:
-    label: 'Name'
-    placeholder: 'John Doe'
+    label: '姓名'
+    placeholder: '约翰·多'
   email:
-    label: 'Company Email'
+    label: '公司电子邮件'
     placeholder: 'you@example.com'
   company:
-    label: 'Company'
-    placeholder: 'Your company name'
+    label: '公司'
+    placeholder: '您的公司名称'
   link:
-    label: 'Useful link'
+    label: '有用的链接'
     placeholder: 'www.nuxt.com'
   body:
-    label: 'What can we help you achieve?'
-    placeholder: 'Tell us how we can help you'
-  info: 'By submitting this form, I confirm that I have read and understood the <a class="text-gray-950 dark:text-gray-100 underline font-medium">Nuxt Privacy Statement.</a>'
+    label: '我们可以帮助您实现什么？'
+    placeholder: '告诉我们我们可以为您提供什么帮助'
+  info: '提交此表单即表示我确认我已阅读并理解 <a class="text-gray-950 dark:text-gray-100 underline font-medium">Nuxt 隐私声明。</a>'
   button:
     icon: i-ph-paper-plane-right
-    label: 'Send message'
+    label: '发送消息'

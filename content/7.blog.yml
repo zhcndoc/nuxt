@@ -1,4 +1,4 @@
-title: The Nuxt Blog
-navigation.title: Blog
-description: 'Read the latest news about all Nuxt solutions, from framework announcements to integration tutorials.'
+title: Nuxt 博客
+navigation.title: 博客
+description: '阅读有关所有 Nuxt 解决方案的最新新闻，从框架公告到集成教程。'
 navigation.icon: i-ph-newspaper

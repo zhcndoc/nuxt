@@ -84,7 +84,7 @@ onMounted(() => {
   <div>
     <NuxtLoadingIndicator />
 
-    <AppBanner
+    <!-- <AppBanner
       id="nuxt-cert-date"
       to="https://certificates.dev/nuxt?utm_source=nuxt&utm_medium=website&utm_campaign=affiliate&friend=NUXT"
     >
@@ -102,7 +102,7 @@ onMounted(() => {
           class="rounded-full ml-1"
         />
       </div>
-    </AppBanner>
+    </AppBanner> -->
     <!-- <AppBanner
       id="nuxt-certification-early-bird-launch"
       to="https://certification.nuxt.com"

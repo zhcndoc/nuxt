@@ -1,6 +1,6 @@
-title: Showcase
-head.title: Nuxt Showcase
-description: Discover our selection of websites built with Nuxt. This collection is powered by VueTelescope.
+title: Nuxt 展示
+head.title: Nuxt 展示
+description: 发现我们使用 Nuxt 构建的网站选择。此集合由 VueTelescope 提供支持。
 navigation.icon: i-ph-projector-screen
 align: center
 links:

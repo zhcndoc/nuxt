@@ -1,10 +1,10 @@
-title: Explore Nuxt Jobs
-description: Browse available openings for coding with Vue and Nuxt all over the world.
-navigation.title: Jobs
-head.title: Nuxt Jobs
+title: 探索 Nuxt 工作
+description: '浏览全球范围内与 Vue 和 Nuxt 相关的可用职位。'
+navigation.title: 工作
+head.title: Nuxt 工作
 navigation.icon: i-ph-briefcase
 links:
-  - label: 'Post a job'
+  - label: '发布职位'
     to: 'https://vuejobs.com/jobs/create'
     color: black
     size: 'lg'
