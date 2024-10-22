@@ -31,7 +31,7 @@ await fetchList()
     <UPage id="smooth" class="pt-20 -mt-20">
       <template #left>
         <UAside>
-          <UNavigationTree :links="[{ label: 'Technical Expertise', disabled: true, children: services }, { label: 'Locations', disabled: true, children: regions }]" />
+          <UNavigationTree :links="[{ label: '技术', disabled: true, children: services }, { label: '区域', disabled: true, children: regions }]" />
         </UAside>
       </template>
 

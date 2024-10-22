@@ -95,7 +95,7 @@ defineOgImageComponent('Docs', {
       </UPageBody>
 
       <template #right>
-        <UPageLinks v-if="agency.services?.length" title="Technical Expertise">
+        <UPageLinks v-if="agency.services?.length" title="技术">
           <div class="prose dark:prose-invert -ml-1.5">
             <ul class="space-y-3">
               <li v-for="(service, index) in agency.services" :key="index" class="text-sm text-gray-500 dark:text-gray-400">
@@ -108,7 +108,7 @@ defineOgImageComponent('Docs', {
         <div v-if="agency.resources?.length">
           <UDivider type="dashed" class="my-6" />
 
-          <UPageLinks title="Resources" :links="agency.resources" />
+          <UPageLinks title="资源" :links="agency.resources" />
         </div>
       </template>
     </UPage>
