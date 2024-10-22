@@ -81,11 +81,19 @@ export default defineNuxtConfig({
     }
   },
   $production: {
-    image: {
-      ipx: {
-        baseURL: 'https://ipx.nuxt.com'
-      }
+    site: {
+      url: 'https://nuxt.zhcndoc.com'
+    },
+    ogImage: {
+      fonts: [
+        'Noto+Sans+SC:400'
+      ]
     }
+    // image: {
+    //   ipx: {
+    //     baseURL: 'https://ipx.nuxt.com'
+    //   }
+    // }
   },
   devtools: {
     enabled: false
@@ -217,13 +225,5 @@ export default defineNuxtConfig({
     enableInDev: false,
     // Do not throw when twoslash fails, the typecheck should be down in github.com/nuxt/nuxt's CI
     throws: false
-  },
-  site: {
-    url: 'https://nuxt.zhcndoc.com'
-  },
-  ogImage: {
-    fonts: [
-      'Noto+Sans+SC:400'
-    ]
   }
 })
