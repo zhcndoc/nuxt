@@ -5,6 +5,12 @@ description: '观看来自社区的视频课程，学习 Vue 3 和 Nuxt 3。'
 navigation.icon: i-ph-graduation-cap
 align: center
 courses:
+  - name: '掌握 Nuxt'
+    slug: 'mastering-nuxt'
+    description: '开发和部署快速、生产就绪的 Nuxt 3 应用的完整指南。'
+    url: 'https://masteringnuxt.com/nuxt3'
+    badge: Premium
+    sponsor: true
   - name: 'Nuxt 3 基础'
     slug: 'vc-nuxt-3-fundamentals'
     description: '与 VueSchool 一起学习 Nuxt 3 的基础知识。'
@@ -30,11 +36,6 @@ courses:
     screenshotOptions:
       delay: 1
       removeElements: ['tp-yt-iron-overlay-backdrop', 'tp-yt-paper-dialog']
-  - name: '掌握 Nuxt'
-    slug: 'mastering-nuxt'
-    description: '开发和部署快速、可生产的 Nuxt 3 应用的完整指南。'
-    url: 'https://masteringnuxt.com/nuxt3'
-    badge: Premium
   - name: '真实世界的 Nuxt 3'
     slug: 'vm-real-world-nuxt'
     description: '这是一个动手实践的课程，学习如何使用 Nuxt 构建 Web 应用。'

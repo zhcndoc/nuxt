@@ -15,7 +15,7 @@ const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', {
 })
 
 useHead({
-  titleTemplate: title => title ? `${title} - Nuxt 中文文档` : 'Nuxt 中文文档 - 基于 Vue.js 的全栈 Web 框架',
+  titleTemplate: title => title ? `${title} · Nuxt` : 'Nuxt: The Intuitive Web Framework',
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { key: 'theme-color', name: 'theme-color', content: color }
@@ -24,31 +24,12 @@ useHead({
     { rel: 'icon', type: 'image/png', href: '/icon.png' }
   ],
   htmlAttrs: {
-    lang: 'zh-CN'
-  },
-  script: [
-    {
-      'defer': '',
-      'src': 'https://analytics.ikxin.com/script.js',
-      'data-website-id': 'f0e90b0d-e086-4fdc-b173-de4857b71900'
-    },
-    {
-      async: '',
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-HYH4TH7PWM'
-    },
-    {
-      innerHTML: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-HYH4TH7PWM');
-      `
-    }
-  ]
+    lang: 'en'
+  }
 })
 
 useSeoMeta({
-  ogSiteName: 'Nuxt 中文文档',
+  ogSiteName: 'Nuxt',
   ogType: 'website',
   twitterCard: 'summary_large_image',
   twitterSite: 'nuxt_js'
@@ -84,16 +65,16 @@ onMounted(() => {
   <div>
     <NuxtLoadingIndicator />
 
-    <!-- <AppBanner
-      id="nuxt-cert-date"
-      to="https://certificates.dev/nuxt?utm_source=nuxt&utm_medium=website&utm_campaign=affiliate&friend=NUXT"
+    <AppBanner
+      id="nuxt-ui-pro"
+      to="https://ui.nuxt.com/pro?utm_source=nuxt&utm_medium=website&utm_campaign=banner"
     >
       <div class="flex items-center gap-1">
         <UIcon
-          name="i-ph-circle-wavy-check-duotone"
+          name="i-ph-layout-duotone"
           class="w-5 h-5 flex-shrink-0 pointer-events-none hidden sm:inline-block"
         />
-        <span><span class="hidden lg:inline">Official</span> Nuxt mid-level certification launch date announced!</span>
+        <span>Create beautiful & responsive Nuxt apps with Nuxt UI Pro</span>
         <UButton
           label="Learn more"
           color="white"
@@ -102,7 +83,7 @@ onMounted(() => {
           class="rounded-full ml-1"
         />
       </div>
-    </AppBanner> -->
+    </AppBanner>
     <!-- <AppBanner
       id="nuxt-certification-early-bird-launch"
       to="https://certification.nuxt.com"
@@ -154,3 +135,9 @@ onMounted(() => {
     </ClientOnly>
   </div>
 </template>
+
+<style>
+#kapa-widget-container {
+  visibility: hidden;
+}
+</style>
