@@ -60,6 +60,11 @@ const communityLinks = computed(() => [{
   label: '成为赞助商',
   to: 'https://go.nuxt.com/sponsor',
   target: '_blank'
+}, {
+  icon: 'i-ph-chef-hat',
+  label: '掌握 Nuxt',
+  to: 'https://masteringnuxt.com/nuxt3',
+  target: '_blank'
 }])
 
 const title = page.value.head?.title || page.value.title
