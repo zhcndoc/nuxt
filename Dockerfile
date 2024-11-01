@@ -1,13 +1,17 @@
-FROM node:lts-alpine
+FROM node:lts-alpine as builder
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm install --global pnpm serve \
-  && pnpm install \
-  && npx nuxi build --prerender=true --preset=node-server
+RUN corepack enable \
+  && pnpm install --no-frozen-lockfile \
+  && pnpm run generate
 
-EXPOSE 3000
+FROM nginx:alpine
 
-CMD ["npx", "serve", "/app/dist", "--no-request-logging"]
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
