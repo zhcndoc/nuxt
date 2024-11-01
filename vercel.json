@@ -1,4 +1,5 @@
 {
+  "buildCommand": "nuxi generate",
   "github": {
     "silent": true
   },
