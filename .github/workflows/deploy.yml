@@ -7,7 +7,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy-vercel:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          working-directory: ./
+          vercel-args: '--prod'
+
+  deploy-zeabur:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,14 +57,3 @@ jobs:
             --header "Authorization: Bearer ${{ env.API_TOKEN }}" \
             --form "code=@build.zip" \
             --form "environment=${{ env.ENVIRONMENT_ID }}" || true
-
-      # - name: Deploy to Server
-      #   uses: easingthemes/ssh-deploy@main
-      #   with:
-      #     SSH_PRIVATE_KEY: ${{ secrets.SERVER_KEY }}
-      #     REMOTE_USER: ${{ secrets.SERVER_USER }}
-      #     REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-      #     REMOTE_PORT: ${{ secrets.SERVER_PORT }}
-      #     SOURCE: ".output/public/"
-      #     ARGS: "-azr --delete"
-      #     TARGET: "${{ secrets.SERVER_PATH }}/nuxt/"
