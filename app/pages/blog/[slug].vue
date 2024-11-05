@@ -28,11 +28,11 @@ useSeoMeta({
 const title = article.value.head?.title || article.value.title
 const description = article.value.head?.description || article.value.description
 useSeoMeta({
-  titleTemplate: '%s · Nuxt Blog',
+  titleTemplate: '%s - Nuxt 博客 - Nuxt 中文文档',
   title,
   description,
   ogDescription: description,
-  ogTitle: `${title} · Nuxt Blog`
+  ogTitle: `${title} - Nuxt 博客 - Nuxt 中文文档`
 })
 
 if (article.value.image) {
@@ -66,11 +66,6 @@ const links = [
     icon: 'i-ph-shooting-star',
     label: 'Star on GitHub',
     to: 'https://go.nuxt.com/github',
-    target: '_blank'
-  }, {
-    icon: 'i-ph-chat-centered-text',
-    label: 'Chat on Discord',
-    to: 'https://go.nuxt.com/discord',
     target: '_blank'
   }, {
     icon: 'i-ph-hand-heart',
@@ -152,9 +147,8 @@ const links = [
             <template #bottom>
               <div class="hidden lg:block space-y-6">
                 <UPageLinks title="Links" :links="links" />
-
                 <UDivider type="dashed" />
-
+                <SocialLinks />
                 <Ads />
               </div>
             </template>

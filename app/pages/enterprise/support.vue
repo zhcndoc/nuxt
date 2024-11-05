@@ -17,11 +17,11 @@ if (!page.value) {
 const title = page.value.head?.title || page.value?.title
 const description = page.value?.head?.description || page.value?.description
 useSeoMeta({
-  titleTemplate: '%s · Enterprise',
+  titleTemplate: '%s - 企业支持 - Nuxt 中文文档',
   title,
   description,
   ogDescription: description,
-  ogTitle: `${title} · Enterprise`
+  ogTitle: `${title} - 企业支持 - Nuxt 中文文档`
 })
 
 defineOgImage({

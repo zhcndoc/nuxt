@@ -14,11 +14,11 @@ const { data: sponsors } = await useFetch('https://api.nuxt.com/sponsors')
 const title = page.value.head?.title || page.value.title
 const description = page.value.head?.description || page.value.description
 useSeoMeta({
-  titleTemplate: '%s · Community',
+  titleTemplate: '%s - Nuxt 社区 - Nuxt 中文文档',
   title,
   description,
   ogDescription: description,
-  ogTitle: `${title} · Community`
+  ogTitle: `${title} - Nuxt 社区 - Nuxt 中文文档`
 })
 
 defineOgImageComponent('Docs', {

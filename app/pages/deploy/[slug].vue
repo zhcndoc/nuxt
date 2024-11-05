@@ -24,11 +24,11 @@ const title = provider.value.head?.title || provider.value.title
 const description = provider.value.head?.description || provider.value.description
 
 useSeoMeta({
-  titleTemplate: 'Deploy Nuxt to %s',
+  titleTemplate: '部署 Nuxt 到 %s - Nuxt 中文文档',
   title,
   description,
   ogDescription: description,
-  ogTitle: `Deploy Nuxt to ${title}`
+  ogTitle: `部署 Nuxt 到 ${title} - Nuxt 中文文档`
 })
 
 defineOgImageComponent('Docs', {
@@ -106,11 +106,9 @@ links.push({
             <template #bottom>
               <div class="hidden lg:block space-y-6" :class="{ '!mt-6': provider.body?.toc?.links?.length }">
                 <UDivider v-if="links?.length && provider.body?.toc?.links?.length" type="dashed" />
-
                 <UPageLinks title="Links" :links="links" />
-
                 <UDivider type="dashed" />
-
+                <SocialLinks />
                 <Ads />
               </div>
             </template>

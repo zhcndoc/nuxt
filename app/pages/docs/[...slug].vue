@@ -51,11 +51,6 @@ const communityLinks = computed(() => [{
   to: `https://github.com/nuxt/nuxt/edit/main/docs/${page?.value?._file?.split('/').slice(1).join('/')}`,
   target: '_blank'
 }, {
-  icon: 'i-ph-chat-centered-text',
-  label: '在 Discord 上聊天',
-  to: 'https://go.nuxt.com/discord',
-  target: '_blank'
-}, {
   icon: 'i-ph-hand-heart',
   label: '成为赞助商',
   to: 'https://go.nuxt.com/sponsor',
@@ -108,9 +103,9 @@ defineOgImageComponent('Docs', {
         <template #bottom>
           <div class="hidden lg:block space-y-6" :class="{ '!mt-6': page.body?.toc?.links?.length }">
             <UDivider v-if="page.body?.toc?.links?.length" type="dashed" />
-
             <UPageLinks title="社区" :links="communityLinks" />
-
+            <UDivider type="dashed" />
+            <SocialLinks />
             <!-- <Ads /> -->
           </div>
         </template>
