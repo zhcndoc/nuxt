@@ -12,7 +12,7 @@ website: 'https://vercel.com/'
 ::tip
 **无需配置 ✨**
 :br
-与 Vercel 的集成可以零配置完成，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
+与 Vercel 的集成可以零配置完成，[了解更多](https://nitro.zhcndoc.com/deploy#zero-config-providers)。
 ::
 
 ## 使用 Git 进行部署
@@ -121,6 +121,6 @@ export default defineEventHandler(async (event) => {
 
 ## 了解更多
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/vercel" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/vercel" target="_blank"}
 请前往**Nitro 文档**，了解更多关于按需增量静态再生（On-Demand Incremental Static Regeneration）或更高级选项的内容。
 ::

@@ -47,6 +47,6 @@ Nuxt 支持在 [Digital Ocean App 平台](https://docs.digitalocean.com/products
 
 ## 了解更多
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/digitalocean" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/digitalocean" target="_blank"}
 请访问**Nitro 文档**以了解有关 digitalocean 部署预设的更多信息。
 ::

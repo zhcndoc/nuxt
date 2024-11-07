@@ -21,6 +21,6 @@ Nuxt 支持只需进行最小的配置即可在 [Zeabur](https://zeabur.com) 上
 
 ## 了解更多
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/zeabur" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/zeabur" target="_blank"}
 请访问 **Nitro 文档** 以了解有关 Zeabur 部署预设的更多信息。
 ::

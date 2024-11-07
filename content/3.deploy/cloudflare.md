@@ -12,7 +12,7 @@ website: 'https://pages.cloudflare.com/'
 ::tip
 **零配置 ✨**
 :br
-与 Cloudflare Pages 的集成可以零配置完成，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
+与 Cloudflare Pages 的集成可以零配置完成，[了解更多](https://nitro.zhcndoc.com/deploy#zero-config-providers)。
 ::
 
 ::important
@@ -24,7 +24,7 @@ website: 'https://pages.cloudflare.com/'
 如果你在 Cloudflare Pages 上使用 GitHub/GitLab 集成，**无需配置**。推送到你的仓库会自动构建项目并部署。
 
 ::note
-Nuxt 会检测环境并自动设置正确的 [服务器/Nitro 预设](https://nitro.unjs.io/deploy/providers/cloudflare)。
+Nuxt 会检测环境并自动设置正确的 [服务器/Nitro 预设](https://nitro.zhcndoc.com/deploy/providers/cloudflare)。
 ::
 
 为了在边缘服务器上进行服务器端渲染，请将构建命令设置为：`nuxt build`
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
 
 ## 了解更多
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/cloudflare" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/cloudflare" target="_blank"}
 请参阅 **Nitro 文档** 以了解更多关于 Cloudflare 部署预设的信息。
 ::
 
@@ -128,6 +128,6 @@ export default defineNuxtConfig({
 
 ## 了解更多
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/cloudflare" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/cloudflare" target="_blank"}
 请参阅 **Nitro 文档** 以了解更多关于 cloudflare 部署预设的信息。
 ::

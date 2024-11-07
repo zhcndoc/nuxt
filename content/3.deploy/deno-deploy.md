@@ -83,6 +83,6 @@ jobs:
 
 ## 了解更多
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/deno-deploy" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/deno-deploy" target="_blank"}
 详细了解 deno-deploy 部署预设，请参阅 **Nitro 文档**。
 ::

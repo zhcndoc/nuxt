@@ -74,6 +74,6 @@ Nitro 可以在[通过 Flightcontrol](https://flightcontrol.dev?ref=nuxt)进行�
 了解更多关于 Flightcontrol 的配置信息。
 ::
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/flightcontrol" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/flightcontrol" target="_blank"}
 请前往**Nitro 文档**了解有关 flightcontrol 部署预设的详细信息。
 ::

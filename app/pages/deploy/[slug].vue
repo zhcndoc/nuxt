@@ -48,7 +48,7 @@ if (provider.value?.nitroPreset) {
   links.push({
     icon: 'i-ph-lightning',
     label: 'Nitro Preset',
-    to: `https://nitro.unjs.io/deploy/providers/${provider.value?.nitroPreset}`,
+    to: `https://nitro.zhcndoc.com/deploy/providers/${provider.value?.nitroPreset}`,
     target: '_blank'
   })
 }

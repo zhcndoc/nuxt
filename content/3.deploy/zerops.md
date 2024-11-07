@@ -1,6 +1,6 @@
 ---
 title: Zerops
-description: "Deploy your Nuxt Application to Zerops infrastructure."
+description: "将您的 Nuxt 应用部署到 Zerops 基础设施上。"
 componentImg: Zerops
 logoSrc: "/assets/integrations/zerops.svg"
 category: Hosting
@@ -8,25 +8,25 @@ NuxtPreset: "zerops"
 website: "https://zerops.io"
 ---
 
-**Nodejs Preset**: `SERVER_PRESET: zerops`
-**Static Preset**: `SERVER_PRESET: zerops-static`
+**Nodejs 预设**: `SERVER_PRESET: zerops`
+**静态预设**: `SERVER_PRESET: zerops-static`
 
 :read-more{title="Zerops" to="https://zerops.io"}
 
 ::tip
-**Nuxt x Zerops Quickrun ✨**
+**Nuxt x Zerops 快速运行 ✨**
 :br
- Want to test running Nuxt on Zerops without installing or setting up anything? Using repositories [Zerops x Nuxt - Static](https://github.com/zeropsio/recipe-nuxt-static) or [Zerops x Nuxt - SSR on Node.js](https://github.com/zeropsio/recipe-nuxt-nodejs) you can deploy example Nuxt app with a single click.
+想要测试在 Zerops 上运行 Nuxt，而不需要安装或设置任何东西？使用仓库 [Zerops x Nuxt - Static](https://github.com/zeropsio/recipe-nuxt-static) 或 [Zerops x Nuxt - SSR on Node.js](https://github.com/zeropsio/recipe-nuxt-nodejs)，您可以一键部署示例 Nuxt 应用。
 ::
 
 
-Zerops supports deploying both static and server-side rendered apps with a simple configuration file in your project root.                     
+Zerops 支持使用项目根目录中的简单配置文件部署静态和服务器端渲染的应用。
 
-## Static 
+## 静态
 
-Projects and services can be added either through a [Project add wizard](https://app.zerops.io/dashboard/project-add) or imported using a YAML structure:
+项目和服务可以通过 [项目添加向导](https://app.zerops.io/dashboard/project-add) 添加，或者使用 YAML 结构导入：
 
-### Creating a Project
+### 创建项目
 
 ```yml [zerops-project-import.yml]
 project:
@@ -36,11 +36,11 @@ services:
   - hostname: app
     type: static
 ```
-This will create a project called `recipe-nuxt` with a Zerops Static service called `app`.
+这将创建一个名为 `recipe-nuxt` 的项目，配有一个名为 `app` 的 Zerops 静态服务。
 
-### Setting up Zerops YAML
+### 设置 Zerops YAML
 
-To tell Zerops how to build and run your app, add a `zerops.yml` to your root:
+为了告诉 Zerops 如何构建和运行您的应用，请在根目录下添加一个 `zerops.yml`：
 
 ```yml [zerops.yml]
 zerops:
@@ -56,11 +56,11 @@ zerops:
       base: static
 ```
 
-Now you can trigger the [build & deploy pipeline using the Zerops CLI](#building-deploying-your-app) or by connecting the app service with your [GitHub](https://docs.zerops.io/references/github-integration/) / [GitLab](https://docs.zerops.io/references/gitlab-integration) repository from inside the service detail.
+现在您可以通过 Zerops CLI 触发 [构建与部署管道](#building-deploying-your-app)，或者通过在服务详细信息中将应用服务连接到您的 [GitHub](https://docs.zerops.io/references/github-integration/) / [GitLab](https://docs.zerops.io/references/gitlab-integration) 仓库来实现。
 
 ## SSR Node.js
 
-Projects and services can be added either through a [Project add wizard](https://app.zerops.io/dashboard/project-add) or imported using a YAML structure:
+项目和服务可以通过 [项目添加向导](https://app.zerops.io/dashboard/project-add) 添加，或者使用 YAML 结构导入：
 
 ```yml [zerops-project-import.yml]
 project:
@@ -71,11 +71,11 @@ services:
     type: nodejs@20
 ```
 
-This will create a project called `recipe-nuxt` with a Zerops Node.js service called `app`.
+这将创建一个名为 `recipe-nuxt` 的项目，配有一个名为 `app` 的 Zerops Node.js 服务。
 
-### Setting up Zerops YAML
+### 设置 Zerops YAML
 
-To tell Zerops how to build and run your app, add a `zerops.yml` to your root:
+为了告诉 Zerops 如何构建和运行您的应用，请在根目录下添加一个 `zerops.yml`：
 
 ```yml [zerops.yml]
 zerops:
@@ -95,31 +95,31 @@ zerops:
       start: node server/index.mjs
 ```
 
-Now you can trigger the [build & deploy pipeline using the Zerops CLI](#building-deploying-your-app) or by connecting the app service with your [GitHub](https://docs.zerops.io/references/github-integration/) / [GitLab](https://docs.zerops.io/references/gitlab-integration) repository from inside the service detail.
+现在您可以通过 Zerops CLI 触发 [构建与部署管道](#building-deploying-your-app)，或者通过在服务详细信息中将应用服务连接到您的 [GitHub](https://docs.zerops.io/references/github-integration/) / [GitLab](https://docs.zerops.io/references/gitlab-integration) 仓库来实现。
 
 
-## Building & Deploying your App
+## 构建与部署您的应用
 
-- Install the [Zerops CLI](https://github.com/zeropsio/zcli).
+- 安装 [Zerops CLI](https://github.com/zeropsio/zcli)。
 ```sh
 npm i -g @zerops/zcli
 ```
 
-- Open [Settings > Access Token Management](https://app.zerops.io/settings/token-management) in the Zerops app and generate a new access token.
+- 在 Zerops 应用中打开 [设置 > 访问令牌管理](https://app.zerops.io/settings/token-management) 并生成一个新的访问令牌。
 
-- Log in using your access token with the following command:
+- 使用以下命令通过您的访问令牌进行登录：
 
 ```sh
 zcli login <token>
 ```
 
-- Navigate to the root of your app (where `zerops.yml` is located) and run the following command to trigger the deploy:
+- 导航到您的应用根目录（即 `zerops.yml` 所在位置），并运行以下命令以触发部署：
 
 ```sh
 zcli push
 ```
 
-Your code can be deployed automatically on each commit or a new tag by connecting the service with your [GitHub](https://docs.zerops.io/references/gitlab-integration) / [GitLab](https://docs.zerops.io/references/gitlab-integration) repository. This connection can be set up in the service detail.
+通过将服务连接到您的 [GitHub](https://docs.zerops.io/references/gitlab-integration) / [GitLab](https://docs.zerops.io/references/gitlab-integration) 仓库，您可以在每次提交或创建新标签时自动部署代码。此连接可以在服务详细信息中进行设置。
 
 
-:read-more{title="Zerops Documentation" to="https://docs.zerops.io/"}
+:read-more{title="Zerops 文档" to="https://docs.zerops.io/"}

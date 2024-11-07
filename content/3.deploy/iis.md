@@ -22,6 +22,6 @@ website: 'https://www.iis.net/'
 
 ## 更多选项
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/iis" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/iis" target="_blank"}
 查阅 **Nitro 文档** 以了解有关 IIS 部署预设的更多信息。
 ::

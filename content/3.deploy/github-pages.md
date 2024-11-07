@@ -71,6 +71,6 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/github-pages" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/github-pages" target="_blank"}
 请访问 **Nitro 文档** 了解更多关于 github-pages 部署预设的信息。
 ::

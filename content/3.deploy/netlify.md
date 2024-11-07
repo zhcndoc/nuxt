@@ -12,7 +12,7 @@ website: https://www.netlify.com/
 ::tip
 **零配置 ✨**
 :br
-与 Netlify 的集成无需任何配置，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
+与 Netlify 的集成无需任何配置，[了解更多](https://nitro.zhcndoc.com/deploy#zero-config-providers)。
 ::
 
 ## 设置
@@ -59,6 +59,6 @@ SERVER_PRESET=netlify_edge
 SERVER_PRESET=netlify_builder
 ```
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/netlify" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/netlify" target="_blank"}
 请查阅 **Nitro 文档** 以了解有关 netlify 部署预设的更多信息。
 ::

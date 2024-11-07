@@ -44,6 +44,6 @@ Nuxt 支持在 [Koyeb 无服务器平台](https://www.koyeb.com/docs) 上进行�
 
 ## 了解更多
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/koyeb" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/koyeb" target="_blank"}
 前往 **Nitro 文档** 了解更多关于 Koyeb 部署预设的信息。
 ::

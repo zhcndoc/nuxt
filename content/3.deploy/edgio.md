@@ -51,6 +51,6 @@ edgio deploy --token=XXX
 
 ## 了解更多
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/edgio" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/edgio" target="_blank"}
 前往 **Nitro 文档** 了解更多关于 Edgio 部署预设的信息。
 ::

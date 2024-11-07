@@ -42,6 +42,6 @@ Nuxt 支持在 [Heroku](https://heroku.com/) 上进行部署，只需进行最�
 
 ## 了解更多
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/heroku" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/heroku" target="_blank"}
 请访问 **Nitro 文档** 以了解更多关于 Heroku 部署预设的信息。
 ::

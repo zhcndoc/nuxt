@@ -10,7 +10,7 @@ website: 'https://cleavr.io/'
 ::tip
 **零配置 ✨**
 :br
-可以零配置集成此提供商，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
+可以零配置集成此提供商，[了解更多](https://nitro.zhcndoc.com/deploy#zero-config-providers)。
 ::
 
 ## 设置
@@ -26,6 +26,6 @@ website: 'https://cleavr.io/'
 
 ## 了解更多
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/cleavr" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/cleavr" target="_blank"}
 请访问 **Nitro 文档** 了解有关 cleavr 部署预设的更多信息。
 ::

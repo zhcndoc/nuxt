@@ -12,7 +12,7 @@ website: 'https://hub.nuxt.com/?utm_source=nuxt-website&utm_medium=deploy-page'
 ::tip
 **零配置 ✨**
 :br
-与 NuxtHub 的集成完全无需配置，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
+与 NuxtHub 的集成完全无需配置，[了解更多](https://nitro.zhcndoc.com/deploy#zero-config-providers)。
 ::
 
 ## 介绍

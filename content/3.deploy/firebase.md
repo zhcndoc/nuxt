@@ -143,7 +143,7 @@ Firebase 工具使用 `package.json` 中的 `engines.node` 版本来确定要为
 firebase deploy --only functions:server,hosting
 ```
 
-::阅读更多{to="https://nitro.unjs.io/deploy/providers/firebase" target="_blank"}
+::阅读更多{to="https://nitro.zhcndoc.com/deploy/providers/firebase" target="_blank"}
 请参阅 **Nitro 文档** 以了解有关 Firebase 部署预设的更多信息。
 ::
 
@@ -155,10 +155,10 @@ firebase deploy --only functions:server,hosting
 有关更多信息，请参阅 **Firebase 文档**。
 ::
 
-## Working with Environment Variables
+## 使用环境变量
 
-To set environment variables for your Firebase functions, you need to copy the `.env` file to the `.output/server` directory.
-You can do this by adding a `postbuild` script to your `package.json`, that will automatically run after the build command:
+要为您的 Firebase 函数设置环境变量，您需要将 `.env` 文件复制到 `.output/server` 目录。
+您可以通过在 `package.json` 中添加一个 `postbuild` 脚本来实现，这个脚本将在构建命令后自动运行：
 
 ```json [package.json]
 {
@@ -169,5 +169,5 @@ You can do this by adding a `postbuild` script to your `package.json`, that will
 ```
 
 ::read-more{to="https://firebase.google.com/docs/functions/config-env?gen=2nd#env-variables" target="\_blank"}
-For more information, refer to the **Firebase documentation**.
+有关更多信息，请参阅 **Firebase文档**。
 ::

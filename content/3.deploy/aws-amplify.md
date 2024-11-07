@@ -11,7 +11,7 @@ website: 'https://aws.amazon.com/amplify/?trk=bed847b4-6e9f-4e09-ba09-0d4680a044
 ::tip
 **零配置 ✨**
 :br
-可以零配置地集成 AWS Amplify，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
+可以零配置地集成 AWS Amplify，[了解更多](https://nitro.zhcndoc.com/deploy#zero-config-providers)。
 ::
 
 ## 安装设置
@@ -29,6 +29,6 @@ website: 'https://aws.amazon.com/amplify/?trk=bed847b4-6e9f-4e09-ba09-0d4680a044
 观看一个关于 Nuxt 的 Amplify Hosting 教程
 ::
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/aws-amplify" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/aws-amplify" target="_blank"}
 前往 **Nitro 文档** 了解更多关于 aws-amplify 部署预设的信息。
 ::

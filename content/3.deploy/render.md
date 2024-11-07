@@ -24,6 +24,6 @@ Nuxt 支持在 [Render](https://render.com/) 上进行部署，并且配置最�
 
 ## 更多选项
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/render" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/render" target="_blank"}
 请前往 **Nitro 文档** 了解有关 Render 部署预设的更多信息。
 ::

@@ -12,7 +12,7 @@ website: 'https://azure.microsoft.com/en-us/services/app-service/static/'
 ::tip
 **零配置 ✨**
 :br
-与 Azure 静态网站供应商的集成可实现零配置，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
+与 Azure 静态网站供应商的集成可实现零配置，[了解更多](https://nitro.zhcndoc.com/deploy#zero-config-providers)。
 ::
 
 Azure 静态网站的设计初衷是在 [GitHub Actions 工作流程](https://docs.microsoft.com/en-us/azure/static-web-apps/github-actions-workflow) 中连续部署。默认情况下，Nuxt 会检测此部署环境以启用 `azure` 预设。
@@ -94,6 +94,6 @@ output_location: '.output/public'
 
 ## 更多选项
 
-::read-more{to="https://nitro.unjs.io/deploy/providers/azure" target="_blank"}
+::read-more{to="https://nitro.zhcndoc.com/deploy/providers/azure" target="_blank"}
 在 Nitro 文档中了解其他 Azure 部署预设的信息。
 ::
