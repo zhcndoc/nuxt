@@ -65,12 +65,6 @@ export default defineNuxtConfig({
     wrangler pages deploy dist/
     ```
 
-## 禁用自动缩小
-
-确保在 **CloudFlare -> 速度 -> 优化 -> 自动缩小** 中禁用 HTML、CSS 和 JavaScript 的缩小，以避免任何 Vue 的 hydration。
-
-![禁用 Cloudflare 自动缩小](/assets/deploy/cloudflare-auto-minify.png)
-
 ## 了解更多
 
 ::read-more{to="https://nitro.zhcndoc.com/deploy/providers/cloudflare" target="_blank"}
