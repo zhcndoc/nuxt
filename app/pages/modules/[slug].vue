@@ -46,8 +46,8 @@ const contributors = computed(() => {
     label: contributor.username,
     to: `https://github.com/${contributor.username}`,
     avatar: {
-      src: `https://ipx.nuxt.com/f_auto,s_20x20/gh_avatar/${contributor.username}`,
-      srcset: `https://ipx.nuxt.com/f_auto,s_40x40/gh_avatar/${contributor.username} 2x`,
+      src: `https://avatar.ikxin.com/github/${contributor.username}?size=20`,
+      srcset: `https://avatar.ikxin.com/github/${contributor.username}?size=40 2x`,
       alt: contributor.username
     }
   }))
@@ -150,7 +150,7 @@ defineOgImageComponent('Docs', {
 
         <div v-for="(maintainer, index) in module.maintainers" :key="maintainer.github" class="flex items-center gap-3">
           <NuxtLink :to="`https://github.com/${maintainer.github}`" target="_blank" class="flex items-center gap-1.5 hover:text-primary">
-            <UAvatar :src="`https://ipx.nuxt.com/f_auto,s_20x20/gh_avatar/${maintainer.github}`" :srcset="`https://ipx.nuxt.com/f_auto,s_40x40/gh_avatar/${maintainer.github} 2x`" :alt="maintainer.github" size="2xs" />
+            <UAvatar :src="`https://avatar.ikxin.com/github/${maintainer.github}?size=20`" :srcset="`https://avatar.ikxin.com/github/${maintainer.github}?size=40 2x`" :alt="maintainer.github" size="2xs" />
             <span class="text-sm font-medium">{{ maintainer.github }}</span>
           </NuxtLink>
 

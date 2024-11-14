@@ -7,8 +7,8 @@ users:
     location: 法国，波尔多
     sponsor: https://github.com/sponsors/Atinux
     avatar:
-      src: https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/atinux
-      srcset: https://ipx.nuxt.com/f_auto,s_160x160/gh_avatar/atinux 2x
+      src: https://avatar.ikxin.com/github/atinux?size=80
+      srcset: https://avatar.ikxin.com/github/atinux?size=160 2x
     links:
       - icon: i-simple-icons-x
         to: https://x.com/Atinux
@@ -26,8 +26,8 @@ users:
     location: 荷兰，哈勒姆
     sponsor: https://github.com/sponsors/pi0
     avatar:
-      src: https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/pi0
-      srcset: https://ipx.nuxt.com/f_auto,s_160x160/gh_avatar/pi0 2x
+      src: https://avatar.ikxin.com/github/pi0?size=80
+      srcset: https://avatar.ikxin.com/github/pi0?size=160 2x
     links:
       - icon: i-simple-icons-x
         to: https://x.com/_pi0_
@@ -42,8 +42,8 @@ users:
     location: 英国，达勒姆
     sponsor: https://github.com/sponsors/danielroe
     avatar:
-      src: https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/danielroe
-      srcset: https://ipx.nuxt.com/f_auto,s_160x160/gh_avatar/danielroe 2x
+      src: https://avatar.ikxin.com/github/danielroe?size=80
+      srcset: https://avatar.ikxin.com/github/danielroe?size=160 2x
     links:
       - icon: i-simple-icons-x
         to: https://x.com/danielcroe
@@ -61,8 +61,8 @@ users:
     location: 法国，巴黎
     sponsor: https://github.com/sponsors/antfu
     avatar:
-      src: https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/antfu
-      srcset: https://ipx.nuxt.com/f_auto,s_160x160/gh_avatar/antfu 2x
+      src: https://avatar.ikxin.com/github/antfu?size=80
+      srcset: https://avatar.ikxin.com/github/antfu?size=160 2x
     links:
       - icon: i-simple-icons-x
         to: https://x.com/antfu7
@@ -80,8 +80,8 @@ users:
     location: 荷兰，阿姆斯特丹
     sponsor: https://github.com/sponsors/manniL
     avatar:
-      src: https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/manniL
-      srcset: https://ipx.nuxt.com/f_auto,s_160x160/gh_avatar/manniL 2x
+      src: https://avatar.ikxin.com/github/manniL?size=80
+      srcset: https://avatar.ikxin.com/github/manniL?size=160 2x
     links:
       - icon: i-simple-icons-x
         to: https://x.com/TheAlexLichter
@@ -99,8 +99,8 @@ users:
     location: 澳大利亚
     sponsor: https://github.com/sponsors/harlan-zw
     avatar:
-      src: https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/harlan-zw
-      srcset: https://ipx.nuxt.com/f_auto,s_160x160/gh_avatar/harlan-zw 2x
+      src: https://avatar.ikxin.com/github/harlan-zw?size=80
+      srcset: https://avatar.ikxin.com/github/harlan-zw?size=160 2x
     links:
       - icon: i-simple-icons-x
         to: https://x.com/harlan_zw
@@ -115,8 +115,8 @@ users:
     location: 法国
     sponsor: https://github.com/sponsors/lihbr
     avatar:
-      src: https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/lihbr
-      srcset: https://ipx.nuxt.com/f_auto,s_160x160/gh_avatar/lihbr 2x
+      src: https://avatar.ikxin.com/github/lihbr?size=80
+      srcset: https://avatar.ikxin.com/github/lihbr?size=160 2x
     links:
       - icon: i-simple-icons-x
         to: https://x.com/li_hbr
@@ -131,8 +131,8 @@ users:
     location: 法国
     sponsor: https://github.com/sponsors/huang-julien
     avatar:
-      src: https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/huang-julien
-      srcset: https://ipx.nuxt.com/f_auto,s_160x160/gh_avatar/huang-julien 2x
+      src: https://avatar.ikxin.com/github/huang-julien?size=80
+      srcset: https://avatar.ikxin.com/github/huang-julien?size=160 2x
     links:
       - icon: i-simple-icons-x
         to: https://x.com/JulienHuang_dev
