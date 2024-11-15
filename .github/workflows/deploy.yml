@@ -38,6 +38,7 @@ jobs:
 
       - name: Build project
         env:
+          NUXT_GITHUB_TOKEN: ${{ secrets.NUXT_GITHUB_TOKEN }}
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
           NUXT_PUBLIC_SITE_URL: https://nuxt.zhcndoc.com
           PUPPETEER_DOWNLOAD_BASE_URL: https://storage.googleapis.com/chrome-for-testing-public
@@ -50,9 +51,9 @@ jobs:
 
       - name: Deploy to Zeabur
         env:
-          PROJECT_ID: 670fd965e34974ae6478ad49
-          SERVICE_ID: 67176b3769afc7a9565b04a1
-          ENVIRONMENT_ID: 670fd965d0408fcd3bee90a2
+          PROJECT_ID: ${{ secrets.ZEABUR_PROJECT_ID }}
+          SERVICE_ID: ${{ secrets.ZEABUR_SERVICE_ID }}
+          ENVIRONMENT_ID: ${{ secrets.ZEABUR_ENVIRONMENT_ID }}
           API_TOKEN: ${{ secrets.ZEABUR_TOKEN }}
         run: |
           curl --request POST \
