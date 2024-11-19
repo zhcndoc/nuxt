@@ -43,6 +43,14 @@ if (examplesSourceBase) {
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  site: {
+    url: 'https://nuxt.zhcndoc.com'
+  },
+  ogImage: {
+    fonts: [
+      'Noto+Sans+SC:400'
+    ]
+  },
   extends: [
     process.env.NUXT_UI_PRO_PATH || '@nuxt/ui-pro'
   ],
@@ -53,7 +61,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/ui',
     '@nuxt/image',
-    '@nuxtjs/plausible',
+    // '@nuxtjs/plausible',
     '@nuxt/fonts',
     '@nuxt/eslint',
     '@nuxt/scripts',
@@ -61,6 +69,7 @@ export default defineNuxtConfig({
     '@nuxthq/studio',
     '@vueuse/nuxt',
     'nuxt-og-image',
+    '@nuxtjs/sitemap',
     () => {
       if (docsSourceBase) {
         logger.success(`Using local Nuxt docs from ${docsSourceBase}`)

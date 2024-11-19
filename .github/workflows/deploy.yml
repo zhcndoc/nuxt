@@ -7,22 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy-vercel:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          working-directory: ./
-          vercel-args: "--prod"
-
-  deploy-zeabur:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -38,26 +23,11 @@ jobs:
 
       - name: Build project
         env:
-          NUXT_GITHUB_TOKEN: ${{ secrets.NUXT_GITHUB_TOKEN }}
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
-          NUXT_PUBLIC_SITE_URL: https://nuxt.zhcndoc.com
+          NUXT_GITHUB_TOKEN: ${{ secrets.NUXT_GITHUB_TOKEN }}
           PUPPETEER_DOWNLOAD_BASE_URL: https://storage.googleapis.com/chrome-for-testing-public
-          PUPPETEER_DOWNLOAD_HOST: https://storage.googleapis.com/chrome-for-testing-public
         run: |
           corepack enable
           pnpm install
           pnpm run generate
           cd .output/public && zip -rq ../../build.zip .
-
-      # - name: Deploy to Zeabur
-      #   env:
-      #     PROJECT_ID: ${{ secrets.ZEABUR_PROJECT_ID }}
-      #     SERVICE_ID: ${{ secrets.ZEABUR_SERVICE_ID }}
-      #     ENVIRONMENT_ID: ${{ secrets.ZEABUR_ENVIRONMENT_ID }}
-      #     API_TOKEN: ${{ secrets.ZEABUR_TOKEN }}
-      #   run: |
-      #     curl --request POST \
-      #       --url https://gateway.zeabur.com/projects/${{ env.PROJECT_ID }}/services/${{ env.SERVICE_ID }}/deploy \
-      #       --header "Authorization: Bearer ${{ env.API_TOKEN }}" \
-      #       --form "code=@build.zip" \
-      #       --form "environment=${{ env.ENVIRONMENT_ID }}"
