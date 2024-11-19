@@ -1,0 +1,7 @@
+{
+  "cache_dependencies": false,
+  "build_command": "pnpm run generate",
+  "output_dir": "dist",
+  "ignore_dockerfile": true,
+  "serverless": false
+}

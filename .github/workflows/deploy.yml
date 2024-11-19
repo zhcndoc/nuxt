@@ -49,15 +49,15 @@ jobs:
           pnpm run generate
           cd .output/public && zip -rq ../../build.zip .
 
-      - name: Deploy to Zeabur
-        env:
-          PROJECT_ID: ${{ secrets.ZEABUR_PROJECT_ID }}
-          SERVICE_ID: ${{ secrets.ZEABUR_SERVICE_ID }}
-          ENVIRONMENT_ID: ${{ secrets.ZEABUR_ENVIRONMENT_ID }}
-          API_TOKEN: ${{ secrets.ZEABUR_TOKEN }}
-        run: |
-          curl --request POST \
-            --url https://gateway.zeabur.com/projects/${{ env.PROJECT_ID }}/services/${{ env.SERVICE_ID }}/deploy \
-            --header "Authorization: Bearer ${{ env.API_TOKEN }}" \
-            --form "code=@build.zip" \
-            --form "environment=${{ env.ENVIRONMENT_ID }}"
+      # - name: Deploy to Zeabur
+      #   env:
+      #     PROJECT_ID: ${{ secrets.ZEABUR_PROJECT_ID }}
+      #     SERVICE_ID: ${{ secrets.ZEABUR_SERVICE_ID }}
+      #     ENVIRONMENT_ID: ${{ secrets.ZEABUR_ENVIRONMENT_ID }}
+      #     API_TOKEN: ${{ secrets.ZEABUR_TOKEN }}
+      #   run: |
+      #     curl --request POST \
+      #       --url https://gateway.zeabur.com/projects/${{ env.PROJECT_ID }}/services/${{ env.SERVICE_ID }}/deploy \
+      #       --header "Authorization: Bearer ${{ env.API_TOKEN }}" \
+      #       --form "code=@build.zip" \
+      #       --form "environment=${{ env.ENVIRONMENT_ID }}"

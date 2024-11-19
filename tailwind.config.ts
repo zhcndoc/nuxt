@@ -2,14 +2,6 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
-  safelist: [
-    'w-[16rem]',
-    '!bg-background',
-    'dark:bg-gray-950/50',
-    'dark:hover:bg-gray-900/50',
-    'dark:hover:bg-gray-950/50',
-    'lg:mb-0'
-  ],
   theme: {
     extend: {
       colors: {
