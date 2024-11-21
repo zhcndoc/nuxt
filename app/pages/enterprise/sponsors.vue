@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import sponsors from "../../../sponsors.json";
+
 definePageMeta({
   heroBackground: 'opacity-80 -z-10'
 })
@@ -9,7 +11,7 @@ if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const { data: sponsors } = await useFetch('https://api.nuxt.com/sponsors')
+// const { data: sponsors } = await useFetch('https://api.nuxt.com/sponsors')
 
 const title = page.value.head?.title || page.value.title
 const description = page.value.head?.description || page.value.description
