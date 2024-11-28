@@ -42,7 +42,7 @@ const titleTemplate = computed(() => {
   if (page.value.titleTemplate) return page.value.titleTemplate
   const titleTemplate = navKeyFromPath(route.path, 'titleTemplate', navigation.value)
   if (titleTemplate) return titleTemplate
-  return '%s · Nuxt'
+  return '%s - Nuxt 中文文档'
 })
 
 const communityLinks = computed(() => [{
@@ -59,6 +59,11 @@ const communityLinks = computed(() => [{
   icon: 'i-ph-chef-hat',
   label: '掌握 Nuxt',
   to: 'https://masteringnuxt.com/nuxt3',
+  target: '_blank'
+}, {
+  icon: 'i-ph-certificate',
+  label: 'Nuxt 认证',
+  to: 'https://certification.nuxt.com',
   target: '_blank'
 }])
 

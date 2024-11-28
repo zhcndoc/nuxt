@@ -14,7 +14,7 @@ const { data: page } = await useAsyncData(route.path, () => queryContent(route.p
 const title = page.value.head?.title || page.value.title
 const description = page.value.head?.description || page.value.description
 useSeoMeta({
-  titleTemplate: '%s',
+  titleTemplate: '%s - Nuxt 中文文档',
   title,
   description,
   ogDescription: description,
@@ -41,15 +41,15 @@ const { copy } = useCopyToClipboard()
         <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-4 justify-center">
           <div class="flex items-center gap-1.5">
             <UIcon name="i-ph-user-circle-fill" class="w-4 h-4 flex-shrink-0 dark:text-gray-200 text-gray-700" />
-            <span class="text-sm font-medium">{{ formatNumber(stats.maintainers) }} Maintainers</span>
+            <span class="text-sm font-medium">{{ formatNumber(stats.maintainers) }} 维护者</span>
           </div>
           <div class="flex items-center gap-1.5">
             <UIcon name="i-ph-users-three-fill" class="w-4 h-4 flex-shrink-0 dark:text-gray-200 text-gray-700" />
-            <span class="text-sm font-medium">{{ formatNumber(stats.contributors) }} Contributors</span>
+            <span class="text-sm font-medium">{{ formatNumber(stats.contributors) }} 贡献者</span>
           </div>
           <div class="flex items-center gap-1.5">
             <UIcon name="i-ph-puzzle-piece-fill" class="w-4 h-4 flex-shrink-0 dark:text-gray-200 text-gray-700" />
-            <span class="text-sm font-medium">{{ formatNumber(stats.modules) }} Modules</span>
+            <span class="text-sm font-medium">{{ formatNumber(stats.modules) }} 模块</span>
           </div>
         </div>
       </template>
@@ -63,7 +63,7 @@ const { copy } = useCopyToClipboard()
             :model-value="q"
             name="q"
             icon="i-ph-magnifying-glass"
-            placeholder="Search..."
+            placeholder="搜索模块..."
             class="w-full mb-2"
             size="md"
             autocomplete="off"
@@ -101,7 +101,7 @@ const { copy } = useCopyToClipboard()
               @click="replaceRoute('orderBy', selectedOrder.key === 'desc' ? 'asc' : 'desc')"
             />
           </UButtonGroup>
-          <UNavigationTree :links="[{ label: 'Categories', disabled: true, children: categories }]" />
+          <UNavigationTree :links="[{ label: '分类', disabled: true, children: categories }]" />
         </UAside>
       </template>
 
@@ -113,7 +113,7 @@ const { copy } = useCopyToClipboard()
             :model-value="q"
             name="q"
             icon="i-ph-magnifying-glass"
-            placeholder="Search a module..."
+            placeholder="搜索模块..."
             class="w-full"
             size="sm"
             autocomplete="off"
@@ -171,7 +171,7 @@ const { copy } = useCopyToClipboard()
               size="xs"
               variant="subtle"
             >
-              <span>Official</span>
+              <span>官方</span>
             </UBadge>
 
             <UBadge
@@ -181,17 +181,17 @@ const { copy } = useCopyToClipboard()
               variant="subtle"
               color="pink"
             >
-              <span>Sponsor</span>
+              <span>赞助</span>
             </UBadge>
 
             <template #footer>
               <UDivider type="dashed" class="mb-4" />
               <div class="flex items-center justify-between gap-3 -my-1 text-gray-600 dark:text-gray-300">
                 <div class="flex items-center gap-3">
-                  <UTooltip text="Monthly NPM Downloads">
+                  <UTooltip text="每月 NPM 下载量">
                     <NuxtLink
                       class="flex items-center gap-1 hover:text-gray-900 hover:dark:text-white"
-                      :to="`https://npmjs.org/package/${module.npm}`"
+                      :to="`https://npm.chart.dev/${module.npm}`"
                       target="_blank"
                     >
                       <UIcon name="i-ph-arrow-circle-down" class="w-4 h-4 flex-shrink-0" />
@@ -199,7 +199,7 @@ const { copy } = useCopyToClipboard()
                     </NuxtLink>
                   </UTooltip>
 
-                  <UTooltip text="GitHub Stars">
+                  <UTooltip text="GitHub 星标">
                     <NuxtLink
                       class="flex items-center gap-1 hover:text-gray-900 hover:dark:text-white"
                       :to="`https://github.com/${module.repo}`"
@@ -212,13 +212,13 @@ const { copy } = useCopyToClipboard()
                 </div>
 
                 <UTooltip
-                  :text="`Copy install command`"
+                  :text="`复制安装命令`"
                 >
                   <UButton
                     icon="i-ph-terminal"
                     color="white"
                     size="2xs"
-                    @click="copy(`npx nuxi@latest module add ${module.name}`, { title: 'Command copied to clipboard:', description: `npx nuxi@latest module add ${module.name}` })"
+                    @click="copy(`npx nuxi@latest module add ${module.name}`, { title: '命令已复制到剪贴板：', description: `npx nuxi@latest module add ${module.name}` })"
                   />
                 </UTooltip>
               </div>
@@ -226,16 +226,16 @@ const { copy } = useCopyToClipboard()
           </UPageCard>
         </UPageGrid>
 
-        <EmptyCard v-else :label="`There is no module found for ${q} yet. Become the first one to create it!`">
+        <EmptyCard v-else :label="`没有找到 ${q} 模块，成为第一个创建它的人！`">
           <UButton
-            label="Contribute on GitHub"
+            label="在 GitHub 上贡献"
             color="black"
             to="https://github.com/nuxt/modules"
             target="_blank"
             size="md"
             @click="$router.replace({ query: {} })"
           />
-          <UButton to="/docs/guide/going-further/modules" color="white" size="md" label="How to create a module?" />
+          <UButton to="/docs/guide/going-further/modules" color="white" size="md" label="如何创建模块？" />
         </EmptyCard>
       </UPageBody>
     </UPage>

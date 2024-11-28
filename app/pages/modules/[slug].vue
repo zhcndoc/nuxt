@@ -21,7 +21,7 @@ const ownerName = computed(() => {
 
 const links = computed(() => [{
   icon: 'i-ph-book-bookmark',
-  label: 'Documentation',
+  label: '文档',
   to: `${module.value.website}?utm_source=nuxt.com&utm_medium=aside-module&utm_campaign=nuxt.com`,
   target: '_blank'
 }, {
@@ -36,7 +36,7 @@ const links = computed(() => [{
   target: '_blank'
 }, module.value.learn_more && {
   icon: 'i-ph-link',
-  label: 'Learn more',
+  label: '了解更多',
   to: module.value.learn_more,
   target: '_blank'
 }].filter(Boolean))
@@ -67,15 +67,15 @@ const title = module.value.name.charAt(0).toUpperCase() + module.value.name.slic
 const description = module.value.description || 'A Nuxt module'
 
 useSeoMeta({
-  titleTemplate: '%s · Nuxt Modules',
+  titleTemplate: '%s - Nuxt 模块 - Nuxt 中文文档',
   title,
   description,
   ogDescription: description,
-  ogTitle: `${title} · Nuxt Modules`
+  ogTitle: `${title} - Nuxt 模块 - Nuxt 中文文档`
 })
 
 defineOgImageComponent('Docs', {
-  headline: 'Nuxt Modules'
+  headline: 'Nuxt 模块'
 })
 </script>
 
@@ -86,10 +86,10 @@ defineOgImageComponent('Docs', {
         icon="i-ph-warning"
         color="orange"
         variant="subtle"
-        title="This module is not yet compatible with Nuxt 3"
+        title="此模块尚未兼容 Nuxt 3"
       >
         <template #description>
-          Head over to <NuxtLink to="https://v2.nuxt.com" target="_blank" class="underline">
+          前往 <NuxtLink to="https://v2.nuxt.com" target="_blank" class="underline">
             v2.nuxt.com
           </NuxtLink>
         </template>
@@ -121,25 +121,25 @@ defineOgImageComponent('Docs', {
       </template>
 
       <div class="flex flex-col lg:flex-row lg:items-center gap-3 mt-4">
-        <UTooltip text="Monthly NPM Downloads">
-          <NuxtLink class="flex items-center gap-1.5" :to="`https://npmjs.org/package/${module.npm}`" target="_blank">
+        <UTooltip text="每月 NPM 下载量">
+          <NuxtLink class="flex items-center gap-1.5" :to="`https://npm.chart.dev/${module.npm}`" target="_blank">
             <UIcon name="i-ph-arrow-circle-down" class="w-5 h-5 flex-shrink-0" />
-            <span class="text-sm font-medium">{{ formatNumber(module.stats.downloads) }} downloads</span>
+            <span class="text-sm font-medium">{{ formatNumber(module.stats.downloads) }} 下载量</span>
           </NuxtLink>
         </UTooltip>
 
         <span class="hidden lg:block text-gray-500 dark:text-gray-400">&bull;</span>
 
-        <UTooltip text="GitHub Stars">
+        <UTooltip text="GitHub 星标">
           <NuxtLink class="flex items-center gap-1.5" :to="`https://github.com/${module.repo}`" target="_blank">
             <UIcon name="i-ph-star" class="w-5 h-5 flex-shrink-0" />
-            <span class="text-sm font-medium">{{ formatNumber(module.stats.stars || 0) }} stars</span>
+            <span class="text-sm font-medium">{{ formatNumber(module.stats.stars || 0) }} 星标</span>
           </NuxtLink>
         </UTooltip>
 
         <span class="hidden lg:block text-gray-500 dark:text-gray-400">&bull;</span>
 
-        <UTooltip text="Latest Version">
+        <UTooltip text="最新版本">
           <NuxtLink class="flex items-center gap-1.5" :to="`${module.github}/releases`" target="_blank">
             <UIcon name="i-ph-tag" class="w-5 h-5 flex-shrink-0" />
             <span class="text-sm font-medium">v{{ module.stats.version }}</span>
@@ -174,12 +174,12 @@ defineOgImageComponent('Docs', {
 
               <UPageLinks :links="contributors">
                 <template #title>
-                  Contributors <UBadge :label="module.contributors.length.toString()" color="gray" size="xs" :ui="{ rounded: 'rounded-full' }" />
+                  贡献者 <UBadge :label="module.contributors.length.toString()" color="gray" size="xs" :ui="{ rounded: 'rounded-full' }" />
                 </template>
               </UPageLinks>
               <UDivider type="dashed" />
               <SocialLinks />
-              <Ads />
+              <!-- <Ads /> -->
             </div>
           </template>
         </UContentToc>
