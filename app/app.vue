@@ -58,7 +58,7 @@ watch(() => search.value?.commandPaletteRef?.query, debounce((query: string) => 
   if (!query) {
     return
   }
-
+  // @ts-ignore
   useTrackEvent('Search', { props: { query: `${query} - ${search.value?.commandPaletteRef.results.length} results` } })
 }, 500))
 
