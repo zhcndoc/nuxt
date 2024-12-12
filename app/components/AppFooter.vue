@@ -19,7 +19,7 @@ const { footerLinks } = useNavigation()
 
     <template #left>
       <p class="text-gray-500 dark:text-gray-400 text-sm">
-        <a target="_blank" href="https://www.zhcndoc.com?ref=nuxt">
+        <a target="_blank" href="https://www.zhcndoc.com">
           简中文档
         </a>
         -

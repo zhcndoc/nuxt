@@ -28,22 +28,9 @@ useHead({
   },
   script: [
     {
-      'defer': '',
-      'src': 'https://analytics.ikxin.com/script.js',
-      'data-website-id': 'f0e90b0d-e086-4fdc-b173-de4857b71900'
-    },
-    {
+      src: 'https://www.zhcndoc.com/js/common.js',
       async: '',
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-HYH4TH7PWM'
     },
-    {
-      innerHTML: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-HYH4TH7PWM');
-      `
-    }
   ]
 })
 
