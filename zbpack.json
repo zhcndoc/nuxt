@@ -1,6 +1,7 @@
 {
   "cache_dependencies": false,
-  "build_command": "pnpm run generate",
+  "build_command": "NITRO_PRESET=static pnpm run generate",
+  "install_command": "PUPPETEER_DOWNLOAD_BASE_URL=https://storage.googleapis.com/chrome-for-testing-public pnpm install",
   "output_dir": "dist",
   "ignore_dockerfile": true,
   "serverless": false
