@@ -2,9 +2,9 @@ export default defineNuxtPlugin(() => {
   const adBlocked = ref(false)
 
   onNuxtReady(async () => {
-    if (await adsBlocked()) {
-      adBlocked.value = true
-    }
+    // if (await adsBlocked()) {
+    //   adBlocked.value = true
+    // }
   })
 
   const adsBlocked = async () => {
