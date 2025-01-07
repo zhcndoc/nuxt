@@ -104,14 +104,14 @@ defineOgImageComponent('Docs', {
     </UPageBody>
 
     <template v-if="page.toc !== false" #right>
-      <UContentToc :links="page.body?.toc?.links" :ui="{ wrapper: '' }">
+      <UContentToc title="目录" :links="page.body?.toc?.links" :ui="{ wrapper: '' }">
         <template #bottom>
           <div class="hidden lg:block space-y-6" :class="{ '!mt-6': page.body?.toc?.links?.length }">
             <UDivider v-if="page.body?.toc?.links?.length" type="dashed" />
             <UPageLinks title="社区" :links="communityLinks" />
             <UDivider type="dashed" />
             <SocialLinks />
-            <!-- <Ads /> -->
+            <Ads />
           </div>
         </template>
       </UContentToc>

@@ -179,7 +179,7 @@ defineOgImageComponent('Docs', {
               </UPageLinks>
               <UDivider type="dashed" />
               <SocialLinks />
-              <!-- <Ads /> -->
+              <Ads />
             </div>
           </template>
         </UContentToc>
