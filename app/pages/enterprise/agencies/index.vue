@@ -10,15 +10,15 @@ const { data: page } = await useAsyncData(route.path, () => queryContent(route.p
 const title = page.value.head?.title || page.value.title
 const description = page.value.head?.description || page.value.description
 useSeoMeta({
-  titleTemplate: '%s - Nuxt 服务 - Nuxt 中文文档',
+  titleTemplate: '%s - 企业服务 - Nuxt 中文文档',
   title,
   description,
   ogDescription: description,
-  ogTitle: `${title} - Nuxt 服务 - Nuxt 中文文档`
+  ogTitle: `${title} - 企业服务 - Nuxt 中文文档`
 })
 
 defineOgImageComponent('Docs', {
-  headline: 'Services'
+  headline: 'Enterprise'
 })
 
 await fetchList()

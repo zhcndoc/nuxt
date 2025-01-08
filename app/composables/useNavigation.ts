@@ -110,7 +110,7 @@ const _useNavigation = () => {
         target: '_blank'
       }]
     }, {
-      label: '服务',
+      label: '企业',
       icon: 'i-ph-buildings',
       to: '/enterprise',
       search: false,
