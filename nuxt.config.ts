@@ -69,6 +69,7 @@ export default defineNuxtConfig({
     '@nuxthq/studio',
     '@vueuse/nuxt',
     'nuxt-og-image',
+    'nuxt-rebundle',
     '@nuxtjs/sitemap',
     () => {
       if (docsSourceBase) {
