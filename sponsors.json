@@ -3,30 +3,23 @@
     {
       "sponsorId": "netlify-bot",
       "sponsorName": "netlibot",
-      "sponsorLogo": "https://avatar.ikxin.com/github/33071329?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=33071329",
       "sponsorUrl": "https://www.netlify.com",
-      "monthlyPriceInDollars": 2500
-    },
-    {
-      "sponsorId": "HeadshotPro",
-      "sponsorName": "HeadshotPro",
-      "sponsorLogo": "https://avatar.ikxin.com/github/138780549?type=id",
-      "sponsorUrl": "https://www.headshotpro.com",
-      "monthlyPriceInDollars": 1000
-    },
-    {
-      "sponsorId": "vercel",
-      "sponsorName": "Vercel",
-      "sponsorLogo": "https://avatar.ikxin.com/github/14985020?type=id",
-      "sponsorUrl": "https://vercel.com",
       "monthlyPriceInDollars": 2500
     },
     {
       "sponsorId": "zenarchitects",
       "sponsorName": "ZEN ARCHITECTS Co.,Ltd.",
-      "sponsorLogo": "https://avatar.ikxin.com/github/22952383?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=22952383",
       "sponsorUrl": "https://zenarchitects.co.jp",
       "monthlyPriceInDollars": 1000
+    },
+    {
+      "sponsorId": "vercel",
+      "sponsorName": "Vercel",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=14985020",
+      "sponsorUrl": "https://vercel.com",
+      "monthlyPriceInDollars": 2500
     },
     {
       "sponsorId": "planfredapp",
@@ -45,7 +38,7 @@
     {
       "sponsorId": "2021-frameworks-fund",
       "sponsorName": "Chrome Frameworks Fund",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/2021-frameworks-fund",
+      "sponsorLogo": "https://images.opencollective.com/2021-frameworks-fund/logo/460.png",
       "sponsorUrl": "https://opencollective.com/2021-frameworks-fund",
       "monthlyPriceInDollars": 2500
     },
@@ -61,29 +54,29 @@
     {
       "sponsorId": "curotec",
       "sponsorName": "Curotec",
-      "sponsorLogo": "https://avatar.ikxin.com/github/34548260?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=34548260",
       "sponsorUrl": "https://www.curotec.com",
-      "monthlyPriceInDollars": 500
-    },
-    {
-      "sponsorId": "kinde-oss",
-      "sponsorName": "Kinde",
-      "sponsorLogo": "https://avatar.ikxin.com/github/97858324?type=id",
-      "sponsorUrl": "https://kinde.com",
       "monthlyPriceInDollars": 500
     },
     {
       "sponsorId": "64robots",
       "sponsorName": "64 Robots",
-      "sponsorLogo": "https://avatar.ikxin.com/github/22407415?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=22407415",
       "sponsorUrl": "http://www.64robots.com",
       "monthlyPriceInDollars": 500
     },
     {
       "sponsorId": "Code-Pop",
       "sponsorName": "Vue Mastery",
-      "sponsorLogo": "https://avatar.ikxin.com/github/22382188?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=22382188",
       "sponsorUrl": "https://www.vuemastery.com",
+      "monthlyPriceInDollars": 500
+    },
+    {
+      "sponsorId": "kinde-oss",
+      "sponsorName": "Kinde",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=97858324",
+      "sponsorUrl": "https://kinde.com",
       "monthlyPriceInDollars": 500
     },
     {
@@ -96,52 +89,45 @@
   ],
   "silver": [
     {
-      "sponsorId": "martaklimowiczgh",
-      "sponsorName": "Monterail",
-      "sponsorLogo": "https://avatar.ikxin.com/github/234138?type=id",
-      "sponsorUrl": "https://www.monterail.com/",
-      "monthlyPriceInDollars": 250
-    },
-    {
-      "sponsorId": "reanmo",
-      "sponsorName": "reanmo",
-      "sponsorLogo": "https://avatar.ikxin.com/github/47215958?type=id",
-      "sponsorUrl": "https://www.reanmo.com",
-      "monthlyPriceInDollars": 250
-    },
-    {
-      "sponsorId": "teamupdivision",
-      "sponsorName": "Updivision Team",
-      "sponsorLogo": "https://avatar.ikxin.com/github/45566836?type=id",
-      "sponsorUrl": "https://updivision.com/",
-      "monthlyPriceInDollars": 250
-    },
-    {
       "sponsorId": "Geistjs",
       "sponsorName": "Geist",
-      "sponsorLogo": "https://avatar.ikxin.com/github/177121692?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=177121692",
       "sponsorUrl": "https://geistjs.com",
       "monthlyPriceInDollars": 250
     },
     {
-      "sponsorId": "drunomics",
-      "sponsorName": "drunomics",
-      "sponsorLogo": "https://avatar.ikxin.com/github/5197266?type=id",
-      "sponsorUrl": "http://drunomics.com/",
+      "sponsorId": "byundefined",
+      "sponsorName": "This is Undefined",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=75848822",
+      "sponsorUrl": "https://thisisundefined.com",
+      "monthlyPriceInDollars": 250
+    },
+    {
+      "sponsorId": "martaklimowiczgh",
+      "sponsorName": "Monterail",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=234138?&v=4",
+      "sponsorUrl": "https://www.monterail.com/",
       "monthlyPriceInDollars": 250
     },
     {
       "sponsorId": "thecodingmachine",
       "sponsorName": "TheCodingMachine",
-      "sponsorLogo": "https://avatar.ikxin.com/github/1847918?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=1847918",
       "sponsorUrl": "http://www.thecodingmachine.com/",
       "monthlyPriceInDollars": 200
     },
     {
       "sponsorId": "7span",
       "sponsorName": "7Span",
-      "sponsorLogo": "https://avatar.ikxin.com/github/13694408?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=13694408",
       "sponsorUrl": "https://www.7span.com",
+      "monthlyPriceInDollars": 250
+    },
+    {
+      "sponsorId": "drunomics",
+      "sponsorName": "drunomics",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=5197266",
+      "sponsorUrl": "http://drunomics.com/",
       "monthlyPriceInDollars": 250
     },
     {
@@ -156,35 +142,35 @@
     {
       "sponsorId": "JAMflow-Cloud",
       "sponsorName": "JAMflow Cloud",
-      "sponsorLogo": "https://avatar.ikxin.com/github/165913352?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=165913352",
       "sponsorUrl": "https://jamflow.cloud/",
       "monthlyPriceInDollars": 100
     },
     {
       "sponsorId": "sistersites",
       "sponsorName": "Sister Sites",
-      "sponsorLogo": "https://avatar.ikxin.com/github/145147130?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=145147130",
       "sponsorUrl": "https://www.sister-sites.co.uk/",
       "monthlyPriceInDollars": 100
     },
     {
       "sponsorId": "littlefoxcompany",
       "sponsorName": "Littlefox",
-      "sponsorLogo": "https://avatar.ikxin.com/github/72769912?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=72769912",
       "sponsorUrl": "https://littlefox.studio",
       "monthlyPriceInDollars": 100
     },
     {
       "sponsorId": "HDNET",
       "sponsorName": "HDNET GmbH Co. & KG ",
-      "sponsorLogo": "https://avatar.ikxin.com/github/3910045?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=3910045",
       "sponsorUrl": "https://hdnet.de",
       "monthlyPriceInDollars": 100
     },
     {
       "sponsorId": "route4me",
       "sponsorName": "Route4Me Route Planner",
-      "sponsorLogo": "https://avatar.ikxin.com/github/7936820?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=7936820",
       "sponsorUrl": "https://www.route4me.com/",
       "monthlyPriceInDollars": 100
     },
@@ -212,7 +198,7 @@
     {
       "sponsorId": "adrien-menoret",
       "sponsorName": "Adrien Menoret",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/adrien-menoret",
+      "sponsorLogo": "https://images.opencollective.com/adrien-menoret/avatar/460.png",
       "sponsorUrl": "https://netkin.fr",
       "monthlyPriceInDollars": 100
     },
@@ -254,7 +240,7 @@
     {
       "sponsorId": "passport-photos",
       "sponsorName": "Passport Photos",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/passport-photos",
+      "sponsorLogo": "https://images.opencollective.com/passport-photos/logo/460.png",
       "sponsorUrl": "https://opencollective.com/passport-photos",
       "monthlyPriceInDollars": 100
     },
@@ -338,7 +324,7 @@
     {
       "sponsorId": "liip-libre-contributions",
       "sponsorName": "Liip Libre Contributions",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/liip-libre-contributions",
+      "sponsorLogo": "https://images.opencollective.com/liip-libre-contributions/avatar/460.png",
       "sponsorUrl": "https://liip.ch",
       "monthlyPriceInDollars": 100
     },
@@ -359,7 +345,7 @@
     {
       "sponsorId": "chris-noden",
       "sponsorName": "Chris Noden",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/chris-noden",
+      "sponsorLogo": "https://images.opencollective.com/chris-noden/avatar/460.png",
       "sponsorUrl": "https://cto.support",
       "monthlyPriceInDollars": 100
     },
@@ -401,7 +387,7 @@
     {
       "sponsorId": "naum-nersesov",
       "sponsorName": "Naum Nersesov",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/naum-nersesov",
+      "sponsorLogo": "https://images.opencollective.com/naum-nersesov/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/naum-nersesov",
       "monthlyPriceInDollars": 100
     },
@@ -446,589 +432,610 @@
       "sponsorLogo": "https://avatar.ikxin.com/opencollective/indublin",
       "sponsorUrl": "https://indublin.ie",
       "monthlyPriceInDollars": 100
+    },
+    {
+      "sponsorId": "jspreadsheet",
+      "sponsorName": "Jspreadsheet",
+      "sponsorLogo": "https://avatar.ikxin.com/opencollective/jspreadsheet",
+      "sponsorUrl": "https://jspreadsheet.com/",
+      "monthlyPriceInDollars": 100
+    },
+    {
+      "sponsorId": "betking",
+      "sponsorName": "Betking",
+      "sponsorLogo": "https://avatar.ikxin.com/opencollective/betking",
+      "sponsorUrl": "https://betking.com.ua/",
+      "monthlyPriceInDollars": 100
+    },
+    {
+      "sponsorId": "casino-ua",
+      "sponsorName": "Ігрові автомати",
+      "sponsorLogo": "https://avatar.ikxin.com/opencollective/casino-ua",
+      "sponsorUrl": "https://casino.ua/casino/slots/",
+      "monthlyPriceInDollars": 100
+    },
+    {
+      "sponsorId": "vegas",
+      "sponsorName": "Vegas",
+      "sponsorLogo": "https://avatar.ikxin.com/opencollective/vegas",
+      "sponsorUrl": "https://vegas.ua",
+      "monthlyPriceInDollars": 100
     }
   ],
   "backer": [
     {
-      "sponsorId": "justin-schroeder",
-      "sponsorName": "Justin Schroeder",
-      "sponsorLogo": "https://avatar.ikxin.com/github/1950463?type=id",
-      "sponsorUrl": "https://www.formkit.com",
-      "monthlyPriceInDollars": 10
-    },
-    {
       "sponsorId": "Gomah",
       "sponsorName": "Thomas Marrec",
-      "sponsorLogo": "https://avatar.ikxin.com/github/2362138?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=2362138",
       "sponsorUrl": "https://gomah.fr/",
       "monthlyPriceInDollars": 15
     },
     {
+      "sponsorId": "justin-schroeder",
+      "sponsorName": "Justin Schroeder",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=1950463",
+      "sponsorUrl": "https://www.formkit.com",
+      "monthlyPriceInDollars": 10
+    },
+    {
       "sponsorId": "formkit",
       "sponsorName": "FormKit",
-      "sponsorLogo": "https://avatar.ikxin.com/github/76744415?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=76744415",
       "sponsorUrl": "https://www.formkit.com",
       "monthlyPriceInDollars": 15
     },
     {
-      "sponsorId": "jasonvanguard",
-      "sponsorName": "Jason Poulin",
-      "sponsorLogo": "https://avatar.ikxin.com/github/55339225?type=id",
-      "sponsorUrl": "https://vanguard.to",
-      "monthlyPriceInDollars": 25
-    },
-    {
       "sponsorId": "nickap",
       "sponsorName": "Nick Kapodistrias",
-      "sponsorLogo": "https://avatar.ikxin.com/github/49733176?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=49733176",
       "sponsorUrl": "dev.texng@simplelogin.com",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "Dmytro-Tihunov",
       "sponsorName": "Dmytro Tihunov",
-      "sponsorLogo": "https://avatar.ikxin.com/github/49639155?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=49639155",
       "sponsorUrl": "tihunov.com",
       "monthlyPriceInDollars": 2
     },
     {
       "sponsorId": "undone-labs",
       "sponsorName": "Undone Labs",
-      "sponsorLogo": "https://avatar.ikxin.com/github/47535649?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=47535649",
       "sponsorUrl": "https://agencyundone.com",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "milos018",
       "sponsorName": "Milos Dimitrijevic",
-      "sponsorLogo": "https://avatar.ikxin.com/github/46306967?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=46306967",
       "sponsorUrl": "https://www.toox.dev",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "MaksymOsovitnii",
       "sponsorName": "Maksym Osovitnii",
-      "sponsorLogo": "https://avatar.ikxin.com/github/45031013?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=45031013",
       "sponsorUrl": "https://github.com/MaksymOsovitnii",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "yanskun",
       "sponsorName": "Naoya Yasuda",
-      "sponsorLogo": "https://avatar.ikxin.com/github/43776161?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=43776161",
       "sponsorUrl": "https://yanskun.com/",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "asmape0104",
       "sponsorName": "R.K.",
-      "sponsorLogo": "https://avatar.ikxin.com/github/42737494?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=42737494",
       "sponsorUrl": "https://github.com/asmape0104",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "k-karen",
       "sponsorName": null,
-      "sponsorLogo": "https://avatar.ikxin.com/github/40630915?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=40630915",
       "sponsorUrl": "https://qiita.com/k_karen",
-      "monthlyPriceInDollars": 1
-    },
-    {
-      "sponsorId": "productdevbook",
-      "sponsorName": "Mehmet",
-      "sponsorLogo": "https://avatar.ikxin.com/github/38668796?type=id",
-      "sponsorUrl": "https://productdevbook.com",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "jordan-m-stokes",
       "sponsorName": "Jordan M. Stokes",
-      "sponsorLogo": "https://avatar.ikxin.com/github/38199968?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=38199968",
       "sponsorUrl": "https://github.com/jordan-m-stokes",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "cssninjaStudio",
       "sponsorName": "cssninjaStudio",
-      "sponsorLogo": "https://avatar.ikxin.com/github/35071927?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=35071927",
       "sponsorUrl": "https://cssninja.io",
       "monthlyPriceInDollars": 25
     },
     {
       "sponsorId": "abarke",
       "sponsorName": "Alex Barker",
-      "sponsorLogo": "https://avatar.ikxin.com/github/34715541?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=34715541",
       "sponsorUrl": "https://cmblu.com/",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "hilaliMoncef",
       "sponsorName": "Moncef Hilali",
-      "sponsorLogo": "https://avatar.ikxin.com/github/32093354?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=32093354",
       "sponsorUrl": "https://github.com/hilaliMoncef",
       "monthlyPriceInDollars": 5
     },
     {
       "sponsorId": "episki",
       "sponsorName": "episki",
-      "sponsorLogo": "https://avatar.ikxin.com/github/30483416?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=30483416",
       "sponsorUrl": "https://episki.com",
+      "monthlyPriceInDollars": 10
+    },
+    {
+      "sponsorId": "phillipmohr",
+      "sponsorName": "phillip",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=30236221",
+      "sponsorUrl": "https://stride.agency",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "larananas",
       "sponsorName": "~Lara~",
-      "sponsorLogo": "https://avatar.ikxin.com/github/29305319?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=29305319",
       "sponsorUrl": "https://github.com/larananas",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "mikezamayias",
       "sponsorName": "Mike Zamayias",
-      "sponsorLogo": "https://avatar.ikxin.com/github/29067825?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=29067825",
       "sponsorUrl": "mikezamayias.com",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "sosog",
       "sponsorName": "Ioseb Gvritishvili",
-      "sponsorLogo": "https://avatar.ikxin.com/github/28826144?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=28826144",
       "sponsorUrl": "https://sosog.github.io/resume",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "George-Spanos",
       "sponsorName": "George Spanos",
-      "sponsorLogo": "https://avatar.ikxin.com/github/27289923?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=27289923",
       "sponsorUrl": "https://gspanos.tech",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "toblu96",
       "sponsorName": "Tobias Blum",
-      "sponsorLogo": "https://avatar.ikxin.com/github/25683183?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=25683183",
       "sponsorUrl": "https://toblu.dev",
       "monthlyPriceInDollars": 10
     },
     {
-      "sponsorId": "testit-app",
-      "sponsorName": "Test It",
-      "sponsorLogo": "https://avatar.ikxin.com/github/180280408?type=id",
-      "sponsorUrl": "testit.so",
-      "monthlyPriceInDollars": 25
-    },
-    {
-      "sponsorId": "DCM-LVT",
-      "sponsorName": "Dotcom Monitor",
-      "sponsorLogo": "https://avatar.ikxin.com/github/179759871?type=id",
-      "sponsorUrl": "https://www.dotcom-monitor.com/sponsoring-open-source-projects/",
-      "monthlyPriceInDollars": 25
+      "sponsorId": "jobsy-it",
+      "sponsorName": "jobsy.it",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=167889605",
+      "sponsorUrl": "https://jobsy.it",
+      "monthlyPriceInDollars": 5
     },
     {
       "sponsorId": "ScribVet",
       "sponsorName": "ScribVet",
-      "sponsorLogo": "https://avatar.ikxin.com/github/165010564?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=165010564",
       "sponsorUrl": "https://scribvet.com",
       "monthlyPriceInDollars": 25
     },
     {
       "sponsorId": "celebiancom",
       "sponsorName": "Celebian",
-      "sponsorLogo": "https://avatar.ikxin.com/github/156096633?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=156096633",
       "sponsorUrl": "https://celebian.com",
       "monthlyPriceInDollars": 25
     },
     {
-      "sponsorId": "Talknotes",
-      "sponsorName": "Talknotes",
-      "sponsorLogo": "https://avatar.ikxin.com/github/149985687?type=id",
-      "sponsorUrl": "https://talknotes.io",
+      "sponsorId": "sentdm",
+      "sponsorName": "Sent.dm",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=153308555",
+      "sponsorUrl": "https://www.sent.dm",
       "monthlyPriceInDollars": 25
+    },
+    {
+      "sponsorId": "sasarafu",
+      "sponsorName": null,
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=138344965",
+      "sponsorUrl": "https://github.com/sasarafu",
+      "monthlyPriceInDollars": 5
     },
     {
       "sponsorId": "nikvoblikov",
       "sponsorName": "Nikita Voblikov",
-      "sponsorLogo": "https://avatar.ikxin.com/github/105175118?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=105175118",
       "sponsorUrl": "http://t.me/nikover",
       "monthlyPriceInDollars": 2
     },
     {
       "sponsorId": "timb-103",
       "sponsorName": "Tim B",
-      "sponsorLogo": "https://avatar.ikxin.com/github/105137815?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=105137815",
       "sponsorUrl": "https://pallyy.com",
       "monthlyPriceInDollars": 25
     },
     {
-      "sponsorId": "Whiskey-Tango-Foxtrot-GmbH",
-      "sponsorName": "Whiskey Tango Foxtrot",
-      "sponsorLogo": "https://avatar.ikxin.com/github/104348334?type=id",
-      "sponsorUrl": "https://www.wtfoxtrot.de/",
-      "monthlyPriceInDollars": 10
-    },
-    {
       "sponsorId": "ItzExotical",
       "sponsorName": "Exotical",
-      "sponsorLogo": "https://avatar.ikxin.com/github/93738720?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=93738720",
       "sponsorUrl": "https://exotical.se",
-      "monthlyPriceInDollars": 1
-    },
-    {
-      "sponsorId": "bkpecho",
-      "sponsorName": "Bryan King Pecho",
-      "sponsorLogo": "https://avatar.ikxin.com/github/91954699?type=id",
-      "sponsorUrl": "https://github.com/bkpecho",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "Nite-Cloud",
       "sponsorName": "Nite Cloud",
-      "sponsorLogo": "https://avatar.ikxin.com/github/87028730?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=87028730",
       "sponsorUrl": "https://nite.cloud/",
       "monthlyPriceInDollars": 25
     },
     {
-      "sponsorId": "sharafdin",
-      "sponsorName": "Mr Sharafdin",
-      "sponsorLogo": "https://avatar.ikxin.com/github/83120892?type=id",
-      "sponsorUrl": "https://sharafdin.com",
-      "monthlyPriceInDollars": 1
-    },
-    {
       "sponsorId": "IPS-Hosting",
       "sponsorName": "IPS Hosting",
-      "sponsorLogo": "https://avatar.ikxin.com/github/81816376?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=81816376",
       "sponsorUrl": "https://www.ips-hosting.com",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "sammyshows",
       "sponsorName": "Sam McCarthy",
-      "sponsorLogo": "https://avatar.ikxin.com/github/76188712?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=76188712",
       "sponsorUrl": "https://github.com/sammyshows",
       "monthlyPriceInDollars": 1
     },
     {
-      "sponsorId": "suized",
-      "sponsorName": "Suized Design Studio",
-      "sponsorLogo": "https://avatar.ikxin.com/github/67168126?type=id",
-      "sponsorUrl": "https://suized.com",
-      "monthlyPriceInDollars": 15
-    },
-    {
       "sponsorId": "mailtm",
       "sponsorName": "Mail.tm",
-      "sponsorLogo": "https://avatar.ikxin.com/github/65580678?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=65580678",
       "sponsorUrl": "https://mail.tm",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "Gugustinette",
       "sponsorName": "Gugustinette",
-      "sponsorLogo": "https://avatar.ikxin.com/github/63470020?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=63470020",
       "sponsorUrl": "gugustinette.com",
       "monthlyPriceInDollars": 2
     },
     {
       "sponsorId": "blackbirdUG",
       "sponsorName": "blackbird GmbH",
-      "sponsorLogo": "https://avatar.ikxin.com/github/61544907?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=61544907",
       "sponsorUrl": "https://www.kennzeichenking.de",
       "monthlyPriceInDollars": 5
     },
     {
-      "sponsorId": "asamiile",
-      "sponsorName": "Asami Kakuishi",
-      "sponsorLogo": "https://avatar.ikxin.com/github/5330981?type=id",
-      "sponsorUrl": "http://asami.tokyo",
+      "sponsorId": "jasonvanguard",
+      "sponsorName": "Jason Poulin",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=55339225",
+      "sponsorUrl": "https://vanguard.to",
+      "monthlyPriceInDollars": 10
+    },
+    {
+      "sponsorId": "math-dev-24",
+      "sponsorName": "math_24",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=52753123",
+      "sponsorUrl": "https://mathieu-busse.dev/",
+      "monthlyPriceInDollars": 2
+    },
+    {
+      "sponsorId": "BrightCrowd",
+      "sponsorName": "BrightCrowd",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=19253501",
+      "sponsorUrl": "https://brightcrowd.com",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "mchestnut",
       "sponsorName": "Matt Chestnut",
-      "sponsorLogo": "https://avatar.ikxin.com/github/3226829?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=3226829",
       "sponsorUrl": "https://www.mattchestnut.com",
       "monthlyPriceInDollars": 5
     },
     {
       "sponsorId": "brownsugar",
       "sponsorName": "Lay",
-      "sponsorLogo": "https://avatar.ikxin.com/github/2935980?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=2935980",
       "sponsorUrl": "https://brownsugar.tw",
       "monthlyPriceInDollars": 5
     },
     {
       "sponsorId": "leopoldkristjansson",
       "sponsorName": "Leopold Kristjansson",
-      "sponsorLogo": "https://avatar.ikxin.com/github/2579324?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=2579324",
       "sponsorUrl": "https://www.leopold.is/",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "aussieboi",
       "sponsorName": "Marko",
-      "sponsorLogo": "https://avatar.ikxin.com/github/2497323?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=2497323",
       "sponsorUrl": "https://github.com/aussieboi",
       "monthlyPriceInDollars": 2
     },
     {
       "sponsorId": "educkf",
       "sponsorName": "Eduardo Camillo",
-      "sponsorLogo": "https://avatar.ikxin.com/github/2439707?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=2439707",
       "sponsorUrl": "http://eduardocamillo.com.br",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "nicovanzyl",
       "sponsorName": "Nico van Zyl",
-      "sponsorLogo": "https://avatar.ikxin.com/github/2334902?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=2334902",
       "sponsorUrl": "https://nicovanzyl.com",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "RaBic",
       "sponsorName": "Rainer Bickel",
-      "sponsorLogo": "https://avatar.ikxin.com/github/2005981?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=2005981",
       "sponsorUrl": "https://www.bitdesign.de",
       "monthlyPriceInDollars": 5
     },
     {
       "sponsorId": "edbond88",
       "sponsorName": "Ed Bond",
-      "sponsorLogo": "https://avatar.ikxin.com/github/1949927?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=1949927",
       "sponsorUrl": "https://github.com/edbond88",
       "monthlyPriceInDollars": 3
     },
     {
       "sponsorId": "Sylvadoc",
       "sponsorName": "Jean-François Le Gac",
-      "sponsorLogo": "https://avatar.ikxin.com/github/1799224?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=1799224",
       "sponsorUrl": "http://www.elbakin.net",
       "monthlyPriceInDollars": 5
     },
     {
       "sponsorId": "romainsimon",
       "sponsorName": "Romain SIMON",
-      "sponsorLogo": "https://avatar.ikxin.com/github/1733696?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=1733696",
       "sponsorUrl": "https://melies.co",
       "monthlyPriceInDollars": 25
     },
     {
       "sponsorId": "Nicholashuber",
       "sponsorName": "Nicholas Huber",
-      "sponsorLogo": "https://avatar.ikxin.com/github/1585348?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=1585348",
       "sponsorUrl": "Huber.dev",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "leo91000",
       "sponsorName": "Léo Coletta",
-      "sponsorLogo": "https://avatar.ikxin.com/github/1354510?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=1354510",
       "sponsorUrl": "https://github.com/leo91000",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "iBobik",
       "sponsorName": "Honza Pobořil",
-      "sponsorLogo": "https://avatar.ikxin.com/github/614232?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=614232",
       "sponsorUrl": "https://honza.poboril.cz",
       "monthlyPriceInDollars": 1
     },
     {
+      "sponsorId": "doubleedesign",
+      "sponsorName": "Leesa Ward",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=563583",
+      "sponsorUrl": "leesaward.dev",
+      "monthlyPriceInDollars": 5
+    },
+    {
       "sponsorId": "jrutila",
       "sponsorName": "Juho Rutila",
-      "sponsorLogo": "https://avatar.ikxin.com/github/400771?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=400771",
       "sponsorUrl": "https://github.com/jrutila",
       "monthlyPriceInDollars": 3
     },
     {
       "sponsorId": "piscis",
       "sponsorName": "Alex",
-      "sponsorLogo": "https://avatar.ikxin.com/github/326163?type=id",
-      "sponsorUrl": "https://piscis.io",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=326163",
+      "sponsorUrl": "https://pirsig.net",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "blowsie",
       "sponsorName": "Sam Blowes",
-      "sponsorLogo": "https://avatar.ikxin.com/github/308572?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=308572",
       "sponsorUrl": "http://www.blowsie.com",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "toooni",
       "sponsorName": "Toni Rudolf",
-      "sponsorLogo": "https://avatar.ikxin.com/github/241080?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=241080",
       "sponsorUrl": "https://www.weekend4two.com",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "ninjaparade",
       "sponsorName": "Ninja",
-      "sponsorLogo": "https://avatar.ikxin.com/github/228899?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=228899",
       "sponsorUrl": "https://github.com/ninjaparade",
       "monthlyPriceInDollars": 25
     },
     {
       "sponsorId": "ManUtopiK",
       "sponsorName": "Emmanuel Salomon",
-      "sponsorLogo": "https://avatar.ikxin.com/github/188172?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=188172",
       "sponsorUrl": "https://github.com/ManUtopiK",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "monsat",
       "sponsorName": "TANAKA Kohji",
-      "sponsorLogo": "https://avatar.ikxin.com/github/85702?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=85702",
       "sponsorUrl": "https://kohji.blog/",
       "monthlyPriceInDollars": 25
     },
     {
       "sponsorId": "dvdrtrgn",
       "sponsorName": "David",
-      "sponsorLogo": "https://avatar.ikxin.com/github/75495?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=75495",
       "sponsorUrl": "https://git.dvdrtrgn.com",
-      "monthlyPriceInDollars": 10
-    },
-    {
-      "sponsorId": "BrightCrowd",
-      "sponsorName": "BrightCrowd",
-      "sponsorLogo": "https://avatar.ikxin.com/github/19253501?type=id",
-      "sponsorUrl": "https://brightcrowd.com",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "just-maik",
       "sponsorName": "Maik",
-      "sponsorLogo": "https://avatar.ikxin.com/github/16877165?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=16877165",
       "sponsorUrl": "ehmjay.de",
       "monthlyPriceInDollars": 1
     },
     {
       "sponsorId": "shroomlife",
       "sponsorName": "shroomlife 🕉️👨‍💻🍄🌈🍅",
-      "sponsorLogo": "https://avatar.ikxin.com/github/16290237?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=16290237",
       "sponsorUrl": "https://shroomlife.de",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "ivan-mihalic",
       "sponsorName": "Ivan Mihalič",
-      "sponsorLogo": "https://avatar.ikxin.com/github/15858573?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=15858573",
       "sponsorUrl": "https://github.com/ivan-mihalic",
       "monthlyPriceInDollars": 25
     },
     {
       "sponsorId": "JasonLandbridge",
       "sponsorName": "Jason Landbridge",
-      "sponsorLogo": "https://avatar.ikxin.com/github/15127381?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=15127381",
       "sponsorUrl": "https://github.com/JasonLandbridge",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "itpropro",
       "sponsorName": "Jan-Henrik Damaschke",
-      "sponsorLogo": "https://avatar.ikxin.com/github/15030951?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=15030951",
       "sponsorUrl": "https://www.itinsights.org",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "Clex1o1",
       "sponsorName": "Clex1o1",
-      "sponsorLogo": "https://avatar.ikxin.com/github/15003466?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=15003466",
       "sponsorUrl": "https://www.the-great.dev",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "1mak",
       "sponsorName": "Torsten",
-      "sponsorLogo": "https://avatar.ikxin.com/github/13775434?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=13775434",
       "sponsorUrl": "http://www.downthunder.com.au",
       "monthlyPriceInDollars": 5
     },
     {
       "sponsorId": "igortrinidad",
       "sponsorName": "Igor Trindade",
-      "sponsorLogo": "https://avatar.ikxin.com/github/13478652?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=13478652",
       "sponsorUrl": "https://igortrindade.dev",
       "monthlyPriceInDollars": 2
     },
     {
       "sponsorId": "fimion",
       "sponsorName": "Alex Riviere",
-      "sponsorLogo": "https://avatar.ikxin.com/github/13134182?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=13134182",
       "sponsorUrl": "https://alex.party",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "adrienZ",
       "sponsorName": "Adrien Zaganelli",
-      "sponsorLogo": "https://avatar.ikxin.com/github/10186993?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=10186993",
       "sponsorUrl": "https://adrienzaganelli.com",
       "monthlyPriceInDollars": 3
     },
     {
       "sponsorId": "heartz66",
       "sponsorName": "Heartz66",
-      "sponsorLogo": "https://avatar.ikxin.com/github/8833887?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=8833887",
       "sponsorUrl": "https://github.com/heartz66",
       "monthlyPriceInDollars": 10
     },
     {
+      "sponsorId": "jekuer",
+      "sponsorName": "Jens Kuerschner",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=8572883",
+      "sponsorUrl": "https://jekuer.com",
+      "monthlyPriceInDollars": 1
+    },
+    {
       "sponsorId": "nonlinearcom",
       "sponsorName": "non-linear",
-      "sponsorLogo": "https://avatar.ikxin.com/github/7942973?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=7942973",
       "sponsorUrl": "non-linear.com",
       "monthlyPriceInDollars": 5
     },
     {
       "sponsorId": "AloisSeckar",
       "sponsorName": "Alois Sečkár",
-      "sponsorLogo": "https://avatar.ikxin.com/github/7399922?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=7399922",
       "sponsorUrl": "http://alois-seckar.cz",
       "monthlyPriceInDollars": 12
     },
     {
       "sponsorId": "lucpotage",
       "sponsorName": "Luc",
-      "sponsorLogo": "https://avatar.ikxin.com/github/7230764?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=7230764",
       "sponsorUrl": "lucpotage.xyz",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "taunoha",
       "sponsorName": "Tauno Hanni",
-      "sponsorLogo": "https://avatar.ikxin.com/github/7137679?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=7137679",
       "sponsorUrl": "klipper.ee",
       "monthlyPriceInDollars": 50
     },
     {
       "sponsorId": "artis3n",
       "sponsorName": "Ari Kalfus",
-      "sponsorLogo": "https://avatar.ikxin.com/github/6969296?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=6969296",
       "sponsorUrl": "https://blog.artis3nal.com",
       "monthlyPriceInDollars": 5
     },
     {
       "sponsorId": "OpenSauce",
       "sponsorName": "Leigh",
-      "sponsorLogo": "https://avatar.ikxin.com/github/6011473?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=6011473",
       "sponsorUrl": "https://github.com/OpenSauce",
       "monthlyPriceInDollars": 3
     },
     {
       "sponsorId": "henningko",
       "sponsorName": "Henning Kollenbroich",
-      "sponsorLogo": "https://avatar.ikxin.com/github/5890910?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=5890910",
       "sponsorUrl": "https://github.com/henningko",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "evercam",
       "sponsorName": "Evercam Construction Time-lapse Cameras",
-      "sponsorLogo": "https://avatar.ikxin.com/github/5575404?type=id",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=5575404",
       "sponsorUrl": "https://evercam.io",
       "monthlyPriceInDollars": 50
+    },
+    {
+      "sponsorId": "asamiile",
+      "sponsorName": "Asami Kakuishi",
+      "sponsorLogo": "https://avatar.ikxin.com/github?id=5330981",
+      "sponsorUrl": "http://asami.tokyo",
+      "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "xiplias",
@@ -1082,7 +1089,7 @@
     {
       "sponsorId": "heydluv",
       "sponsorName": "Diana Espino",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/heydluv",
+      "sponsorLogo": "https://images.opencollective.com/heydluv/avatar/460.png",
       "sponsorUrl": "https://dianaespino.com",
       "monthlyPriceInDollars": 10
     },
@@ -1215,7 +1222,7 @@
     {
       "sponsorId": "ezheg89",
       "sponsorName": "EzheG",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/ezheg89",
+      "sponsorLogo": "https://images.opencollective.com/ezheg89/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/ezheg89",
       "monthlyPriceInDollars": 10
     },
@@ -1250,7 +1257,7 @@
     {
       "sponsorId": "fahidmohammad",
       "sponsorName": "Fahid Mohammad",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/fahidmohammad",
+      "sponsorLogo": "https://images.opencollective.com/fahidmohammad/avatar/460.png",
       "sponsorUrl": "https://fahidmohammad.com",
       "monthlyPriceInDollars": 10
     },
@@ -1278,7 +1285,7 @@
     {
       "sponsorId": "wakame_isono_",
       "sponsorName": "Wakana Seki",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/wakame_isono_",
+      "sponsorLogo": "https://images.opencollective.com/wakame_isono_/avatar/460.png",
       "sponsorUrl": "https://twitter.com/wakame_isono_",
       "monthlyPriceInDollars": 10
     },
@@ -1439,7 +1446,7 @@
     {
       "sponsorId": "getvacationfund",
       "sponsorName": "Abhinav Mathur",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/getvacationfund",
+      "sponsorLogo": "https://images.opencollective.com/getvacationfund/avatar/460.png",
       "sponsorUrl": "https://vacationfund.io",
       "monthlyPriceInDollars": 10
     },
@@ -1460,7 +1467,7 @@
     {
       "sponsorId": "john-lumia",
       "sponsorName": "John Lumia",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/john-lumia",
+      "sponsorLogo": "https://images.opencollective.com/john-lumia/avatar/460.png",
       "sponsorUrl": "https://www.trailsoffroad.com",
       "monthlyPriceInDollars": 10
     },
@@ -1509,7 +1516,7 @@
     {
       "sponsorId": "don-blackowiak",
       "sponsorName": "Don Blackowiak",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/don-blackowiak",
+      "sponsorLogo": "https://images.opencollective.com/don-blackowiak/avatar/460.png",
       "sponsorUrl": "https://www.lucuma.com",
       "monthlyPriceInDollars": 10
     },
@@ -1635,14 +1642,14 @@
     {
       "sponsorId": "dodanex",
       "sponsorName": "DODANEX",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/dodanex",
+      "sponsorLogo": "https://images.opencollective.com/dodanex/logo/460.png",
       "sponsorUrl": "https://www.dodanex.com",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "kurt-lee",
       "sponsorName": "Kurt Lee",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/kurt-lee",
+      "sponsorLogo": "https://images.opencollective.com/kurt-lee/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/kurt-lee",
       "monthlyPriceInDollars": 10
     },
@@ -1663,14 +1670,14 @@
     {
       "sponsorId": "anonymous178",
       "sponsorName": "anonymous",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/anonymous178",
+      "sponsorLogo": "https://images.opencollective.com/anonymous178/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/anonymous178",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "masato-miura",
       "sponsorName": "Masato Miura",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/masato-miura",
+      "sponsorLogo": "https://images.opencollective.com/masato-miura/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/masato-miura",
       "monthlyPriceInDollars": 10
     },
@@ -1684,7 +1691,7 @@
     {
       "sponsorId": "topview-capture",
       "sponsorName": "TVC",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/topview-capture",
+      "sponsorLogo": "https://images.opencollective.com/topview-capture/avatar/460.png",
       "sponsorUrl": "https://topviewcapture.com",
       "monthlyPriceInDollars": 10
     },
@@ -1726,7 +1733,7 @@
     {
       "sponsorId": "kengres",
       "sponsorName": "Grevisse ken",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/kengres",
+      "sponsorLogo": "https://images.opencollective.com/kengres/avatar/460.png",
       "sponsorUrl": "https://me.kenguruka.ru",
       "monthlyPriceInDollars": 10
     },
@@ -1740,14 +1747,14 @@
     {
       "sponsorId": "vijaytupakula",
       "sponsorName": "Vijay Tupakula",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/vijaytupakula",
+      "sponsorLogo": "https://images.opencollective.com/vijaytupakula/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/vijaytupakula",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "vaclav-janoch",
       "sponsorName": "Vaclav Janoch",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/vaclav-janoch",
+      "sponsorLogo": "https://images.opencollective.com/vaclav-janoch/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/vaclav-janoch",
       "monthlyPriceInDollars": 10
     },
@@ -1831,7 +1838,7 @@
     {
       "sponsorId": "oliwer-smedjevik",
       "sponsorName": "Oliwer Smedjevik",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/oliwer-smedjevik",
+      "sponsorLogo": "https://images.opencollective.com/oliwer-smedjevik/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/oliwer-smedjevik",
       "monthlyPriceInDollars": 10
     },
@@ -1852,7 +1859,7 @@
     {
       "sponsorId": "underdogz",
       "sponsorName": "Underdogz Studio",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/underdogz",
+      "sponsorLogo": "https://images.opencollective.com/underdogz/logo/460.png",
       "sponsorUrl": "https://opencollective.com/underdogz",
       "monthlyPriceInDollars": 10
     },
@@ -1887,14 +1894,14 @@
     {
       "sponsorId": "ryan-lindskog",
       "sponsorName": "Ryan Lindskog",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/ryan-lindskog",
+      "sponsorLogo": "https://images.opencollective.com/ryan-lindskog/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/ryan-lindskog",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "martin-desrumaux",
       "sponsorName": "Martin Desrumaux",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/martin-desrumaux",
+      "sponsorLogo": "https://images.opencollective.com/martin-desrumaux/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/martin-desrumaux",
       "monthlyPriceInDollars": 10
     },
@@ -1908,14 +1915,14 @@
     {
       "sponsorId": "lawrence-braun",
       "sponsorName": "Lawrence Braun",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/lawrence-braun",
+      "sponsorLogo": "https://images.opencollective.com/lawrence-braun/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/lawrence-braun",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "santi-jibite",
       "sponsorName": "Santi Jibite",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/santi-jibite",
+      "sponsorLogo": "https://images.opencollective.com/santi-jibite/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/santi-jibite",
       "monthlyPriceInDollars": 10
     },
@@ -1943,7 +1950,7 @@
     {
       "sponsorId": "andrew-yochum",
       "sponsorName": "Andrew Yochum",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/andrew-yochum",
+      "sponsorLogo": "https://images.opencollective.com/andrew-yochum/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/andrew-yochum",
       "monthlyPriceInDollars": 10
     },
@@ -1999,7 +2006,7 @@
     {
       "sponsorId": "dskymd",
       "sponsorName": "Daisuke Yamada",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/dskymd",
+      "sponsorLogo": "https://images.opencollective.com/dskymd/avatar/460.png",
       "sponsorUrl": "https://dskymd.com",
       "monthlyPriceInDollars": 10
     },
@@ -2013,7 +2020,7 @@
     {
       "sponsorId": "alexis-loumeau",
       "sponsorName": "alexis loumeau",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/alexis-loumeau",
+      "sponsorLogo": "https://images.opencollective.com/alexis-loumeau/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/alexis-loumeau",
       "monthlyPriceInDollars": 10
     },
@@ -2069,7 +2076,7 @@
     {
       "sponsorId": "fffabianwohlfart",
       "sponsorName": "Fabian Wohlfart-Blank",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/fffabianwohlfart",
+      "sponsorLogo": "https://images.opencollective.com/fffabianwohlfart/avatar/460.png",
       "sponsorUrl": "https://anothercodeproject.eu/",
       "monthlyPriceInDollars": 10
     },
@@ -2125,7 +2132,7 @@
     {
       "sponsorId": "paul-gabronis",
       "sponsorName": "Paul Gabronis",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/paul-gabronis",
+      "sponsorLogo": "https://images.opencollective.com/paul-gabronis/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/paul-gabronis",
       "monthlyPriceInDollars": 10
     },
@@ -2146,14 +2153,14 @@
     {
       "sponsorId": "passportphotos",
       "sponsorName": "PassportPhotos",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/passportphotos",
+      "sponsorLogo": "https://images.opencollective.com/passportphotos/logo/460.png",
       "sponsorUrl": "https://opencollective.com/passportphotos",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "mohammed-alkhuzayyim",
       "sponsorName": "Kazam",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/mohammed-alkhuzayyim",
+      "sponsorLogo": "https://images.opencollective.com/mohammed-alkhuzayyim/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/mohammed-alkhuzayyim",
       "monthlyPriceInDollars": 10
     },
@@ -2237,7 +2244,7 @@
     {
       "sponsorId": "waldemar-pross",
       "sponsorName": "Waldemar Pross",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/waldemar-pross",
+      "sponsorLogo": "https://images.opencollective.com/waldemar-pross/avatar/460.png",
       "sponsorUrl": "https://peachperfectweddings.com/",
       "monthlyPriceInDollars": 10
     },
@@ -2265,7 +2272,7 @@
     {
       "sponsorId": "anonymous913",
       "sponsorName": "anonymous",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/anonymous913",
+      "sponsorLogo": "https://images.opencollective.com/anonymous913/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/anonymous913",
       "monthlyPriceInDollars": 10
     },
@@ -2286,7 +2293,7 @@
     {
       "sponsorId": "ian-fortier",
       "sponsorName": "Ian Fortier",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/ian-fortier",
+      "sponsorLogo": "https://images.opencollective.com/ian-fortier/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/ian-fortier",
       "monthlyPriceInDollars": 10
     },
@@ -2363,7 +2370,7 @@
     {
       "sponsorId": "popovskiy-oleg",
       "sponsorName": "POPOVSKIY Oleg",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/popovskiy-oleg",
+      "sponsorLogo": "https://images.opencollective.com/popovskiy-oleg/avatar/460.png",
       "sponsorUrl": "https://popovskiy.com",
       "monthlyPriceInDollars": 10
     },
@@ -2419,7 +2426,7 @@
     {
       "sponsorId": "benoit-mercier",
       "sponsorName": "Benoit Mercier",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/benoit-mercier",
+      "sponsorLogo": "https://images.opencollective.com/benoit-mercier/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/benoit-mercier",
       "monthlyPriceInDollars": 10
     },
@@ -2440,7 +2447,7 @@
     {
       "sponsorId": "al-mujahid",
       "sponsorName": "Al Mujahid",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/al-mujahid",
+      "sponsorLogo": "https://images.opencollective.com/al-mujahid/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/al-mujahid",
       "monthlyPriceInDollars": 10
     },
@@ -2482,14 +2489,14 @@
     {
       "sponsorId": "florent-giraud",
       "sponsorName": "florent giraud",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/florent-giraud",
+      "sponsorLogo": "https://images.opencollective.com/florent-giraud/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/florent-giraud",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "guest-29d2d5b0",
       "sponsorName": "Bhaskar Nair",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/guest-29d2d5b0",
+      "sponsorLogo": "https://images.opencollective.com/guest-29d2d5b0/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/guest-29d2d5b0",
       "monthlyPriceInDollars": 10
     },
@@ -2503,7 +2510,7 @@
     {
       "sponsorId": "mointech-gmbh",
       "sponsorName": "mointech GmbH",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/mointech-gmbh",
+      "sponsorLogo": "https://images.opencollective.com/mointech-gmbh/logo/460.png",
       "sponsorUrl": "https://mointech.de",
       "monthlyPriceInDollars": 10
     },
@@ -2531,14 +2538,14 @@
     {
       "sponsorId": "passport-photos",
       "sponsorName": "Passport Photos",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/passport-photos",
+      "sponsorLogo": "https://images.opencollective.com/passport-photos/logo/460.png",
       "sponsorUrl": "https://opencollective.com/passport-photos",
       "monthlyPriceInDollars": 10
     },
     {
       "sponsorId": "todd-morey",
       "sponsorName": "Todd Morey",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/todd-morey",
+      "sponsorLogo": "https://images.opencollective.com/todd-morey/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/todd-morey",
       "monthlyPriceInDollars": 10
     },
@@ -2552,7 +2559,7 @@
     {
       "sponsorId": "eduardo-mecchia",
       "sponsorName": "Eduardo Mecchia",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/eduardo-mecchia",
+      "sponsorLogo": "https://images.opencollective.com/eduardo-mecchia/avatar/460.png",
       "sponsorUrl": "https://opencollective.com/eduardo-mecchia",
       "monthlyPriceInDollars": 10
     },
@@ -2573,7 +2580,7 @@
     {
       "sponsorId": "position-relative",
       "sponsorName": "Position Relative",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/position-relative",
+      "sponsorLogo": "https://images.opencollective.com/position-relative/logo/460.png",
       "sponsorUrl": "https://positionrelative.co",
       "monthlyPriceInDollars": 10
     },
@@ -2643,7 +2650,7 @@
     {
       "sponsorId": "fffabianwohlfart",
       "sponsorName": "Fabian Wohlfart-Blank",
-      "sponsorLogo": "https://avatar.ikxin.com/opencollective/fffabianwohlfart",
+      "sponsorLogo": "https://images.opencollective.com/fffabianwohlfart/avatar/460.png",
       "sponsorUrl": "https://anothercodeproject.eu/",
       "monthlyPriceInDollars": 25
     },
@@ -2677,14 +2684,14 @@
     },
     {
       "sponsorId": "kinder",
-      "sponsorName": "No-code Web Scraper",
+      "sponsorName": "Automatio AI",
       "sponsorLogo": "https://avatar.ikxin.com/opencollective/kinder",
       "sponsorUrl": "https://automatio.ai/",
       "monthlyPriceInDollars": 25
     },
     {
       "sponsorId": "kinder",
-      "sponsorName": "No-code Web Scraper",
+      "sponsorName": "Automatio AI",
       "sponsorLogo": "https://avatar.ikxin.com/opencollective/kinder",
       "sponsorUrl": "https://automatio.ai/",
       "monthlyPriceInDollars": 10
@@ -2719,9 +2726,9 @@
     },
     {
       "sponsorId": "buyyoutubviewscom",
-      "sponsorName": "buyyoutubviews.com",
+      "sponsorName": "Buy Youtube Views",
       "sponsorLogo": "https://avatar.ikxin.com/opencollective/buyyoutubviewscom",
-      "sponsorUrl": "https://buyyoutubviews.com",
+      "sponsorUrl": "https://buyyoutubviews.com/",
       "monthlyPriceInDollars": 25
     }
   ]
