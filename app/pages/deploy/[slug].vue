@@ -102,11 +102,11 @@ links.push({
         </UPageBody>
 
         <template #right>
-          <UContentToc :links="provider.body.toc.links">
+          <UContentToc title="目录" :links="provider.body.toc.links">
             <template #bottom>
               <div class="hidden lg:block space-y-6" :class="{ '!mt-6': provider.body?.toc?.links?.length }">
                 <UDivider v-if="links?.length && provider.body?.toc?.links?.length" type="dashed" />
-                <UPageLinks title="Links" :links="links" />
+                <UPageLinks title="链接" :links="links" />
                 <UDivider type="dashed" />
                 <SocialLinks />
                 <Ads />

@@ -59,17 +59,17 @@ function copyLink() {
 const links = [
   {
     icon: 'i-ph-pen',
-    label: 'Edit this article',
-    to: `https://github.com/nuxt/nuxt.com/edit/main/content/${article.value._file}`,
+    label: '编辑此文章',
+    to: `https://github.com/zhcndoc/nuxt/edit/main/content/${article.value._file}`,
     target: '_blank'
   }, {
     icon: 'i-ph-shooting-star',
-    label: 'Star on GitHub',
+    label: '在 GitHub 上点赞',
     to: 'https://go.nuxt.com/github',
     target: '_blank'
   }, {
     icon: 'i-ph-hand-heart',
-    label: 'Become a Sponsor',
+    label: '成为赞助商',
     to: 'https://go.nuxt.com/sponsor',
     target: '_blank'
   }
@@ -81,7 +81,7 @@ const links = [
     <UPage>
       <UPageHeader :title="article.title" :description="article.description" :ui="{ headline: 'flex flex-col gap-y-8 items-start' }">
         <template #headline>
-          <UBreadcrumb :links="[{ label: 'Blog', icon: 'i-ph-newspaper', to: '/blog' }, { label: article.title }]" :ui="{ wrapper: 'max-w-full' }" />
+          <UBreadcrumb :links="[{ label: 'Nuxt 博客', icon: 'i-ph-newspaper', to: '/blog' }, { label: article.title }]" :ui="{ wrapper: 'max-w-full' }" />
           <div class="flex items-center space-x-2">
             <span>
               {{ article.category }}
@@ -143,10 +143,10 @@ const links = [
         </UPageBody>
 
         <template #right>
-          <UContentToc v-if="article.body && article.body.toc" :links="article.body.toc.links">
+          <UContentToc title="目录" v-if="article.body && article.body.toc" :links="article.body.toc.links">
             <template #bottom>
               <div class="hidden lg:block space-y-6">
-                <UPageLinks title="Links" :links="links" />
+                <UPageLinks title="链接" :links="links" />
                 <UDivider type="dashed" />
                 <SocialLinks />
                 <Ads />

@@ -165,10 +165,10 @@ defineOgImageComponent('Docs', {
       </UPageBody>
 
       <template #right>
-        <UContentToc>
+        <UContentToc title="目录">
           <template #bottom>
             <div class="hidden lg:block space-y-6">
-              <UPageLinks title="Links" :links="links" />
+              <UPageLinks title="链接" :links="links" />
 
               <UDivider type="dashed" />
 

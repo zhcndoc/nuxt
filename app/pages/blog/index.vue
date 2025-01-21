@@ -14,19 +14,19 @@ useHead({
     {
       rel: 'alternate',
       type: 'application/atom+xml',
-      title: 'Nuxt Blog RSS',
+      title: 'Nuxt 博客 RSS',
       href: 'https://nuxt.com/blog/rss.xml'
     }
   ]
 })
 useSeoMeta({
-  titleTemplate: '%s',
+  titleTemplate: '%s - Nuxt 中文文档',
   title,
   description,
   ogDescription: description,
   ogTitle: title
 })
-defineOgImageComponent('Docs')
+defineOgImageComponent('文档')
 
 await fetchList()
 </script>
