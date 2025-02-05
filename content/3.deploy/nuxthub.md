@@ -49,22 +49,18 @@ npx nuxthub deploy
 ::
 
 ::note
-您也可以全局安装 [NuxtHub CLI](https://github.com/nuxt-hub/cli)，使用 `npm i -g nuxthub`。
-::
-
-::warning
-如果您使用 NuxtHub CLI 进行第一次部署，由于 Cloudflare 的限制，您将无法将 GitHub/GitLab 仓库附加到后面。
+您还可以使用以下命令全局安装 [NuxtHub CLI](https://github.com/nuxt-hub/cli)：`npm i -g nuxthub`。
 ::
 
 ## 使用 Git 部署
 
-1. 将您的代码推送到您的 Git 仓库（GitHub 或 GitLab）
-2. 点击 `New Project` 然后 `Import a Git repository`
-3. 选择您的仓库并点击 `Import repository`
-4. NuxtHub 将配置您的项目在 Cloudflare Pages 上并部署它
-5. 您的应用部署到 `.nuxt.dev` 域名下
+1. 将您的代码推送到您的 git 仓库（GitHub）
+2. 点击 `新项目` 然后 `导入 Git 仓库`
+3. 选择您的仓库并点击 `导入仓库`
+4. NuxtHub 将配置一个 GitHub Action 工作流来部署您的项目
+5. 您的应用程序已部署在 `.nuxt.dev` 域名上
 
-项目被导入并部署后，所有对分支的推送将生成预览部署，对生产分支（通常为“main”）的所有更改将导致生产部署。
+在您的项目被导入和部署后，所有后续推送到分支将生成预览部署，对生产分支（通常为“main”）所做的所有更改将导致生产部署。
 
 ## 模板
 

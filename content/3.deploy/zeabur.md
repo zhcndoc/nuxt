@@ -13,7 +13,7 @@ Nuxt 支持只需进行最小的配置即可在 [Zeabur](https://zeabur.com) 上
 
 1. 根据[指南](https://zeabur.com/docs/guides/nodejs/nuxt)为 Nuxt 创建一个新的 Zeabur 应用。
 
-2. 在部署过程中，你可以在 Zeabur 仪表板上配置环境变量。在服务页面上，打开变量选项卡，并设置以下环境变量的值[环境变量](https://zeabur.com/docs/deploy/variables)：
+2. 在部署过程中，您可以在 Zeabur 仪表板中配置环境变量。在您的服务页面上，打开变量选项卡并设置以下 [环境变量](https://zeabur.com/docs/deploy/variables)：
 
     ```bash
     SERVER_PRESET=zeabur
