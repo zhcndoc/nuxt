@@ -24,8 +24,9 @@ jobs:
           NUXT_GITHUB_TOKEN: ${{ secrets.NUXT_GITHUB_TOKEN }}
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
         run: |
+          npm install -g --force corepack
           corepack enable
-          pnpm install
+          pnpm install --frozen-lockfile
           pnpm run generate
 
       - name: Upload build artifact
