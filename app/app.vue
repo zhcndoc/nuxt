@@ -121,9 +121,3 @@ onMounted(() => {
     </ClientOnly>
   </div>
 </template>
-
-<style>
-#kapa-widget-container {
-  visibility: hidden;
-}
-</style>
