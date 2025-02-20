@@ -1,7 +1,7 @@
-title: 'Nuxt 专业服务'
+title: 'Nuxt 企业支持'
 navigation.title: '支持'
 description: '获得 Nuxt 专家的专业支持，以优化您的网站性能并克服任何挑战。'
-head.title: 'Nuxt 专业服务'
+head.title: 'Nuxt 企业支持'
 head.description: '由 Vue 和 Nuxt 的创造者和维护者提供的 Vue 和 Nuxt 专业支持与咨询服务，包括代码审核和性能优化。'
 navigation.icon: i-ph-lifebuoy
 hero:
