@@ -77,7 +77,7 @@ useSeoMeta({
               Nuxt 是什么？
             </UButton>
           </div>
-          <UInputCopy value="npm create@latest nuxt" label="npm create@latest nuxt" class="w-full" />
+          <UInputCopy value="npm create nuxt@latest" label="npm create nuxt@latest" class="w-full" />
         </div>
 
         <UModal v-model="videoModalOpen" :ui="{ width: 'sm:max-w-4xl lg:max-w-5xl aspect-[16/9]' }">
