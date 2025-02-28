@@ -71,6 +71,14 @@ templates:
     screenshotUrl: 'https://tairo.cssninja.io'
     purchase: 'https://1.envato.market/nuxt-tairo'
     badge: '高级'
+  - name: 'Glide.ai'
+    slug: 'glideai'
+    description: '一个由 Nuxt 和 Prismic 支持的黑暗现代网站模板。'
+    demo: 'https://prismic-demo-glideai.nuxt.dev'
+    screenshotUrl: 'https://prismic-demo-glideai.nuxt.dev'
+    screenshotOptions:
+      delay: 5
+    repo: prismicio-community/nuxt-starter-prismic-glideai
   - name: 'Supastarter'
     slug: 'supastarter'
     description: '一个生产就绪的 SaaS 启动工具包，带有身份验证、国际化、账单与支付。'
