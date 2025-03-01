@@ -43,11 +43,6 @@ if (examplesSourceBase) {
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ogImage: {
-    fonts: [
-      'Noto+Sans+SC:400'
-    ]
-  },
   extends: [
     process.env.NUXT_UI_PRO_PATH || '@nuxt/ui-pro'
   ],
@@ -219,8 +214,16 @@ export default defineNuxtConfig({
   },
   icon: {
     clientBundle: {
-      scan: true
+      scan: {
+        globInclude: ['**/*.{vue,jsx,tsx,md,mdc,mdx,js,ts}']
+      },
+      sizeLimitKb: 0
     }
+  },
+  ogImage: {
+    fonts: [
+      'Noto+Sans+SC:400'
+    ]
   },
   twoslash: {
     floatingVueOptions: {
