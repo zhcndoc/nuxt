@@ -96,11 +96,11 @@ export default defineNuxtConfig({
     }
   },
   $production: {
-    // image: {
-    //   ipx: {
-    //     baseURL: 'https://ipx.nuxt.com'
-    //   }
-    // }
+    image: {
+      ipx: {
+        // baseURL: 'https://ipx.nuxt.com'
+      }
+    }
   },
   devtools: {
     enabled: false

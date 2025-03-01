@@ -13,8 +13,3 @@ export default nuxt()
       '@typescript-eslint/no-explicit-any': 'off'
     }
   })
-  .override('nuxt', {
-    rules: {
-      'nuxt/nuxt-config-keys-order': 'off',
-    }
-  })

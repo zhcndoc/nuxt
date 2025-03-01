@@ -18,5 +18,3 @@ dist
 # Local editor
 *.code-workspace
 .idea/
-
-doc-agent
