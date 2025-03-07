@@ -1,72 +1,72 @@
-title: 'Nuxt 企业支持'
-navigation.title: '支持'
-description: '通过 Nuxt 专家获得专业支持，以优化您的网站性能并克服任何挑战。'
-head.title: 'Nuxt 企业支持'
-head.description: '由 Vue 和 Nuxt 的创作者和维护者提供的专业支持和咨询服务，针对代码审计和性能优化。'
+title: Nuxt 企业支持
+navigation.title: 支持
+description: 通过 Nuxt 专家获得专业支持，以优化您的网站性能并克服任何挑战。
+head.title: Nuxt 企业支持
+head.description: 由 Vue 和 Nuxt 的创作者和维护者提供的专业支持和咨询服务，针对代码审计和性能优化。
 navigation.icon: i-ph-lifebuoy
 hero:
   links:
-  - label: 与专家沟通
-    color: black
-    to: 'https://calendly.com/ferdinand-nuxt/nuxtlabs-ferdinand'
-    size: sm
-    target: '_blank'
+    - label: 与专家沟通
+      color: black
+      to: https://calendly.com/ferdinand-nuxt/nuxtlabs-ferdinand
+      size: sm
+      target: _blank
 logos:
-  - light: '/assets/enterprise/support/light/malt.svg'
-    dark: '/assets/enterprise/support/dark/malt.svg'
+  - light: /assets/enterprise/support/light/malt.svg
+    dark: /assets/enterprise/support/dark/malt.svg
     width: '85'
     height: '24'
-    alt: 'malt logo'
-  - light: '/assets/enterprise/support/light/zadig-and-voltaire.svg'
-    dark: '/assets/enterprise/support/dark/zadig-and-voltaire.svg'
+    alt: malt 标志
+  - light: /assets/enterprise/support/light/zadig-and-voltaire.svg
+    dark: /assets/enterprise/support/dark/zadig-and-voltaire.svg
     width: '180'
     height: '24'
-    alt: 'zadig-and-voltaire logo'
-  - light: '/assets/enterprise/support/light/adyen.svg'
-    dark: '/assets/enterprise/support/dark/adyen.svg'
+    alt: zadig-and-voltaire 标志
+  - light: /assets/enterprise/support/light/adyen.svg
+    dark: /assets/enterprise/support/dark/adyen.svg
     width: '85'
     height: '24'
-    alt: 'adyen logo'
-  - light: '/assets/enterprise/support/light/world-wide-technology.svg'
-    dark: '/assets/enterprise/support/dark/world-wide-technology.svg'
+    alt: adyen 标志
+  - light: /assets/enterprise/support/light/world-wide-technology.svg
+    dark: /assets/enterprise/support/dark/world-wide-technology.svg
     width: '120'
     height: '24'
-    alt: 'world-wide-technology logo'
-  - light: '/assets/enterprise/support/light/cora.svg'
-    dark: '/assets/enterprise/support/dark/cora.svg'
+    alt: world-wide-technology 标志
+  - light: /assets/enterprise/support/light/cora.svg
+    dark: /assets/enterprise/support/dark/cora.svg
     width: '40'
     height: '24'
-    alt: 'cora logo'
-  - light: '/assets/enterprise/support/light/mir.svg'
-    dark: '/assets/enterprise/support/dark/mir.svg'
+    alt: cora 标志
+  - light: /assets/enterprise/support/light/mir.svg
+    dark: /assets/enterprise/support/dark/mir.svg
     width: '70'
     height: '24'
-    alt: 'mir logo'
-  - light: '/assets/enterprise/support/light/tchibo.svg'
-    dark: '/assets/enterprise/support/dark/tchibo.svg'
+    alt: mir 标志
+  - light: /assets/enterprise/support/light/tchibo.svg
+    dark: /assets/enterprise/support/dark/tchibo.svg
     width: '100'
     height: '24'
-    alt: 'tchibo logo'
-  - light: '/assets/enterprise/support/light/about-you.svg'
-    dark: '/assets/enterprise/support/dark/about-you.svg'
+    alt: tchibo 标志
+  - light: /assets/enterprise/support/light/about-you.svg
+    dark: /assets/enterprise/support/dark/about-you.svg
     width: '150'
     height: '24'
-    alt: 'about-you logo'
-  - light: '/assets/enterprise/support/light/chillisauce.svg'
-    dark: '/assets/enterprise/support/dark/chillisauce.svg'
+    alt: about-you 标志
+  - light: /assets/enterprise/support/light/chillisauce.svg
+    dark: /assets/enterprise/support/dark/chillisauce.svg
     width: '140'
     height: '20'
-    alt: 'chillisauce logo'
-  - light: '/assets/enterprise/support/light/otypo.svg'
-    dark: '/assets/enterprise/support/dark/otypo.svg'
+    alt: chillisauce 标志
+  - light: /assets/enterprise/support/light/otypo.svg
+    dark: /assets/enterprise/support/dark/otypo.svg
     width: '120'
     height: '47'
-    alt: 'otypo logo'
-  - light: '/assets/enterprise/support/light/realtruck.svg'
-    dark: '/assets/enterprise/support/dark/realtruck.svg'
+    alt: otypo 标志
+  - light: /assets/enterprise/support/light/realtruck.svg
+    dark: /assets/enterprise/support/dark/realtruck.svg
     width: '180'
     height: '89'
-    alt: 'realtruck logo'
+    alt: realtruck 标志
 service:
   title: 我们的服务
   description: '我们为使用 Vue 和 Nuxt 的公司提供专业知识和指导，包括项目架构、性能优化、最佳实践和故障排除的帮助。'
@@ -84,143 +84,81 @@ service:
       title: 自定义服务
       description: '告诉我们您的需求，我们将找到最有效的方法来帮助您实现目标。'
 expertise:
-  title: '最高水平的专业知识'
-  description: 'Nuxt 专家是 Vue、Nuxt 和 Vite 的核心团队成员或选定的贡献者。'
+  title: 最高水平的专业知识
+  description: Nuxt 专家是 Vue、Nuxt 和 Vite 的核心团队成员或选定的贡献者。
   logos:
-    - src: '/assets/enterprise/support/nuxt.svg'
+    - src: /assets/enterprise/support/nuxt.svg
       width: 32
       height: 32
       color: '#00DC82'
-      alt: 'nuxt logo'
-    - src: '/assets/enterprise/support/vite.svg'
+      alt: nuxt 标志
+    - src: /assets/enterprise/support/vite.svg
       width: 32
       height: 32
       color: '#a256fe'
-      alt: 'vite logo'
-    - src: '/assets/enterprise/support/unjs.svg'
+      alt: vite 标志
+    - src: /assets/enterprise/support/unjs.svg
       width: 32
       height: 32
       color: '#ecdb5a'
-      alt: 'unjs logo'
-    - src: '/assets/enterprise/support/vue.svg'
+      alt: unjs 标志
+    - src: /assets/enterprise/support/vue.svg
       width: 32
       height: 32
       color: '#42b883'
-      alt: 'vue logo'
+      alt: vue 标志
 testimonials:
-  title: '客户的声音'
-  description: '听听我们的客户如何评价我们的咨询服务，如何改变了他们的项目并提升了他们的性能。'
+  title: 客户评价
+  description: 听听我们的客户如何评价我们的咨询服务如何改变了他们的项目并提升了他们的性能。
   items:
-    - quote: "“我会强烈推荐他们的服务给任何想了解 Nuxt 的人，以确保您获得它可以提供的所有好处，并确保您的团队遵循所有最佳实践设计模式。”"
-      author: 'James Baddiley'
-      job: '首席执行官/首席技术官 @ Chillisauce'
+    - quote: “我强烈推荐他们的服务给任何希望使用 Nuxt 的人，以确保您能获得所有优势，并确保您的团队遵循所有最佳实践设计模式。”
+      author: James Baddiley
+      job: Chillisauce CEO/CTO
       logo:
-        light: '/assets/enterprise/support/light/chillisauce.svg'
-        dark: '/assets/enterprise/support/dark/chillisauce.svg'
-        alt: 'chillisauce logo'
+        light: /assets/enterprise/support/light/chillisauce.svg
+        dark: /assets/enterprise/support/dark/chillisauce.svg
+        alt: chillisauce 标志
         width: 134
         height: 28
       achievements:
-        - label: '向 Nuxt 迁移'
-          color: 'blue'
-        - label: '性能优化'
-          color: 'orange'
-        - label: '长期支持'
-          color: 'yellow'
-    - quote: "“选择 NuxtLabs 对我们的 Nuxt 项目进行审核是一个改变游戏规则的决定。他们的详细见解显著提升了我们网站的性能和代码质量。我们对他们的支持深表感谢，并强烈推荐给其他人。”"
-      author: 'Melene Ulm'
-      job: '网页开发者 @ Mobile Industrial Robots'
-      logo:
-        light: '/assets/enterprise/support/light/mir.svg'
-        dark: '/assets/enterprise/support/dark/mir.svg'
-        alt: 'mir logo'
-        width: 54
-        height: 24
-      achievements:
-        - label: '代码库审核'
-          color: 'pink'
-        - label: '性能优化'
-          color: 'orange'
-        - label: '长期支持'
-          color: 'yellow'
-    - quote: "“专家为我们提供了宝贵的反馈，包括如何更有效地利用 Nuxt 和生态系统，提出了关于历史实现背景的问题，并发现了我们尚未捕捉到的错误。”"
-      author: 'Robert K Pauls'
-      job: '负责人 @ ABOUT YOU group'
-      logo:
-        light: '/assets/enterprise/support/light/about-you.svg'
-        dark: '/assets/enterprise/support/dark/about-you.svg'
-        alt: 'about you logo'
-        width: 120
-        height: 24
-      achievements:
-        - label: '性能优化'
-          color: 'orange'
-        - label: '代码库审核'
-          color: 'pink'
-    - quote: "“他们提供了关于如何使我们应用的核心更高效的优秀反馈，并给出了我们计划在不久的将来实施的功能的一些非常有价值的建议。”"
-      author: 'Maxime Casadei'
-      job: '首席执行官 @ NAKWEB for Otypo'
-      width: 80
-      height: 20
-      logo:
-        light: '/assets/enterprise/support/light/otypo.svg'
-        dark: '/assets/enterprise/support/dark/otypo.svg'
-        alt: 'otypo logo'
-      achievements:
-        - label: '向 Nuxt 迁移'
-          color: 'blue'
-        - label: '性能优化'
-          color: 'orange'
-        - label: '代码库审核'
-          color: 'pink'
-    - quote: "“与 NuxtLabs 合作非常棒。他们在我们的代码库中发现了隐藏的机会。我们的企业应用现在比以往更快、更安全、更可靠！”"
-      author: 'Josh Deltener'
-      job: '软件工程总监 @ RealTruck.com'
-      logo:
-        light: '/assets/enterprise/support/light/realtruck.svg'
-        dark: '/assets/enterprise/support/dark/realtruck.svg'
-        alt: 'realtruck logo'
-        width: 140
-        height: 30
-      achievements:
-        - label: '向 Nuxt 迁移'
-          color: 'blue'
-        - label: '性能优化'
-          color: 'orange'
-        - label: '代码库审核'
-          color: 'pink'
+        - label: 迁移至 Nuxt
+          color: blue
+        - label: 性能优化
+          color: orange
+        - label: 长期支持
+          color: yellow
 project:
-  title: '我们如何进行？'
-  description: "通过以下三个简单步骤获取来自 Vue 与 Nuxt 专家的专业支持和咨询服务。"
+  title: 我们的合作流程
+  description: 仅需 3 个简单步骤，即可获得 Vue & Nuxt 专家的专业支持和咨询服务。
   steps:
-    - title: '介绍会议'
-      description: "第一次会议致力于收集尽可能多的信息，以了解您的需求和背景，以确定合适的服务和专家。"
+    - title: 初步会议
+      description: 该会议旨在尽可能多地收集您的需求和背景信息，以便我们匹配合适的专家提供正确的服务。
       number: 1
-    - title: '符合您需求的报价'
-      description: "根据您提供的信息和先前类似的咨询项目，我们将提供一份定制的报价以满足您的需求。"
+    - title: 定制报价
+      description: 根据您提供的信息和我们过去类似的咨询经验，我们将提供定制报价，以满足您的需求。
       number: 2
-    - title: 'Nuxt 专家入驻'
-      description: "达成协议后，专家将被引入您的团队，以开始进行咨询合作。"
+    - title: Nuxt 专家对接
+      description: 达成协议后，专家将与您的团队对接并开始提供咨询服务。
       number: 3
 form:
-  title: '与我们联系'
-  description: "有问题或需要帮助？请填写以下表格，我们会尽快与您联系。"
+  title: 联系我们
+  description: 有问题或需要帮助？请填写下面的表单，我们会尽快回复您。
   name:
-    label: '姓名'
-    placeholder: '约翰·多'
+    label: 姓名
+    placeholder: 张三
   email:
-    label: '公司电子邮件'
-    placeholder: 'you@example.com'
+    label: 公司邮箱
+    placeholder: you@example.com
   company:
-    label: '公司'
-    placeholder: '您的公司名称'
+    label: 公司名称
+    placeholder: 您的公司名称
   link:
-    label: '有用的链接'
-    placeholder: 'www.nuxt.com'
+    label: 相关链接
+    placeholder: www.nuxt.com
   body:
-    label: '我们可以帮助您实现什么？'
-    placeholder: '告诉我们我们可以为您提供什么帮助'
-  info: '提交此表单即表示我确认我已阅读并理解 <a class="text-gray-950 dark:text-gray-100 underline font-medium">Nuxt 隐私声明。</a>'
+    label: 我们能帮助您实现什么目标？
+    placeholder: 告诉我们您的需求
+  info: 提交此表单即表示我已阅读并理解 <a class="text-gray-950 dark:text-gray-100 underline font-medium">Nuxt 隐私声明。</a>
   button:
     icon: i-ph-paper-plane-right
-    label: '发送消息'
+    label: 发送消息
