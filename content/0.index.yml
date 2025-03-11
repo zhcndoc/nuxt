@@ -281,6 +281,7 @@ sections:
           avatar:
             src: https://avatar.ikxin.com/github/yyx990803?size=40
             srcset: https://avatar.ikxin.com/github/yyx990803?size=80 2x
+            loading: lazy
       - quote: 对于在网络上构建生产级产品的团队来说，Nuxt 是一个绝佳的选择。它的目标是在保持出色的 Vue.js DX 的同时，融入性能方面的最佳实践。
         author:
           name: Addy Osmani
@@ -290,6 +291,7 @@ sections:
           avatar:
             src: https://avatar.ikxin.com/github/addyosmani?size=40
             srcset: https://avatar.ikxin.com/github/addyosmani?size=80 2x
+            loading: lazy
       - quote: Nuxt 已经成为开发人员和框架作者的创新和灵感的不可思议的来源。看到它在各种规模的 Web 项目中的增长真是令人惊讶。
         author:
           name: Guillermo Rauch
@@ -299,6 +301,7 @@ sections:
           avatar:
             src: https://avatar.ikxin.com/github/rauchg?size=40
             srcset: https://avatar.ikxin.com/github/rauchg?size=80 2x
+            loading: lazy
       - quote: Nuxt 具有出色的开发者生产力、体验和性能！非常注重细节，确保团队可以轻松构建各种类型的应用程序。
         author:
           name: Sarah Drasner
@@ -308,6 +311,7 @@ sections:
           avatar:
             src: https://avatar.ikxin.com/github/sdras?size=40
             srcset: https://avatar.ikxin.com/github/sdras?size=80 2x
+            loading: lazy
       - quote: Nuxt 以独特的方式将出色的开发者体验与可重复使用、完全集成的功能相结合，从而加快您下一个网站或应用程序的开发和性能。
         author:
           name: Dominik Angerer
@@ -317,6 +321,7 @@ sections:
           avatar:
             src: https://avatar.ikxin.com/github/DominikAngerer?size=40
             srcset: https://avatar.ikxin.com/github/DominikAngerer?size=80 2x
+            loading: lazy
       - quote: 第一次使用 Nuxt 的时候，我就爱上了它。除了它的可扩展性、性能和开发经验之外，背后的团队也很棒。感谢开发这样一个伟大的框架，让我们的生活变得更轻松！
         author:
           name: Savas Vedova
@@ -326,6 +331,7 @@ sections:
           avatar:
             src: https://avatar.ikxin.com/github/svedova?size=40
             srcset: https://avatar.ikxin.com/github/svedova?size=80 2x
+            loading: lazy
       - quote: Nuxt 将高性能和专注的开发人员体验相结合，改变了游戏规则。它的 SSR 和 SSG 灵活性，加上像 Vue.js 生态系统一样充满活力的社区，使其成为现代网络项目的绝佳选择。
         author:
           name: Rijk van Zanten
@@ -335,3 +341,4 @@ sections:
           avatar:
             src: https://avatar.ikxin.com/github/rijkvanzanten?size=40
             srcset: https://avatar.ikxin.com/github/rijkvanzanten?size=80 2x
+            loading: lazy
