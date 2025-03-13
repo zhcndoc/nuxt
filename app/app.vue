@@ -28,9 +28,14 @@ useHead({
   },
   script: [
     {
-      src: 'https://www.zhcndoc.com/js/common.js',
       async: '',
+      src: 'https://cdn.wwads.cn/js/makemoney.js',
+      type: 'text/javascript'
     },
+    {
+      async: '',
+      src: 'https://www.zhcndoc.com/js/common.js'
+    }
   ]
 })
 

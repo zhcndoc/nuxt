@@ -97,6 +97,7 @@ defineOgImageComponent('Docs', {
     </UPageHeader>
 
     <UPageBody prose class="dark:text-gray-300 dark:prose-pre:!bg-gray-800/60">
+      <div class="wwads-cn wwads-horizontal" data-id="354" style="max-width:350px" />
       <ContentRenderer v-if="page && page.body" :value="page" />
 
       <hr v-if="surround?.length">
