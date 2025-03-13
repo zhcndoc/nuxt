@@ -99,7 +99,7 @@ defineOgImageComponent('Docs', {
     <UPageBody prose class="dark:text-gray-300 dark:prose-pre:!bg-gray-800/60">
       <ContentRenderer v-if="page && page.body" :value="page" />
 
-      <div class="wwads-cn wwads-horizontal" data-id="354" />
+      <div class="wwads-cn wwads-horizontal lg:!hidden" data-id="354" />
       <hr v-if="surround?.length">
 
       <UContentSurround :surround="surround" />

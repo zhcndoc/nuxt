@@ -137,7 +137,7 @@ const links = [
             </div>
           </div>
 
-          <div class="wwads-cn wwads-horizontal" data-id="354" />
+          <div class="wwads-cn wwads-horizontal lg:!hidden" data-id="354" />
           <hr v-if="surround?.length">
 
           <UContentSurround :surround="surround" />
