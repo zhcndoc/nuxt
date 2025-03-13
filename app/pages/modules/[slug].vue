@@ -162,6 +162,7 @@ defineOgImageComponent('Docs', {
     <UPage>
       <UPageBody prose class="dark:text-gray-300 dark:prose-pre:!bg-gray-800/60">
         <ContentRendererMarkdown v-if="module.readme?.body" :value="module.readme" class="module-readme" :components="{ a: ModuleProseA, img: ModuleProseImg }" />
+        <div class="wwads-cn wwads-horizontal" data-id="354" />
       </UPageBody>
 
       <template #right>

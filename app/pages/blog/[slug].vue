@@ -120,11 +120,11 @@ const links = [
 
           <div class="flex items-center justify-between mt-12 not-prose">
             <NuxtLink href="/blog" class="text-primary">
-              ← Back to blog
+              ← 返回博客
             </NuxtLink>
             <div class="flex justify-end items-center gap-1.5">
               <UButton icon="i-ph-link-simple" v-bind="($ui.button.secondary as any)" @click="copyLink">
-                Copy URL
+                复制网址
               </UButton>
               <UButton
                 v-for="(link, index) in socialLinks"
@@ -137,6 +137,7 @@ const links = [
             </div>
           </div>
 
+          <div class="wwads-cn wwads-horizontal" data-id="354" />
           <hr v-if="surround?.length">
 
           <UContentSurround :surround="surround" />

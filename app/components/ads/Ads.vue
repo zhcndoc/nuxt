@@ -11,5 +11,6 @@ if (!useNuxtApp().isHydrating) {
     <!-- <AdsUIPro v-if="uiPro" />
     <AdsFallback v-else-if="$ads.adBlocked.value" />
     <AdsCarbon v-else :key="$route.path" /> -->
+    <div class="wwads-cn wwads-vertical" data-id="354" />
   </div>
 </template>

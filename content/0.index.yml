@@ -1,8 +1,8 @@
 navigation: false
 hero:
   cta:
-    label: Nuxt v3.16 已发布
-    to: /blog/v3-16
+    label: Nuxt UI v3 已发布
+    to: /blog/nuxt-ui-v3
     icon: i-ph-arrow-right
 logos:
   title: 受到最好的前端团队信任

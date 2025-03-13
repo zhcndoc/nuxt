@@ -49,7 +49,7 @@ const titleTemplate = computed(() => {
 const communityLinks = computed(() => [{
   icon: 'i-ph-pen',
   label: '编辑此页面',
-  to: `https://github.com/nuxt/nuxt/edit/main/docs/${page?.value?._file?.split('/').slice(1).join('/')}`,
+  to: `https://github.com/zhcndoc/nuxt-docs/edit/main/docs/${page?.value?._file?.split('/').slice(1).join('/')}`,
   target: '_blank'
 }, {
   icon: 'i-ph-hand-heart',
@@ -97,9 +97,9 @@ defineOgImageComponent('Docs', {
     </UPageHeader>
 
     <UPageBody prose class="dark:text-gray-300 dark:prose-pre:!bg-gray-800/60">
-      <div class="wwads-cn wwads-horizontal" data-id="354" style="max-width:350px" />
       <ContentRenderer v-if="page && page.body" :value="page" />
 
+      <div class="wwads-cn wwads-horizontal" data-id="354" />
       <hr v-if="surround?.length">
 
       <UContentSurround :surround="surround" />
