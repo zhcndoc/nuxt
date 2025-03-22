@@ -47,3 +47,18 @@ export const createBreadcrumb = (link: string = 'Missing link') => {
   }
   return link.split('/').filter(Boolean).map(part => splitByCase(part).map(p => upperFirst(p)).join(' ')).join(' > ').replace('Api', 'API')
 }
+
+export const replaceAvatarUrls = (sponsorData: any) => {
+  for (const tier in sponsorData) {
+    if (Array.isArray(sponsorData[tier])) {
+      sponsorData[tier].forEach((sponsor: any) => {
+        if (sponsor.sponsorLogo.includes('github')) {
+          sponsor.sponsorLogo = `https://avatar.ikxin.com/github/${sponsor.sponsorId}`
+        } else if (sponsor.sponsorLogo.includes('opencollective')) {
+          sponsor.sponsorLogo = `https://avatar.ikxin.com/opencollective/${sponsor.sponsorId}`
+        }
+      })
+    }
+  }
+  return sponsorData
+}

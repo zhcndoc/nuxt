@@ -10,6 +10,8 @@ if (!page.value) {
 
 const { data: sponsors } = await useFetch('https://api.nuxt.com/sponsors', { key: 'sponsors' })
 
+if (sponsors.value) sponsors.value = replaceAvatarUrls(sponsors.value)
+
 const title = page.value.title
 const description = page.value.description
 useSeoMeta({

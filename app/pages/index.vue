@@ -19,6 +19,8 @@ const officialModules = computed(() => {
 
 const { data: sponsors } = await useFetch('https://api.nuxt.com/sponsors', { key: 'sponsors' })
 
+if (sponsors.value) sponsors.value = replaceAvatarUrls(sponsors.value)
+
 const stats = useStats()
 
 const videoModalOpen = ref(false)
