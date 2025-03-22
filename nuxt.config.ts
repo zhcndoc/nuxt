@@ -16,8 +16,8 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-og-image',
     'motion-v/nuxt',
-    'nuxt-llms',
-    '@nuxthub/core'
+    'nuxt-llms'
+    // '@nuxthub/core'
   ],
   $development: {
     runtimeConfig: {
@@ -41,18 +41,18 @@ export default defineNuxtConfig({
       ]
     }
   },
-  $production: {
-    image: {
-      format: ['webp', 'jpeg', 'jpg', 'png', 'svg'],
-      provider: 'cloudflare',
-      cloudflare: {
-        baseURL: 'https://nuxt.com'
-      },
-      ipx: {
-        // baseURL: 'https://ipx.nuxt.com'
-      }
-    }
-  },
+  // $production: {
+  //   image: {
+  //     format: ['webp', 'jpeg', 'jpg', 'png', 'svg'],
+  //     provider: 'cloudflare',
+  //     cloudflare: {
+  //       baseURL: 'https://nuxt.com'
+  //     },
+  //     ipx: {
+  //       baseURL: 'https://ipx.nuxt.com'
+  //     }
+  //   }
+  // },
   devtools: {
     enabled: true
   },
@@ -144,9 +144,9 @@ export default defineNuxtConfig({
       }
     }
   },
-  hub: {
-    cache: true
-  },
+  // hub: {
+  //   cache: true
+  // },
   typescript: {
     strict: false
   },
@@ -156,6 +156,9 @@ export default defineNuxtConfig({
         commaDangle: 'never'
       }
     }
+  },
+  fonts: {
+    provider: 'none'
   },
   icon: {
     customCollections: [{

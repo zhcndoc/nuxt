@@ -387,8 +387,8 @@ testimonial:
     description: 'Creator of Vue.js and Vite'
     to: 'https://x.com/evanyou'
     avatar:
-      src: 'https://ipx.nuxt.com/f_auto,s_40x40/gh_avatar/yyx990803'
-      srcset: 'https://ipx.nuxt.com/f_auto,s_80x80/gh_avatar/yyx990803 2x'
+      src: 'https://avatar.ikxin.com/github/yyx990803?size=40'
+      srcset: 'https://avatar.ikxin.com/github/yyx990803?size=80 2x'
       provider: 'ipx'
 deploy:
   title: Deploy your app anywhere
