@@ -2,15 +2,15 @@
 title: 设计套件
 head.description: 获取 Nuxt 资产，例如徽标、排版和颜色。
 description: 欢迎来到 Nuxt 设计定义页面。为了表达 Nuxt 产品的简单与乐趣，我们精心挑选了颜色和形状，重新定义了身份。
-navigation.icon: 'i-ph-palette'
+navigation.icon: 'i-lucide-palette'
 links:
   - label: 'Nuxt 品牌套件'
     size: 'lg'
     to: 'https://www.figma.com/community/file/1296154408275753939/nuxt-brand-kit'
     icon: 'i-logos-figma'
-    trailingIcon: 'i-ph-arrow-up-right'
+    trailingIcon: 'i-lucide-arrow-up-right'
     download: true
-    color: 'white'
+    color: 'neutral'
     target: '_blank'
 ---
 

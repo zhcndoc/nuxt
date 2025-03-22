@@ -1,0 +1,10 @@
+navigation.title: 部署
+title: 部署一个 Nuxt 应用
+description: 发现将您的 Nuxt 项目部署到不同托管服务提供商的不同方法。
+navigation.icon: i-lucide-rocket
+links:
+  - label: '部署指南'
+    icon: i-lucide-cloud
+    to: '/docs/getting-started/deployment'
+    color: neutral
+    size: md

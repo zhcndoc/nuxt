@@ -1,0 +1,4 @@
+title: Nuxt 博客
+navigation.title: 博客
+description: '阅读关于所有 Nuxt 解决方案的最新消息，从框架公告到集成教程。'
+navigation.icon: i-lucide-newspaper

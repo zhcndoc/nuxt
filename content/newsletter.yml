@@ -2,7 +2,6 @@ title: Nuxt 新闻通讯
 head.title: Nuxt 新闻通讯
 description: '通过我们的新闻通讯获取关于 Nuxt 及其生态系统的最新版本和新闻。'
 navigation: false
-align: 'center'
 cta:
   headline: 开始使用
   title: 开启您的 Nuxt 之旅
@@ -10,9 +9,10 @@ cta:
   links:
     - label: '开始使用'
       size: 'lg'
-      color: 'black'
+      color: 'neutral'
       to: '/docs/getting-started/introduction'
     - label: '探索示例'
       size: 'lg'
-      color: 'white'
+      color: 'neutral'
+      variant: 'subtle'
       to: '/docs/examples'

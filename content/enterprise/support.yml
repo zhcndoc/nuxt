@@ -1,0 +1,240 @@
+title: Nuxt 企业支持
+navigation.title: '支持'
+description: '通过 Nuxt 专家获得专业支持，以优化您的网站性能并克服任何挑战。'
+head.title: 'Nuxt 企业支持'
+head.description: '由 Vue 和 Nuxt 的创作者和维护者提供的专业支持和咨询服务，针对代码审计和性能优化。'
+navigation.icon: i-lucide-life-buoy
+hero:
+  links:
+  - label: 与 Nuxt 专家交谈
+    trailingIcon: i-lucide-arrow-right
+    to: 'https://calendly.com/ferdinand-nuxt/nuxtlabs-ferdinand'
+    target: '_blank'
+logos:
+  - light: /assets/enterprise/support/light/malt.svg
+    dark: /assets/enterprise/support/dark/malt.svg
+    width: '85'
+    height: '24'
+    alt: malt 标志
+  - light: /assets/enterprise/support/light/zadig-and-voltaire.svg
+    dark: /assets/enterprise/support/dark/zadig-and-voltaire.svg
+    width: '180'
+    height: '24'
+    alt: zadig-and-voltaire 标志
+  - light: /assets/enterprise/support/light/adyen.svg
+    dark: /assets/enterprise/support/dark/adyen.svg
+    width: '85'
+    height: '24'
+    alt: adyen 标志
+  - light: /assets/enterprise/support/light/world-wide-technology.svg
+    dark: /assets/enterprise/support/dark/world-wide-technology.svg
+    width: '120'
+    height: '24'
+    alt: world-wide-technology 标志
+  - light: /assets/enterprise/support/light/cora.svg
+    dark: /assets/enterprise/support/dark/cora.svg
+    width: '40'
+    height: '24'
+    alt: cora 标志
+  - light: /assets/enterprise/support/light/mir.svg
+    dark: /assets/enterprise/support/dark/mir.svg
+    width: '70'
+    height: '24'
+    alt: mir 标志
+  - light: /assets/enterprise/support/light/tchibo.svg
+    dark: /assets/enterprise/support/dark/tchibo.svg
+    width: '100'
+    height: '24'
+    alt: tchibo 标志
+  - light: /assets/enterprise/support/light/about-you.svg
+    dark: /assets/enterprise/support/dark/about-you.svg
+    width: '150'
+    height: '24'
+    alt: about-you 标志
+  - light: /assets/enterprise/support/light/chillisauce.svg
+    dark: /assets/enterprise/support/dark/chillisauce.svg
+    width: '140'
+    height: '20'
+    alt: chillisauce 标志
+  - light: /assets/enterprise/support/light/otypo.svg
+    dark: /assets/enterprise/support/dark/otypo.svg
+    width: '120'
+    height: '47'
+    alt: otypo 标志
+  - light: /assets/enterprise/support/light/realtruck.svg
+    dark: /assets/enterprise/support/dark/realtruck.svg
+    width: '180'
+    height: '89'
+    alt: realtruck 标志
+service:
+  title: 我们的服务
+  description: '我们为使用 Vue 和 Nuxt 的公司提供专业知识和指导，包括项目架构、性能优化、最佳实践和故障排除的帮助。'
+  services:
+    - icon: i-lucide-chart-line
+      title: 性能优化
+      description: '根据量身定制的建议优化您的 Nuxt 应用，使其比以往更快、更可靠。'
+    - icon: i-lucide-code
+      title: 迁移到 Nuxt
+      description: '让任何迁移项目从第一步到部署都成为成功且轻松的体验。'
+    - icon: i-lucide-rocket
+      title: Nuxt 工作坊
+      description: '通过定制的工作坊和持续的支持将您团队的技能提升到专家水平。'
+    - icon: i-lucide-pencil-ruler
+      title: 自定义服务
+      description: '告诉我们您的需求，我们将找到最有效的方法来帮助您实现目标。'
+expertise:
+  title: 最高水平的专业知识
+  description: Nuxt 专家是 Vue、Nuxt 和 Vite 的核心团队成员或选定的贡献者。
+  logos:
+    - src: /assets/enterprise/support/nuxt.svg
+      width: 32
+      height: 32
+      color: '#00DC82'
+      alt: nuxt 标志
+    - src: /assets/enterprise/support/vite.svg
+      width: 32
+      height: 32
+      color: '#a256fe'
+      alt: vite 标志
+    - src: /assets/enterprise/support/unjs.svg
+      width: 32
+      height: 32
+      color: '#ecdb5a'
+      alt: unjs 标志
+    - src: /assets/enterprise/support/vue.svg
+      width: 32
+      height: 32
+      color: '#42b883'
+      alt: vue 标志
+testimonials:
+  title: 客户评价
+  description: 听听我们的客户如何评价我们的咨询服务如何改变了他们的项目并提升了他们的性能。
+  items:
+    - quote: “我强烈推荐他们的服务给任何希望使用 Nuxt 的人，以确保您能获得所有优势，并确保您的团队遵循所有最佳实践设计模式。”
+      author: James Baddiley
+      job: Chillisauce CEO/CTO
+      logo:
+        light: /assets/enterprise/support/light/chillisauce.svg
+        dark: /assets/enterprise/support/dark/chillisauce.svg
+        alt: chillisauce 标志
+        width: 134
+        height: 28
+      achievements:
+        - label: 'Migration to Nuxt'
+          color: 'info'
+        - label: 'Performance optimization'
+          color: 'warning'
+        - label: 'Long-term support'
+          color: 'success'
+    - quote: "“Choosing NuxtLabs for an audit of our Nuxt project was a game-changer. Their detailed insights significantly enhanced our site's performance and the quality of our code. We're grateful for their support and highly recommend them to others.“"
+      author: Jacques Jahnichen
+      job: Co-founder and CTO @ Viviarto
+      logo:
+        light: /assets/enterprise/support/light/viviarto.svg
+        dark: /assets/enterprise/support/dark/viviarto.svg
+        alt: viviarto logo
+        width: 134
+        height: 28
+      achievements:
+        - label: Codebase audit
+          color: important
+        - label: Migration to Nuxt
+          color: info
+        - label: Performance optimization
+          color: warning
+    - quote: “Choosing NuxtLabs for an audit of our Nuxt project was a game-changer. Their detailed insights significantly enhanced our site's performance and the quality of our code. We're grateful for their support and highly recommend them to others.“
+      author: Melene Ulm
+      job: Web Developer @ Mobile Industrial Robots
+      logo:
+        light: /assets/enterprise/support/light/mir.svg
+        dark: /assets/enterprise/support/dark/mir.svg
+        alt: mir logo
+        width: 54
+        height: 24
+      achievements:
+        - label: 'Codebase audit'
+          color: 'important'
+        - label: 'Performance optimization'
+          color: 'warning'
+        - label: 'Long-term support'
+          color: 'success'
+    - quote: "“The expert provided us with valuable feedback, which included improvements on how we can utilize Nuxt and the ecosystem more effectively, raising questions about the background of historic implementation and finding bugs that we did not yet catch.“"
+      author: 'Robert K Pauls'
+      job: 'Lead dev at @ ABOUT YOU group'
+      logo:
+        light: /assets/enterprise/support/light/about-you.svg
+        dark: /assets/enterprise/support/dark/about-you.svg
+        alt: about you logo
+        width: 120
+        height: 24
+      achievements:
+        - label: 'Performance optimization'
+          color: 'warning'
+        - label: 'Codebase audit'
+          color: 'important'
+    - quote: "“They provided excellent feedback on how to make the core of our app more efficient as well some very valuable tips for the features we are planing to implement in the near future.“"
+      author: 'Maxime Casadei'
+      job: 'CEO at @NAKWEB for Otypo'
+      width: 80
+      height: 20
+      logo:
+        light: /assets/enterprise/support/light/otypo.svg
+        dark: /assets/enterprise/support/dark/otypo.svg
+        alt: otypo logo
+      achievements:
+        - label: 'Migration to Nuxt'
+          color: 'info'
+        - label: 'Performance optimizations'
+          color: 'warning'
+        - label: 'Codebase audit'
+          color: 'important'
+    - quote: "“NuxtLabs was amazing to work with. They found hidden opportunities buried deep within our codebase. Our enterprise application is now faster, more secure and reliable than ever!“"
+      author: 'Josh Deltener'
+      job: 'Director of software engineering @ RealTruck.com'
+      logo:
+        light: /assets/enterprise/support/light/realtruck.svg
+        dark: /assets/enterprise/support/dark/realtruck.svg
+        alt: realtruck logo
+        width: 140
+        height: 30
+      achievements:
+        - label: 'Migration to Nuxt'
+          color: 'info'
+        - label: 'Performance optimizations'
+          color: 'warning'
+        - label: 'Codebase audit'
+          color: 'important'
+project:
+  title: 我们的合作流程
+  description: 仅需 3 个简单步骤，即可获得 Vue & Nuxt 专家的专业支持和咨询服务。
+  steps:
+    - title: 初步会议
+      description: 该会议旨在尽可能多地收集您的需求和背景信息，以便我们匹配合适的专家提供正确的服务。
+      number: 1
+    - title: 定制报价
+      description: 根据您提供的信息和我们过去类似的咨询经验，我们将提供定制报价，以满足您的需求。
+      number: 2
+    - title: Nuxt 专家对接
+      description: 达成协议后，专家将与您的团队对接并开始提供咨询服务。
+      number: 3
+form:
+  title: 联系我们
+  description: 有问题或需要帮助？请填写下面的表单，我们会尽快回复您。
+  name:
+    label: 姓名
+    placeholder: 张三
+  email:
+    label: 公司邮箱
+    placeholder: you@example.com
+  company:
+    label: 公司名称
+    placeholder: 您的公司名称
+  link:
+    label: 相关链接
+    placeholder: www.nuxt.com
+  body:
+    label: 'What can we help you achieve?'
+    placeholder: 'Tell us how we can help you'
+  button:
+    icon: i-lucide-send
+    label: 'Send message'
