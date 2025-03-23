@@ -1,12 +1,12 @@
 hero:
-  title: 'The Progressive Web Framework'
-  description: Create high-quality web applications with Nuxt, the open source framework that makes full-stack development with Vue.js intuitive.
+  title: '渐进式 Web 框架'
+  description: 使用 Nuxt 创建高质量的 web 应用程序，这是一款开源框架，使得使用 Vue.js 进行全栈开发变得直观。
   cta:
-    label: Nuxt UI v3 is out
+    label: Nuxt UI v3 已发布
     to: /blog/nuxt-ui-v3
     icon: i-lucide-arrow-right
   tabs:
-    - title: Minimal
+    - title: 最小化
       icon: i-lucide-leaf
       content: |
         ::code-tree{defaultValue="app.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)]"}
@@ -45,7 +45,7 @@ hero:
         }
         ```
         ::
-    - title: Routing
+    - title: 路由
       icon: i-lucide-milestone
       content: |
         ::code-tree{defaultValue="pages/index.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)]"}
@@ -86,7 +86,7 @@ hero:
         </template>
         ```
         ::
-    - title: Data Fetching
+    - title: 数据获取
       icon: i-lucide-unplug
       content: |
         ::code-tree{defaultValue="pages/index.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)]"}
@@ -139,7 +139,7 @@ hero:
         </template>
         ```
         ::
-    - title: Auto-Imports
+    - title: 自动导入
       icon: i-lucide-wand-sparkles
       content: |
         ::code-tree{defaultValue="app.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)]"}
@@ -192,7 +192,7 @@ hero:
         }
         ```
         ::
-    - title: API Routes
+    - title: API 路由
       icon: i-lucide-pc-case
       content: |
         ::code-tree{defaultValue="server/api/hello.ts" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)]"}
@@ -238,7 +238,7 @@ hero:
         ```
         ::
 logos:
-  title: Chosen by leading companies worldwide
+  title: 全球领先企业共同选择
   companies:
     - light: /assets/brands/light/fielmann.svg
       dark: /assets/brands/dark/fielmann.svg
@@ -281,54 +281,54 @@ logos:
       height: 40
       width: 51
 features:
-  title: Enable features as you grow
-  description: Nuxt grows and adapts with your needs while providing an exceptional developer experience. Build anything from simple landing pages to complex web applications that scale for teams of hundreds of developers. We've designed Nuxt to be approachable for developers of all skill levels.
+  title: 随着您的成长启用功能
+  description: Nuxt 随着您的需求增长和适应，同时提供卓越的开发者体验。从简单的登录页面到适合数百名开发者团队的复杂 web 应用程序，您可以构建任何东西。我们设计 Nuxt 使其对所有技能水平的开发者都易于接近。
   features:
     - icon: i-lucide-sparkles
-      title: Zero Configuration
-      description: Start coding with Vue or Typescript immediately — Nuxt handles all the setup for you.
+      title: 零配置
+      description: 立即开始使用 Vue 或 TypeScript 编码 —— Nuxt 为您处理所有设置。
     - icon: i-lucide-file-code-2
-      title: Rendering Modes
-      description: Server-side rendering, client-side rendering, static-site generation, you decide, up to the page level.
+      title: 渲染模式
+      description: 服务端渲染、客户端渲染、静态网站生成，任您选择，甚至可以精确到页面级别。
     - icon: i-lucide-milestone
-      title: Routing & Layouts
-      description: Use our file-based routing system to build complex url-based views while reusing components for performance.
+      title: 路由与布局
+      description: 使用基于文件的路由系统构建复杂的基于 URL 的视图，同时复用组件以提升性能。
     - icon: i-lucide-unplug
-      title: Data Fetching
-      description: Make your Vue component async and await your data. Nuxt provides powerful composables for universal data fetching.
+      title: 数据获取
+      description: 让您的 Vue 组件支持异步操作并等待数据。Nuxt 提供强大的组合函数用于通用数据获取。
     - icon: i-lucide-bug
-      title: Error Handling
-      description: Catch errors in your application with our built-in handlers and custom error pages.
+      title: 错误处理
+      description: 使用内置的错误处理程序和自定义错误页面捕获应用程序中的错误。
     - icon: i-lucide-flip-horizontal
-      title: Transitions
-      description: Implement smooth transitions between layouts, pages, and components.
+      title: 过渡效果
+      description: 在布局、页面和组件之间实现平滑过渡效果。
     - icon: i-lucide-image
-      title: Assets & Style
-      description: Benefit from automatic image, font, and script optimizations with built-in support.
+      title: 资源与样式
+      description: 通过内置支持，实现图像、字体和脚本的自动优化。
     - icon: i-lucide-file-search
-      title: SEO & Meta Tags
-      description: Create production-ready applications that are fully indexable by search engines.
+      title: SEO 与元标签
+      description: 创建能够被搜索引擎完全索引的生产级应用程序。
     - icon: i-lucide-puzzle
-      title: Modular
-      description: Extend Nuxt features with 200+ modules to ship your application faster.
+      title: 模块化
+      description: 通过 200+ 个模块扩展 Nuxt 功能，加快应用程序交付速度。
     - icon: i-lucide-shield-check
-      title: Middleware
-      description: Protect or add custom logic (localization, A/B testing) before rendering pages.
+      title: 中间件
+      description: 在页面渲染之前保护或添加自定义逻辑（本地化、A/B 测试）。
     - icon: i-simple-icons-typescript
-      title: Type-safe with TypeScript
-      description: Write type-safe code with automatically generated types and tsconfig.json.
+      title: TypeScript 类型安全
+      description: 使用自动生成的类型和 tsconfig.json 编写类型安全的代码。
   cta:
-    title: 'Deep dive into Nuxt now'
-    label: Start reading docs
+    title: '深入了解 Nuxt'
+    label: 开始阅读文档
     to: /docs
     icon: i-lucide-arrow-right
 foundation:
-  title: Built on a solid foundation
-  description: Nuxt is built on top of bulletproof open source technologies, with versatility to choose between different build tools.
+  title: 构建在坚实的基础之上
+  description: Nuxt 构建在坚如磐石的开源技术之上，具备在不同构建工具之间进行选择的多样性。
   items:
     - id: vue
-      title: Frontend with Vue.js
-      description: Nuxt is built on top of Vue.js, leveraging its reactive, component-based architecture to create powerful, scalable, and seamless web applications.
+      title: 使用 Vue.js 构建前端
+      description: Nuxt 基于 Vue.js 构建，利用其响应式、基于组件的架构，创建功能强大、可扩展且无缝的 web 应用程序。
       logo: i-custom-vue
       color: '#42B883'
       gradient: 'bg-gradient-to-br from-[#42B883]/10 from-5% via-transparent via-50% to-transparent'
@@ -336,8 +336,8 @@ foundation:
         label: vuejs.org
         to: https://vuejs.org
     - id: bundler
-      title: Bundler with Vite
-      description: Nuxt leverages Vite's frontend build capabilities, powering rapid development of web applications with instant HMR for the best developer experience.
+      title: 使用 Vite 进行打包
+      description: Nuxt 利用 Vite 的前端构建能力，通过即时 HMR 提供最佳开发体验，支持快速开发 web 应用程序。
       logo: i-custom-vite
       color: '#A156FE'
       gradient: 'bg-gradient-to-br from-[#A156FE]/10 from-5% via-transparent via-50% to-transparent'
@@ -345,8 +345,8 @@ foundation:
         label: vite.dev
         to: https://vite.dev
     - id: bundler
-      title: Bundler with Webpack
-      description: Nuxt harnesses Webpack's robust bundling and optimization capabilities, ensuring a stable and scalable development experience.
+      title: 使用 Webpack 进行打包
+      description: Nuxt 利用 Webpack 强大的打包和优化能力，确保稳定且可扩展的开发体验。
       logo: i-custom-webpack
       color: '#8ED6FB'
       gradient: 'bg-gradient-to-br from-[#8ED6FB]/10 from-5% via-transparent via-50% to-transparent'
@@ -354,8 +354,8 @@ foundation:
         label: webpack.js.org
         to: https://webpack.js.org
     - id: bundler
-      title: Bundler with Rspack
-      description: Nuxt integrates Rspack's high-performance bundling, accelerating builds and HMR for a seamless developer experience at scale.
+      title: 使用 Rspack 进行打包
+      description: Nuxt 集成 Rspack 的高性能打包，加速构建和 HMR，实现大规模开发的流畅体验。
       logo: i-custom-rspack
       color: '#F93920'
       gradient: 'bg-gradient-to-br from-[#F93920]/10 from-5% via-transparent via-50% to-transparent'
@@ -363,8 +363,8 @@ foundation:
         label: rspack.dev
         to: https://rspack.dev
     - id: nitro
-      title: Server with Nitro
-      description: Nuxt uses Nitro as server engine to build versatile full-stack web applications, ready for deployment on any platform.
+      title: 使用 Nitro 作为服务器
+      description: Nuxt 使用 Nitro 作为服务器引擎，构建多功能全栈 web 应用程序，随时准备部署到任何平台。
       logo: i-custom-nitro
       color: '#FB848E'
       gradient: 'bg-gradient-to-br from-[#FB848E]/10 from-5% via-transparent via-50% to-transparent'
@@ -372,94 +372,93 @@ foundation:
         label: nitro.build
         to: https://nitro.build
 modules:
-  title: Extend Nuxt with plug & play modules
-  description: Nuxt has a rich module ecosystem, with both official and community-driven modules. This accelerates development by providing ready-to-use solutions for common needs.
+  title: 使用插件和模块扩展 Nuxt
+  description: Nuxt 拥有丰富的模块生态系统，包括官方和社区驱动的模块。这通过提供现成的解决方案来加速开发，以满足常见需求。
   links:
-    - label: Explore all modules
+    - label: 浏览所有模块
       to: /modules
       icon: i-lucide-arrow-right
       color: neutral
       trailing: true
 testimonial:
-  quote: "Nuxt offers a compelling solution and a great ecosystem to help you ship fullstack Vue apps that are performant and SEO friendly. The flexibility to choose between SSR and SSG is icing on the cake."
+  quote: "Nuxt 提供了一个引人注目的解决方案和一个出色的生态系统，帮助您快速构建高性能且 SEO 友好的全栈 Vue 应用。能够在 SSR 和 SSG 之间自由选择更是锦上添花。"
   author:
-    name: 'Evan You'
-    description: 'Creator of Vue.js and Vite'
+    name: '尤雨溪'
+    description: 'Vue.js 和 Vite 的创建者'
     to: 'https://x.com/evanyou'
     avatar:
       src: 'https://avatar.ikxin.com/github/yyx990803?size=40'
       srcset: 'https://avatar.ikxin.com/github/yyx990803?size=80 2x'
       provider: 'ipx'
 deploy:
-  title: Deploy your app anywhere
-  description: One-command deployments and zero-configuration options make it easy to get your Nuxt app live. Choose your platform, and let Nuxt handle the rest, allowing you to focus on building great applications rather than managing complex deployments.
+  title: 随时随地部署您的应用
+  description: 一键部署和零配置选项使您的 Nuxt 应用轻松上线。选择您的平台，Nuxt 会处理其余工作，让您专注于构建优秀的应用程序，而不是管理复杂的部署过程。
   links:
-    - label: Learn how to deploy now
+    - label: 立即了解如何部署
       to: /deploy
       icon: i-lucide-arrow-right
       color: neutral
       trailing: true
 stats:
-  title: The developer's choice for simple and powerful web apps
+  title: 开发者的简单而强大的 Web 应用之选
   description: |
-    Nuxt was born from developers' need to boost productivity and platform performance.
-    What began as a Vue-based solution for automating tasks and server-side rendering is now trusted by startups and enterprises all around the world.
+    Nuxt 诞生于开发者提升生产力和平台性能的需求。最初是一个基于 Vue 的任务自动化和服务端渲染解决方案，如今已被全球众多初创公司和企业所信赖。
   community:
-    title: Open source
-    description: Nuxt is 100% powered by our passionate open source community. Every line of Nuxt is written by passionate developers like you.
+    title: 开源
+    description: Nuxt 框架 100% 完全由充满热情的开源社区驱动。Nuxt 框架中的每一行代码都由像您这样的热情社区开发者编写。
   x: 98.7k
   discord: 28k
   cta:
-    label: Start contributing
+    label: 开始贡献
     to: 'https://github.com/nuxt/nuxt'
     color: neutral
     variant: outline
     icon: i-simple-icons-github
     trailing: true
 contributors:
-  title: 'Built by developers around the world.'
-  description: 'The development of Nuxt and its ecosystem is led by an international team. From contributors to developer advocates, the community is made up of members with different horizons and skills. We are happy to see new members every day and encourage anyone to join us and help in many ways: answering questions, giving a talk, creating modules and contributing to the core.'
+  title: '由全球开发者构建'
+  description: 'Nuxt 及其生态系统的开发由国际团队领导。从贡献者到开发者宣传员，社区成员拥有不同的背景和技能。我们每天都欢迎新成员，并鼓励任何人以多种方式加入我们：解答问题、演讲、创建模块和贡献核心代码。'
   links:
     - label: Nuxters
       to: https://nuxters.nuxt.com
       target: _blank
       icon: i-simple-icons-nuxtdotjs
       color: neutral
-      title: See your own profile on Nuxters
+      title: 在 Nuxters 上查看您的个人资料
     - icon: i-simple-icons-discord
       to: https://go.nuxt.com/discord
       target: _blank
       color: neutral
       variant: ghost
       size: xl
-      title: Join Nuxt on Discord
+      title: 加入 Nuxt Discord 社区
     - icon: i-simple-icons-x
       to: https://go.nuxt.com/x
       target: _blank
       color: neutral
       variant: ghost
       size: lg
-      title: Nuxt on X
+      title: Nuxt 在 X 平台
     - icon: i-simple-icons-bluesky
       to: https://go.nuxt.com/bluesky
       target: _blank
       color: neutral
       variant: ghost
       size: lg
-      title: Nuxt on Bluesky
+      title: Nuxt 在 Bluesky 平台
 support:
-  title: Nuxt Enterprise Support
+  title: Nuxt 企业支持
   description: |
-    To ensure your Nuxt projects reach their full potential, our Nuxt Experts team, featuring :icon{name=i-custom-vue .align-middle} Vue, :icon{name=i-custom-nuxt .align-middle} Nuxt and :icon{name=i-custom-vite .align-middle} Vite, core contributors — offers a complete suite of services.
+    为了确保您的 Nuxt 项目充分发挥潜力，我们的 Nuxt 专家团队拥有 :icon{name=i-custom-vue .align-middle} Vue、 :icon{name=i-custom-nuxt .align-middle} Nuxt 和 :icon{name=i-custom-vite .align-middle} Vite 的核心贡献者提供全面的服务套件。
   features:
-    - title: Performance optimization
-      description: Boost Nuxt performance and reliability with our expert optimizations.
+    - title: 性能优化
+      description: 通过专家优化，提升 Nuxt 可靠性。
       icon: i-lucide-rocket
-    - title: Migration to Nuxt
-      description: Ensure successful, painless migrations from start to deployment.
+    - title: 迁移到 Nuxt
+      description: 从起步到部署，确保顺利无痛的迁移。
       icon: i-lucide-circle-arrow-up
-    - title: Nuxt Workshop
-      description: Develop expert teams through training and support.
+    - title: Nuxt 研讨会
+      description: 通过培训和支持，培养专家团队。
       icon: i-lucide-school
   companies:
     - src: /assets/enterprise/support/malt.svg
@@ -473,21 +472,21 @@ support:
     - src: /assets/enterprise/support/cora.svg
       alt: Cora
   links:
-    - label: Talk to a Nuxt Expert
+    - label: 联系 Nuxt 专家
       to: /enterprise/support
       icon: i-lucide-arrow-right
       color: neutral
       trailing: true
 sponsors:
-  title: Sponsors
-  description: Nuxt is and will always remain free and open source under the MIT License, thanks to our contributors and sponsors.
+  title: 赞助商
+  description: 感谢我们的贡献者和赞助商，Nuxt 在 MIT 许可下始终保持免费和开源。
   links:
-    - label: Become a sponsor
+    - label: 成为赞助商
       to: 'https://github.com/sponsors/nuxt'
       color: neutral
       trailingIcon: i-lucide-heart
       trailing: true
-    - label: View all sponsors
+    - label: 查看所有赞助商
       to: /enterprise/sponsors
       color: neutral
       variant: outline

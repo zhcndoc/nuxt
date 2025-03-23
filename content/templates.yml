@@ -1,18 +1,18 @@
-head.title: Nuxt Templates
-title: Nuxt Templates
-navigation.title: Templates
-description: 'Explore community templates to get up and running in a few seconds.'
+head.title: Nuxt 模板
+title: Nuxt 模板
+navigation.title: 模板
+description: '探索社区模板，几秒钟内即可启动。'
 navigation.icon: i-lucide-app-window
 align: center
 links:
-  - label: 'List a template'
+  - label: '查看模板'
     to: 'https://github.com/nuxt/nuxt.com/tree/main#add-a-nuxt-template'
     icon: 'i-lucide-circle-plus'
     target: '_blank'
     variant: subtle
     color: neutral
     size: md
-  - label: 'Full-stack templates'
+  - label: '全栈模板'
     to: 'https://hub.nuxt.com/templates'
     target: '_blank'
     variant: ghost

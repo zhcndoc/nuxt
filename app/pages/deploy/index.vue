@@ -14,7 +14,7 @@ const title = page.value.title
 const description = page.value.description
 
 useSeoMeta({
-  titleTemplate: '%s',
+  titleTemplate: '%s - Nuxt 中文文档',
   title,
   description,
   ogDescription: description,
@@ -22,7 +22,7 @@ useSeoMeta({
 })
 
 defineOgImageComponent('Docs', {
-  title: 'Deploy Nuxt',
+  title: 'Nuxt 部署  - Nuxt 中文文档',
   description
 })
 

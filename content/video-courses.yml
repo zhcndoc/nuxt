@@ -1,5 +1,5 @@
-head.title: Nuxt Video Courses
-title: Nuxt Video Courses
-navigation.title: Video Courses
-description: 'Watch video courses from the community to learn Vue 3 and Nuxt 3.'
+head.title: Nuxt 视频课程
+title: Nuxt 视频课程
+navigation.title: 视频课程
+description: '观看社区的视频课程，学习 Vue 3 和 Nuxt 3。'
 navigation.icon: i-lucide-graduation-cap

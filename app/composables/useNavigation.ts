@@ -32,31 +32,31 @@ const _useNavigation = () => {
         active: route.path.startsWith('/docs/api')
       }, {
         label: '示例',
-        description: '发现并探索官方和社区示例。',
+        description: '发现更多有趣的官方示例和社区示例。',
         icon: 'i-lucide-app-window-mac',
         to: '/docs/examples',
         active: route.path.startsWith('/docs/examples')
       }, {
         label: '社区',
-        description: '从社区寻找答案和支持。',
+        description: '从热情的开源社区中寻找问题答案和支持帮助。',
         icon: 'i-lucide-messages-square',
         to: '/docs/community',
         active: route.path.startsWith('/docs/community')
       }]
     }, {
-      label: '模块集成',
+      label: '集成',
       to: '/modules',
       icon: 'i-lucide-unplug',
       search: false,
       active: route.path.startsWith('/modules') || route.path.startsWith('/deploy'),
       children: [{
         label: '模块',
-        description: '通过模块为您的 Nuxt 项目增添动力。',
+        description: '通过 Nuxt 模块为您的 Nuxt 项目添加更多功能。',
         icon: 'i-lucide-puzzle',
         to: '/modules'
       }, {
         label: '托管',
-        description: '将您的 Nuxt 项目部署到任何地方。',
+        description: '将您的 Nuxt 项目部署到互联网的任何地方。',
         icon: 'i-lucide-rocket',
         to: '/deploy'
       }]
@@ -73,17 +73,17 @@ const _useNavigation = () => {
         to: '/templates'
       }, {
         label: '视频课程',
-        description: '通过观看视频课程学习 Nuxt。',
+        description: '通过观看视频课程来学习使用 Nuxt 框架。',
         icon: 'i-lucide-graduation-cap',
         to: '/video-courses'
       }, {
         label: '展示柜',
-        description: '发现并探索使用 Nuxt 构建的项目。',
+        description: '发现并探索更多使用 Nuxt 构建的项目。',
         icon: 'i-lucide-presentation',
         to: '/showcase'
       }, {
         label: 'Nuxt 认证',
-        description: '获取您的能力认证。',
+        description: '通过 Nuxt 认证来获取您的编程水平证明。',
         icon: 'i-lucide-medal',
         to: 'https://certification.nuxt.com',
         target: '_blank'
@@ -133,7 +133,7 @@ const _useNavigation = () => {
         icon: 'i-lucide-hand-heart'
       }]
     }, {
-      label: '博客',
+      label: 'Nuxt 博客',
       icon: 'i-lucide-newspaper',
       to: '/blog'
     }]
