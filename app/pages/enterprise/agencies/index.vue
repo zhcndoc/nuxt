@@ -30,8 +30,8 @@ defineOgImageComponent('Docs', {
 
 const navigation = computed(() => {
   return [
-    { title: '技术', children: services, path: '/enterprise/agencies' },
-    { title: '区域', children: regions, path: '/enterprise/agencies' }
+    { title: '技术', children: services.value, path: '/enterprise/agencies' },
+    { title: '区域', children: regions.value, path: '/enterprise/agencies' }
   ] as unknown as ContentNavigationLink[]
 })
 

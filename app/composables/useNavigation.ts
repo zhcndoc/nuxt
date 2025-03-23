@@ -8,7 +8,7 @@ const _useNavigation = () => {
     const route = useRoute()
 
     return [{
-      label: '文档',
+      label: '开发文档',
       icon: 'i-lucide-book-marked',
       to: '/docs',
       search: false,
@@ -44,7 +44,7 @@ const _useNavigation = () => {
         active: route.path.startsWith('/docs/community')
       }]
     }, {
-      label: '集成',
+      label: '模块集成',
       to: '/modules',
       icon: 'i-lucide-unplug',
       search: false,
@@ -61,7 +61,7 @@ const _useNavigation = () => {
         to: '/deploy'
       }]
     }, {
-      label: '资源',
+      label: '学习资源',
       icon: 'i-lucide-library',
       to: '/templates',
       search: false,
@@ -112,7 +112,7 @@ const _useNavigation = () => {
         target: '_blank'
       }]
     }, {
-      label: '企业',
+      label: '企业支持',
       icon: 'i-lucide-building-2',
       to: '/enterprise',
       search: false,

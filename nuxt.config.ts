@@ -26,33 +26,8 @@ export default defineNuxtConfig({
           url: 'http://localhost:3000'
         }
       }
-    },
-    image: {
-      alias: {
-        '/gh/': 'https://raw.githubusercontent.com',
-        '/gh_avatar/': 'https://avatars.githubusercontent.com'
-      },
-      domains: [
-        'raw.githubusercontent.com',
-        'avatars.githubusercontent.com',
-        'images.opencollective.com',
-        'ui.nuxt.com',
-        'res.cloudinary.com'
-      ]
     }
   },
-  // $production: {
-  //   image: {
-  //     format: ['webp', 'jpeg', 'jpg', 'png', 'svg'],
-  //     provider: 'cloudflare',
-  //     cloudflare: {
-  //       baseURL: 'https://nuxt.com'
-  //     },
-  //     ipx: {
-  //       baseURL: 'https://ipx.nuxt.com'
-  //     }
-  //   }
-  // },
   devtools: {
     enabled: true
   },
@@ -88,12 +63,10 @@ export default defineNuxtConfig({
   },
   routeRules: {
     // Pre-render
-    // '/api/templates.json': { prerender: true },
-    // '/blog/rss.xml': { prerender: true },
-    // '/sitemap.xml': { prerender: true },
-    // Redirects
     '/': { prerender: true },
+    '/blog/rss.xml': { prerender: true },
     '/404.html': { prerender: true },
+    // Redirects
     '/docs': { redirect: '/docs/getting-started/introduction', prerender: false },
     '/docs/getting-started': { redirect: '/docs/getting-started/introduction', prerender: false },
     '/docs/guide/concepts': { redirect: '/docs/guide/concepts/auto-imports', prerender: false },
@@ -171,13 +144,23 @@ export default defineNuxtConfig({
     },
     provider: 'iconify'
   },
+  image: {
+    // format: ['webp', 'jpeg', 'jpg', 'png', 'svg'],
+    // provider: 'cloudflare',
+    // cloudflare: {
+    //   baseURL: 'https://nuxt.com'
+    // },
+    // ipx: {
+    //   baseURL: 'https://ipx.nuxt.com'
+    // }
+  },
   llms: {
-    domain: 'https://nuxt.com',
-    title: 'Nuxt Docs',
-    description: 'Nuxt is an open source framework that makes web development intuitive and powerful. Create performant and production-grade full-stack web apps and websites with confidence.',
+    domain: 'https://nuxt.zhcndoc.com',
+    title: 'Nuxt 中文文档',
+    description: 'Nuxt 是一个开源框架，使网页开发直观而强大。自信地创建高性能和生产级的全栈网页应用和网站。',
     full: {
-      title: 'Nuxt Docs',
-      description: 'The complete Nuxt documentation, blog posts and changelog written in Markdown (MDC syntax).'
+      title: 'Nuxt 中文文档',
+      description: '完整的 Nuxt 文档和用 Markdown（MDC 语法）撰写的博客文章。'
     }
   },
   turnstile: {
