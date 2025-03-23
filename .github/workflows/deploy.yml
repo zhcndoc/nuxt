@@ -28,7 +28,7 @@ jobs:
           build-args: |
             NUXT_GITHUB_TOKEN=${{ secrets.NUXT_GITHUB_TOKEN }}
             NUXT_UI_PRO_LICENSE=${{ secrets.NUXT_UI_PRO_LICENSE }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
           push: true
 
