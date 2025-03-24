@@ -33,12 +33,3 @@ html:not(.dark) {
   color: inherit;
   opacity: 0.5;
 }
-
-.wwads-horizontal .wwads-poweredby, .wwads-vertical .wwads-poweredby {
-  margin-top: 0 !important;
-}
-
-.wwads-cn img {
-  margin-bottom: 0 !important;
-  margin-top: 0 !important;
-}

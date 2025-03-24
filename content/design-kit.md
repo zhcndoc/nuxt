@@ -1,5 +1,5 @@
 ---
-title: 设计套件
+title: 设计套件 - Nuxt 中文文档
 head.description: 获取 Nuxt 资产，例如徽标、排版和颜色。
 description: 欢迎来到 Nuxt 设计定义页面。为了表达 Nuxt 产品的简单与乐趣，我们精心挑选了颜色和形状，重新定义了身份。
 navigation.icon: 'i-lucide-palette'

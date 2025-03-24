@@ -65,10 +65,10 @@ export const useModules = () => {
   // Data
 
   const sorts: Filter[] = [
-    { key: 'downloads', label: 'Downloads' },
-    { key: 'stars', label: 'Stars' },
-    { key: 'publishedAt', label: 'Updated' },
-    { key: 'createdAt', label: 'Created' }
+    { key: 'downloads', label: '下载量' },
+    { key: 'stars', label: '收藏数' },
+    { key: 'publishedAt', label: '更新时间' },
+    { key: 'createdAt', label: '创建时间' }
   ]
 
   const orders: Filter[] = [

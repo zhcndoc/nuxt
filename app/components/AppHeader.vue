@@ -33,7 +33,7 @@ const mobileNavigation = computed<ContentNavigationItem[]>(() => {
       }))
     } as ContentNavigationItem)),
     {
-      title: 'Design Kit',
+      title: '设计套件',
       icon: 'i-lucide-palette',
       path: '/design-kit'
     }
@@ -49,7 +49,7 @@ const defaultOpen = computed(() => {
 
 const logoContextMenuItems = [
   [{
-    label: 'Copy logo as SVG',
+    label: '复制 Logo 为 SVG',
     icon: 'i-simple-icons-nuxtdotjs',
     onSelect() {
       if (logo.value) {
@@ -63,7 +63,7 @@ const logoContextMenuItems = [
     }
   }],
   [{
-    label: 'Browse design kit',
+    label: '浏览设计套件',
     icon: 'i-lucide-shapes',
     to: '/design-kit'
   }]
@@ -95,10 +95,10 @@ const logoContextMenuItems = [
 
       <UColorModeButton />
 
-      <UTooltip text="GitHub Stars">
+      <UTooltip text="GitHub 星标">
         <UButton
           icon="i-simple-icons-github"
-          to="https://github.com/nuxt/nuxt"
+          to="https://go.nuxt.com/github"
           target="_blank"
           variant="ghost"
           color="neutral"
@@ -107,7 +107,7 @@ const logoContextMenuItems = [
             label: 'hidden sm:inline-flex'
           }"
         >
-          <span class="sr-only">Nuxt on GitHub</span>
+          <span class="sr-only">GitHub</span>
         </UButton>
       </UTooltip>
     </template>

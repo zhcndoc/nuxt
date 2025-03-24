@@ -56,7 +56,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         class="max-w-sm w-full"
       >
         <template #trailing>
-          <UButton type="submit" size="xs" color="neutral" :label="loading ? '订阅中' : '订阅'" :loading="loading" />
+          <UButton type="submit" size="xs" color="neutral" :label="loading ? '订阅中' : '已订阅'" :loading="loading" />
         </template>
       </UInput>
     </UFormField>

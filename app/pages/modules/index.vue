@@ -105,11 +105,11 @@ initializeModules()
       }"
     >
       <template #title>
-        Build faster with <span class="text-(--ui-primary)">{{ modules.length }}+</span> Nuxt Modules
+        使用 <span class="text-(--ui-primary)">{{ modules.length }}+</span> 个 Nuxt 模块更快地构建
       </template>
 
       <template #description>
-        Discover our list of modules to supercharge your Nuxt project. Created and maintained by more than {{ stats.contributors.toString() }} people from the Nuxt team and community.
+        发现我们的模块列表，以增强您的 Nuxt 项目。由来自 Nuxt 团队和社区的超过 {{ stats.contributors.toString() }} 人创建和维护。
       </template>
 
       <template #links>
@@ -120,7 +120,7 @@ initializeModules()
               :model-value="q"
               name="q"
               icon="i-lucide-search"
-              placeholder="Search a module..."
+              placeholder="搜索模块..."
               class="w-full"
               size="lg"
               autofocus

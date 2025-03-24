@@ -199,15 +199,15 @@ const _useNavigation = () => {
       }
       return link
     }).filter((link): link is NonNullable<typeof link> => Boolean(link)), {
-      label: 'Team',
+      label: '团队',
       icon: 'i-lucide-users',
       to: '/team'
     }, {
-      label: 'Design Kit',
+      label: '设计套件',
       icon: 'i-lucide-palette',
       to: '/design-kit'
     }, {
-      label: 'Newsletter',
+      label: '新闻',
       icon: 'i-lucide-mail',
       to: '/newsletter'
     }])
