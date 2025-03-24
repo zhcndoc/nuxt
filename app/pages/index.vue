@@ -29,7 +29,7 @@ const site = useSiteConfig()
 const title = 'Nuxt 中文文档 - 基于 Vue.js 的全栈 Web 框架'
 const description = '使用 Nuxt 创建高质量的 Web 应用程序，这是一款开源框架，使得使用 Vue.js 进行全栈开发变得直观。'
 useSeoMeta({
-  // title,
+  title,
   ogTitle: title,
   titleTemplate: '%s',
   description: description,

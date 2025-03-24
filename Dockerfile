@@ -3,7 +3,7 @@ FROM node:lts-alpine as builder
 ARG NUXT_GITHUB_TOKEN
 ARG NUXT_UI_PRO_LICENSE
 
-WORKDIR /app
+WORKDIR /build
 
 COPY . .
 
@@ -11,10 +11,10 @@ RUN npm install --global pnpm && pnpm install && pnpm run build
 
 FROM node:lts-alpine
 
-COPY --from=builder /app/.output /app/.output
+WORKDIR /build
 
-WORKDIR /app
+COPY --from=builder /build/.output .output
 
 EXPOSE 3000
 
-CMD ["node", "/app/.output/server/index.mjs"]
+CMD ["node", ".output/server/index.mjs"]
