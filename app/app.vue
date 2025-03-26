@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
 const { searchGroups, searchLinks, searchTerm } = useNavigation()
+
 const color = computed(() => colorMode.value === 'dark' ? '#020420' : 'white')
 
 const { data: navigation } = await useAsyncData('navigation', () => {
@@ -72,14 +73,14 @@ onMounted(() => {
     <NuxtLoadingIndicator color="var(--ui-primary)" />
 
     <UBanner
-      id="mastering-nuxt-2025"
-      title="Mastering Nuxt: Full Stack Unleashed - Coming March 25th."
+      id="mastering-nuxt-2025-early-bird"
+      title="Mastering Nuxt: Full Stack Unleashed - 24H Early Bird available"
       icon="i-lucide-school"
       to="https://masteringnuxt.com/2025?utm_source=nuxt-website&utm_medium=banner"
       close
       :actions="[
         {
-          label: 'Sign up',
+          label: 'Get offer',
           color: 'neutral',
           variant: 'outline',
           trailingIcon: 'i-lucide-arrow-right',
