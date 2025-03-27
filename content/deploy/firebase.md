@@ -7,9 +7,35 @@ nitroPreset: 'firebase'
 website: 'https://firebase.google.com/'
 ---
 
-## Firebase Functions
+## Firebase 应用托管（推荐）
 
-要使用最新的和推荐的生成的 Firebase 函数，请将 `firebase.gen` 选项设置为 `2`:
+::note
+您需要在 [**Blaze 计划**](https://firebase.google.com/pricing)（按需付费）上才能开始。
+::
+
+:read-more{title="Firebase 应用托管" to="https://firebase.google.com/docs/app-hosting"}
+
+### 项目设置
+
+1. 访问 Firebase [控制台](https://console.firebase.google.com/) 并设置一个新项目。
+2. 从侧边栏选择 **Build > App Hosting**。
+    - 您可能需要在此步骤中升级您的计费计划。
+3. 点击 **开始**。
+    - 选择一个区域。
+    - 导入一个 GitHub 仓库（您需要链接您的 GitHub 账户）。
+    - 配置部署设置（项目根目录和分支），并启用自动发布。
+    - 为您的后端选择一个唯一的 ID。
+4. 点击完成 & 部署以创建您的第一次发布。
+
+当您使用 Firebase 应用托管进行部署时，应用托管预设将在构建时自动运行。
+
+## Firebase 函数（已弃用）
+
+::important
+这种部署方法已弃用，不推荐使用。Firebase 应用托管是将 Nuxt 应用部署到 Firebase 的推荐方式。
+::
+
+要使用更近且推荐的 Firebase 函数版本，将 `firebase.gen` 选项设置为 `2`：
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -25,7 +51,7 @@ export default defineNuxtConfig({
 如果由于任何原因您不能使用配置的方式，您可以使用 `NITRO_FIREBASE_GEN=2` 环境变量。
 ::
 
-如果您已经部署了网站的旧版本并希望升级到第二代，请参阅[在 Firebase 文档中的迁移过程](https://firebase.google.com/docs/functions/2nd-gen-upgrade)。具体而言，CLI 将要求您在部署新函数之前删除现有函数。
+如果您已经部署了网站的旧版本并希望升级到第二代，请参见[在 Firebase 文档中的迁移过程](https://firebase.google.com/docs/functions/2nd-gen-upgrade)。具体而言，CLI 将要求您在部署新函数之前删除现有函数。
 
 ::提示{to="https://firebase.google.com/docs/functions/version-comparison" target="_blank"}
 第一代和第二代函数之间的比较
@@ -79,7 +105,7 @@ firebase emulators:start
 
 ## 构建和部署
 
-通过运行 Nitro 构建，然后运行 `firebase deploy` 命令，将项目部署到 Firebase 托管。
+通过运行 Nuxt 构建，然后运行 `firebase deploy` 命令将其部署到 Firebase 托管。
 
 ```bash
 npm run build -- --preset=firebase
@@ -88,7 +114,7 @@ firebase deploy
 
 ## 选项
 
-您可以在 `nuxt.config.ts` 文件中为 Firebase 函数设置选项：
+您可以在 `nuxt.config.ts` 文件中设置 Firebase 函数的选项：
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -135,19 +161,19 @@ Firebase 工具使用 `package.json` 中的 `engines.node` 版本来确定要为
 您可以在 **Firebase 文档** 中了解更多信息。
 ::
 
-## 如果您的 Firebase 项目有其他云函数
+## 其他云函数
 
-在部署您的 Nuxt 项目时，您可能会收到有关删除其他云函数的警告。这是因为 nitro 会将整个项目部署到 Firebase 函数。如果您只想部署您的 Nuxt 项目，您可以使用 `--only` 标志：
+您可能会收到警告，指在您部署 Nuxt 项目时其他云函数将被删除。这是因为 Nitro 将把您的整个项目部署到 Firebase 函数。如果您只想部署您的 Nuxt 项目，可以使用 `--only` 标志：
 
 ```bash
 firebase deploy --only functions:server,hosting
 ```
 
-::阅读更多{to="https://nitro.zhcndoc.com/deploy/providers/firebase" target="_blank"}
-请参阅 **Nitro 文档** 以了解有关 Firebase 部署预设的更多信息。
+::read-more{to="https://nitro.unjs.io/deploy/providers/firebase" target="_blank"}
+前往 **Nitro 文档** 以了解有关 Firebase 部署预设的更多信息。
 ::
 
-## 在生产环境中使用 Cookies
+## 在生产中使用 Cookies
 
 在使用 Firebase 托管与 Cloud Functions 或 Cloud Run 一起时，为了实现高效的 CDN 缓存行为，通常会从传入请求中删除 cookie。只有名为 `__session` 的特别命名 cookie 可以传递到您的应用程序。
 
@@ -168,6 +194,6 @@ firebase deploy --only functions:server,hosting
 }
 ```
 
-::read-more{to="https://firebase.google.com/docs/functions/config-env?gen=2nd#env-variables" target="\_blank"}
-有关更多信息，请参阅 **Firebase文档**。
+::read-more{to="https://firebase.google.com/docs/functions/config-env?gen=2nd#env-variables" target="_blank"}
+有关更多信息，请参阅 **Firebase 文档**。
 ::

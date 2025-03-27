@@ -23,6 +23,9 @@ const { data: files } = useLazyAsyncData('search', () => {
   transform: data => data.flat()
 })
 
+const { fetchList } = useModules()
+onNuxtReady(() => fetchList())
+
 useHead({
   titleTemplate: title => title ? `${title} - Nuxt 中文文档` : 'Nuxt 中文文档 - 基于 Vue.js 的全栈 Web 框架',
   meta: [
@@ -100,9 +103,7 @@ onMounted(() => {
         ]"
       />
 
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
+      <NuxtPage />
     </UMain>
 
     <AppFooter />

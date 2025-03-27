@@ -1,17 +1,14 @@
 import { createSharedComposable } from '@vueuse/core'
 
-const _useNavigation = () => {
-  const nuxtApp = useNuxtApp()
-  const searchTerm = ref<string>('')
-
+function _useHeaderLinks() {
+  const route = useRoute()
   const headerLinks = computed(() => {
-    const route = useRoute()
-
     return [{
       label: '开发文档',
       icon: 'i-lucide-book-marked',
       to: '/docs',
       search: false,
+      active: route.path.startsWith('/docs'),
       children: [{
         label: '开始使用',
         description: '学习如何开始使用 Nuxt 构建您的第一个应用程序。',
@@ -138,48 +135,61 @@ const _useNavigation = () => {
       to: '/blog'
     }]
   })
+  return { headerLinks }
+}
 
-  const footerLinks = [{
-    label: '社区',
-    children: [{
-      label: 'Nuxters',
-      to: 'https://nuxters.nuxt.com',
-      target: '_blank'
-    }, {
-      label: '团队',
-      to: '/team'
-    }, {
-      label: '设计套件',
-      to: '/design-kit'
-    }]
+export const useHeaderLinks = import.meta.client ? createSharedComposable(_useHeaderLinks) : _useHeaderLinks
+
+const footerLinks = [{
+  label: '社区',
+  children: [{
+    label: 'Nuxters',
+    to: 'https://nuxters.nuxt.com',
+    target: '_blank'
   }, {
-    label: '产品',
-    children: [{
-      label: 'Nuxt UI Pro',
-      to: 'https://ui.nuxt.com/pro?utm_source=nuxt-website&utm_medium=footer',
-      target: '_blank'
-    }, {
-      label: 'Nuxt Studio',
-      to: 'https://content.nuxt.com/studio/?utm_source=nuxt-website&utm_medium=footer',
-      target: '_blank'
-    }, {
-      label: 'NuxtHub',
-      to: 'https://hub.nuxt.com/?utm_source=nuxt-website&utm_medium=footer',
-      target: '_blank'
-    }]
+    label: '团队',
+    to: '/team'
   }, {
-    label: '企业',
-    children: [{
-      label: '支持',
-      to: '/enterprise/support'
-    }, {
-      label: '机构',
-      to: '/enterprise/agencies'
-    }, {
-      label: '赞助商',
-      to: '/enterprise/sponsors'
-    }]
+    label: '设计套件',
+    to: '/design-kit'
   }]
+}, {
+  label: '产品',
+  children: [{
+    label: 'Nuxt UI Pro',
+    to: 'https://ui.nuxt.com/pro?utm_source=nuxt-website&utm_medium=footer',
+    target: '_blank'
+  }, {
+    label: 'Nuxt Studio',
+    to: 'https://content.nuxt.com/studio/?utm_source=nuxt-website&utm_medium=footer',
+    target: '_blank'
+  }, {
+    label: 'NuxtHub',
+    to: 'https://hub.nuxt.com/?utm_source=nuxt-website&utm_medium=footer',
+    target: '_blank'
+  }]
+}, {
+  label: '企业',
+  children: [{
+    label: '支持',
+    to: '/enterprise/support'
+  }, {
+    label: '机构',
+    to: '/enterprise/agencies'
+  }, {
+    label: '赞助商',
+    to: '/enterprise/sponsors'
+  }]
+}]
+
+export const useFooterLinks = () => ({ footerLinks })
+
+const _useNavigation = () => {
+  const nuxtApp = useNuxtApp()
+  const searchTerm = ref<string>('')
+
+  const { headerLinks } = useHeaderLinks()
+  const { footerLinks } = useFooterLinks()
 
   const searchLinks = computed(() => [
     {
@@ -315,10 +325,12 @@ const _useNavigation = () => {
         }))
     }
 
-    Promise.all([
-      loadModules(),
-      loadHosting()
-    ]).catch(error => console.error('Error loading search results:', error))
+    onMounted(() => {
+      Promise.all([
+        loadModules(),
+        loadHosting()
+      ]).catch(error => console.error('Error loading search results:', error))
+    })
 
     return groups
   })
@@ -332,4 +344,4 @@ const _useNavigation = () => {
   }
 }
 
-export const useNavigation = createSharedComposable(_useNavigation)
+export const useNavigation = import.meta.client ? createSharedComposable(_useNavigation) : _useNavigation
