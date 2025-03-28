@@ -19,11 +19,15 @@ const [{ data: page }, { data: officialModules }, { data: sponsorGroups }] = awa
       .filter(([tier]) => ['diamond', 'platinum', 'gold'].includes(tier))
       .map(([tier, sponsors]) => ({
         tier,
-        sponsors: sponsors.map(s => ({
-          sponsorName: s.sponsorName,
-          sponsorLogo: s.sponsorLogo,
-          sponsorUrl: s.sponsorUrl
-        }))
+        sponsors: sponsors.map((sponsor: any) => {
+          let sponsorLogo = sponsor.sponsorLogo
+          if (sponsorLogo.includes('github')) {
+            sponsorLogo = `https://avatar.ikxin.com/github/${sponsor.sponsorId}`
+          } else if (sponsorLogo.includes('opencollective')) {
+            sponsorLogo = `https://avatar.ikxin.com/opencollective/${sponsor.sponsorId}`
+          }
+          return { ...sponsor, sponsorLogo }
+        })
       }))
   })
 ])
@@ -183,7 +187,7 @@ onMounted(() => {
           }"
         >
           <template v-for="(tab, index) of tabs" :key="index" #[tab.slot]="{ item }">
-            <LazyMDC :value="item.content" class="//" :cache-key="`index-hero-tab-${index}`" />
+            <LazyMDC :value="item.content" :cache-key="`index-hero-tab-${index}`" />
           </template>
         </UTabs>
       </UPageCard>

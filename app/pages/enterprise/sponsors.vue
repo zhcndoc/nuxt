@@ -3,14 +3,30 @@ definePageMeta({
   heroBackground: 'opacity-80 -z-10'
 })
 
-const { data: page } = await useAsyncData('sponsors-landing', () => queryCollection('landing').path('/enterprise/sponsors').first())
+const [{ data: page }, { data: sponsors }] = await Promise.all([
+  useAsyncData('sponsors-landing', () => queryCollection('landing').path('/enterprise/sponsors').first()),
+  useFetch('https://api.nuxt.com/sponsors', {
+    key: 'sponsors',
+    transform: (sponsors) => {
+      for (const tier in sponsors) {
+        if (Array.isArray(sponsors[tier])) {
+          sponsors[tier].forEach((sponsor) => {
+            if (sponsor.sponsorLogo.includes('github')) {
+              sponsor.sponsorLogo = `https://avatar.ikxin.com/github/${sponsor.sponsorId}`
+            } else if (sponsor.sponsorLogo.includes('opencollective')) {
+              sponsor.sponsorLogo = `https://avatar.ikxin.com/opencollective/${sponsor.sponsorId}`
+            }
+          })
+        }
+      }
+      return sponsors
+    }
+  })
+])
+
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
-
-const { data: sponsors } = await useFetch('https://api.nuxt.com/sponsors', { key: 'sponsors' })
-
-if (sponsors.value) sponsors.value = replaceAvatarUrls(sponsors.value)
 
 const title = page.value.title
 const description = page.value.description
