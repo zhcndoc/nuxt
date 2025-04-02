@@ -21,12 +21,8 @@ export default defineNuxtConfig({
     // '@nuxthub/core'
   ],
   $development: {
-    runtimeConfig: {
-      public: {
-        website: {
-          url: 'http://localhost:3000'
-        }
-      }
+    site: {
+      url: 'http://localhost:3000'
     }
   },
   devtools: {
@@ -97,7 +93,8 @@ export default defineNuxtConfig({
     '/docs/guide/recipes': { redirect: '/docs/guide/recipes/custom-routing', prerender: false },
     '/docs/guide/going-further/custom-routing': { redirect: '/docs/guide/recipes/custom-routing', prerender: false },
     // '/docs/guide/directory-structure/nuxt.config': { redirect: '/docs/guide/directory-structure/nuxt-config', prerender: false },
-    '/enterprise': { redirect: '/enterprise/support', prerender: false }
+    '/enterprise': { redirect: '/enterprise/support', prerender: false },
+    '/support/us': { redirect: '/enterprise/sponsors', prerender: false }
   },
   sourcemap: true,
   future: {
