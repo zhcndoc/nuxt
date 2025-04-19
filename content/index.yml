@@ -385,7 +385,7 @@ testimonial:
   author:
     name: '尤雨溪'
     description: 'Vue.js 和 Vite 的创建者'
-    to: 'https://x.com/evanyou'
+    to: 'https://x.com/youyuxi'
     avatar:
       src: 'https://avatar.ikxin.com/github/yyx990803?size=40'
       srcset: 'https://avatar.ikxin.com/github/yyx990803?size=80 2x'
