@@ -12,6 +12,13 @@ links:
     variant: subtle
     color: neutral
     size: md
+  - label: 'Nuxt 启动模板'
+    to: 'https://nuxt.new'
+    icon: 'i-simple-icons-nuxt'
+    target: '_blank'
+    variant: subtle
+    color: primary
+    size: md
   - label: '全栈模板'
     to: 'https://hub.nuxt.com/templates'
     target: '_blank'
