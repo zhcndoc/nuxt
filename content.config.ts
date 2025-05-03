@@ -116,6 +116,16 @@ const Template = z.object({
   }).optional()
 })
 
+const ShowcaseItem = z.object({
+  name: z.string().optional(),
+  url: z.string().optional(),
+  hostname: z.string().optional(),
+  screenshotUrl: z.string().optional(),
+  screenshotOptions: z.object({
+    delay: z.number()
+  }).optional()
+})
+
 export default defineContentConfig({
   collections: {
     index: defineCollection({
@@ -196,7 +206,6 @@ export default defineContentConfig({
         { include: 'modules.yml' },
         { include: 'deploy.yml' },
         { include: 'templates.yml' },
-        { include: 'showcase.yml' },
         { include: 'video-courses.yml' },
         { include: 'enterprise/sponsors.yml' },
         { include: 'enterprise/agencies.yml' },
@@ -329,6 +338,17 @@ export default defineContentConfig({
       source: 'templates/*',
       schema: Template
     }),
+    showcase: defineCollection({
+      type: 'data',
+      source: 'showcase.yml',
+      schema: BaseSection.extend({
+        head: z.object({
+          title: z.string().optional(),
+          description: z.string().optional()
+        }).optional(),
+        websites: z.array(ShowcaseItem)
+      })
+    }),
     videoCourses: defineCollection({
       type: 'data',
       source: 'video-courses/*',
@@ -338,6 +358,7 @@ export default defineContentConfig({
         description: z.string(),
         url: z.string().url(),
         badge: z.enum(['Premium', 'Free']).optional(),
+        screenshotUrl: z.string().url().optional(),
         screenshotOptions: z.object({
           delay: z.number(),
           removeElements: z.array(z.string()).optional()

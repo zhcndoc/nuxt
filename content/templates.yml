@@ -5,23 +5,16 @@ description: '探索社区模板，几秒钟内即可启动。'
 navigation.icon: i-lucide-app-window
 align: center
 links:
-  - label: '查看模板'
-    to: 'https://github.com/nuxt/nuxt.com/tree/main#add-a-nuxt-template'
-    icon: 'i-lucide-circle-plus'
-    target: '_blank'
-    variant: subtle
-    color: neutral
-    size: md
   - label: 'Nuxt 启动模板'
     to: 'https://nuxt.new'
     icon: 'i-simple-icons-nuxt'
     target: '_blank'
-    variant: subtle
-    color: primary
+    variant: solid
+    color: neutral
     size: md
   - label: '全栈模板'
     to: 'https://hub.nuxt.com/templates'
     target: '_blank'
-    variant: ghost
+    variant: subtle
     color: neutral
     size: md

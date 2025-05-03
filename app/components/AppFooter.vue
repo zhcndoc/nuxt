@@ -5,7 +5,7 @@ const { footerLinks } = useFooterLinks()
 <template>
   <USeparator icon="i-simple-icons-nuxtdotjs" class="h-px" />
 
-  <UFooter :ui="{ top: 'border-b border-(--ui-border)' }">
+  <UFooter :ui="{ top: 'border-b border-default' }">
     <template #top>
       <UContainer>
         <UFooterColumns :columns="footerLinks">
@@ -17,7 +17,7 @@ const { footerLinks } = useFooterLinks()
     </template>
 
     <template #left>
-      <p class="text-(--ui-text-muted) text-sm">
+      <p class="text-muted text-sm">
         <a target="_blank" href="https://www.zhcndoc.com">
           简中文档
         </a>
