@@ -2,43 +2,47 @@ import { createSharedComposable } from '@vueuse/core'
 
 function _useHeaderLinks() {
   const route = useRoute()
+  const { version } = useDocsVersion()
+
   const headerLinks = computed(() => {
+    const to = version.value.path
+
     return [{
       label: '开发文档',
       icon: 'i-lucide-book-marked',
-      to: '/docs',
+      to,
       search: false,
-      active: route.path.startsWith('/docs'),
+      active: route.path.startsWith(to),
       children: [{
         label: '开始使用',
         description: '学习如何开始使用 Nuxt 构建您的第一个应用程序。',
         icon: 'i-lucide-rocket',
-        to: '/docs/getting-started',
-        active: route.path.startsWith('/docs/getting-started')
+        to: `${to}/getting-started`,
+        active: route.path.startsWith(`${to}/getting-started`)
       }, {
         label: '指南',
         description: '获取关键概念、目录结构和最佳实践。',
         icon: 'i-lucide-book-open',
-        to: '/docs/guide',
-        active: route.path.startsWith('/docs/guide')
+        to: `${to}/guide`,
+        active: route.path.startsWith(`${to}/guide`)
       }, {
         label: 'API',
         description: '探索 Nuxt 组件、组合函数、工具及其他内容。',
         icon: 'i-lucide-code-xml',
-        to: '/docs/api',
-        active: route.path.startsWith('/docs/api')
+        to: `${to}/api`,
+        active: route.path.startsWith(`${to}/api`)
       }, {
         label: '示例',
         description: '发现更多有趣的官方示例和社区示例。',
         icon: 'i-lucide-app-window-mac',
-        to: '/docs/examples',
-        active: route.path.startsWith('/docs/examples')
+        to: `${to}/examples`,
+        active: route.path.startsWith(`${to}/examples`)
       }, {
         label: '社区',
         description: '从热情的开源社区中寻找问题答案和支持帮助。',
         icon: 'i-lucide-messages-square',
-        to: '/docs/community',
-        active: route.path.startsWith('/docs/community')
+        to: `${to}/community`,
+        active: route.path.startsWith(`${to}/community`)
       }]
     }, {
       label: '集成',
@@ -135,6 +139,7 @@ function _useHeaderLinks() {
       to: '/blog'
     }]
   })
+
   return { headerLinks }
 }
 
