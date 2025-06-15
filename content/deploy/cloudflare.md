@@ -62,7 +62,7 @@ export default defineNuxtConfig({
 2. 部署，首次部署时会要求你创建一个项目：
 
     ```bash [终端]
-    wrangler pages deploy dist/
+    npx wrangler pages deploy dist/
     ```
 
 ## 了解更多
