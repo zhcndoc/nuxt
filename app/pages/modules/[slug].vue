@@ -48,8 +48,8 @@ const contributors = computed(() => {
     label: contributor.username,
     to: `https://github.com/${contributor.username}`,
     avatar: {
-      src: `https://avatar.ikxin.com/github/${contributor.username}?size=20`,
-      srcset: `https://avatar.ikxin.com/github/${contributor.username}?size=40 2x`,
+      src: `https://mark.ikxin.com/github/${contributor.username}?size=20`,
+      srcset: `https://mark.ikxin.com/github/${contributor.username}?size=40 2x`,
       alt: contributor.username
     }
   }))
@@ -156,7 +156,7 @@ defineOgImageComponent('Module', {
 
         <div v-for="(maintainer, index) in module.maintainers" :key="maintainer.github" class="flex items-center gap-3">
           <NuxtLink :to="`https://github.com/${maintainer.github}`" target="_blank" class="flex items-center gap-1.5 hover:text-primary">
-            <UAvatar :src="`https://avatar.ikxin.com/github/${maintainer.github}?size=20`" :srcset="`https://avatar.ikxin.com/github/${maintainer.github}?size=40 2x`" :alt="maintainer.github" size="xs" />
+            <UAvatar :src="`https://mark.ikxin.com/github/${maintainer.github}?size=20`" :srcset="`https://mark.ikxin.com/github/${maintainer.github}?size=40 2x`" :alt="maintainer.github" size="xs" />
             <span class="text-sm font-medium">{{ maintainer.github }}</span>
           </NuxtLink>
 
@@ -200,7 +200,7 @@ defineOgImageComponent('Module', {
                 </template>
 
                 <template #link-leading="{ link }">
-                  <UAvatar v-if="!(link as any).noAvatar" :src="`https://avatar.ikxin.com/github/${link.label}?size=20`" :srcset="`https://avatar.ikxin.com/github/${link.label}?size=40 2x`" class="size-5" />
+                  <UAvatar v-if="!(link as any).noAvatar" :src="`https://mark.ikxin.com/github/${link.label}?size=20`" :srcset="`https://mark.ikxin.com/github/${link.label}?size=40 2x`" class="size-5" />
                 </template>
               </UPageLinks>
               <USeparator type="dashed" />

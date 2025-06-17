@@ -23,9 +23,9 @@ const [{ data: page }, { data: officialModules }, { data: sponsorGroups }, { dat
         sponsors: sponsors.map((sponsor: any) => {
           let sponsorLogo = sponsor.sponsorLogo
           if (sponsorLogo.includes('github')) {
-            sponsorLogo = `https://avatar.ikxin.com/github/${sponsor.sponsorId}`
+            sponsorLogo = `https://mark.ikxin.com/github/${sponsor.sponsorId}`
           } else if (sponsorLogo.includes('opencollective')) {
-            sponsorLogo = `https://avatar.ikxin.com/opencollective/${sponsor.sponsorId}`
+            sponsorLogo = `https://mark.ikxin.com/opencollective/${sponsor.sponsorId}`
           }
           return { ...sponsor, sponsorLogo }
         })

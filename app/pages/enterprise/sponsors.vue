@@ -12,9 +12,9 @@ const [{ data: page }, { data: sponsors }] = await Promise.all([
         if (Array.isArray(sponsors[tier])) {
           sponsors[tier].forEach((sponsor) => {
             if (sponsor.sponsorLogo.includes('github')) {
-              sponsor.sponsorLogo = `https://avatar.ikxin.com/github/${sponsor.sponsorId}`
+              sponsor.sponsorLogo = `https://mark.ikxin.com/github/${sponsor.sponsorId}`
             } else if (sponsor.sponsorLogo.includes('opencollective')) {
-              sponsor.sponsorLogo = `https://avatar.ikxin.com/opencollective/${sponsor.sponsorId}`
+              sponsor.sponsorLogo = `https://mark.ikxin.com/opencollective/${sponsor.sponsorId}`
             }
           })
         }
