@@ -61,7 +61,7 @@ jobs:
       id-token: write   # 验证部署源是否合适
     # 部署到 github_pages 环境
     environment:
-      name: github_pages
+      name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     # 指定运行环境和部署步骤
     runs-on: ubuntu-latest
