@@ -6,7 +6,7 @@ definePageMeta({
   heroBackground: '-z-10'
 })
 
-const [{ data: page }, { data: officialModules }, { data: sponsorGroups }, { data: showcase }] = await Promise.all([
+const [{ data: page }, { data: officialModules }, { data: showcase }, { getFilteredSponsors }] = await Promise.all([
   useAsyncData('index', () => queryCollection('index').first()),
   useFetch('https://api.nuxt.com/modules', {
     key: 'official-modules',
@@ -14,25 +14,11 @@ const [{ data: page }, { data: officialModules }, { data: sponsorGroups }, { dat
       .filter(module => module.type === 'official')
       .sort((a, b) => b.stats.stars - a.stats.stars)
   }),
-  useFetch('https://api.nuxt.com/sponsors', {
-    key: 'top-sponsors',
-    transform: sponsors => Object.entries(sponsors)
-      .filter(([tier]) => ['diamond', 'platinum', 'gold'].includes(tier))
-      .map(([tier, sponsors]) => ({
-        tier,
-        sponsors: sponsors.map((sponsor: any) => {
-          let sponsorLogo = sponsor.sponsorLogo
-          if (sponsorLogo.includes('github')) {
-            sponsorLogo = `https://mark.ikxin.com/github/${sponsor.sponsorId}`
-          } else if (sponsorLogo.includes('opencollective')) {
-            sponsorLogo = `https://mark.ikxin.com/opencollective/${sponsor.sponsorId}`
-          }
-          return { ...sponsor, sponsorLogo }
-        })
-      }))
-  }),
-  useAsyncData('showcase', () => queryCollection('showcase').first())
+  useAsyncData('showcase', () => queryCollection('showcase').first()),
+  useSponsors()
 ])
+
+const sponsorGroups = getFilteredSponsors(['diamond', 'platinum', 'gold'])
 
 const stats = useStats()
 

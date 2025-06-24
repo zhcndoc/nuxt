@@ -3,25 +3,9 @@ definePageMeta({
   heroBackground: 'opacity-80 -z-10'
 })
 
-const [{ data: page }, { data: sponsors }] = await Promise.all([
+const [{ data: page }, { sponsors }] = await Promise.all([
   useAsyncData('sponsors-landing', () => queryCollection('landing').path('/enterprise/sponsors').first()),
-  useFetch('https://api.nuxt.com/sponsors', {
-    key: 'sponsors',
-    transform: (sponsors) => {
-      for (const tier in sponsors) {
-        if (Array.isArray(sponsors[tier])) {
-          sponsors[tier].forEach((sponsor) => {
-            if (sponsor.sponsorLogo.includes('github')) {
-              sponsor.sponsorLogo = `https://mark.ikxin.com/github/${sponsor.sponsorId}`
-            } else if (sponsor.sponsorLogo.includes('opencollective')) {
-              sponsor.sponsorLogo = `https://mark.ikxin.com/opencollective/${sponsor.sponsorId}`
-            }
-          })
-        }
-      }
-      return sponsors
-    }
-  })
+  useSponsors()
 ])
 
 if (!page.value) {
