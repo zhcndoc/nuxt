@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { kebabCase } from 'scule'
 import type { ContentNavigationItem } from '@nuxt/content'
-import { findPageBreadcrumb, mapContentNavigation } from '#ui-pro/utils'
+import { findPageBreadcrumb } from '@nuxt/content/utils'
+import { mapContentNavigation } from '#ui-pro/utils'
 
 definePageMeta({
   heroBackground: 'opacity-30',
@@ -59,7 +60,7 @@ watch(page, (page) => {
 }, { immediate: true })
 
 const breadcrumb = computed(() => {
-  const links = mapContentNavigation(findPageBreadcrumb(navigation.value, { path: path.value })).map(link => ({
+  const links = mapContentNavigation(findPageBreadcrumb(navigation.value, path.value)).map(link => ({
     label: link.label,
     to: link.to
   }))
@@ -136,9 +137,25 @@ if (import.meta.server) {
         </UPageAside>
       </template>
       <UPage>
-        <UPageHeader v-bind="page" :links="page.links?.map(link => ({ ...link, size: 'md' }))">
+        <UPageHeader v-bind="page">
           <template #headline>
             <UBreadcrumb :items="breadcrumb" />
+          </template>
+
+          <template #links>
+            <UButton
+              v-for="link in page.links?.map(link => ({ ...link, size: 'md' }))"
+              :key="link.label"
+              color="neutral"
+              variant="outline"
+              :target="link.to.startsWith('http') ? '_blank' : undefined"
+              v-bind="link"
+            >
+              <template v-if="link.avatar" #leading>
+                <UAvatar v-bind="link.avatar" size="2xs" :alt="`${link.label} avatar`" />
+              </template>
+            </UButton>
+            <PageHeaderLinks :key="page.path" />
           </template>
         </UPageHeader>
 
