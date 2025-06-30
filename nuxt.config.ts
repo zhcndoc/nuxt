@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     '@nuxtjs/plausible',
     '@nuxt/eslint',
     '@nuxt/scripts',
-    '@nuxtjs/turnstile',
+    // '@nuxtjs/turnstile',
     '@vueuse/nuxt',
     'nuxt-og-image',
     'motion-v/nuxt',
@@ -228,9 +228,9 @@ export default defineNuxtConfig({
       description: '完整的 Nuxt 文档和用 Markdown（MDC 语法）撰写的博客文章。'
     }
   },
-  turnstile: {
-    siteKey: '0x4AAAAAAAP2vNBsTBT3ucZi'
-  },
+  // turnstile: {
+  //   siteKey: '0x4AAAAAAAP2vNBsTBT3ucZi'
+  // },
   twoslash: {
     floatingVueOptions: {
       classMarkdown: 'prose prose-primary dark:prose-invert'

@@ -110,7 +110,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </UFormField>
 
         <ClientOnly>
-          <NuxtTurnstile v-if="showTurnstile" ref="turnstile" v-model="token" :options="{ theme: $colorMode.value as 'auto' | 'light' | 'dark' }" />
+          <!-- <NuxtTurnstile v-if="showTurnstile" ref="turnstile" v-model="token" :options="{ theme: $colorMode.value as 'auto' | 'light' | 'dark' }" /> -->
         </ClientOnly>
 
         <div class="flex justify-end">
