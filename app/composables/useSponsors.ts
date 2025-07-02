@@ -9,9 +9,9 @@ export const useSponsors = async () => {
           if (Array.isArray(sponsors[tier])) {
             sponsors[tier].forEach((sponsor) => {
               if (sponsor.sponsorLogo.includes('github')) {
-                sponsor.sponsorLogo = `https://mark.ikxin.com/github/${sponsor.sponsorId}`
+                sponsor.sponsorLogo = `https://markhub.top/github/${sponsor.sponsorId}`
               } else if (sponsor.sponsorLogo.includes('opencollective')) {
-                sponsor.sponsorLogo = `https://mark.ikxin.com/opencollective/${sponsor.sponsorId}`
+                sponsor.sponsorLogo = `https://markhub.top/opencollective/${sponsor.sponsorId}`
               }
             })
           }

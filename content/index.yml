@@ -387,8 +387,8 @@ testimonial:
     description: 'Vue.js 和 Vite 的创建者'
     to: 'https://x.com/youyuxi'
     avatar:
-      src: 'https://mark.ikxin.com/github/yyx990803?size=40'
-      srcset: 'https://mark.ikxin.com/github/yyx990803?size=80 2x'
+      src: 'https://markhub.top/github/yyx990803?size=40'
+      srcset: 'https://markhub.top/github/yyx990803?size=80 2x'
 deploy:
   title: 随时随地部署您的应用
   description: 一键部署和零配置选项使您的 Nuxt 应用轻松上线。选择您的平台，Nuxt 会处理其余工作，让您专注于构建优秀的应用程序，而不是管理复杂的部署过程。

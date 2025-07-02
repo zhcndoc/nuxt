@@ -92,7 +92,7 @@ const icons = {
               variant="subtle"
             >
               <template #leading>
-                <UAvatar :src="`https://mark.ikxin.com/github/${user.login}?size=80`" :srcset="`https://mark.ikxin.com/github/${user.login}?size=160 2x`" size="3xl" class="mx-auto" />
+                <UAvatar :src="`https://markhub.top/github/${user.login}?size=80`" :srcset="`https://markhub.top/github/${user.login}?size=160 2x`" size="3xl" class="mx-auto" />
               </template>
 
               <div class="flex items-center justify-center gap-1">
