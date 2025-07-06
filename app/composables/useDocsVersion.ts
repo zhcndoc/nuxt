@@ -11,15 +11,15 @@ interface Version {
 }
 
 const versions: Version[] = [{
-  label: 'Version 3',
+  label: 'Nuxt 3',
   tag: 'latest',
   shortTag: 'v3',
-  branch: '3.x',
+  branch: 'v3',
   tagColor: 'primary',
   path: '/docs',
   collection: 'docsv3'
 }, {
-  label: 'Version 4',
+  label: 'Nuxt 4',
   tag: 'alpha',
   shortTag: 'v4',
   branch: 'main',
