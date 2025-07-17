@@ -2,8 +2,8 @@ hero:
   title: '渐进式 Web 框架'
   description: 使用 Nuxt 创建高质量的 web 应用程序，这是一款开源框架，使得使用 Vue.js 进行全栈开发变得直观。
   cta:
-    label: Nuxt 4 路线图
-    to: /blog/roadmap-v4
+    label: 宣布 Nuxt 4.0 正式发布
+    to: /blog/v4
     icon: i-lucide-arrow-right
   tabs:
     - title: 最小化

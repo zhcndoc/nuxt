@@ -4,7 +4,6 @@ description: '将你的 Nuxt 应用部署到 Vercel 基础设施。'
 componentImg: Vercel
 logoSrc: '/assets/integrations/vercel.svg'
 category: Hosting
-featured: true
 nitroPreset: 'vercel'
 website: 'https://vercel.com/'
 ---
@@ -58,7 +57,7 @@ SERVER_PRESET=vercel_edge
     npm i @vercel/kv
     ```
 
-2. 更新 `nuxt.config` 文件：
+2. 更新 `nuxt.config.ts` 文件：
 
     ```ts [nuxt.config.ts]
     export default defineNuxtConfig({
@@ -92,7 +91,7 @@ export default defineEventHandler(async (event) => {
 
 ## 自定义构建输出配置
 
-你可以使用 `nuxt.config` 中的 `nitro.vercel.config` 键提供附加的[构建输出配置](https://vercel.com/docs/build-output-api/v3)，它将与内置的自动生成配置合并。
+您可以通过在 `nuxt.config.ts` 中使用 `nitro.vercel.config` 键提供额外的 [构建输出配置](https://vercel.com/docs/build-output-api/v3)。它将与内置的自动生成配置合并。
 
 ## 模板
 
