@@ -5,7 +5,7 @@ head.title: Nuxt 工作
 navigation.icon: i-lucide-briefcase-business
 links:
   - label: '发布职位'
-    to: 'https://vuejobs.com/jobs/create'
+    to: 'https://vuejobs.com/hire-vuejs-developers'
     color: neutral
     size: md
     target: '_blank'
