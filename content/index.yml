@@ -2,8 +2,8 @@ hero:
   title: '渐进式 Web 框架'
   description: 使用 Nuxt 创建高质量的 web 应用程序，这是一款开源框架，使得使用 Vue.js 进行全栈开发变得直观。
   cta:
-    label: Nuxt v3.18 已发布
-    to: /blog/v3-18
+    label: Nuxt v4.1 已发布
+    to: /blog/v4-1
     icon: i-lucide-arrow-right
   tabs:
     - title: 最小化
@@ -275,9 +275,9 @@ logos:
       alt: Blizzard
       height: 28
       width: 55
-    - light: /assets/brands/light/too-good-to-go.svg
-      dark: /assets/brands/dark/too-good-to-go.svg
-      alt: To Good to Go
+    - light: /assets/brands/light/deutsche-bahn.svg
+      dark: /assets/brands/dark/deutsche-bahn.svg
+      alt: Deutsche Bahn
       height: 40
       width: 51
 features:
