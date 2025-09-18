@@ -6,7 +6,7 @@ const { resolve } = createResolver(import.meta.url)
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    '@nuxt/ui-pro',
+    '@nuxt/ui',
     'nuxt-content-twoslash',
     '@nuxt/content',
     '@nuxt/image',
@@ -178,6 +178,13 @@ export default defineNuxtConfig({
     '/support/us': { redirect: '/enterprise/sponsors', prerender: false }
   },
   sourcemap: true,
+  experimental: {
+    defaults: {
+      nuxtLink: {
+        externalRelAttribute: 'noopener'
+      }
+    }
+  },
   compatibilityDate: '2025-07-17',
   nitro: {
     prerender: {

@@ -2,7 +2,7 @@
 import { kebabCase } from 'scule'
 import type { ContentNavigationItem } from '@nuxt/content'
 import { findPageBreadcrumb } from '@nuxt/content/utils'
-import { mapContentNavigation } from '#ui-pro/utils'
+import { mapContentNavigation } from '@nuxt/ui/utils/content'
 
 definePageMeta({
   heroBackground: 'opacity-30',
