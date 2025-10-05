@@ -5,7 +5,7 @@ head.description: Nuxt 是一个开源框架，感谢我们的慷慨赞助商，
 navigation.icon: i-lucide-hand-heart
 links:
   - label: '成为赞助商'
-    to: 'https://github.com/sponsors/nuxt'
+    to: 'https://opencollective.com/nuxtjs'
     icon: i-lucide-heart
     color: 'neutral'
     size: 'md'

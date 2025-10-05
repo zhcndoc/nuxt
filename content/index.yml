@@ -2,8 +2,8 @@ hero:
   title: '渐进式 Web 框架'
   description: 使用 Nuxt 创建高质量的 web 应用程序，这是一款开源框架，使得使用 Vue.js 进行全栈开发变得直观。
   cta:
-    label: Nuxt v4.1 已发布
-    to: /blog/v4-1
+    label: Nuxt UI v4 已发布
+    to: /blog/nuxt-ui-v4
     icon: i-lucide-arrow-right
   tabs:
     - title: 最小化
@@ -405,8 +405,8 @@ stats:
   community:
     title: 开源
     description: Nuxt 框架 100% 完全由充满热情的开源社区驱动。Nuxt 框架中的每一行代码都由像您这样的热情社区开发者编写。
-  x: 98.7k
-  discord: 28k
+  x: 102k
+  discord: 32k
   cta:
     label: 开始贡献
     to: 'https://github.com/nuxt/nuxt'
@@ -481,7 +481,7 @@ sponsors:
   description: 感谢我们的贡献者和赞助商，Nuxt 在 MIT 许可下始终保持免费和开源。
   links:
     - label: 成为赞助商
-      to: 'https://github.com/sponsors/nuxt'
+      to: 'https://opencollective.com/nuxtjs'
       color: neutral
       trailingIcon: i-lucide-heart
       trailing: true

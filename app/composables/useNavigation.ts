@@ -12,12 +12,12 @@ function _useHeaderLinks() {
       icon: 'i-lucide-book-marked',
       to,
       search: false,
-      active: route.path.startsWith(to),
+      active: route.path.startsWith(to) || route.path.startsWith(`/deploy`),
       children: [{
         label: '开始使用',
         description: '学习如何开始使用 Nuxt 构建您的第一个应用程序。',
         icon: 'i-lucide-rocket',
-        to: `${to}/getting-started`,
+        to: `${to}/getting-started/installation`,
         active: route.path.startsWith(`${to}/getting-started`)
       }, {
         label: '指南',
@@ -32,8 +32,14 @@ function _useHeaderLinks() {
         to: `${to}/api`,
         active: route.path.startsWith(`${to}/api`)
       }, {
+        label: '部署',
+        description: '将您的 Nuxt 项目部署到任何地方。',
+        icon: 'i-lucide-cloud',
+        to: '/deploy',
+        active: route.path.startsWith('/deploy')
+      }, {
         label: '示例',
-        description: '发现更多有趣的官方示例和社区示例。',
+        description: '发现和探索官方和社区示例。',
         icon: 'i-lucide-app-window-mac',
         to: `${to}/examples`,
         active: route.path.startsWith(`${to}/examples`)
@@ -45,77 +51,36 @@ function _useHeaderLinks() {
         active: route.path.startsWith(`${to}/community`)
       }]
     }, {
-      label: '集成',
+      label: '模块',
+      icon: 'i-lucide-puzzle',
       to: '/modules',
-      icon: 'i-lucide-unplug',
-      search: false,
-      active: route.path.startsWith('/modules') || route.path.startsWith('/deploy'),
-      children: [{
-        label: '模块',
-        description: '通过 Nuxt 模块为您的 Nuxt 项目添加更多功能。',
-        icon: 'i-lucide-puzzle',
-        to: '/modules'
-      }, {
-        label: '托管',
-        description: '将您的 Nuxt 项目部署到互联网的任何地方。',
-        icon: 'i-lucide-rocket',
-        to: '/deploy'
-      }]
+      description: '通过模块增强您的 Nuxt 项目。'
+    }, {
+      label: '模板',
+      icon: 'i-lucide-app-window',
+      description: '使用 Nuxt 模板开始您的下一个项目。',
+      to: '/templates'
     }, {
       label: '学习资源',
       icon: 'i-lucide-library',
-      to: '/templates',
+      to: '/showcase',
       search: false,
-      active: route.path.startsWith('/templates') || route.path.startsWith('/video-courses') || route.path.startsWith('/showcase'),
+      active: route.path.startsWith('/video-courses') || route.path.startsWith('/showcase'),
       children: [{
-        label: '模板',
-        icon: 'i-lucide-app-window',
-        description: '使用 Nuxt 模板开始您的下一个项目。',
-        to: '/templates'
+        label: '展示',
+        description: '发现和探索使用 Nuxt 构建的项目。',
+        icon: 'i-lucide-presentation',
+        to: '/showcase'
       }, {
         label: '视频课程',
         description: '通过观看视频课程来学习使用 Nuxt 框架。',
         icon: 'i-lucide-graduation-cap',
         to: '/video-courses'
       }, {
-        label: '展示柜',
-        description: '发现并探索更多使用 Nuxt 构建的项目。',
-        icon: 'i-lucide-presentation',
-        to: '/showcase'
-      }, {
         label: 'Nuxt 认证',
         description: '通过 Nuxt 认证来获取您的编程水平证明。',
         icon: 'i-lucide-medal',
         to: 'https://certification.nuxt.com',
-        target: '_blank'
-      }]
-    }, {
-      label: '产品',
-      icon: 'i-lucide-sparkle',
-      search: false,
-      children: [{
-        label: 'Nuxt UI Pro',
-        to: 'https://ui.nuxt.com/pro?utm_source=nuxt-website&utm_medium=header',
-        description: '使用高级组件为 Vue 或 Nuxt 更快构建。',
-        icon: 'i-lucide-panels-top-left',
-        target: '_blank'
-      }, {
-        label: 'Nuxt Studio',
-        to: 'https://content.nuxt.com/studio/?utm_source=nuxt-website&utm_medium=header',
-        description: '使用可视化编辑器编辑您的 Nuxt Content 网站。',
-        icon: 'i-lucide-pen',
-        target: '_blank'
-      }, {
-        label: 'NuxtHub',
-        to: 'https://hub.nuxt.com/?utm_source=nuxt-website&utm_medium=header',
-        description: '部署和管理可扩展的全栈 Nuxt 应用程序。',
-        icon: 'i-lucide-rocket',
-        target: '_blank'
-      }, {
-        label: 'Docus',
-        to: 'https://docus.dev/?utm_source=nuxt-website&utm_medium=header',
-        description: 'Write beautiful docs with Markdown',
-        icon: 'i-custom-docus',
         target: '_blank'
       }]
     }, {

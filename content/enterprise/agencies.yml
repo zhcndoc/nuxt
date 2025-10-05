@@ -5,8 +5,8 @@ head.title: Nuxt 合作伙伴机构
 head.description: 请查阅我们的代理合作伙伴目录，找到您附近具备合适技能的机构。
 navigation.icon: i-lucide-handshake
 links:
-  - label: '提交我的代理机构'
-    to: 'https://docs.google.com/forms/d/e/1FAIpQLSf85qskit5QqmGJcruGkGF0U7240Bh9MeN0pHB18UiOMWC8dA/viewform'
+  - label: '成为合作伙伴'
+    to: 'https://opencollective.com/nuxtjs/contribute/agency-partner-93555'
     color: neutral
     size: 'md'
     target: '_blank'

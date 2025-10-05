@@ -10,7 +10,7 @@ cta:
     - label: '开始使用'
       size: 'lg'
       color: 'neutral'
-      to: '/docs/getting-started/introduction'
+      to: '/docs/getting-started/installation'
     - label: '探索示例'
       size: 'lg'
       color: 'neutral'
