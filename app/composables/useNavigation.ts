@@ -130,23 +130,16 @@ const footerLinks = [{
     to: '/design-kit'
   }]
 }, {
-  label: '产品',
+  label: '探索',
   children: [{
-    label: 'Nuxt UI Pro',
-    to: 'https://ui.nuxt.com/pro?utm_source=nuxt-website&utm_medium=footer',
-    target: '_blank'
+    label: '模块',
+    to: '/modules'
   }, {
-    label: 'Nuxt Studio',
-    to: 'https://content.nuxt.com/studio/?utm_source=nuxt-website&utm_medium=footer',
-    target: '_blank'
+    label: '模板',
+    to: '/templates'
   }, {
-    label: 'NuxtHub',
-    to: 'https://hub.nuxt.com/?utm_source=nuxt-website&utm_medium=footer',
-    target: '_blank'
-  }, {
-    label: 'Docus',
-    to: 'https://docus.dev/?utm_source=nuxt-website&utm_medium=footer',
-    target: '_blank'
+    label: '展示',
+    to: '/showcase'
   }]
 }, {
   label: '企业',
