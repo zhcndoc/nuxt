@@ -1,3 +1,4 @@
+import type { CommandPaletteGroup } from '@nuxt/ui'
 import { createSharedComposable } from '@vueuse/core'
 
 function _useHeaderLinks() {
@@ -20,11 +21,17 @@ function _useHeaderLinks() {
         to: `${to}/getting-started/installation`,
         active: route.path.startsWith(`${to}/getting-started`)
       }, {
+        label: '结构',
+        description: '了解 Nuxt 项目的目录结构。',
+        icon: 'i-lucide-folder-open',
+        to: `${to}/directory-structure`,
+        active: route.path.startsWith(`${to}/directory-structure`)
+      }, {
         label: '指南',
         description: '获取关键概念、目录结构和最佳实践。',
         icon: 'i-lucide-book-open',
         to: `${to}/guide`,
-        active: route.path.startsWith(`${to}/guide`)
+        active: route.path.startsWith(`${to}/guide`) && !route.path.startsWith(`${to}/guide/directory-structure`)
       }, {
         label: 'API',
         description: '探索 Nuxt 组件、组合函数、工具及其他内容。',
@@ -163,150 +170,98 @@ const _useNavigation = () => {
 
   const { headerLinks } = useHeaderLinks()
   const { footerLinks } = useFooterLinks()
+  const { modules } = useModules()
+  const { providers } = useHostingProviders()
 
-  const searchLinks = computed(() => [
-    {
+  const searchLinks = computed(() => [{
+    label: 'Ask AI',
+    icon: 'i-lucide-wand',
+    to: 'javascript:void(0);',
+    onSelect: () => nuxtApp.$kapa?.openModal()
+  }, ...headerLinks.value.map((link) => {
+    // Remove `/docs` and `/enterprise` links from command palette
+    if (link.search === false) {
+      return {
+        label: link.label,
+        icon: link.icon,
+        children: link.children
+      }
+    }
+    return link
+  }).filter(Boolean), {
+    label: '团队',
+    icon: 'i-lucide-users',
+    to: '/team'
+  }, {
+    label: '设计套件',
+    icon: 'i-lucide-palette',
+    to: '/design-kit'
+  }, {
+    label: '新闻',
+    icon: 'i-lucide-mail',
+    to: '/newsletter'
+  }])
+
+  const modulesItems = computed(() => modules.value.map(module => ({
+    id: `module-${module.name}`,
+    label: module.npm,
+    suffix: module.description,
+    avatar: {
+      src: moduleImage(module.icon),
+      ui: {
+        root: 'rounded-none bg-transparent'
+      }
+    },
+    to: `/modules/${module.name}`,
+    // Store searchable fields for filtering
+    _searchFields: [module.name, module.npm, module.repo].filter(Boolean)
+  })))
+
+  const hostingItems = computed(() => providers.value.map(hosting => ({
+    id: `hosting-${hosting.path}`,
+    label: hosting.title,
+    suffix: hosting.description,
+    icon: hosting.logoIcon,
+    avatar: hosting.logoSrc
+      ? {
+          src: hosting.logoSrc,
+          ui: {
+            root: 'rounded-none bg-transparent'
+          }
+        }
+      : undefined,
+    to: hosting.path,
+    // Store searchable fields for filtering
+    _searchFields: [hosting.title].filter(Boolean)
+  })))
+
+  const searchGroups = computed<CommandPaletteGroup[]>(() => [{
+    id: 'ask-ai-search',
+    label: 'AI',
+    ignoreFilter: true,
+    postFilter: (searchTerm: string, items: any[]) => {
+      if (!searchTerm) {
+        return []
+      }
+      return items
+    },
+    items: [{
       label: 'Ask AI',
       icon: 'i-lucide-wand',
       to: 'javascript:void(0);',
-      onSelect: () => nuxtApp.$kapa?.openModal()
-    },
-    ...headerLinks.value.map((link) => {
-      // Remove `/docs` and `/enterprise` links from command palette
-      if (link.search === false) {
-        return {
-          label: link.label,
-          icon: link.icon,
-          children: link.children
-        }
-      }
-      return link
-    }).filter((link): link is NonNullable<typeof link> => Boolean(link)), {
-      label: '团队',
-      icon: 'i-lucide-users',
-      to: '/team'
-    }, {
-      label: '设计套件',
-      icon: 'i-lucide-palette',
-      to: '/design-kit'
-    }, {
-      label: '新闻',
-      icon: 'i-lucide-mail',
-      to: '/newsletter'
-    }])
-
-  type SearchGroup = {
-    id: string
-    label: string
-    icon?: string
-    items: Array<{
-      id: string
-      label: string
-      suffix?: string
-      icon?: string
-      avatar?: {
-        src?: string
-        ui?: {
-          root: string
-        }
-      }
-      to: string
-      onSelect?: () => Promise<void>
-    }>
-  }
-
-  const searchGroups = computed<SearchGroup[]>(() => {
-    const aiGroup: SearchGroup = {
-      id: 'ask-ai-search',
-      label: 'AI',
-      icon: 'i-lucide-wand',
-      items: []
-    }
-
-    const modulesGroup: SearchGroup = {
-      id: 'modules-search',
-      label: 'Modules',
-      items: []
-    }
-
-    const hostingGroup: SearchGroup = {
-      id: 'hosting-search',
-      label: 'Hosting',
-      items: []
-    }
-
-    const groups = [aiGroup, modulesGroup, hostingGroup]
-
-    if (!searchTerm.value) {
-      return groups
-    }
-
-    aiGroup.items = [{
-      id: `ask-ai-${searchTerm.value}`,
-      label: `Ask AI about "${searchTerm.value}"`,
-      icon: 'i-lucide-wand',
-      to: 'javascript:void(0);',
       onSelect() {
-        return nuxtApp.$kapa.openModal(searchTerm.value)
+        nuxtApp.$kapa?.openModal(searchTerm.value)
       }
     }]
-
-    const loadModules = async () => {
-      const { modules, fetchList } = useModules()
-      if (!modules.value.length) {
-        await fetchList()
-      }
-
-      modulesGroup.items = modules.value
-        .filter(module => ['name', 'npm', 'repo'].map(field => module[field as keyof typeof module]).filter(Boolean).some(value => typeof value === 'string' && value.search(searchTextRegExp(searchTerm.value)) !== -1))
-        .map(module => ({
-          id: `module-${module.name}`,
-          label: module.npm,
-          suffix: module.description,
-          avatar: {
-            src: moduleImage(module.icon),
-            ui: {
-              root: 'rounded-none bg-transparent'
-            }
-          },
-          to: `/modules/${module.name}`
-        }))
-    }
-
-    const loadHosting = async () => {
-      const { providers, fetchList } = useHostingProviders()
-      if (!providers.value.length) {
-        await fetchList()
-      }
-
-      hostingGroup.items = providers.value
-        .filter(hosting => ['title'].map(field => hosting[field as keyof typeof hosting]).filter(Boolean).some(value => typeof value === 'string' && value.search(searchTextRegExp(searchTerm.value)) !== -1))
-        .map(hosting => ({
-          id: `hosting-${hosting.path}`,
-          label: hosting.title,
-          suffix: hosting.description,
-          icon: hosting.logoIcon,
-          avatar: hosting.logoSrc
-            ? {
-                src: hosting.logoSrc,
-                ui: {
-                  root: 'rounded-none bg-transparent'
-                }
-              }
-            : undefined,
-          to: hosting.path
-        }))
-    }
-
-    onMounted(() => {
-      Promise.all([
-        loadModules(),
-        loadHosting()
-      ]).catch(error => console.error('Error loading search results:', error))
-    })
-
-    return groups
-  })
+  }, {
+    id: 'modules-search',
+    label: 'Modules',
+    items: modulesItems.value
+  }, {
+    id: 'hosting-search',
+    label: 'Hosting',
+    items: hostingItems.value
+  }])
 
   return {
     searchTerm,
