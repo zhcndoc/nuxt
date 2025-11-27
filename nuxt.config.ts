@@ -29,9 +29,7 @@ export default defineNuxtConfig({
     image: {
       alias: {
         '/gh/': 'https://raw.githubusercontent.com',
-        '/gh_avatar/': 'https://avatars.githubusercontent.com',
-        '/nuxt/': 'https://nuxt.com',
-        '/': 'https://nuxt.com'
+        '/gh_avatar/': 'https://avatars.githubusercontent.com'
       },
       domains: [
         'raw.githubusercontent.com',
@@ -79,6 +77,9 @@ export default defineNuxtConfig({
   ui: {
     theme: {
       colors: ['primary', 'secondary', 'info', 'success', 'warning', 'error', 'important']
+    },
+    experimental: {
+      componentDetection: true
     }
   },
   routeRules: {
