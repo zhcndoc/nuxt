@@ -191,7 +191,18 @@ function refreshHeading(opened: boolean) {
         <UPageBody>
           <ContentRenderer v-if="page.body" :value="page" />
           <div>
-            <Feedback :page="page" />
+            <div class="group relative border border-default rounded-md hover:bg-elevated/50 w-full transition-colors p-2">
+              <ULink
+                to="https://www.rainyun.com/mm_?s=zhcndoc"
+                target="_blank"
+                class="absolute inset-0 z-10"
+                data-umami-event="ads-nuxt-bottom"
+              />
+              <div class="flex justify-center w-full ">
+                <img src="/assets/ads/rainyun_2.png" class="w-full rounded-sm">
+              </div>
+            </div>
+            <!-- <Feedback :page="page" /> -->
             <USeparator class="mt-6 mb-10">
               <div class="flex items-center gap-2 text-sm text-muted">
                 <UButton
@@ -202,7 +213,7 @@ function refreshHeading(opened: boolean) {
                   target="_blank"
                   label="报告问题"
                 />
-                  或者
+                或者
                 <UButton
                   size="sm"
                   variant="link"

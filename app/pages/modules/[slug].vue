@@ -170,11 +170,9 @@ defineOgImageComponent('Module', {
 
       <template #right>
         <UContentToc title="目录">
-          <template #top>
-            <Ads />
-          </template>
           <template #bottom>
             <div class="hidden lg:block space-y-6">
+              <Ads />
               <UPageLinks title="链接" :links="links" />
 
               <USeparator type="dashed" />

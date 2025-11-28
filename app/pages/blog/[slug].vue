@@ -122,7 +122,17 @@ const links = [
       <UPage class="lg:gap-24">
         <UPageBody>
           <ContentRenderer v-if="article.body" :value="article" />
-
+          <div class="group relative border border-default rounded-md hover:bg-elevated/50 w-full transition-colors p-2">
+            <ULink
+              to="https://www.rainyun.com/mm_?s=zhcndoc"
+              target="_blank"
+              class="absolute inset-0 z-10"
+              data-umami-event="ads-nuxt-bottom"
+            />
+            <div class="flex justify-center w-full ">
+              <img src="/assets/ads/rainyun_2.png" class="w-full rounded-sm">
+            </div>
+          </div>
           <div class="flex items-center justify-between mt-12 not-prose">
             <ULink to="/blog" class="text-primary">
               ← 返回博客
@@ -152,11 +162,9 @@ const links = [
 
         <template #right>
           <UContentToc v-if="article.body && article.body.toc" :links="article.body.toc.links" title="目录" highlight>
-            <template #top>
-              <Ads />
-            </template>
             <template #bottom>
               <div class="hidden lg:block space-y-6">
+                <Ads />
                 <UPageLinks title="链接" :links="links" />
                 <USeparator type="dashed" />
                 <SocialLinks />
