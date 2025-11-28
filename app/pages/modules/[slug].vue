@@ -170,6 +170,9 @@ defineOgImageComponent('Module', {
 
       <template #right>
         <UContentToc title="目录">
+          <template #top>
+            <Ads />
+          </template>
           <template #bottom>
             <div class="hidden lg:block space-y-6">
               <UPageLinks title="链接" :links="links" />
@@ -203,7 +206,6 @@ defineOgImageComponent('Module', {
               </UPageLinks>
               <USeparator type="dashed" />
               <SocialLinks />
-              <Ads />
             </div>
           </template>
         </UContentToc>

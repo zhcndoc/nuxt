@@ -152,12 +152,14 @@ const links = [
 
         <template #right>
           <UContentToc v-if="article.body && article.body.toc" :links="article.body.toc.links" title="目录" highlight>
+            <template #top>
+              <Ads />
+            </template>
             <template #bottom>
               <div class="hidden lg:block space-y-6">
                 <UPageLinks title="链接" :links="links" />
                 <USeparator type="dashed" />
                 <SocialLinks />
-                <Ads />
               </div>
             </template>
           </UContentToc>

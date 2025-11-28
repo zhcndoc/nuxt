@@ -11,7 +11,7 @@
     <AdsNuxtCertificate v-else />
     <AdsFallback v-if="$ads.adBlocked.value" />
     <LazyAdsCarbon v-else :key="route.path" /> -->
-    <div class="group relative border border-default rounded-md hover:bg-elevated/50 w-full transition-colors p-2">
+    <div class="group relative border border-default rounded-md hover:bg-elevated/50 w-full transition-colors p-2 mb-6">
       <ULink
         to="https://www.rainyun.com/mm_?s=zhcndoc"
         target="_blank"
