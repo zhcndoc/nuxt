@@ -200,6 +200,11 @@ const _useNavigation = () => {
     label: '新闻',
     icon: 'i-lucide-mail',
     to: '/newsletter'
+  }, {
+    label: '源代码',
+    icon: 'i-lucide-code',
+    to: 'https://github.com/zhcndoc/nuxt',
+    target: '_blank'
   }])
 
   const modulesItems = computed(() => modules.value.map(module => ({

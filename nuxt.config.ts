@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     'nuxt-llms',
     // '@nuxthub/core',
     'nuxt-charts',
-    'nuxt-auth-utils'
+    'nuxt-auth-utils',
+    '@nuxtjs/mcp-toolkit'
   ],
   $development: {
     site: {
@@ -310,6 +311,11 @@ export default defineNuxtConfig({
       title: 'Nuxt 中文文档',
       description: '完整的 Nuxt 文档和用 Markdown（MDC 语法）撰写的博客文章。'
     }
+  },
+  mcp: {
+    name: 'Nuxt',
+    route: '/mcp',
+    browserRedirect: '/docs/guide/ai/mcp'
   },
   // turnstile: {
   //   siteKey: '0x4AAAAAAAP2vNBsTBT3ucZi'
