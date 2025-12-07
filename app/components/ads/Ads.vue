@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// const { $ads } = useNuxtApp()
+const { $ads } = useNuxtApp()
 // const route = useRoute()
 // const nuxtApp = useNuxtApp()
 // const route = useRoute()

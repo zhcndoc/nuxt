@@ -55,15 +55,15 @@ export default defineNuxtConfig({
 
 1. 为 Cloudflare Pages 构建你的项目：
 
-    ```bash [终端]
-    npx nuxi build --preset=cloudflare_pages
-    ```
+```bash [终端]
+npx nuxi build --preset=cloudflare_pages
+```
 
 2. 部署，首次部署时会要求你创建一个项目：
 
-    ```bash [终端]
-    npx wrangler pages deploy dist/
-    ```
+```bash [终端]
+npx wrangler pages deploy dist/
+```
 
 ## 了解更多
 
