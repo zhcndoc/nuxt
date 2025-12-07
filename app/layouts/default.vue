@@ -17,23 +17,24 @@ onMounted(() => {
 
 <template>
   <div :class="[(route.path.startsWith('/docs/') || route.path.startsWith('/deploy')) && 'root']">
-    <!-- <UBanner
+    <UBanner
       id="mn-nuxt-b"
-      title="Black Friday: Get 40% OFF the complete Mastering Nuxt course"
-      icon="i-lucide-ticket-percent"
-      to="https://masteringnuxt.com/?utm_source=nuxt.com&utm_medium=banner&utm_campaign=nuxt.com"
+      title="雨云 RainYun - 企业级云计算服务提供商：新用户注册立享五折！"
+      icon="i-lucide-server"
+      to="https://www.rainyun.com/mm_?s=zhcndoc"
       target="_blank"
-      close
+      data-umami-event="ads-rainyun"
       :actions="[
         {
-          label: 'Claim offer',
+          label: '立即注册',
           color: 'neutral',
           variant: 'outline',
           trailingIcon: 'i-lucide-arrow-right',
-          to: 'https://masteringnuxt.com/?utm_source=nuxt.com&utm_medium=banner&utm_campaign=nuxt.com'
+          to: 'https://www.rainyun.com/mm_?s=zhcndoc',
+          target: '_blank'
         }
       ]"
-    /> -->
+    />
 
     <Header />
 
