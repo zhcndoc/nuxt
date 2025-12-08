@@ -17,8 +17,8 @@ onMounted(() => {
 
 <template>
   <div :class="[(route.path.startsWith('/docs/') || route.path.startsWith('/deploy')) && 'root']">
-    <!-- <UBanner
-      id="mn-nuxt-b"
+    <UBanner
+      id="nuxt-rainyun"
       title="雨云 RainYun - 企业级云计算服务提供商：新用户注册立享五折！"
       icon="i-lucide-server"
       to="https://www.rainyun.com/mm_?s=zhcndoc"
@@ -34,7 +34,7 @@ onMounted(() => {
           target: '_blank'
         }
       ]"
-    /> -->
+    />
 
     <Header />
 
