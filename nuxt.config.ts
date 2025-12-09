@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     'nuxt-content-twoslash',
     '@nuxt/content',
     '@nuxt/image',
-    '@nuxtjs/plausible',
+    // '@nuxtjs/plausible',
     '@nuxt/eslint',
     '@nuxt/scripts',
     // '@nuxtjs/turnstile',
