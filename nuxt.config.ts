@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     'motion-v/nuxt',
     'nuxt-llms',
-    // '@nuxthub/core',
+    '@nuxthub/core',
     'nuxt-charts',
     'nuxt-auth-utils',
     '@nuxtjs/mcp-toolkit',
@@ -43,9 +43,7 @@ export default defineNuxtConfig({
   },
   $production: {
     hub: {
-      kv: {
-        driver: 'vercel-runtime-cache'
-      }
+      kv: true
     },
     image: {
       // ipx: {
