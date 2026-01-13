@@ -1,16 +1,12 @@
 hero:
-  title: '渐进式 Web 框架'
-  description: 使用 Nuxt 创建高质量的 web 应用程序，这是一款开源框架，使得使用 Vue.js 进行全栈开发变得直观。
-  cta:
-    label: Nuxt MCP Server 已发布
-    to: /docs/4.x/guide/ai/mcp
-    icon: i-lucide-arrow-right
+  title: '全栈 Vue 框架'
+  description: 使用 Vue 快速构建可用于生产环境的 Web 应用。基于文件的路由、自动导入和服务器端渲染，所有功能均已开箱即用。
   tabs:
     - title: 最小化
       icon: i-lucide-leaf
       content: |
-        ::code-tree{defaultValue="app.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)] my-0!"}
-        ```vue [app.vue]
+        ::code-tree{defaultValue="app/app.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)] my-0!"}
+        ```vue [app/app.vue]
         <script setup lang="ts">
         const version = 4
         </script>
@@ -27,7 +23,6 @@ hero:
         }
         </style>
         ```
-
         ```json [package.json]
         {
           "name": "hello-nuxt",
@@ -48,13 +43,25 @@ hero:
     - title: 路由
       icon: i-lucide-milestone
       content: |
-        ::code-tree{defaultValue="pages/index.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)] my-0!"}
-        ```vue [app.vue]
+        ::code-tree{defaultValue="app/pages/index.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)] my-0!"}
+        ```vue [app/pages/index.vue]
+        <template>
+          <h1>Index page</h1>
+          <NuxtLink to="/blog/hello-world">
+            Go to blog post
+          </NuxtLink>
+        </template>
+        ```
+        ```vue [app/pages/blog/[slug\\].vue]
+        <template>
+          <h1>Blog post {{ $route.params.slug }}</h1>
+        </template>
+        ```
+        ```vue [app/app.vue]
         <template>
           <NuxtPage />
         </template>
         ```
-
         ```json [package.json]
         {
           "name": "nuxt-routing",
@@ -71,31 +78,41 @@ hero:
           }
         }
         ```
+        ::
+    - title: 数据获取
+      icon: i-lucide-unplug
+      content: |
+        ::code-tree{defaultValue="app/pages/index.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)] my-0!"}
+        ```vue [app/pages/index.vue]
+        <script setup lang="ts">
+        const { data: page } = await useFetch('/api/cms/home')
+        </script>
 
-        ```vue [pages/index.vue]
         <template>
-          <h1>Index page</h1>
+          <h1>{{ page.title }}</h1>
           <NuxtLink to="/blog/hello-world">
             Go to blog post
           </NuxtLink>
         </template>
         ```
-        ```vue [pages/blog/[slug\\].vue]
+        ```vue [app/pages/blog/[slug\\].vue]
+        <script setup lang="ts">
+          const { slug } = useRoute().params
+          const { data: post } = await useFetch(`/api/cms/blog/${slug}`)
+        </script>
+
         <template>
-          <h1>Blog post {{ $route.params.slug }}</h1>
+          <h1>{{ post.title }}</h1>
+          <NuxtLink to="/">
+            Go to home
+          </NuxtLink>
         </template>
         ```
-        ::
-    - title: 数据获取
-      icon: i-lucide-unplug
-      content: |
-        ::code-tree{defaultValue="pages/index.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)] my-0!"}
-        ```vue [app.vue]
+        ```vue [app/app.vue]
         <template>
           <NuxtPage />
         </template>
         ```
-
         ```json [package.json]
         {
           "name": "nuxt-data-fetching",
@@ -112,38 +129,12 @@ hero:
           }
         }
         ```
-
-        ```vue [pages/index.vue]
-        <script setup lang="ts">
-        const { data: page } = await useFetch('/api/cms/home')
-        </script>
-
-        <template>
-          <h1>{{ page.title }}</h1>
-          <NuxtLink to="/blog/hello-world">
-            Go to blog post
-          </NuxtLink>
-        </template>
-        ```
-        ```vue [pages/blog/[slug\\].vue]
-        <script setup lang="ts">
-          const { slug } = useRoute().params
-          const { data: post } = await useFetch(`/api/cms/blog/${slug}`)
-        </script>
-
-        <template>
-          <h1>{{ post.title }}</h1>
-          <NuxtLink to="/">
-            Go to home
-          </NuxtLink>
-        </template>
-        ```
         ::
     - title: 自动导入
       icon: i-lucide-wand-sparkles
       content: |
-        ::code-tree{defaultValue="app.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)] my-0!"}
-        ```vue [app.vue]
+        ::code-tree{defaultValue="app/app.vue" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)] my-0!"}
+        ```vue [app/app.vue]
         <script setup>
         const message = ref('Nuxt')
         const hello = () => sayHello(message.value)
@@ -159,8 +150,7 @@ hero:
           </main>
         </template>
         ```
-
-        ```vue [components/MyInput.vue]
+        ```vue [app/components/MyInput.vue]
         <script setup>
         const modelValue = defineModel<string>()
         </script>
@@ -169,12 +159,11 @@ hero:
           <input v-model="modelValue" />
         </template>
         ```
-        ```ts [composables/say-hello.ts]
+        ```ts [app/composables/say-hello.ts]
         export function sayHello(message = 'World') {
           alert(`Hello ${upperCase(message)}!`)
         }
         ```
-
         ```json [package.json]
         {
           "name": "hello-nuxt",
@@ -196,9 +185,19 @@ hero:
       icon: i-lucide-pc-case
       content: |
         ::code-tree{defaultValue="server/api/hello.ts" class="lg:rounded-r-none lg:border-r-0 dark:[--ui-border-muted:var(--color-gray-800)] my-0!"}
-        ```vue [app.vue]
+        ```vue [app/app.vue]
         <template>
           <NuxtPage />
+        </template>
+        ```
+
+        ```vue [app/pages/index.vue]
+        <script setup lang="ts">
+        const { data } = await useFetch('/api/hello')
+        </script>
+
+        <template>
+          <h1>{{ data.message }}</h1>
         </template>
         ```
 
@@ -217,16 +216,6 @@ hero:
             "nuxt": "latest"
           }
         }
-        ```
-
-        ```vue [pages/index.vue]
-        <script setup lang="ts">
-        const { data } = await useFetch('/api/hello')
-        </script>
-
-        <template>
-          <h1>{{ data.message }}</h1>
-        </template>
         ```
 
         ```ts [server/api/hello.ts]
@@ -281,8 +270,8 @@ logos:
       height: 40
       width: 51
 features:
-  title: 随着您的成长启用功能
-  description: Nuxt 随着您的需求增长和适应，同时提供卓越的开发者体验。从简单的登录页面到适合数百名开发者团队的复杂 web 应用程序，您可以构建任何东西。我们设计 Nuxt 使其对所有技能水平的开发者都易于接近。
+  title: Everything you need, nothing you don't
+  description: Nuxt handles the architecture so you can focus on building.
   features:
     - icon: i-lucide-sparkles
       title: 零配置
@@ -323,8 +312,8 @@ features:
     to: /docs
     icon: i-lucide-arrow-right
 foundation:
-  title: 构建在坚实的基础之上
-  description: Nuxt 构建在坚如磐石的开源技术之上，具备在不同构建工具之间进行选择的多样性。
+  title: 基于成熟的工具
+  description: 前端使用 Vue，服务器端使用 Nitro。您可以自由选择打包工具。
   items:
     - id: vue
       title: 使用 Vue.js 构建前端
@@ -389,9 +378,11 @@ testimonial:
     avatar:
       src: 'https://markhub.top/github/yyx990803?size=40'
       srcset: 'https://markhub.top/github/yyx990803?size=80 2x'
+      provider: 'ipx'
+      loading: 'lazy'
 deploy:
-  title: 随时随地部署您的应用
-  description: 一键部署和零配置选项使您的 Nuxt 应用轻松上线。选择您的平台，Nuxt 会处理其余工作，让您专注于构建优秀的应用程序，而不是管理复杂的部署过程。
+  title: 部署到任何地方
+  description: 一键部署。无论是 SSR、静态还是边缘，Nuxt 都能适应您的平台。
   links:
     - label: 立即了解如何部署
       to: /deploy
@@ -399,12 +390,11 @@ deploy:
       color: neutral
       trailing: true
 stats:
-  title: 开发者的简单而强大的 Web 应用之选
-  description: |
-    Nuxt 诞生于开发者提升生产力和平台性能的需求。最初是一个基于 Vue 的任务自动化和服务端渲染解决方案，如今已被全球众多初创公司和企业所信赖。
+  title: 受到全球开发者的信赖
+  description: 为初创企业到大型企业提供动力。100%开源。
   community:
     title: 开源
-    description: Nuxt 框架 100% 完全由充满热情的开源社区驱动。Nuxt 框架中的每一行代码都由像您这样的热情社区开发者编写。
+    description: Nuxt 的每一行代码都由像您一样的开发者编写。
   x: 102k
   discord: 32k
   cta:
@@ -415,8 +405,8 @@ stats:
     icon: i-simple-icons-github
     trailing: true
 contributors:
-  title: '由全球开发者构建'
-  description: 'Nuxt 及其生态系统的开发由国际团队领导。从贡献者到开发者宣传员，社区成员拥有不同的背景和技能。我们每天都欢迎新成员，并鼓励任何人以多种方式加入我们：解答问题、演讲、创建模块和贡献核心代码。'
+  title: '由全球开发者共同构建'
+  description: '数百名贡献者每天都在让 Nuxt 变得更好。加入我们吧。'
   links:
     - label: Nuxters
       to: https://nuxters.nuxt.com

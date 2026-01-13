@@ -1,5 +1,6 @@
 import type { NpmDownloadStats, NpmPeriod } from '../types/npm'
 import type { Packument, PackumentVersion } from '@npm/types'
+import { kv } from 'hub:kv'
 
 interface NpmBulkDownloadStats {
   [packageName: string]: NpmDownloadStats
@@ -50,17 +51,17 @@ export const npm = {
     return await npmFetch<PackumentVersion>(`https://registry.npmjs.org/${name}/${version}`)
   },
   async fetchPackageStats(name: string, period: NpmPeriod = 'last-month'): Promise<NpmDownloadStats> {
-    const kv = useStorage('kv')
     const key = `npm-stats:${name}:${period}`
-    if (await kv.get(key)) {
-      return await kv.get(key) as NpmDownloadStats
+    const cached = await kv.get<NpmDownloadStats>(key)
+    if (cached) {
+      return cached
     }
     const result = await npmFetch<NpmDownloadStats>(`https://api.npmjs.org/downloads/point/${period}/${name}`)
     if (result) {
       await kv.set(key, result, { ttl: 60 * 60 * 24 }) // cache for 1 day
-      return result
+      return result satisfies NpmDownloadStats
     }
-    return { downloads: 0 }
+    return { downloads: 0 } satisfies NpmDownloadStats
   },
   // https://github.com/npm/registry/blob/main/docs/download-counts.md#bulk-queries
   async fetchBulkPackageStats(packages: string[], period: NpmPeriod = 'last-month'): Promise<NpmBulkDownloadStats> {

@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
     'nuxt-content-twoslash',
+    '@nuxt/test-utils',
     '@nuxt/content',
     '@nuxt/image',
     // '@nuxtjs/plausible',
@@ -21,7 +22,8 @@ export default defineNuxtConfig({
     // '@nuxthub/core',
     'nuxt-charts',
     'nuxt-auth-utils',
-    '@nuxtjs/mcp-toolkit'
+    '@nuxtjs/mcp-toolkit',
+    '@nuxt/hints'
   ],
   $development: {
     site: {
@@ -40,6 +42,11 @@ export default defineNuxtConfig({
     }
   },
   $production: {
+    hub: {
+      kv: {
+        driver: 'vercel-runtime-cache'
+      }
+    },
     image: {
       // ipx: {
       //   baseURL: 'https://ipx.nuxt.com'
@@ -107,13 +114,16 @@ export default defineNuxtConfig({
     '/404.html': { prerender: true },
     '/docs/3.x/getting-started/introduction': { prerender: true },
     '/docs/4.x/getting-started/introduction': { prerender: true },
-    '/modules': { isr: 60 * 60 },
+    '/modules': { prerender: true },
     '/modules/**': { isr: 60 * 60 },
     // API
     '/api/v1/teams': { isr: 60 * 60 },
     // Admin
     '/admin': { ssr: false },
     '/admin/**': { ssr: false },
+    // Main navigation
+    '/api/navigation.json': { prerender: true },
+    '/api/search.json': { prerender: true },
     // Redirects
     '/docs': { redirect: '/docs/getting-started/introduction', prerender: false },
     '/docs/3.x': { redirect: '/docs/3.x/getting-started/introduction', prerender: false },
@@ -187,6 +197,9 @@ export default defineNuxtConfig({
     '/docs/guide/best-practices': { redirect: '/docs/guide/best-practices/performance', prerender: false },
     '/docs/3.x/guide/best-practices': { redirect: '/docs/3.x/guide/best-practices/performance', prerender: false },
     '/docs/4.x/guide/best-practices': { redirect: '/docs/4.x/guide/best-practices/performance', prerender: false },
+    '/docs/guide/concepts/modules': { redirect: '/docs/guide/modules/getting-started', prerender: false },
+    '/docs/3.x/guide/concepts/modules': { redirect: '/docs/3.x/guide/modules/getting-started', prerender: false },
+    '/docs/4.x/guide/concepts/modules': { redirect: '/docs/4.x/guide/modules/getting-started', prerender: false },
     '/docs/guide/going-further/custom-routing': { redirect: '/docs/guide/recipes/custom-routing', prerender: false },
     '/docs/3.x/guide/going-further/custom-routing': { redirect: '/docs/3.x/guide/recipes/custom-routing', prerender: false },
     '/docs/4.x/guide/going-further/custom-routing': { redirect: '/docs/4.x/guide/recipes/custom-routing', prerender: false },
@@ -245,15 +258,71 @@ export default defineNuxtConfig({
     // '/docs/guide/directory-structure/nuxt.config': { redirect: '/docs/guide/directory-structure/nuxt-config', prerender: false },
     '/enterprise': { redirect: '/enterprise/support', prerender: false },
     '/support/us': { redirect: '/enterprise/sponsors', prerender: false },
-    '/docs/4.x/guide/ai': { redirect: '/docs/4.x/guide/ai/mcp', prerender: false }
+    '/docs/4.x/guide/ai': { redirect: '/docs/4.x/guide/ai/mcp', prerender: false },
+    // showcase assets
+    '/assets/websites/12go.png': { redirect: '/assets/websites/12go.webp' },
+    '/assets/websites/git-lab.png': { redirect: '/assets/websites/git-lab.webp' },
+    '/assets/websites/mc-donalds-france.png': { redirect: '/assets/websites/mc-donalds-france.webp' },
+    '/assets/websites/stack-overflow.png': { redirect: '/assets/websites/stack-overflow.webp' },
+    '/assets/websites/armani.png': { redirect: '/assets/websites/armani.webp' },
+    '/assets/websites/google-ventures.png': { redirect: '/assets/websites/google-ventures.webp' },
+    '/assets/websites/microsoft-edge-developer.png': { redirect: '/assets/websites/microsoft-edge-developer.webp' },
+    '/assets/websites/the-north-face.png': { redirect: '/assets/websites/the-north-face.webp' },
+    '/assets/websites/buy-mea-coffee.png': { redirect: '/assets/websites/buy-mea-coffee.webp' },
+    '/assets/websites/hai.png': { redirect: '/assets/websites/hai.webp' },
+    '/assets/websites/n8n.png': { redirect: '/assets/websites/n8n.webp' },
+    '/assets/websites/tiktok-ads.png': { redirect: '/assets/websites/tiktok-ads.webp' },
+    '/assets/websites/caudalie.png': { redirect: '/assets/websites/caudalie.webp' },
+    '/assets/websites/harrods.png': { redirect: '/assets/websites/harrods.webp' },
+    '/assets/websites/nasa-jet-propulsion-laboratory.png': { redirect: '/assets/websites/nasa-jet-propulsion-laboratory.webp' },
+    '/assets/websites/timberland.png': { redirect: '/assets/websites/timberland.webp' },
+    '/assets/websites/clean-shot-x.png': { redirect: '/assets/websites/clean-shot-x.webp' },
+    '/assets/websites/hostel-world.png': { redirect: '/assets/websites/hostel-world.webp' },
+    '/assets/websites/on-running.png': { redirect: '/assets/websites/on-running.webp' },
+    '/assets/websites/too-good-to-go.png': { redirect: '/assets/websites/too-good-to-go.webp' },
+    '/assets/websites/croix-rouge.png': { redirect: '/assets/websites/croix-rouge.webp' },
+    '/assets/websites/hostinger.png': { redirect: '/assets/websites/hostinger.webp' },
+    '/assets/websites/paul-smith.png': { redirect: '/assets/websites/paul-smith.webp' },
+    '/assets/websites/toolstation.png': { redirect: '/assets/websites/toolstation.webp' },
+    '/assets/websites/delvaux.png': { redirect: '/assets/websites/delvaux.webp' },
+    '/assets/websites/icons8.png': { redirect: '/assets/websites/icons8.webp' },
+    '/assets/websites/promod.png': { redirect: '/assets/websites/promod.webp' },
+    '/assets/websites/trade-republic.png': { redirect: '/assets/websites/trade-republic.webp' },
+    '/assets/websites/departamento.png': { redirect: '/assets/websites/departamento.webp' },
+    '/assets/websites/immersive-garden.png': { redirect: '/assets/websites/immersive-garden.webp' },
+    '/assets/websites/push-security.png': { redirect: '/assets/websites/push-security.webp' },
+    '/assets/websites/upwork.png': { redirect: '/assets/websites/upwork.webp' },
+    '/assets/websites/directus.png': { redirect: '/assets/websites/directus.webp' },
+    '/assets/websites/le-collectionist.png': { redirect: '/assets/websites/le-collectionist.webp' },
+    '/assets/websites/roland-garros.png': { redirect: '/assets/websites/roland-garros.webp' },
+    '/assets/websites/vans.png': { redirect: '/assets/websites/vans.webp' },
+    '/assets/websites/explore-france.png': { redirect: '/assets/websites/explore-france.webp' },
+    '/assets/websites/louis-vuitton.png': { redirect: '/assets/websites/louis-vuitton.webp' },
+    '/assets/websites/shaina-mote.png': { redirect: '/assets/websites/shaina-mote.webp' },
+    '/assets/websites/virgin-galactic.png': { redirect: '/assets/websites/virgin-galactic.webp' },
+    // missing redirects
+    '/docs/4.x/examples/essentials/hello-world': { redirect: '/docs/4.x/examples/hello-world', prerender: false },
+    '/docs/4.x/api/composables/usehead': { redirect: '/docs/4.x/api/composables/use-head', prerender: false },
+    '/docs/4.x/examples/composables/use-async-data': { redirect: '/docs/4.x/examples/features/data-fetching', prerender: false },
+    '/docs/4.x/examples/composables/use-head': { redirect: '/docs/4.x/examples/features/meta-tags', prerender: false },
+    '/docs/4.x/getting-started/directory-structure': { redirect: '/docs/4.x/directory-structure', prerender: false },
+    '/docs/4.x/guide/going-further/modules': { redirect: '/docs/4.x/guide/modules', prerender: false },
+    '/docs/4.x/guide/concepts/rendering-modes': { redirect: '/docs/4.x/guide/concepts/rendering', prerender: false },
+    '/docs/4.x/guide/directory-structure/nuxt.config': { redirect: '/docs/4.x/directory-structure/nuxt-config', prerender: false },
+    '/docs/4.x/getting-started/hooks': { redirect: '/docs/4.x/api/advanced/hooks', prerender: false },
+    '/docs/4.x/api/nuxt-hooks': { redirect: '/docs/4.x/api/advanced/hooks', prerender: false },
+    '/docs/4.x/guide/directory-structure/hooks': { redirect: '/docs/4.x/api/advanced/hooks', prerender: false },
+    '/docs/4.x/robots.txt': { redirect: '/robots.txt', prerender: false }
   },
   sourcemap: true,
   experimental: {
+    extractAsyncDataHandlers: true,
     defaults: {
       nuxtLink: {
         externalRelAttribute: 'noopener'
       }
-    }
+    },
+    viteEnvironmentApi: true
   },
   compatibilityDate: '2025-07-14',
   nitro: {
@@ -264,7 +333,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       ignore: [
-        route => route.startsWith('/modules'),
+        route => route.startsWith('/modules/'),
         route => route.startsWith('/admin')
       ],
       autoSubfolderIndex: false
@@ -276,7 +345,10 @@ export default defineNuxtConfig({
   //   cache: true
   // },
   typescript: {
-    strict: false
+    strict: false,
+    tsConfig: {
+      include: ['../test/nuxt']
+    }
   },
   hooks: {
     'content:file:beforeParse': async ({ file }) => {

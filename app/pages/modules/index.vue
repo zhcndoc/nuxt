@@ -13,9 +13,15 @@ const el = useTemplateRef<HTMLElement>('el')
 
 const { replaceRoute } = useFilters('modules')
 const { fetchList, filteredModules, q, categories, modules, stats, selectedSort, selectedOrder, selectedCategory, sorts } = useModules()
+const { track } = useAnalytics()
+
+const cacheControl = useResponseHeader('Cache-Control')
+const cdnCacheControl = useResponseHeader('CDN-Cache-Control')
 
 const { data: page } = await useAsyncData('modules-landing', () => queryCollection('landing').path('/modules').first())
 if (!page.value) {
+  cacheControl.value = 'no-store, no-cache, must-revalidate'
+  cdnCacheControl.value = 'no-store'
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
@@ -96,6 +102,7 @@ watch(filteredModules, () => {
 const copyAllInstallCommands = () => {
   const moduleNames = modulesToAdd.value.map(module => module.name).join(' ')
   const command = `npx nuxt@latest module add ${moduleNames}`
+  track('Modules Bulk Install Copied', { count: modulesToAdd.value.length, modules: moduleNames })
   copy(command, {
     title: 'Install command copied to clipboard:',
     description: `Ready to install ${modulesToAdd.value.length} module${modulesToAdd.value.length > 1 ? 's' : ''} at once`
@@ -236,9 +243,15 @@ initializeModules()
 
     <UPage id="smooth" class="relative z-20">
       <UPageBody>
-        <div class="flex items-center gap-2 mb-4 text-muted">
-          <UIcon name="i-lucide-info" class="size-4" />
-          <span class="text-xs">Shift+click to select modules for bulk installation</span>
+        <div class="flex justify-between mb-4 text-muted text-xs">
+          <div class="flex items-center gap-2">
+            <UIcon name="i-lucide-info" class="size-4" />
+            <span>Shift+click to select modules for bulk installation</span>
+          </div>
+          <ULink to="/docs/guide/modules/getting-started" class="hidden md:flex items-center gap-1">
+            Create your own module
+            <UIcon name="i-lucide-arrow-right" class="size-4" />
+          </ULink>
         </div>
 
         <UPageGrid v-if="filteredModules?.length" class="lg:grid-cols-2 xl:grid-cols-3">

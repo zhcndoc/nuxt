@@ -22,13 +22,13 @@ sponsor: true
 3. Vercel 将会检测到你正在使用 Nitro 并为你的部署启用正确的设置。
 4. 你的应用将被部署！
 
-在导入和部署你的项目之后，对分支的后续推送将会生成[预览部署](https://vercel.com/docs/concepts/deploy/environments#preview)，而对生产分支（通常为“main”）所做的所有更改都将导致[生产部署](https://vercel.com/docs/concepts/deploy/environments#production)。
+在导入和部署你的项目之后，对分支的后续推送将会生成[预览部署](https://vercel.com/docs/deployments/environments#preview-environment-pre-production)，而对生产分支（通常为“main”）所做的所有更改都将导致[生产部署](https://vercel.com/docs/deployments/environments#production-environment)。
 
-了解更多关于 Vercel 的[Git 集成](https://vercel.com/docs/concepts/git)的内容。
+了解更多关于 Vercel 的[Git 集成](https://vercel.com/docs/git)的内容。
 
 ## 自定义构建输出配置
 
-您可以通过在 `nuxt.config.ts` 中使用 `nitro.vercel.config` 键提供额外的 [构建输出配置](https://vercel.com/docs/build-output-api/v3)。它将与内置的自动生成配置合并。
+您可以通过在 `nuxt.config.ts` 中使用 `nitro.vercel.config` 键提供额外的 [构建输出配置](https://vercel.com/docs/build-output-api)。它将与内置的自动生成配置合并。
 
 ## 模板
 
