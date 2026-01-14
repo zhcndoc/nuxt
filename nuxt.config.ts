@@ -337,11 +337,11 @@ export default defineNuxtConfig({
       autoSubfolderIndex: false
     }
   },
-  // hub: {
-  //   db: 'sqlite',
-  //   kv: true,
-  //   cache: true
-  // },
+  hub: {
+    db: 'sqlite',
+    kv: true,
+    cache: true
+  },
   typescript: {
     strict: false,
     tsConfig: {
