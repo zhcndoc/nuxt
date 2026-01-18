@@ -310,7 +310,8 @@ export default defineNuxtConfig({
     '/docs/4.x/getting-started/hooks': { redirect: '/docs/4.x/api/advanced/hooks', prerender: false },
     '/docs/4.x/api/nuxt-hooks': { redirect: '/docs/4.x/api/advanced/hooks', prerender: false },
     '/docs/4.x/guide/directory-structure/hooks': { redirect: '/docs/4.x/api/advanced/hooks', prerender: false },
-    '/docs/4.x/robots.txt': { redirect: '/robots.txt', prerender: false }
+    '/docs/4.x/robots.txt': { redirect: '/robots.txt', prerender: false },
+    '/deploy/nuxthub': { redirect: '/deploy/vercel', prerender: false }
   },
   sourcemap: true,
   experimental: {
@@ -322,12 +323,8 @@ export default defineNuxtConfig({
     },
     viteEnvironmentApi: true
   },
-  compatibilityDate: '2025-07-14',
+  compatibilityDate: '2026-01-14',
   nitro: {
-    compatibilityDate: {
-      // Don't generate observability routes
-      vercel: '2025-07-14'
-    },
     prerender: {
       crawlLinks: true,
       ignore: [
@@ -397,7 +394,29 @@ export default defineNuxtConfig({
     full: {
       title: 'Nuxt 中文文档',
       description: '完整的 Nuxt 文档和用 Markdown（MDC 语法）撰写的博客文章。'
-    }
+    },
+    sections: [
+      {
+        title: 'Nuxt v4 文档',
+        contentCollection: 'docsv4',
+        contentFilters: [{ field: 'extension', operator: '=', value: 'md' }]
+      },
+      {
+        title: '部署指南',
+        contentCollection: 'deploy',
+        contentFilters: [{ field: 'extension', operator: '=', value: 'md' }]
+      },
+      {
+        title: 'Nuxt v3 文档',
+        contentCollection: 'docsv3',
+        contentFilters: [{ field: 'extension', operator: '=', value: 'md' }]
+      },
+      {
+        title: '博客',
+        contentCollection: 'blog',
+        contentFilters: [{ field: 'extension', operator: '=', value: 'md' }]
+      }
+    ]
   },
   mcp: {
     name: 'Nuxt',

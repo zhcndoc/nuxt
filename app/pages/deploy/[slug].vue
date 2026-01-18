@@ -105,6 +105,7 @@ links.push({
 
       <UPage>
         <UPageBody>
+          <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
           <ContentRenderer v-if="provider && provider.body" :value="provider" />
 
           <USeparator v-if="surround?.length" />

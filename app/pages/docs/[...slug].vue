@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { kebabCase } from 'scule'
+import { joinURL } from 'ufo'
 import type { ContentNavigationItem } from '@nuxt/content'
 import { findPageBreadcrumb } from '@nuxt/content/utils'
 import { mapContentNavigation } from '@nuxt/ui/utils/content'
@@ -17,7 +18,7 @@ const route = useRoute()
 const nuxtApp = useNuxtApp()
 const { version } = useDocsVersion()
 const { headerLinks } = useHeaderLinks()
-
+const site = useSiteConfig()
 const path = computed(() => route.path.replace(/\/$/, ''))
 
 const ignoredPaths = ['.nuxt', '.output', '.env', 'node_modules']
@@ -28,6 +29,7 @@ const navClass = (item: ContentNavigationItem) => {
   return ''
 }
 
+// Get the aside navigation
 const asideNavigation = computed(() => {
   const path = [version.value.path, route.params.slug?.[version.value.path.split('/').length - 2]].filter(Boolean).join('/')
 
@@ -127,6 +129,18 @@ useSeoMeta({
   title
 })
 
+// Pre-render the markdown path + add it to alternate links
+prerenderRoutes([joinURL('/raw', `${path.value}.md`)])
+useHead({
+  link: [
+    {
+      rel: 'alternate',
+      href: joinURL(site.url, 'raw', `${path.value}.md`),
+      type: 'text/markdown'
+    }
+  ]
+})
+
 if (import.meta.server) {
   const description = page.value?.seo?.description || page.value?.description
   useSeoMeta({
@@ -189,19 +203,9 @@ function refreshHeading(opened: boolean) {
         </UPageHeader>
 
         <UPageBody>
+          <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
           <ContentRenderer v-if="page.body" :value="page" />
           <div>
-            <div class="group relative border border-default rounded-md hover:bg-elevated/50 w-full transition-colors p-2">
-              <ULink
-                to="https://www.rainyun.com/mm_?s=zhcndoc"
-                target="_blank"
-                class="absolute inset-0 z-10"
-                data-umami-event="ads-rainyun"
-              />
-              <div class="flex justify-center w-full ">
-                <img src="/assets/ads/rainyun_2.png" class="w-full rounded-sm">
-              </div>
-            </div>
             <!-- <Feedback :page="page" /> -->
             <USeparator class="mt-6 mb-10">
               <div class="flex items-center gap-2 text-sm text-muted">

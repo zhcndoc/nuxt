@@ -165,6 +165,7 @@ defineOgImageComponent('Module', {
 
     <UPage>
       <UPageBody>
+        <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
         <ContentRenderer v-if="module.readme?.body" :value="module.readme" :components="{ a: ModuleProseA, img: ModuleProseImg, kbd: ModuleProseKbd }" class="first:[&_picture]:block first:[&_picture]:mb-4" />
       </UPageBody>
 
@@ -172,7 +173,6 @@ defineOgImageComponent('Module', {
         <UContentToc title="目录">
           <template #bottom>
             <div class="hidden lg:block space-y-6">
-              <Ads />
               <UPageLinks title="链接" :links="links" />
 
               <USeparator type="dashed" />
@@ -204,6 +204,7 @@ defineOgImageComponent('Module', {
               </UPageLinks>
               <USeparator type="dashed" />
               <SocialLinks />
+              <Ads />
             </div>
           </template>
         </UContentToc>

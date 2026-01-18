@@ -30,7 +30,7 @@
     "@iconify-json/simple-icons": "^1.2.63",
     "@libsql/client": "^0.15.15",
     "@npm/types": "^2.1.0",
-    "@nuxt/content": "^3.9.0",
+    "@nuxt/content": "^3.11.0",
     "@nuxt/hints": "1.0.0-alpha.3",
     "@nuxt/image": "^2.0.0",
     "@nuxt/scripts": "^0.13.1",
@@ -97,6 +97,7 @@
   },
   "resolutions": {
     "chokidar": "3.6.0",
+    "nitropack": "2.13.0",
     "unimport": "4.1.1"
   },
   "pnpm": {
@@ -113,10 +114,6 @@
     ],
     "overrides": {
       "vite": "8.0.0-beta.2"
-    },
-    "patchedDependencies": {
-      "nitropack": "patches/nitropack.patch",
-      "@nuxtjs/mdc": "patches/@nuxtjs__mdc.patch"
     }
   }
 }

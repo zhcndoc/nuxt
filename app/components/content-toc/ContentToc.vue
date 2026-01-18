@@ -24,9 +24,6 @@ defineProps<Props>()
 
 <template>
   <UContentToc :links="links">
-    <template #top>
-      <Ads />
-    </template>
     <template #bottom>
       <ContentTocBottom
         :has-links="!!links?.length"
