@@ -6,11 +6,11 @@
 </script>
 
 <template>
-  <div class="space-y-3">
-    <!-- <AdsMN v-if="route.path.length % 2 === 0" />
+  <div class="wwads-cn wwads-vertical w-full my-4" data-id="354" />
+  <!-- <div class="space-y-3">
+    <AdsMN v-if="route.path.length % 2 === 0" />
     <AdsNuxtCertificate v-else />
     <AdsFallback v-if="$ads.adBlocked.value" />
-    <LazyAdsCarbon v-else :key="route.path" /> -->
-    <div class="wwads-cn wwads-vertical w-full my-4" data-id="354" />
-  </div>
+    <LazyAdsCarbon v-else :key="route.path" />
+  </div> -->
 </template>

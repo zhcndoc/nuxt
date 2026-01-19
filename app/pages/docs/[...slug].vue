@@ -203,8 +203,8 @@ function refreshHeading(opened: boolean) {
         </UPageHeader>
 
         <UPageBody>
-          <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
           <ContentRenderer v-if="page.body" :value="page" />
+          <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
           <div>
             <!-- <Feedback :page="page" /> -->
             <USeparator class="mt-6 mb-10">

@@ -165,12 +165,15 @@ defineOgImageComponent('Module', {
 
     <UPage>
       <UPageBody>
-        <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
         <ContentRenderer v-if="module.readme?.body" :value="module.readme" :components="{ a: ModuleProseA, img: ModuleProseImg, kbd: ModuleProseKbd }" class="first:[&_picture]:block first:[&_picture]:mb-4" />
+        <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
       </UPageBody>
 
       <template #right>
         <UContentToc title="目录">
+          <template #top>
+            <Ads />
+          </template>
           <template #bottom>
             <div class="hidden lg:block space-y-6">
               <UPageLinks title="链接" :links="links" />

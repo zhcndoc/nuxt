@@ -126,8 +126,8 @@ const links = [
 
       <UPage class="lg:gap-24">
         <UPageBody>
-          <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
           <ContentRenderer v-if="article.body" :value="article" />
+          <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
           <div class="flex items-center justify-between mt-12 not-prose">
             <ULink to="/blog" class="text-primary">
               ← 返回博客
@@ -157,6 +157,9 @@ const links = [
 
         <template #right>
           <UContentToc v-if="article.body && article.body.toc" :links="article.body.toc.links" title="目录" highlight>
+            <template #top>
+              <Ads />
+            </template>
             <template #bottom>
               <div class="hidden lg:block space-y-6">
                 <UPageLinks title="链接" :links="links" />

@@ -95,13 +95,15 @@ defineOgImageComponent('Docs', {
       </div>
     </UPageHeader>
 
-    <UPage :ui="{ right: 'my-8' }">
+    <UPage :ui="{ right: 'my-4' }">
       <UPageBody>
         <ContentRenderer v-if="agency && agency.body" :value="agency" />
+        <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
       </UPageBody>
 
       <template #right>
         <div>
+          <Ads />
           <UPageLinks
             v-if="agency.services?.length"
             title="技术"

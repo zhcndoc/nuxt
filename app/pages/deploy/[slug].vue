@@ -105,8 +105,8 @@ links.push({
 
       <UPage>
         <UPageBody>
-          <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
           <ContentRenderer v-if="provider && provider.body" :value="provider" />
+          <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
 
           <USeparator v-if="surround?.length" />
 
@@ -115,6 +115,9 @@ links.push({
 
         <template #right>
           <UContentToc :links="provider.body.toc?.links || []" title="目录">
+            <template #top>
+              <Ads />
+            </template>
             <template #bottom>
               <div class="hidden lg:block space-y-6">
                 <USeparator v-if="links?.length && provider.body?.toc?.links?.length" type="dashed" />
