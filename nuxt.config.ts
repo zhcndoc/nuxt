@@ -254,9 +254,11 @@ export default defineNuxtConfig({
     '/docs/4.x/guide/directory-structure/package': { redirect: '/docs/4.x/directory-structure/package', prerender: false },
     '/docs/4.x/guide/directory-structure/tsconfig': { redirect: '/docs/4.x/directory-structure/tsconfig', prerender: false },
     // '/docs/guide/directory-structure/nuxt.config': { redirect: '/docs/guide/directory-structure/nuxt-config', prerender: false },
-    '/enterprise': { redirect: '/enterprise/support', prerender: false },
+    '/enterprise': { redirect: '/enterprise/agencies', prerender: false },
+    '/enterprise/support': { redirect: '/enterprise/agencies', prerender: false },
     '/support/us': { redirect: '/enterprise/sponsors', prerender: false },
     '/docs/4.x/guide/ai': { redirect: '/docs/4.x/guide/ai/mcp', prerender: false },
+    '/docs/3.x/guide/ai': { redirect: '/docs/4.x/guide/ai/mcp', prerender: false },
     // showcase assets
     '/assets/websites/12go.png': { redirect: '/assets/websites/12go.webp' },
     '/assets/websites/git-lab.png': { redirect: '/assets/websites/git-lab.webp' },

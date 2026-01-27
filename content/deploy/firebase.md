@@ -63,16 +63,16 @@ export default defineNuxtConfig({
 
 1. 安装最新版本的 Firebase CLI。
 
-    ```bash [命令行]
-    npm install -g firebase-tools@latest
-    ```
+```bash [命令行]
+npm install -g firebase-tools@latest
+```
 
 2. 初始化 Firebase 项目
 
-    ```bash [命令行]
-    firebase login
-    firebase init hosting
-    ```
+```bash [命令行]
+firebase login
+firebase init hosting
+```
 
 ::注意
 当提示时，您可以将 `.output/public` 输入为公共目录。在下一步中，**不要**将您的项目配置为单页面应用程序。

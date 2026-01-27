@@ -170,7 +170,7 @@ defineOgImageComponent('Module', {
       </UPageBody>
 
       <template #right>
-        <UContentToc title="目录">
+        <UContentToc :links="module.readme?.toc?.links" title="目录">
           <template #top>
             <Ads />
           </template>

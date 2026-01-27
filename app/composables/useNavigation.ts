@@ -96,11 +96,6 @@ function _useHeaderLinks() {
       to: '/enterprise',
       search: false,
       children: [{
-        label: '支持',
-        to: '/enterprise/support',
-        description: 'Nuxt 专家提供的专业支持。',
-        icon: 'i-lucide-life-buoy'
-      }, {
         label: '机构',
         to: '/enterprise/agencies',
         description: '专注于 Nuxt 开发的机构。',
@@ -151,9 +146,6 @@ const footerLinks = [{
 }, {
   label: '企业',
   children: [{
-    label: '支持',
-    to: '/enterprise/support'
-  }, {
     label: '机构',
     to: '/enterprise/agencies'
   }, {
