@@ -99,9 +99,9 @@ export default defineNuxtConfig({
     openCollective: {
       apiKey: ''
     },
-    sendgrid: {
-      listId: '',
-      apiKey: ''
+    resend: {
+      apiKey: '',
+      audienceId: ''
     }
   },
   routeRules: {

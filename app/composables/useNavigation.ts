@@ -134,14 +134,14 @@ const footerLinks = [{
 }, {
   label: '探索',
   children: [{
-    label: '模块',
-    to: '/modules'
-  }, {
-    label: '模板',
+    label: 'Templates',
     to: '/templates'
   }, {
-    label: '展示',
+    label: 'Showcase',
     to: '/showcase'
+  }, {
+    label: 'AI Evals',
+    to: '/evals'
   }]
 }, {
   label: '企业',
@@ -174,18 +174,16 @@ const _useNavigation = () => {
       track('Ask AI Opened', { source: 'search-links' })
       nuxtApp.$kapa?.openModal()
     }
-  }, ...headerLinks.value.map((link) => {
-    // Remove `/docs` and `/enterprise` links from command palette
+  }, ...headerLinks.value.flatMap((link) => {
     if (link.search === false) {
-      return {
-        label: link.label,
-        icon: link.icon,
-        children: link.children
-      }
+      return (link.children || []).map(child => ({
+        ...child,
+        label: `${link.label} > ${child.label}`
+      }))
     }
-    return link
-  }).filter(Boolean), {
-    label: '团队',
+    return [link]
+  }), {
+    label: 'Team',
     icon: 'i-lucide-users',
     to: '/team'
   }, {
@@ -193,7 +191,11 @@ const _useNavigation = () => {
     icon: 'i-lucide-palette',
     to: '/design-kit'
   }, {
-    label: '新闻',
+    label: 'AI Evals',
+    icon: 'i-lucide-brain',
+    to: '/evals'
+  }, {
+    label: 'Newsletter',
     icon: 'i-lucide-mail',
     to: '/newsletter'
   }, {
