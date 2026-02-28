@@ -371,9 +371,6 @@ export default defineNuxtConfig({
       }
     }
   },
-  fonts: {
-    provider: 'none'
-  },
   icon: {
     customCollections: [{
       prefix: 'custom',
