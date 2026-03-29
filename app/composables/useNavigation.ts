@@ -107,9 +107,20 @@ function _useHeaderLinks() {
         icon: 'i-lucide-hand-heart'
       }]
     }, {
-      label: 'Nuxt 博客',
+      label: '资讯',
       icon: 'i-lucide-newspaper',
-      to: '/blog'
+      to: '/blog',
+      children: [{
+        label: 'Nuxt 博客',
+        to: '/blog',
+        description: '关于 Nuxt 的新闻和更新。',
+        icon: 'i-lucide-newspaper'
+      }, {
+        label: '变更日志',
+        to: '/changelog',
+        description: '最新的 Nuxt 和官方模块的发布信息。',
+        icon: 'i-lucide-history'
+      }]
     }]
   })
 

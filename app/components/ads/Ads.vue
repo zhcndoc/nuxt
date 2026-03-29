@@ -5,6 +5,7 @@ const route = useRoute()
 
 <template>
   <div class="space-y-3">
+    <div class="wwads-cn wwads-vertical w-full my-4" data-id="354" />
     <!-- <AdsMN v-if="route.path.length % 2 === 0" /> -->
     <!-- <AdsNuxtCertificate v-else /> -->
     <!-- <AdsFreeWeekend /> -->
