@@ -29,7 +29,7 @@ const versions: Version[] = [
   {
     label: 'Version 3',
     shortTag: 'v3',
-    branch: 'v3',
+    branch: '3.x',
     tagColor: 'neutral',
     path: '/docs/3.x',
     collection: 'docsv3'
