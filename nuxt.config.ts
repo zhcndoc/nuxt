@@ -3,6 +3,9 @@ import { parseMdc } from './helpers/mdc-parser.mjs'
 
 const { resolve } = createResolver(import.meta.url)
 
+// Detect Vercel environment to adjust hub.kv driver during builds/runtime
+const isVercel = !!process.env.VERCEL
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -45,7 +48,7 @@ export default defineNuxtConfig({
   },
   $production: {
     hub: {
-      kv: true
+      kv: isVercel ? { driver: 'vercel-runtime-cache' } : true
     },
     image: {
       // ipx: {
@@ -419,7 +422,9 @@ export default defineNuxtConfig({
   },
   hub: {
     db: 'sqlite',
-    kv: true,
+    // On Vercel use the runtime cache driver to avoid build-time errors;
+    // otherwise keep the original boolean setting for local/Node.js environments.
+    kv: isVercel ? { driver: 'vercel-runtime-cache' } : true,
     cache: true
   },
   vite: {
