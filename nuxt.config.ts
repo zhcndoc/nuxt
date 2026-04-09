@@ -117,7 +117,7 @@ export default defineNuxtConfig({
     '/docs/3.x/getting-started/introduction': { prerender: true },
     '/docs/4.x/getting-started/introduction': { prerender: true },
     '/docs/5.x/getting-started/introduction': { prerender: true },
-    '/modules': { prerender: true },
+    '/modules': { isr: false, prerender: false },
     '/modules/**': { isr: 60 * 60 },
     '/changelog': { isr: 60 * 60 },
     // API
@@ -413,7 +413,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       ignore: [
-        route => route.startsWith('/modules/'),
+        route => route === '/modules' || route.startsWith('/modules/'),
         route => route.startsWith('/admin')
       ],
       autoSubfolderIndex: false
