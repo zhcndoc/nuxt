@@ -122,6 +122,6 @@ npx wrangler pages deploy dist/
 
 ## 了解更多
 
-::read-more{to="https://nitro.zhcndoc.com/deploy/providers/cloudflare" target="_blank"}
-请参阅 **Nitro 文档** 以了解更多关于 cloudflare 部署预设的信息。
+::read-more{to="https://v2.nitro.build/deploy/providers/cloudflare" target="_blank"}
+前往 **Nitro 文档** 以了解更多关于 cloudflare 部署预设的信息。
 ::
