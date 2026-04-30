@@ -474,7 +474,11 @@ export default defineNuxtConfig({
     }
   },
   evlog: {
-    env: { service: 'nuxt-com' }
+    env: { service: 'nuxt-com' },
+    pretty: process.env.CI ? false : undefined,
+    sampling: {
+      rates: { info: 30 }
+    }
   },
   icon: {
     customCollections: [{
@@ -533,7 +537,10 @@ export default defineNuxtConfig({
     browserRedirect: '/docs/guide/ai/mcp',
     icons: [
       { src: 'https://nuxt.com/icon.png', mimeType: 'image/png', sizes: ['64x64'] }
-    ]
+    ],
+    logging: {
+      env: { service: 'nuxt-com/mcp' }
+    }
   },
   turnstile: {
     siteKey: '0x4AAAAAAAP2vNBsTBT3ucZi'
