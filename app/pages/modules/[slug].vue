@@ -6,6 +6,7 @@ definePageMeta({
   heroBackground: 'opacity-30 -z-10'
 })
 const route = useRoute()
+const { isAgentDocked } = useNuxtAgent()
 
 const { data: module } = await useFetch<Module>(`/api/v1/modules/${route.params.slug}`, { key: `module-${route.params.slug}` })
 if (!module.value) {
@@ -163,14 +164,19 @@ defineOgImageComponent('Module', {
       </div>
     </UPageHeader>
 
-    <UPage>
+    <UPage
+      :ui="isAgentDocked ? {
+        center: 'lg:col-span-10',
+        right: 'lg:hidden'
+      } : undefined"
+    >
       <UPageBody>
         <ContentRenderer v-if="module.readme?.body" :value="module.readme" :components="{ a: ModuleProseA, img: ModuleProseImg, kbd: ModuleProseKbd }" class="first:[&_picture]:block first:[&_picture]:mb-4" />
         <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
       </UPageBody>
 
       <template #right>
-        <UContentToc :links="module.readme?.toc?.links" title="目录">
+        <UContentToc v-if="!isAgentDocked" :links="module.readme?.toc?.links" title="目录">
           <template #top>
             <Ads />
           </template>

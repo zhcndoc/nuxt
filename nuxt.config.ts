@@ -14,7 +14,6 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxt/content',
     '@nuxt/image',
-    // '@nuxtjs/plausible',
     '@nuxt/eslint',
     '@nuxt/scripts',
     // '@nuxtjs/turnstile',
@@ -28,7 +27,9 @@ export default defineNuxtConfig({
     '@nuxtjs/mcp-toolkit',
     '@nuxt/hints',
     '@vercel/analytics',
-    '@vercel/speed-insights'
+    '@vercel/speed-insights',
+    '@comark/nuxt',
+    'evlog/nuxt'
   ],
   $development: {
     site: {
@@ -95,8 +96,16 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     contactEmail: '',
+    cronSecret: '',
+    mcpAdminToken: '',
+    adminGithubLogins: '',
     github: {
       token: ''
+    },
+    linear: {
+      apiKey: '',
+      teamId: 'f79ad145-d4eb-4bff-88b9-c344f006a777',
+      projectId: '11a6000e-6c95-445e-85f1-a7de5c372bcd'
     },
     newsletter: {
       secret: ''
@@ -402,6 +411,7 @@ export default defineNuxtConfig({
   sourcemap: true,
   experimental: {
     extractAsyncDataHandlers: true,
+    viewTransition: true,
     defaults: {
       nuxtLink: {
         externalRelAttribute: 'noopener'
@@ -465,6 +475,13 @@ export default defineNuxtConfig({
       }
     }
   },
+  evlog: {
+    env: { service: 'nuxt-com' },
+    pretty: process.env.CI ? false : undefined,
+    sampling: {
+      rates: { info: 30 }
+    }
+  },
   icon: {
     customCollections: [{
       prefix: 'custom',
@@ -519,7 +536,13 @@ export default defineNuxtConfig({
   mcp: {
     name: 'Nuxt',
     route: '/mcp',
-    browserRedirect: '/docs/guide/ai/mcp'
+    browserRedirect: '/docs/guide/ai/mcp',
+    icons: [
+      { src: 'https://nuxt.com/icon.png', mimeType: 'image/png', sizes: ['64x64'] }
+    ],
+    logging: {
+      env: { service: 'nuxt-com/mcp' }
+    }
   },
   // turnstile: {
   //   siteKey: '0x4AAAAAAAP2vNBsTBT3ucZi'
