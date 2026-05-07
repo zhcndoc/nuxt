@@ -31,13 +31,13 @@ useSeoMeta({
   title,
   description,
   ogDescription: description,
-  ogTitle: `${title} - Nuxt 博客 - Nuxt 中文文档`
+  ogTitle: `${title} - Nuxt 博客 - Nuxt 中文文档`,
+  ...(article.value.image ? { ogImage: article.value.image } : {})
 })
+useCanonical(`${route.path}.md`)
 
-if (article.value.image) {
-  defineOgImage({ url: article.value.image })
-} else {
-  defineOgImageComponent('Docs', {
+if (!article.value.image) {
+  defineOgImage('Docs.takumi', {
     headline: 'Blog',
     title,
     description

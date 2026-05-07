@@ -16,12 +16,10 @@ useSeoMeta({
   title,
   description,
   ogDescription: description,
-  ogTitle: `${title} - 企业支持 - Nuxt 中文文档`
+  ogTitle: `${title} - 企业支持 - Nuxt 中文文档`,
+  ogImage: '/assets/enterprise/support/social-card.png'
 })
-
-defineOgImage({
-  url: '/assets/enterprise/support/social-card.png'
-})
+useCanonical()
 </script>
 
 <template>

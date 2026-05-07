@@ -31,8 +31,9 @@ useSeoMeta({
   ogDescription: description,
   ogTitle: `部署 Nuxt 到 ${title} - Nuxt 中文文档`
 })
+useCanonical(`${route.path}.md`)
 
-defineOgImageComponent('Docs', {
+defineOgImage('Docs.takumi', {
   headline: 'Deploy To',
   title,
   description

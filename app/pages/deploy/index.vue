@@ -20,8 +20,9 @@ useSeoMeta({
   ogDescription: description,
   ogTitle: title
 })
+useCanonical()
 
-defineOgImageComponent('Docs', {
+defineOgImage('Docs.takumi', {
   title: 'Nuxt 部署  - Nuxt 中文文档',
   description
 })

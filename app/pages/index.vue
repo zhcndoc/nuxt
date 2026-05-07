@@ -32,20 +32,34 @@ function openVideoModal() {
 
 const site = useSiteConfig()
 const title = 'Nuxt 中文文档 - 基于 Vue.js 的全栈 Web 框架'
+const description = '使用 Vue 快速构建可用于生产环境的 Web 应用。基于文件的路由、自动导入和服务端渲染，所有功能开箱即用。'
+
 useSeoMeta({
+  titleTemplate: '%s',
   title,
-  titleTemplate: '%s'
+  description
 })
+useCanonical('/raw/index.md')
 
 if (import.meta.server) {
-  const description = '使用 Vue 快速构建可用于生产环境的 Web 应用。基于文件的路由、自动导入和服务端渲染，所有功能开箱即用。'
+  prerenderRoutes(['/raw/index.md'])
+
   useSeoMeta({
     ogTitle: title,
-    description: description,
     ogDescription: description,
     ogImage: joinURL(site.url, '/new-social.jpg'),
     twitterImage: joinURL(site.url, '/new-social.jpg')
   })
+
+  useSchemaOrg([
+    defineSoftwareApp({
+      name: 'Nuxt',
+      description,
+      operatingSystem: 'Cross-platform',
+      applicationCategory: 'DeveloperApplication',
+      offers: { '@type': 'Offer', 'price': '0', 'priceCurrency': 'USD' }
+    })
+  ])
 }
 
 const tabs = computed(() => page.value?.hero.tabs.map(tab => ({

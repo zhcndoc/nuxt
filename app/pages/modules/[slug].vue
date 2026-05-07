@@ -73,17 +73,23 @@ const createdAgo = useTimeAgo(module.value.stats.createdAt)
 useSeoMeta({
   titleTemplate: '%s - Nuxt 模块 - Nuxt 中文文档',
   title,
-  description,
-  ogDescription: description,
-  ogTitle: `${title} - Nuxt 模块 - Nuxt 中文文档`
-})
-
-defineOgImageComponent('Module', {
-  module: module.value,
-  headline: 'Nuxt 模块',
-  title,
   description
 })
+useCanonical()
+
+if (import.meta.server) {
+  useSeoMeta({
+    ogDescription: description,
+    ogTitle: `${title} - Nuxt 模块 - Nuxt 中文文档`
+  })
+
+  defineOgImage('Module.takumi', {
+    icon: module.value?.icon,
+    headline: 'Nuxt 模块',
+    title,
+    description
+  })
+}
 </script>
 
 <template>
