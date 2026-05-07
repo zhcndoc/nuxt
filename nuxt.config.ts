@@ -10,7 +10,7 @@ const isVercel = !!process.env.VERCEL
 export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
-    'nuxt-content-twoslash',
+    // 'nuxt-content-twoslash',
     '@nuxt/test-utils',
     '@nuxt/content',
     '@nuxt/image',
@@ -59,7 +59,7 @@ export default defineNuxtConfig({
     }
   },
   devtools: {
-    enabled: true
+    enabled: false
   },
   app: {
     pageTransition: false,
@@ -441,7 +441,7 @@ export default defineNuxtConfig({
     '/docs/5.x/robots.txt': { redirect: '/robots.txt', prerender: false },
     '/deploy/nuxthub': { redirect: '/deploy/vercel', prerender: false }
   },
-  sourcemap: true,
+  sourcemap: false,
   experimental: {
     extractAsyncDataHandlers: true,
     viewTransition: true,
@@ -612,17 +612,17 @@ export default defineNuxtConfig({
         'https://m.webtoo.ls/@nuxt'
       ]
     }
-  },
+  }
   // turnstile: {
   //   siteKey: '0x4AAAAAAAP2vNBsTBT3ucZi'
   // },
-  twoslash: {
-    floatingVueOptions: {
-      classMarkdown: 'prose prose-primary dark:prose-invert'
-    },
-    // Skip Twoslash in dev to improve performance. Turn this on when you want to explicitly test twoslash in dev.
-    enableInDev: false,
-    // Do not throw when twoslash fails, the typecheck should be down in github.com/nuxt/nuxt's CI
-    throws: false
-  }
+  // twoslash: {
+  //   floatingVueOptions: {
+  //     classMarkdown: 'prose prose-primary dark:prose-invert'
+  //   },
+  //   // Skip Twoslash in dev to improve performance. Turn this on when you want to explicitly test twoslash in dev.
+  //   enableInDev: false,
+  //   // Do not throw when twoslash fails, the typecheck should be down in github.com/nuxt/nuxt's CI
+  //   throws: false
+  // }
 })
