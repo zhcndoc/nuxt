@@ -5,6 +5,7 @@ definePageMeta({
   heroBackground: 'opacity-30 -z-10'
 })
 const route = useRoute()
+const { isAgentDocked } = useNuxtAgent()
 const { fetchList, providers } = useHostingProviders()
 await fetchList()
 
@@ -105,7 +106,12 @@ links.push({
         </template>
       </UPageHeader>
 
-      <UPage>
+      <UPage
+        :ui="isAgentDocked ? {
+          center: 'lg:col-span-10',
+          right: 'lg:hidden'
+        } : { root: 'lg:grid-cols-12', center: 'lg:col-span-9', right: 'lg:col-span-3' }"
+      >
         <UPageBody>
           <ContentRenderer v-if="provider && provider.body" :value="provider" />
           <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
@@ -116,7 +122,7 @@ links.push({
         </UPageBody>
 
         <template #right>
-          <UContentToc :links="provider.body.toc?.links || []" title="目录">
+          <UContentToc v-if="!isAgentDocked" :links="provider.body.toc?.links || []" title="目录">
             <template #top>
               <Ads />
             </template>

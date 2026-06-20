@@ -3,7 +3,7 @@ title: Vercel
 description: '将你的 Nuxt 应用部署到 Vercel 基础设施。'
 componentImg: Vercel
 logoSrc: '/assets/integrations/vercel.svg'
-category: Hosting
+category: 托管
 nitroPreset: 'vercel'
 website: 'https://vercel.com/'
 sponsor: true
@@ -15,7 +15,11 @@ sponsor: true
 与 Vercel 的集成可以零配置完成，[了解更多](https://nitro.zhcndoc.com/deploy#zero-config-providers)。
 ::
 
-## 使用 Git 进行部署
+::important
+使用 [@nuxthub/core](/modules/hub) 为你的 Nuxt 应用添加数据库、KV、blob 存储和缓存。NuxtHub 可在 Vercel、Cloudflare、Netlify 等平台上运行。前往 [hub.nuxt.com](https://hub.nuxt.com) 了解更多。
+::
+
+## 使用 Git 部署
 
 1. 将你的代码推送到 Git 代码仓库（GitHub、GitLab、Bitbucket）。
 2. [将你的项目导入](https://vercel.com/new) 到 Vercel。
@@ -46,7 +50,7 @@ sponsor: true
   ::card
   ---
   icon: i-simple-icons-github
-  title: Nuxt on the Edge on Vercel
+  title: Vercel 上的 Nuxt Edge
   to: https://github.com/pi0/nuxt-on-the-edge
   target: _blank
   ui.icon.base: text-black dark:text-white

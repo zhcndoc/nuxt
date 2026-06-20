@@ -2,7 +2,7 @@
 title: Cloudflare
 description: '在 Cloudflare 基础设施上部署你的 Nuxt 应用。'
 logoSrc: '/assets/integrations/cloudflare.svg'
-category: Hosting
+category: 托管
 nitroPreset: 'cloudflare'
 website: 'https://pages.cloudflare.com/'
 ---
@@ -16,7 +16,7 @@ website: 'https://pages.cloudflare.com/'
 ::
 
 ::important
-查看 [@nuxthub/core](/modules/hub) 模块以使用 Cloudflare 构建全栈 Nuxt 应用程序，详细信息请查看 [hub.nuxt.com](https://hub.nuxt.com)。
+使用 [@nuxthub/core](/modules/hub) 为你的 Nuxt 应用添加数据库、KV、blob 存储和缓存。NuxtHub 可运行于 Vercel、Cloudflare、Netlify 等平台。了解更多请访问 [hub.nuxt.com](https://hub.nuxt.com)。
 ::
 
 ### Git 集成

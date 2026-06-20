@@ -8,6 +8,8 @@ const isVercel = !!process.env.VERCEL
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  extends: ['./layers/nuxi'],
+
   modules: [
     '@nuxt/ui',
     // 'nuxt-content-twoslash',
@@ -29,7 +31,6 @@ export default defineNuxtConfig({
     '@nuxt/hints',
     '@vercel/analytics',
     '@vercel/speed-insights',
-    '@comark/nuxt',
     'evlog/nuxt'
   ],
   $development: {
@@ -103,7 +104,6 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     contactEmail: '',
-    cronSecret: '',
     mcpAdminToken: '',
     adminGithubLogins: '',
     github: {
@@ -152,7 +152,7 @@ export default defineNuxtConfig({
     '/docs/3.x/getting-started/introduction': { prerender: true },
     '/docs/4.x/getting-started/introduction': { prerender: true },
     '/docs/5.x/getting-started/introduction': { prerender: true },
-    '/modules': { isr: false, prerender: false, headers: { Vary: 'Accept, User-Agent' } },
+    '/modules': { isr: 60 * 60, prerender: false, headers: { Vary: 'Accept, User-Agent' } },
     '/modules/**': { isr: 60 * 60 },
     '/changelog': { isr: 60 * 60, headers: { Vary: 'Accept, User-Agent' } },
     // Markdown content negotiation routes (md-rewrite.ts emits Vercel rewrites
@@ -168,9 +168,12 @@ export default defineNuxtConfig({
     // Admin
     '/admin': { ssr: false },
     '/admin/**': { ssr: false },
+    '/admin/login': { redirect: '/login?redirect=/admin', prerender: false },
+    // Auth-protected client-side area — never SSR'd.
+    '/dashboard': { ssr: false },
+    '/dashboard/**': { ssr: false },
     // Main navigation
     '/api/navigation.json': { prerender: true },
-    '/api/search.json': { prerender: true },
     // Redirects
     '/docs': { redirect: '/docs/getting-started/introduction', prerender: false },
     '/docs/3.x': { redirect: '/docs/3.x/getting-started/introduction', prerender: false },
@@ -427,6 +430,7 @@ export default defineNuxtConfig({
     '/docs/5.x/getting-started/directory-structure': { redirect: '/docs/4.x/directory-structure', prerender: false },
     '/docs/4.x/guide/going-further/modules': { redirect: '/docs/4.x/guide/modules', prerender: false },
     '/docs/5.x/guide/going-further/modules': { redirect: '/docs/4.x/guide/modules', prerender: false },
+    '/docs/4.x/guide/modules/module-dependencies': { redirect: '/docs/5.x/guide/modules/module-dependencies', prerender: false },
     '/docs/4.x/guide/concepts/rendering-modes': { redirect: '/docs/4.x/guide/concepts/rendering', prerender: false },
     '/docs/5.x/guide/concepts/rendering-modes': { redirect: '/docs/4.x/guide/concepts/rendering', prerender: false },
     '/docs/4.x/guide/directory-structure/nuxt.config': { redirect: '/docs/4.x/directory-structure/nuxt-config', prerender: false },
@@ -458,7 +462,13 @@ export default defineNuxtConfig({
       crawlLinks: true,
       ignore: [
         route => route === '/modules' || route.startsWith('/modules/'),
-        route => route.startsWith('/admin')
+        route => route.startsWith('/admin'),
+        route => route.startsWith('/login'),
+        route => route.startsWith('/dashboard'),
+        '/mcp',
+        route => route.startsWith('/mcp/'),
+        route => route.startsWith('/api/auth/'),
+        route => route.startsWith('/api/chats')
       ],
       autoSubfolderIndex: false
     }
@@ -473,14 +483,12 @@ export default defineNuxtConfig({
   vite: {
     optimizeDeps: {
       include: [
+        '@comark/vue',
         '@vue/devtools-core',
         '@vue/devtools-kit',
         'valibot',
-        '@comark/vue',
         'zod',
-        'date-fns',
-        'ai',
-        '@ai-sdk/vue'
+        'date-fns'
       ],
       exclude: ['vue-chrts', 'shaders']
     }
@@ -495,6 +503,8 @@ export default defineNuxtConfig({
     'content:file:beforeParse': async ({ file }) => {
       if (file.id.startsWith('docsv5/')) {
         file.body = file.body.replaceAll(/\(\/docs\/(?!\d\.x)/g, '(/docs/5.x/')
+        // module-dependencies only exists on main (5.x), not on the 4.x branch yet
+        file.body = file.body.replaceAll('/docs/4.x/guide/modules/module-dependencies', '/docs/5.x/guide/modules/module-dependencies')
       }
       if (file.id.startsWith('docsv4/')) {
         file.body = file.body.replaceAll(/\(\/docs\/(?!\d\.x)/g, '(/docs/4.x/')
@@ -522,7 +532,11 @@ export default defineNuxtConfig({
     env: { service: 'nuxt-com' },
     pretty: process.env.CI ? false : undefined,
     sampling: {
-      rates: { info: 30 }
+      rates: { info: 30 },
+      keep: [
+        { path: '/api/chats/*' },
+        { duration: 2000 }
+      ]
     }
   },
   hints: {
