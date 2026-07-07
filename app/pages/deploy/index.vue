@@ -10,8 +10,8 @@ if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const title = page.value.title
-const description = page.value.description
+const title = page.value.head?.title || page.value.title
+const description = page.value.head?.description || page.value.description
 
 useSeoMeta({
   titleTemplate: '%s - Nuxt 中文文档',
@@ -23,7 +23,7 @@ useSeoMeta({
 useCanonical()
 
 defineOgImage('Docs.takumi', {
-  title: 'Nuxt 部署  - Nuxt 中文文档',
+  title,
   description
 })
 

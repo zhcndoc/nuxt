@@ -1,7 +1,8 @@
 ---
-title: 设计套件 - Nuxt 中文文档
-head.description: 获取 Nuxt 资产，例如徽标、排版和颜色。
-description: 欢迎来到 Nuxt 设计定义页面。为了表达 Nuxt 产品的简单与乐趣，我们精心挑选了颜色和形状，重新定义了身份。
+title: 设计套件
+head.title: Nuxt 设计套件
+head.description: 获取 Nuxt 资源，如 Logo、排版和颜色。
+description: 欢迎来到 Nuxt 设计定义页面。我们通过精心挑选颜色和形状重新定义了品牌形象，以表达 Nuxt 产品的易用与愉悦。
 navigation.icon: 'i-lucide-palette'
 links:
   - label: 'Nuxt 品牌套件'
@@ -13,6 +14,8 @@ links:
     color: 'neutral'
     target: '_blank'
 ---
+
+有关可机器读取的设计令牌（颜色、排版、间距、组件），请参见 [/design.md](/design.md)。
 
 ## 徽标历史
 

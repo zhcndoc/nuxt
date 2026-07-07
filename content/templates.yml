@@ -1,7 +1,6 @@
-head.title: Nuxt 模板
 title: Nuxt 模板
-navigation.title: 模板
-description: '探索社区模板，几秒钟内即可启动。'
+navigation.title: Nuxt 模板
+description: '探索社区模板，只需几秒钟即可开始运行。'
 navigation.icon: i-lucide-app-window
 align: center
 links:

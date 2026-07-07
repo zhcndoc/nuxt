@@ -1,22 +1,18 @@
-import type { Sponsor } from '#shared/types'
+import type { Sponsor, SponsorType } from '#shared/types'
+
+type SponsorsByTier = Partial<Record<SponsorType, Sponsor[]>>
+
+function isEmptySponsorsByTier(data: SponsorsByTier | null | undefined) {
+  return !data || Object.values(data).every(tier => !tier?.length)
+}
 
 export const useSponsors = async () => {
   const [{ data: apiSponsors }, { data: manualSponsors }] = await Promise.all([
-    useFetch('/api/sponsors', {
+    useFetch<SponsorsByTier>('/api/sponsors', {
       key: 'sponsors',
-      transform: (sponsors) => {
-        for (const tier in sponsors) {
-          if (Array.isArray(sponsors[tier])) {
-            sponsors[tier].forEach((sponsor) => {
-              if (sponsor.sponsorLogo.includes('github')) {
-                sponsor.sponsorLogo = `https://markhub.top/github/${sponsor.sponsorId}`
-              } else if (sponsor.sponsorLogo.includes('opencollective')) {
-                sponsor.sponsorLogo = `https://markhub.top/opencollective/${sponsor.sponsorId}`
-              }
-            })
-          }
-        }
-        return sponsors
+      getCachedData(key, nuxtApp) {
+        const data = nuxtApp.payload.data[key] ?? nuxtApp.static.data[key]
+        return isEmptySponsorsByTier(data) ? undefined : data
       }
     }),
     useAsyncData('manual-sponsors', () => queryCollection('manualSponsors').first())

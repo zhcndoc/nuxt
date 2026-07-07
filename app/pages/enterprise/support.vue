@@ -12,11 +12,11 @@ const title = page.value?.title
 const description = page.value?.description
 
 useSeoMeta({
-  titleTemplate: '%s - 企业支持 - Nuxt 中文文档',
+  titleTemplate: '%s',
   title,
   description,
   ogDescription: description,
-  ogTitle: `${title} - 企业支持 - Nuxt 中文文档`,
+  ogTitle: title,
   ogImage: '/assets/enterprise/support/social-card.png'
 })
 useCanonical()
