@@ -70,6 +70,7 @@ const Button = z.object({
   label: z.string(),
   icon: z.string().optional(),
   trailingIcon: z.string().optional(),
+  avatar: Image.optional(),
   to: z.string().optional(),
   color: z.enum(['primary', 'neutral', 'success', 'warning', 'error', 'info']).optional(),
   size: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
@@ -216,7 +217,8 @@ export default defineContentConfig({
       source: [docsV5Source, examplesV5Source],
       schema: z.object({
         titleTemplate: z.string().optional(),
-        links: z.array(Button)
+        links: z.array(Button),
+        minimalVersion: z.string().optional()
       })
     }),
     docsv4: defineCollection({
@@ -224,7 +226,8 @@ export default defineContentConfig({
       source: [docsV4Source, examplesV4Source],
       schema: z.object({
         titleTemplate: z.string().optional(),
-        links: z.array(Button)
+        links: z.array(Button),
+        minimalVersion: z.string().optional()
       })
     }),
     docsv3: defineCollection({
@@ -232,7 +235,8 @@ export default defineContentConfig({
       source: [docsV3Source, examplesV3Source],
       schema: z.object({
         titleTemplate: z.string().optional(),
-        links: z.array(Button)
+        links: z.array(Button),
+        minimalVersion: z.string().optional()
       })
     }),
     blog: defineCollection({

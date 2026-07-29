@@ -1,6 +1,10 @@
 hero:
   title: '全栈 Vue 框架'
   description: 使用 Vue 快速构建可用于生产环境的 Web 应用。基于文件的路由、自动导入和服务器端渲染，所有功能均已开箱即用。
+  cta:
+    label: Nuxt 4.5.1 已发布
+    to: /blog/v4-5-security
+    icon: i-lucide-arrow-right
   tabs:
     - title: 最小化
       icon: i-lucide-leaf
@@ -349,8 +353,8 @@ foundation:
       color: '#F93920'
       gradient: 'bg-gradient-to-br from-[#F93920]/10 from-5% via-transparent via-50% to-transparent'
       link:
-        label: rspack.dev
-        to: https://rspack.dev
+        label: rspack.rs
+        to: https://rspack.rs
     - id: nitro
       title: 使用 Nitro 作为服务器
       description: Nuxt 使用 Nitro 作为服务器引擎，构建多功能全栈 web 应用程序，随时准备部署到任何平台。

@@ -18,6 +18,13 @@ const [{ data: page }, { data: officialModules }, { data: showcase }, { getFilte
   useSponsors()
 ])
 
+// Merge via computed, not mutation: useFetch `data` is a shallowRef (Nuxt 4
+// default), so writing module.health in place would not trigger a re-render.
+const { health } = useModuleHealth()
+const officialModulesWithHealth = computed(() =>
+  (officialModules.value || []).map(m => ({ ...m, health: health.value[m.name] ?? m.health ?? null }))
+)
+
 const sponsorGroups = getFilteredSponsors(['diamond', 'platinum', 'gold'])
 
 const stats = useStats()
@@ -126,6 +133,19 @@ onMounted(() => {
         wrapper: 'lg:min-h-[540px]'
       }"
     >
+      <template #headline>
+        <NuxtLink :to="page.hero.cta.to">
+          <UBadge variant="subtle" size="lg" class="px-3 relative rounded-full font-semibold dark:hover:bg-primary-400/15 dark:hover:ring-primary-700">
+            {{ page?.hero.cta.label }}
+            <UIcon
+              v-if="page?.hero.cta.icon"
+              :name="page?.hero.cta.icon"
+              class="size-4 pointer-events-none"
+            />
+          </UBadge>
+        </NuxtLink>
+      </template>
+
       <template #title>
         基于 Vue.js 的<br><span class="text-primary">全栈 Web 应用框架</span>
       </template>
@@ -172,9 +192,10 @@ onMounted(() => {
         <UTabs
           :items="tabs"
           :unmount-on-hide="false"
+          color="neutral"
           :ui="{
             list: 'px-0 bg-transparent lg:pr-4 overflow-x-auto',
-            trigger: 'group data-[state=active]:text-highlighted shrink-0',
+            trigger: 'group data-[state=active]:text-highlighted shrink-0 in-[[data-slot=list]:not(:has([data-slot=indicator]))]:data-[state=active]:before:bg-default',
             indicator: 'bg-default',
             leadingIcon: 'group-data-[state=active]:text-primary size-4 hidden sm:inline-flex',
             content: 'lg:h-[450px] bg-default [@media(min-width:2400px)]:border-e [@media(min-width:2400px)]:border-default [@media(min-width:2400px)]:rounded-l-[calc(var(--ui-radius)*1.5)] transition-opacity duration-500 data-[state=inactive]:opacity-0 opacity-100'
@@ -449,7 +470,7 @@ onMounted(() => {
         dots
         wheel-gestures
         arrows
-        :items="officialModules"
+        :items="officialModulesWithHealth"
         class="min-w-0"
         :ui="{
           container: 'ms-0 items-stretch',

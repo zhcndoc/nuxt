@@ -51,13 +51,22 @@ function paintResponse() {
   })
 }
 
+const pageKey = computed(() => kebabCase(path.value))
+const surroundKey = computed(() => `${kebabCase(path.value)}-surround`)
+
 const [{ data: page, status }, { data: surround }] = await Promise.all([
-  useAsyncData(kebabCase(path.value), () => paintResponse().then(() => nuxtApp.static[kebabCase(path.value)] ?? queryCollection(version.value.collection).path(path.value).first()), {
-    watch: [path]
+  useAsyncData(pageKey, () => {
+    const pagePath = path.value
+    const collection = version.value.collection
+    return paintResponse().then(() => queryCollection(collection).path(pagePath).first())
   }),
-  useAsyncData(`${kebabCase(path.value)}-surround`, () => paintResponse().then(() => nuxtApp.static[`${kebabCase(path.value)}-surround`] ?? queryCollectionItemSurroundings(version.value.collection, path.value, {
-    fields: ['description']
-  })), { watch: [path] })
+  useAsyncData(surroundKey, () => {
+    const pagePath = path.value
+    const collection = version.value.collection
+    return paintResponse().then(() => queryCollectionItemSurroundings(collection, pagePath, {
+      fields: ['description']
+    }))
+  })
 ])
 
 watch(status, (status) => {
@@ -208,6 +217,20 @@ const noRightAside = computed(() => route.path.includes('/examples/'))
             <UBreadcrumb :items="breadcrumb" />
           </template>
 
+          <template #title>
+            {{ page.title }}
+
+            <UBadge
+              v-if="page.minimalVersion?.trim()"
+              :label="`v${page.minimalVersion?.trim()}`"
+              color="info"
+              variant="subtle"
+              size="lg"
+              class="align-middle"
+              :aria-label="`Minimum Nuxt version: v${page.minimalVersion?.trim()}`"
+            />
+          </template>
+
           <template #links>
             <UButton
               v-for="link in page.links?.map(link => ({ ...link, size: 'md' }))"
@@ -261,6 +284,7 @@ const noRightAside = computed(() => route.path.includes('/examples/'))
             :links="page.body?.toc?.links"
             :community-links="communityLinks"
             highlight
+            highlight-variant="circuit"
             class="hidden lg:block lg:backdrop-blur-none"
             title="目录"
           />
