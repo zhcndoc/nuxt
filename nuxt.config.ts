@@ -58,7 +58,7 @@ export default defineNuxtConfig({
   },
   $production: {
     hub: {
-      kv: isVercel ? { driver: 'vercel-runtime-cache' } : true
+      kv: true
     },
     image: {
       // ipx: {
