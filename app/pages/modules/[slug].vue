@@ -117,7 +117,17 @@ if (import.meta.server) {
         </template>
       </UAlert>
     </div>
-    <UPageHeader :description="module.description" :ui="{ headline: 'mb-8' }">
+    <UPageHeader
+      :description="module.description"
+      :ui="{
+        headline: 'mb-8',
+        wrapper: isAgentDocked
+          ? 'flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between'
+          : 'flex flex-col gap-4 lg:grid lg:grid-cols-12 lg:gap-10 lg:items-center',
+        title: isAgentDocked ? '' : 'lg:col-span-9',
+        links: isAgentDocked ? '' : 'lg:col-span-3 lg:justify-start lg:pl-6'
+      }"
+    >
       <template #headline>
         <UBreadcrumb :items="[{ label: 'Modules', to: '/modules' }, { to: { name: 'modules', query: { category: module.category } }, label: module.category }, { label: module.npm }]" />
       </template>
@@ -141,9 +151,13 @@ if (import.meta.server) {
         </div>
       </template>
 
+      <template #links>
+        <ModuleInstallGroup :module="module" class="hidden lg:flex" />
+      </template>
+
       <div class="flex flex-col lg:flex-row lg:items-center gap-3 mt-4">
         <UTooltip text="每月 NPM 下载量">
-          <NuxtLink class="flex items-center gap-1.5" :to="`https://npm.chart.dev/${module.npm}`" target="_blank">
+          <NuxtLink class="flex items-center gap-1.5" :to="`https://npmx.dev/package-stats/${module.npm}/v/${module.stats.version}?granularity=monthly`" target="_blank">
             <UIcon name="i-lucide-circle-arrow-down" class="size-5 shrink-0" />
             <span class="text-sm font-medium">{{ formatNumber(module.stats.downloads) }} 下载量</span>
           </NuxtLink>
@@ -192,6 +206,8 @@ if (import.meta.server) {
           <span v-if="index < module.maintainers.length - 1" class="hidden lg:block text-muted">&bull;</span>
         </div>
       </div>
+
+      <ModuleInstallGroup :module="module" class="w-full mt-6 lg:hidden" />
     </UPageHeader>
 
     <UPage

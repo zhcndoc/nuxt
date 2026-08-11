@@ -15,7 +15,7 @@ links:
     target: '_blank'
 ---
 
-有关可机器读取的设计令牌（颜色、排版、间距、组件），请参见 [/design.md](/design.md)。
+如需获取机器可读的设计令牌（颜色、排版、间距、组件），请参阅 [/design.md](/design.md){external}。
 
 ## 徽标历史
 

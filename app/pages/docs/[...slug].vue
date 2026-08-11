@@ -191,6 +191,7 @@ const noRightAside = computed(() => route.path.includes('/examples/'))
 
 <template>
   <UContainer v-if="page">
+    <DocsVersionAlert />
     <UPage>
       <template #left>
         <UPageAside>
@@ -285,7 +286,11 @@ const noRightAside = computed(() => route.path.includes('/examples/'))
             :community-links="communityLinks"
             highlight
             highlight-variant="circuit"
-            class="hidden lg:block lg:backdrop-blur-none"
+            class="hidden lg:flex lg:backdrop-blur-none lg:overflow-y-auto"
+            :ui="{
+              container: 'lg:max-h-[inherit]',
+              content: 'lg:min-h-[min(var(--list-height,8rem),8rem)]'
+            }"
             title="目录"
           />
           <!-- mobile -->
