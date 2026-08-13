@@ -1,0 +1,5 @@
+{
+  "app_dir": "/",
+  "build_command": "pnpm build && test -f .output/server/index.mjs",
+  "start_command": "node .output/server/index.mjs"
+}

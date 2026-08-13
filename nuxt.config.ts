@@ -480,6 +480,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2026-01-14',
   nitro: {
+    preset: 'node-server',
     prerender: {
       // Docs are prerendered by crawling from `/` plus the per-version
       // `getting-started/introduction` seeds in `routeRules` (the version
@@ -696,7 +697,7 @@ export default defineNuxtConfig({
         'https://m.webtoo.ls/@nuxt'
       ]
     }
-  },
+  }
   // turnstile: {
   //   siteKey: '0x4AAAAAAAP2vNBsTBT3ucZi'
   // }
