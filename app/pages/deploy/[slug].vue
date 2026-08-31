@@ -122,7 +122,7 @@ links.push({
         </UPageBody>
 
         <template #right>
-          <UContentToc v-if="!isAgentDocked" :links="provider.body.toc?.links || []" title="目录">
+          <UContentToc :links="provider.body?.toc?.links || []" title="目录">
             <template #top>
               <Ads />
             </template>

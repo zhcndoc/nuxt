@@ -22,9 +22,10 @@ allowBuilds:
   puppeteer: false
   unrs-resolver: false
   vue-demi: false
+  zlib-sync: true
 
 minimumReleaseAgeExclude:
-  - eve@0.24.3 || 0.27.0
+  - eve@0.24.3 || 0.27.0 || 0.40.0
   - evlog
   - '@nuxt/*'
   - nuxt
@@ -32,3 +33,9 @@ minimumReleaseAgeExclude:
   - vue
   - '@vue/*'
   - '@nuxtjs/mdc@0.23.1'
+
+patchedDependencies:
+  # Keys the git checkout directory on the resolved ref, so the `nuxt/cli` sources on
+  # `3.x` and `main` stop overwriting each other's working tree.
+  # https://github.com/nuxt/content/pull/3839
+  '@nuxt/content': patches/@nuxt__content.patch

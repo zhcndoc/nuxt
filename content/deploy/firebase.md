@@ -163,7 +163,46 @@ Firebase 工具使用 `package.json` 中的 `engines.node` 版本来确定要为
 
 ## 其他云函数
 
-您可能会收到警告，指在您部署 Nuxt 项目时其他云函数将被删除。这是因为 Nitro 将把您的整个项目部署到 Firebase 函数。如果您只想部署您的 Nuxt 项目，可以使用 `--only` 标志：
+Firebase 可能会警告您，在部署时其他 Cloud Functions 将被删除。该警告取决于 `codebase` 标识符，而不是您列出的函数源数量。如果没有唯一的 `codebase`，CLI 会将当前部署之外的函数视为可能被删除的对象。
+
+如果为单个函数源指定唯一的 `codebase`，它就可以与其他函数共存（例如，在部署到同一个 Firebase 项目的单独仓库中）。请在每个仓库的 `firebase.json` 中使用不同的 `codebase`。
+
+在一个仓库中，使用不同的 `codebase` 值配置多个函数源：
+
+```json [firebase.json]
+{
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default"
+    },
+    {
+      "source": ".output/server",
+      "codebase": "nuxt"
+    }
+  ],
+  "hosting": [
+    {
+      "site": "<your_project_id>",
+      "public": ".output/public",
+      "cleanUrls": true,
+      "rewrites": [{ "source": "**", "function": "server" }]
+    }
+  ]
+}
+```
+
+::read-more{to="https://firebase.google.com/docs/functions/organize-functions?gen=2nd#managing_multiple_source_packages_monorepo" target="_blank"}
+请参阅 Firebase 文档中的**管理多个源代码包**。
+::
+
+仅部署 Nuxt codebase 和托管：
+
+```bash
+firebase deploy --only functions:nuxt,hosting
+```
+
+如果使用单个函数源（没有单独的 `codebase`），则改为定位到 `server` 函数：
 
 ```bash
 firebase deploy --only functions:server,hosting
