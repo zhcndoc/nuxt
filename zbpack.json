@@ -1,5 +1,5 @@
 {
   "app_dir": "/",
-  "build_command": "pnpm build && test -f .output/server/index.mjs",
-  "start_command": "node .output/server/index.mjs"
+  "build_command": "NITRO_HOST=0.0.0.0 NITRO_PRESET=node-server pnpm build",
+  "start_command": "NITRO_HOST=0.0.0.0 node .output/server/index.mjs"
 }
