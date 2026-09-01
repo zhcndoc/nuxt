@@ -39,10 +39,10 @@ export interface OpenCollectiveSponsor {
 }
 
 export async function fetchOpenCollectiveSponsors(event: H3Event): Promise<OpenCollectiveSponsor[]> {
-  if (!useRuntimeConfig(event).openCollective.apiKey) {
-    console.warn('[sponsors] Skipping Open Collective: NUXT_OPEN_COLLECTIVE_API_KEY is not set')
-    return []
-  }
+  // if (!useRuntimeConfig(event).openCollective.apiKey) {
+  //   console.warn('[sponsors] Skipping Open Collective: NUXT_OPEN_COLLECTIVE_API_KEY is not set')
+  //   return []
+  // }
 
   const key = `sponsors:opencollective`
   const cached = await kv.get<OpenCollectiveSponsor[]>(key)
@@ -115,7 +115,7 @@ export async function fetchOpenCollectiveSponsors(event: H3Event): Promise<OpenC
       errors?: GraphQLError[]
     }
 
-    const { data, errors }: OpenCollectiveResponse = await $fetch<OpenCollectiveResponse>('https://api.opencollective.com/graphql/v2/', {
+    const { data, errors }: OpenCollectiveResponse = await $fetch<OpenCollectiveResponse>('https://anymeta.ikxin.com/opencollective/graphql/v2/', {
       method: 'POST',
       headers: openCollectiveHeaders(event),
       body: { query }

@@ -7,7 +7,7 @@
 //
 //   - content.config.ts   → the `cliV*Source` collection sources
 //   - nuxt.config.ts      → `content:file:beforeParse` asset URL rewriting
-export const CLI_DOCS_REPO = 'nuxt/cli'
+export const CLI_DOCS_REPO = 'zhcndoc/nuxt-cli'
 
 // TODO: repoint docsv4 to `main` when the CLI v4 releases.
 export const CLI_DOCS_REFS = {

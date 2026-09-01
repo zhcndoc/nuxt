@@ -44,12 +44,12 @@ if (import.meta.server) {
     htmlAttrs: {
       lang: 'zh-CN'
     },
-  script: [
-    {
-      async: '',
-      src: 'https://www.zhcndoc.com/js/common.js'
-    }
-  ]
+    script: [
+      {
+        async: '',
+        src: 'https://www.zhcndoc.com/js/common.js'
+      }
+    ]
   })
   useSeoMeta({
     ogSiteName: 'Nuxt 中文文档',

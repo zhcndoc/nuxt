@@ -35,8 +35,8 @@ export default defineNuxtConfig({
     'nuxt-schema-org',
     '@nuxtjs/mcp-toolkit',
     '@nuxt/hints',
-    '@vercel/analytics',
-    '@vercel/speed-insights',
+    // '@vercel/analytics',
+    // '@vercel/speed-insights',
     'evlog/nuxt',
     ...(nuxiEnabled ? ['eve/nuxt'] : [])
   ],
