@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxt/scripts',
-    // '@nuxtjs/turnstile',
+    '@nuxtjs/turnstile',
     '@vueuse/nuxt',
     'nuxt-og-image',
     'motion-v/nuxt',
@@ -57,18 +57,8 @@ export default defineNuxtConfig({
       ]
     }
   },
-  $production: {
-    hub: {
-      kv: true
-    },
-    image: {
-      // ipx: {
-      //   baseURL: 'https://ipx.nuxt.com'
-      // }
-    }
-  },
   devtools: {
-    enabled: false
+    enabled: true
   },
   app: {
     pageTransition: false,
@@ -217,6 +207,8 @@ export default defineNuxtConfig({
     '/docs/3.x/guide/going-further': { redirect: '/docs/3.x/guide/going-further/experimental-features', prerender: false },
     '/docs/4.x/guide/going-further': { redirect: '/docs/4.x/guide/going-further/experimental-features', prerender: false },
     '/docs/5.x/guide/going-further': { redirect: '/docs/5.x/guide/going-further/experimental-features', prerender: false },
+    '/docs/3.x/guide/going-further/modules': { redirect: '/docs/3.x/guide/modules', prerender: false },
+    '/docs/3.x/guide/going-further/modules/': { redirect: '/docs/3.x/guide/modules', prerender: false },
     '/docs/guide/going-further/edge-release-channel': { redirect: '/docs/guide/going-further/nightly-release-channel', prerender: false },
     '/docs/3.x/guide/going-further/edge-release-channel': { redirect: '/docs/3.x/guide/going-further/nightly-release-channel', prerender: false },
     '/docs/4.x/guide/going-further/edge-release-channel': { redirect: '/docs/4.x/guide/going-further/nightly-release-channel', prerender: false },
@@ -467,7 +459,7 @@ export default defineNuxtConfig({
     '/docs/5.x/robots.txt': { redirect: '/robots.txt', prerender: false },
     '/deploy/nuxthub': { redirect: '/deploy/vercel', prerender: false }
   },
-  sourcemap: false,
+  sourcemap: true,
   experimental: {
     viewTransition: true,
     extractAsyncDataHandlers: true,
@@ -480,7 +472,6 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2026-01-14',
   nitro: {
-    preset: 'node-server',
     prerender: {
       // Docs are prerendered by crawling from `/` plus the per-version
       // `getting-started/introduction` seeds in `routeRules` (the version
@@ -642,44 +633,44 @@ export default defineNuxtConfig({
     }
   },
   image: {
-    // format: ['webp', 'jpeg', 'jpg', 'png', 'svg'],
-    // provider: 'ipx',
-    // // Opt-out escape hatch for images IPX must not touch, used by `DocsProseImg`.
-    // providers: {
-    //   none: { provider: 'none' }
-    // }
+    format: ['webp', 'jpeg', 'jpg', 'png', 'svg'],
+    provider: 'ipx',
+    // Opt-out escape hatch for images IPX must not touch, used by `DocsProseImg`.
+    providers: {
+      none: { provider: 'none' }
+    }
   },
   llms: {
-    domain: 'https://nuxt.zhcndoc.com',
-    title: 'Nuxt 中文文档',
-    description: 'Nuxt 是一个开源框架，使网页开发直观而强大。自信地创建高性能和生产级的全栈网页应用和网站。',
+    domain: 'https://nuxt.com',
+    title: 'Nuxt Docs',
+    description: 'Nuxt is an open source framework that makes web development intuitive and powerful. Create performant and production-grade full-stack web apps and websites with confidence.',
     full: {
-      title: 'Nuxt 中文文档',
-      description: '完整的 Nuxt 文档和用 Markdown（MDC 语法）撰写的博客文章。'
+      title: 'Nuxt Docs',
+      description: 'The complete Nuxt documentation and blog posts written in Markdown (MDC syntax).'
     },
     sections: [
       {
-        title: 'Nuxt v5 文档',
+        title: 'Nuxt v5 Documentation',
         contentCollection: 'docsv5',
         contentFilters: [{ field: 'extension', operator: '=', value: 'md' }]
       },
       {
-        title: 'Nuxt v4 文档',
+        title: 'Nuxt v4 Documentation',
         contentCollection: 'docsv4',
         contentFilters: [{ field: 'extension', operator: '=', value: 'md' }]
       },
       {
-        title: '部署指南',
+        title: 'Deployment Guides',
         contentCollection: 'deploy',
         contentFilters: [{ field: 'extension', operator: '=', value: 'md' }]
       },
       {
-        title: 'Nuxt v3 文档',
+        title: 'Nuxt v3 Documentation',
         contentCollection: 'docsv3',
         contentFilters: [{ field: 'extension', operator: '=', value: 'md' }]
       },
       {
-        title: '博客',
+        title: 'Blog',
         contentCollection: 'blog',
         contentFilters: [{ field: 'extension', operator: '=', value: 'md' }]
       }
@@ -713,10 +704,10 @@ export default defineNuxtConfig({
         'https://m.webtoo.ls/@nuxt'
       ]
     }
+  },
+  turnstile: {
+    siteKey: '0x4AAAAAAAP2vNBsTBT3ucZi'
   }
-  // turnstile: {
-  //   siteKey: '0x4AAAAAAAP2vNBsTBT3ucZi'
-  // }
   // twoslash: {
   //   floatingVueOptions: {
   //     classMarkdown: 'prose prose-primary dark:prose-invert'

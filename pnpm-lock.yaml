@@ -6,7 +6,6 @@ settings:
 
 overrides:
   nostics: ^1.2.0
-  node-mock-http: 1.0.5
   '@workflow/serde': 4.1.2
 
 importers:
