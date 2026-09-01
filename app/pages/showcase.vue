@@ -98,7 +98,6 @@ onMounted(() => {
                     loading="lazy"
                     :height="company.height"
                     :width="company.width"
-                    provider="none"
                     class="h-6 shrink-0 max-w-[140px]"
                   />
                 </div>

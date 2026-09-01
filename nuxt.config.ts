@@ -472,6 +472,13 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2026-01-14',
   nitro: {
+    hooks: {
+      'prerender:generate': (route) => {
+        if (route.route.startsWith('/_ipx/') && route.route.endsWith('.svg')) {
+          route.contentType = 'image/svg+xml'
+        }
+      }
+    },
     prerender: {
       // Docs are prerendered by crawling from `/` plus the per-version
       // `getting-started/introduction` seeds in `routeRules` (the version
