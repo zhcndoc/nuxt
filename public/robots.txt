@@ -1,3 +1,0 @@
-User-agent: *
-
-Sitemap: https://nuxt.zhcndoc.com/sitemap.xml

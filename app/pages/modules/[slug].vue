@@ -259,7 +259,6 @@ if (import.meta.server) {
               </UPageLinks>
               <USeparator type="dashed" />
               <SocialLinks />
-              <Ads />
             </div>
           </template>
         </UContentToc>
