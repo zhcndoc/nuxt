@@ -1,4 +1,5 @@
 title: Nuxt 视频课程
-navigation.title: Nuxt 视频课程
+navigation:
+  title: Nuxt 视频课程
+  icon: i-lucide-graduation-cap
 description: '观看社区视频课程，学习 Vue 3 和 Nuxt 3。'
-navigation.icon: i-lucide-graduation-cap

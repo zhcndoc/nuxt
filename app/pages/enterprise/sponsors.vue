@@ -3,17 +3,19 @@ definePageMeta({
   heroBackground: 'opacity-80 -z-10'
 })
 
-const [{ data: page }, { sponsors }] = await Promise.all([
-  useAsyncData('sponsors-landing', () => queryCollection('landing').path('/enterprise/sponsors').first()),
-  useSponsors()
+const [{ data: page }, { data: sponsors }] = await Promise.all([
+  useAsyncData('sponsors-landing', () => useContent('site').get('/enterprise/sponsors.yml')),
+  useFetch<SponsorsByTier>('/api/sponsors', { key: 'sponsors' })
 ])
 
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const title = page.value.head?.title || page.value.title
-const description = page.value.head?.description || page.value.description
+const pageData = computed(() => page.value!.data)
+
+const title = pageData.value.head?.title || pageData.value.title
+const description = pageData.value.head?.description || pageData.value.description
 useSeoMeta({
   titleTemplate: '%s',
   title,
@@ -31,15 +33,15 @@ defineOgImage('Docs.takumi', {
 </script>
 
 <template>
-  <UContainer v-if="page">
+  <UPage v-if="pageData">
     <UPageHero
-      :title="page.title"
-      :description="page.description"
-      :links="page.links"
+      :title="pageData.title"
+      :description="pageData.description"
+      :links="pageData.links"
     />
 
-    <UPage>
-      <UPageBody class="relative divide-y divide-default">
+    <UPageBody class="relative">
+      <UContainer class="divide-y divide-default">
         <div v-for="([key, value]) of Object.entries(sponsors)" :key="key" class="relative grid lg:grid-cols-5 gap-8 py-24">
           <div class="lg:self-start flex lg:flex-col items-center lg:items-start justify-between lg:sticky lg:top-0 lg:pt-24 lg:-mt-24">
             <h2 class="capitalize font-bold text-2xl text-highlighted">
@@ -101,7 +103,7 @@ defineOgImage('Docs.takumi', {
             </div>
           </div>
         </div>
-      </UPageBody>
-    </UPage>
-  </UContainer>
+      </UContainer>
+    </UPageBody>
+  </UPage>
 </template>

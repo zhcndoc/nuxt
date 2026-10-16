@@ -1,7 +1,8 @@
 title: Nuxt 模块
-navigation.title: 模块
+navigation:
+  title: 模块
+  icon: i-lucide-package
 description: '发现我们的模块列表，以增强您的 Nuxt 项目。由 Nuxt 团队和社区创建。'
-navigation.icon: i-lucide-package
 links:
   - label: '创建 Nuxt 模块'
     to: '/docs/guide/going-further/modules'

@@ -1,8 +1,10 @@
 title: 探索 Nuxt 工作
 description: 浏览全球范围内与 Vue 和 Nuxt 相关的可用职位。
-navigation.title: 工作
-head.title: Nuxt 工作
-navigation.icon: i-lucide-briefcase-business
+navigation:
+  title: 工作
+  icon: i-lucide-briefcase-business
+head:
+  title: Nuxt 工作
 links:
   - label: '发布职位'
     to: 'https://vuejobs.com/hire-vuejs-developers'

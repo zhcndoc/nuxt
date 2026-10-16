@@ -1,36 +1,10 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const logo = useTemplateRef('logo')
 const stats = useStats()
 const { loggedIn } = useUserSession()
-const { copy } = useClipboard()
 const { headerLinks } = useHeaderLinks()
 const { track } = useAnalytics()
-
-const logoContextMenuItems = [
-  [{
-    label: 'Copy logo as SVG',
-    icon: 'i-simple-icons-nuxtdotjs',
-    onSelect() {
-      track('Logo Action', { action: 'Copy SVG' })
-      if (logo.value) {
-        copy(logo.value.$el.outerHTML, {
-          title: 'Nuxt logo copied as SVG',
-          description: 'You can now paste it into your project',
-          icon: 'i-lucide-circle-check',
-          color: 'success'
-        })
-      }
-    }
-  }],
-  [{
-    label: 'Browse design kit',
-    icon: 'i-lucide-shapes',
-    to: '/design-kit',
-    onSelect: () => track('Logo Action', { action: 'Browse Design Kit' })
-  }]
-]
 
 function trackSearchOpen() {
   track('Search Opened')
@@ -44,11 +18,7 @@ function trackGitHubClick() {
 <template>
   <UHeader :ui="{ left: 'min-w-0 items-end' }" class="flex flex-col">
     <template #left>
-      <NuxtLink to="/" aria-label="Back to home">
-        <UContextMenu :items="logoContextMenuItems" size="xs">
-          <NuxtLogo ref="logo" class="block w-auto h-6" />
-        </UContextMenu>
-      </NuxtLink>
+      <HeaderLogo />
 
       <VersionMenu />
     </template>

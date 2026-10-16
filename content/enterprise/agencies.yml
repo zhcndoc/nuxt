@@ -1,9 +1,11 @@
 title: Nuxt 机构
-navigation.title: 机构
+navigation:
+  title: 机构
+  icon: i-lucide-handshake
 description: 您是否在寻找一个在 Nuxt 开发方面拥有强大专业知识的可信合作伙伴？请查看我们的代理合作伙伴目录，找到您附近拥有合适技能的代理机构。
-head.title: Nuxt 合作伙伴机构
-head.description: 请查阅我们的代理合作伙伴目录，找到您附近具备合适技能的机构。
-navigation.icon: i-lucide-handshake
+head:
+  title: Nuxt 合作伙伴机构
+  description: 请查阅我们的代理合作伙伴目录，找到您附近具备合适技能的机构。
 links:
   - label: '成为合作伙伴'
     to: 'https://opencollective.com/nuxtjs/contribute/agency-partner-93555'

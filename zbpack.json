@@ -1,5 +1,6 @@
 {
   "app_dir": "/",
+  "install_command": "npm install -g pnpm@12.11.2 && pnpm install --frozen-lockfile",
   "build_command": "NITRO_HOST=0.0.0.0 NITRO_PRESET=node-server pnpm build",
   "start_command": "NITRO_HOST=0.0.0.0 node .output/server/index.mjs"
 }

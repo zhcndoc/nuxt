@@ -1,10 +1,19 @@
 <script setup lang="ts">
 import type { Module } from '#shared/types'
-import { ModuleProseA, ModuleProseKbd, ModuleProseImg } from '#components'
+import { ModuleProseA, ModuleProseKbd, ModuleProseImg, ModuleProsePicture } from '#components'
 
 definePageMeta({
   heroBackground: 'opacity-30 -z-10'
 })
+
+const markdownComponents = {
+  ...proseComponents,
+  ProseA: ModuleProseA,
+  ProseImg: ModuleProseImg,
+  ProsePicture: ModuleProsePicture,
+  ProseKbd: ModuleProseKbd
+}
+
 const route = useRoute()
 const { isAgentDocked } = useNuxtAgent()
 
@@ -217,15 +226,16 @@ if (import.meta.server) {
       } : { root: 'lg:grid-cols-12', center: 'lg:col-span-9', right: 'lg:col-span-3' }"
     >
       <UPageBody>
-        <ContentRenderer v-if="module.readme?.body" :value="module.readme" :components="{ a: ModuleProseA, img: ModuleProseImg, kbd: ModuleProseKbd }" class="first:[&_picture]:block first:[&_picture]:mb-4" />
-        <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
+        <MarkdownDocument
+          v-if="module.readme?.nodes?.length"
+          :value="module.readme"
+          :components="markdownComponents"
+          class="first:[&_picture]:block first:[&_picture]:mb-4"
+        />
       </UPageBody>
 
       <template #right>
-        <UContentToc :links="module.readme?.toc?.links" title="目录">
-          <template #top>
-            <Ads />
-          </template>
+        <UContentToc :links="module.readme?.meta?.toc?.links" title="目录">
           <template #bottom>
             <div class="hidden lg:block space-y-6">
               <UPageLinks title="链接" :links="links" />
