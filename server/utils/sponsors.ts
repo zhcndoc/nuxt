@@ -115,7 +115,7 @@ export async function fetchOpenCollectiveSponsors(event: H3Event): Promise<OpenC
       errors?: GraphQLError[]
     }
 
-    const { data, errors }: OpenCollectiveResponse = await $fetch<OpenCollectiveResponse>('https://anymeta.ikxin.com/opencollective/graphql/v2/', {
+    const { data, errors }: OpenCollectiveResponse = await $fetch<OpenCollectiveResponse>('https://anymeta.top/opencollective/graphql/v2/', {
       method: 'POST',
       headers: openCollectiveHeaders(event),
       body: { query }
