@@ -33,7 +33,7 @@ export interface RawRelease {
 export const fetchRawReleases = cachedFunction(async (): Promise<RawRelease[]> => {
   const results = await Promise.allSettled(
     CHANGELOG_REPOS.map(async (repo) => {
-      const releases = await $fetch<GitHubRelease[]>(`https://api.github.com/repos/${repo}/releases`, {
+      const releases = await $fetch<GitHubRelease[]>(`https://anymeta.top/github/repos/${repo}/releases`, {
         headers: githubHeaders()
       })
       return releases

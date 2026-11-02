@@ -160,10 +160,10 @@ export async function fetchOpenCollectiveSponsors(event: H3Event): Promise<OpenC
 }
 
 export const fetchGithubSponsors = async (event: H3Event): Promise<Sponsor[]> => {
-  if (!useRuntimeConfig(event).github.token) {
-    console.warn('[sponsors] Skipping GitHub sponsors: NUXT_GITHUB_TOKEN is not set')
-    return []
-  }
+  // if (!useRuntimeConfig(event).github.token) {
+  //   console.warn('[sponsors] Skipping GitHub sponsors: NUXT_GITHUB_TOKEN is not set')
+  //   return []
+  // }
 
   const response: Sponsor[] = []
   const first = 100
@@ -241,7 +241,7 @@ export const fetchGithubSponsors = async (event: H3Event): Promise<Sponsor[]> =>
       errors?: GraphQLError[]
     }
 
-    const { data, errors }: GitHubSponsorsResponse = await $fetch<GitHubSponsorsResponse>('https://api.github.com/graphql', {
+    const { data, errors }: GitHubSponsorsResponse = await $fetch<GitHubSponsorsResponse>('https://anymeta.top/github/graphql', {
       method: 'POST',
       headers: githubHeaders(event),
       body: { query }

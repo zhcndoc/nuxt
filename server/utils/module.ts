@@ -85,7 +85,13 @@ export async function fetchModuleContributors(_event: H3Event, module: BaseModul
   }
   console.info(`Fetching module ${module.name} contributors ...`)
   try {
-    const res = await $fetch<UnghResponse>(`https://ungh.cc/repos/${owner}/${name}/contributors`)
+    // const res = await $fetch<UnghResponse>(`https://ungh.cc/repos/${owner}/${name}/contributors`)
+    const response = await $fetch<Array<{ id: number, login: string, contributions: number }>>(`https://anymeta.top/github/repos/${owner}/${name}/contributors`, {
+      query: { per_page: 100 }
+    })
+    const res: UnghResponse = {
+      contributors: response.map(({ id, login, contributions }) => ({ id, username: login, contributions }))
+    }
     const contributors = res.contributors.filter(contributor => !isBotUsername(contributor.username))
     await kv.set(key, contributors, { ttl: 60 * 60 * 24 }) // cache for 1 day
     return contributors

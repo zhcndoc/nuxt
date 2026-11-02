@@ -22,7 +22,7 @@ export async function searchGitHubIssues(
   input: { query: string, repo?: string, state?: 'open' | 'closed' | 'all' }
 ) {
   const { query, repo, state = 'all' } = input
-  const token = useRuntimeConfig(event).github.token
+  // const token = useRuntimeConfig(event).github.token
 
   let q = query
   if (repo) {
@@ -35,15 +35,15 @@ export async function searchGitHubIssues(
   }
   q += ' is:issue'
 
-  const url = `https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=8&sort=relevance`
+  const url = `https://anymeta.top/github/search/issues?q=${encodeURIComponent(q)}&per_page=8&sort=relevance`
 
   const headers: Record<string, string> = {
     'Accept': 'application/vnd.github.v3+json',
     'User-Agent': 'nuxt-agent'
   }
-  if (token) {
-    headers.Authorization = `token ${token}`
-  }
+  // if (token) {
+  //   headers.Authorization = `token ${token}`
+  // }
 
   try {
     const data = await $fetch<GitHubSearchResult>(url, { headers, timeout: 5000 })

@@ -58,11 +58,11 @@ export const github = {
     }
     try {
       const headers = githubHeaders(event)
-      let res = await $fetch<GitHubRepositoryResponse>(`https://api.github.com/repos/${owner}/${name}`, { headers }).catch(() => null)
+      let res = await $fetch<GitHubRepositoryResponse>(`https://anymeta.top/github/repos/${owner}/${name}`, { headers }).catch(() => null)
 
       if (!res) {
         // try token-less request
-        res = await $fetch<GitHubRepositoryResponse>(`https://api.github.com/repos/${owner}/${name}`, { headers: githubHeaders(event, { Authorization: '' }) })
+        res = await $fetch<GitHubRepositoryResponse>(`https://anymeta.top/github/repos/${owner}/${name}`, { headers: githubHeaders(event, { Authorization: '' }) })
       }
 
       const repo = {
@@ -82,11 +82,13 @@ export const github = {
       return repo
     } catch (err) {
       console.error(`Cannot fetch github repo API info for ${owner}/${name}: ${err}`)
-      // Cannot call Github API, fallback to UnGH
-      return $fetch<{ repo: { stars: number, watchers: number, forks: number, defaultBranch: string } }>(`https://ungh.cc/repos/${owner}/${name}`)
-        .then(res => res.repo)
+      // Retry through AnyMeta when the repository request fails.
+      // return $fetch<{ repo: { stars: number, watchers: number, forks: number, defaultBranch: string } }>(`https://ungh.cc/repos/${owner}/${name}`)
+      //   .then(res => res.repo)
+      return $fetch<GitHubRepositoryResponse>(`https://anymeta.top/github/repos/${owner}/${name}`, { headers: githubHeaders(event) })
+        .then(res => ({ stars: res.stargazers_count, watchers: res.watchers_count, forks: res.forks_count, defaultBranch: res.default_branch }))
         .catch((err) => {
-          console.error(`Cannot fetch UnGH repo info for ${owner}/${name}: ${err}`)
+          console.error(`Cannot fetch AnyMeta repo info for ${owner}/${name}: ${err}`)
           return {
             stars: 0,
             watchers: 0,
@@ -97,13 +99,13 @@ export const github = {
     }
   },
   async fetchTeam(event: H3Event, org: string, teamName: string) {
-    const token = useRuntimeConfig(event).github.token
-    if (!token) {
-      throw createError({
-        statusCode: 500,
-        message: 'Missing NUXT_GITHUB_TOKEN env variable'
-      })
-    }
+    // const token = useRuntimeConfig(event).github.token
+    // if (!token) {
+    //   throw createError({
+    //     statusCode: 500,
+    //     message: 'Missing NUXT_GITHUB_TOKEN env variable'
+    //   })
+    // }
 
     const key = `github:team:${org}:${teamName}`
     const cached = await kv.get<GitHubTeamMember[]>(key)
@@ -111,7 +113,7 @@ export const github = {
       return cached
     }
 
-    const team = await $fetch<GitHubTeamResponse>(`https://api.github.com/graphql`, {
+    const team = await $fetch<GitHubTeamResponse>(`https://anymeta.top/github/graphql`, {
       method: 'POST',
       headers: githubHeaders(event),
       body: {
@@ -151,7 +153,12 @@ export const github = {
       }
     })
 
-    const members = team.data.organization.team.members.nodes.map((member): GitHubTeamMember => {
+    // const members = team.data.organization.team.members.nodes.map((member): GitHubTeamMember => {
+    const nodes = team.data?.organization?.team?.members?.nodes
+    if (!nodes) {
+      throw createError({ statusCode: 502, statusMessage: 'Team members are unavailable from AnyMeta.' })
+    }
+    const members = nodes.map((member): GitHubTeamMember => {
       return {
         name: member.name,
         login: member.login,
@@ -176,18 +183,18 @@ export const github = {
 }
 
 export function githubHeaders(event?: H3Event, headers: Record<string, string> = {}) {
-  const token = useRuntimeConfig(event).github.token
-  if (!token) {
-    throw createError({
-      statusCode: 500,
-      message: 'Missing NUXT_GITHUB_TOKEN env variable'
-    })
-  }
+  // const token = useRuntimeConfig(event).github.token
+  // if (!token) {
+  //   throw createError({
+  //     statusCode: 500,
+  //     message: 'Missing NUXT_GITHUB_TOKEN env variable'
+  //   })
+  // }
 
   return {
     'Accept': 'application/vnd.github.v3+json',
     'User-Agent': 'nuxt-api',
-    'Authorization': `token ${token}`,
+    // 'Authorization': `token ${token}`,
     ...headers
   }
 }

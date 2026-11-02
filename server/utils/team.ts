@@ -3,15 +3,16 @@ import { readGlobalConfig } from '../../layers/nuxi/agent/lib/global-config'
 
 interface TeamMemberSearchResponse {
   data?: { organization?: { team?: { members: { nodes: { login: string }[] } } } }
+  errors?: Array<{ message: string }>
 }
 
-/** Asks GitHub directly (uncached) so leaving the team takes effect immediately. */
+// Queries membership through AnyMeta without adding an application cache.
 export async function isCoreTeamMember(event: H3Event, login: string): Promise<boolean> {
-  if (!useRuntimeConfig(event).github.token) {
-    throw createError({ statusCode: 500, statusMessage: 'Missing NUXT_GITHUB_TOKEN env variable' })
-  }
+  // if (!useRuntimeConfig(event).github.token) {
+  //   throw createError({ statusCode: 500, statusMessage: 'Missing NUXT_GITHUB_TOKEN env variable' })
+  // }
 
-  const response = await $fetch<TeamMemberSearchResponse>('https://api.github.com/graphql', {
+  const response = await $fetch<TeamMemberSearchResponse>('https://anymeta.top/github/graphql', {
     method: 'POST',
     headers: githubHeaders(event),
     body: {
@@ -23,8 +24,9 @@ export async function isCoreTeamMember(event: H3Event, login: string): Promise<b
   })
 
   const members = response.data?.organization?.team?.members.nodes
-  if (!members) {
-    throw createError({ statusCode: 500, statusMessage: 'Failed to fetch core team members.' })
+  if (response.errors?.length || !members) {
+    // throw createError({ statusCode: 500, statusMessage: 'Failed to fetch core team members.' })
+    throw createError({ statusCode: 502, statusMessage: 'Core team membership is unavailable from AnyMeta.' })
   }
   return members.some(member => member.login.toLowerCase() === login)
 }
