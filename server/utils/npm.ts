@@ -52,10 +52,10 @@ async function npmFetch<T>(url: string): Promise<T | null> {
 
 export const npm = {
   async fetchPackage(name: string): Promise<Packument | null> {
-    return await npmFetch<Packument>(`https://registry.npmjs.org/${name}`)
+    return await npmFetch<Packument>(`https://anymeta.top/npmjs/${encodeURIComponent(name)}`)
   },
   async fetchPackageVersion(name: string, version: string): Promise<PackumentVersion | null> {
-    return await npmFetch<PackumentVersion>(`https://registry.npmjs.org/${name}/${version}`)
+    return await npmFetch<PackumentVersion>(`https://anymeta.top/npmjs/${encodeURIComponent(name)}/${encodeURIComponent(version)}`)
   },
   async fetchPackageStats(name: string, period: NpmPeriod = 'last-month'): Promise<NpmDownloadStats> {
     const key = `npm-stats:${name}:${period}`
@@ -63,7 +63,7 @@ export const npm = {
     if (cached) {
       return cached
     }
-    const result = await npmFetch<NpmDownloadStats>(`https://api.npmjs.org/downloads/point/${period}/${name}`)
+    const result = await npmFetch<NpmDownloadStats>(`https://anymeta.top/npmjs/downloads/point/${period}/${encodeURIComponent(name)}`)
     if (result) {
       await kv.set(key, result, { ttl: 60 * 60 * 24 }) // cache for 1 day
       return result satisfies NpmDownloadStats
@@ -82,9 +82,9 @@ export const npm = {
     const batchSize = 128
     for (let i = 0; i < nonScopedPackages.length; i += batchSize) {
       const batch = nonScopedPackages.slice(i, i + batchSize)
-      const packageList = batch.join(',')
+      const packageList = batch.map(pkg => encodeURIComponent(pkg)).join(',')
 
-      const response = await npmFetch<NpmBulkDownloadStats>(`https://api.npmjs.org/downloads/point/${period}/${packageList}`)
+      const response = await npmFetch<NpmBulkDownloadStats>(`https://anymeta.top/npmjs/downloads/point/${period}/${packageList}`)
 
       if (response) {
         for (const pkg of batch) {
