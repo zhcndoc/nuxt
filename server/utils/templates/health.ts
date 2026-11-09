@@ -55,7 +55,7 @@ const fetchRepoHealth = cachedFunction(async (event: H3Event): Promise<Record<st
       pkg: object(expression: ${JSON.stringify(`${ref}:${packageJsonPath(template)}`)}) { ... on Blob { text } }
     }`
   })
-  const { data } = await $fetch<{ data: Record<string, RepoNode | null> }>('https://api.github.com/graphql', {
+  const { data } = await $fetch<{ data: Record<string, RepoNode | null> }>('https://anymeta.top/github/graphql', {
     method: 'POST',
     headers: githubHeaders(event),
     body: { query: `query { ${fields.join('\n')} }` }

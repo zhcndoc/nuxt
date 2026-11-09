@@ -408,11 +408,11 @@ async function importProfiles(source: NuxtersSource, force?: boolean): Promise<n
 }
 
 function githubHeaders() {
-  const token = process.env.NUXT_GITHUB_TOKEN
+  // const token = process.env.NUXT_GITHUB_TOKEN
   return {
     'Accept': 'application/vnd.github+json',
-    'User-Agent': 'nuxt.com',
-    ...(token ? { Authorization: `Bearer ${token}` } : {})
+    'User-Agent': 'nuxt.com'
+    // ...(token ? { Authorization: `Bearer ${token}` } : {})
   }
 }
 
@@ -420,7 +420,7 @@ async function githubSource(sha?: string): Promise<NuxtersSource> {
   const commitSha = sha || await latestNuxtersSha()
   // Lists the blob sha of every file: a file is only downloaded when it changed.
   const entries = await $fetch<Array<{ name: string, sha: string, type: string }>>(
-    `https://api.github.com/repos/${NUXTERS_SOURCE.repo}/contents/${NUXTERS_SOURCE.dir}`,
+    `https://anymeta.top/github/repos/${NUXTERS_SOURCE.repo}/contents/${NUXTERS_SOURCE.dir}`,
     { query: { ref: commitSha }, headers: githubHeaders() }
   )
 
@@ -460,7 +460,7 @@ async function localSource(dir: string): Promise<NuxtersSource> {
 
 /** The last commit on `main` that changed the period files. */
 async function latestNuxtersSha(): Promise<string> {
-  const [commit] = await $fetch<Array<{ sha: string }>>(`https://api.github.com/repos/${NUXTERS_SOURCE.repo}/commits`, {
+  const [commit] = await $fetch<Array<{ sha: string }>>(`https://anymeta.top/github/repos/${NUXTERS_SOURCE.repo}/commits`, {
     query: { sha: NUXTERS_SOURCE.branch, path: NUXTERS_SOURCE.dir, per_page: 1 },
     headers: githubHeaders()
   })

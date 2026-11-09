@@ -17,6 +17,7 @@
     "dev:full": "nuxt dev",
     "nuxi": "pnpm --dir layers/nuxi run dev",
     "build": "NODE_OPTIONS='--max-old-space-size=8192' nuxt build",
+    "start": "node --env-file-if-exists=.env .output/server/index.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint . --cache",

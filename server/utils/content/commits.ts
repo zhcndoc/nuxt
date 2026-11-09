@@ -32,10 +32,10 @@ export async function fetchLastContentCommit(opts: LastContentCommitOptions): Pr
     per_page: '1'
   })
 
-  const response = await fetch(`https://api.github.com/repos/${opts.repo}/commits?${query}`, {
+  const response = await fetch(`https://anymeta.top/github/repos/${opts.repo}/commits?${query}`, {
     headers: {
-      Accept: 'application/vnd.github+json',
-      ...(opts.token ? { Authorization: `Bearer ${opts.token}` } : {})
+      Accept: 'application/vnd.github+json'
+      // ...(opts.token ? { Authorization: `Bearer ${opts.token}` } : {})
     }
   })
 

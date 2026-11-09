@@ -47,7 +47,7 @@ export function createInstanceSource(source: InstanceSource, ctx: SourceContext)
     repo: source.repo,
     branch: source.branch,
     path: source.contentDir,
-    token: ctx.token,
+    apiURL: 'https://anymeta.top/github',
     // Reads happen through `withRef(<sha>)`, an immutable commit => cache hard.
     ttl: 60 * 60 * 24,
     ...options

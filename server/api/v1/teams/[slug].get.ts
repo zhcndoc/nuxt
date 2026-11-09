@@ -1,3 +1,5 @@
+import type { GitHubTeamMember } from '../../../types/github'
+
 const validTeams = ['ecosystem', 'core', 'ui']
 export default cachedEventHandler(async (event) => {
   const teamName = getRouterParam(event, 'slug')
@@ -9,6 +11,8 @@ export default cachedEventHandler(async (event) => {
   }
 
   const members = await github.fetchTeam(event, 'nuxt', teamName)
+    // GitHub may hide team membership from the proxy's token; use Nuxt's public team feed.
+    .catch(() => $fetch<GitHubTeamMember[]>(`https://nuxt.com/api/v1/teams/${teamName}`))
 
   // Nuxters score, to sort the team by contributions
   const scores = await nuxters.scores(members.map(member => member.login)).catch((error) => {

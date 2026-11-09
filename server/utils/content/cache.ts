@@ -11,7 +11,7 @@ const TTL = 60 * 60 * 24
 
 /** Whether the Vercel Runtime Cache is available */
 function cacheAvailable(): boolean {
-  return !import.meta.dev && Boolean(process.env.VERCEL)
+  return false
 }
 
 /**

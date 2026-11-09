@@ -73,10 +73,10 @@ interface GitHubPull {
 }
 
 function githubHeaders(): Record<string, string> {
-  const token = contentGithubToken()
+  // const token = contentGithubToken()
   return {
-    Accept: 'application/vnd.github+json',
-    ...(token ? { Authorization: `Bearer ${token}` } : {})
+    Accept: 'application/vnd.github+json'
+    // ...(token ? { Authorization: `Bearer ${token}` } : {})
   }
 }
 
@@ -97,7 +97,7 @@ async function fetchPreviewablePulls(repo: string): Promise<PreviewablePulls> {
   const open: number[] = []
 
   for (let page = 1; page <= MAX_PULL_PAGES; page++) {
-    const batch = await $fetch<GitHubPull[]>(`https://api.github.com/repos/${repo}/pulls`, {
+    const batch = await $fetch<GitHubPull[]>(`https://anymeta.top/github/repos/${repo}/pulls`, {
       headers: githubHeaders(),
       query: { state: 'open', per_page: 100, page }
     }).catch((error) => {
@@ -161,7 +161,7 @@ async function getPullFiles(repo: string, number: number, pull: PreviewablePull)
 
   const files: PullFile[] = []
   for (let page = 1; page <= MAX_FILE_PAGES; page++) {
-    const batch = await $fetch<Array<{ filename: string, status: string }>>(`https://api.github.com/repos/${repo}/pulls/${number}/files`, {
+    const batch = await $fetch<Array<{ filename: string, status: string }>>(`https://anymeta.top/github/repos/${repo}/pulls/${number}/files`, {
       headers: githubHeaders(),
       query: { per_page: 100, page }
     }).catch((error) => {

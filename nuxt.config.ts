@@ -54,8 +54,8 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt-agent-discovery',
     '@nuxt/hints',
-    '@vercel/analytics',
-    '@vercel/speed-insights',
+    // '@vercel/analytics',
+    // '@vercel/speed-insights',
     'evlog/nuxt',
     'nuxt-workers',
     'workflow/nuxt',
@@ -65,30 +65,30 @@ export default defineNuxtConfig({
   $development: {
     site: {
       url: 'http://localhost:3000'
-    },
-    image: {
-      alias: {
-        '/gh/': 'https://raw.githubusercontent.com',
-        '/gh_avatar/': 'https://avatars.githubusercontent.com'
-      },
-      domains: [
-        'raw.githubusercontent.com',
-        'avatars.githubusercontent.com',
-        'nuxt.com'
-      ]
     }
+    // image: {
+    //   alias: {
+    //     '/gh/': 'https://raw.githubusercontent.com',
+    //     '/gh_avatar/': 'https://avatars.githubusercontent.com'
+    //   },
+    //   domains: [
+    //     'raw.githubusercontent.com',
+    //     'avatars.githubusercontent.com',
+    //     'nuxt.com'
+    //   ]
+    // }
   },
   $production: {
-    hub: {
-      kv: {
-        driver: 'vercel-runtime-cache'
-      }
-    },
-    image: {
-      ipx: {
-        baseURL: 'https://ipx.nuxt.com'
-      }
-    }
+    // hub: {
+    //   kv: {
+    //     driver: 'vercel-runtime-cache'
+    //   }
+    // },
+    // image: {
+    //   ipx: {
+    //     baseURL: 'https://ipx.nuxt.com'
+    //   }
+    // }
   },
   components: [
     // Keeps `@nuxt/content` names (`ReadMore`, not `ContentReadMore`).
@@ -707,6 +707,7 @@ export default defineNuxtConfig({
   evlog: {
     env: { service: 'nuxt-com' },
     pretty: process.env.CI ? false : undefined,
+    exclude: ['/**'],
     sampling: {
       rates: { info: 30 },
       keep: [

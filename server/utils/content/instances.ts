@@ -105,7 +105,7 @@ export function instanceSource(key: ContentInstanceKey): { name: string, source:
   if (key === 'site') {
     return {
       name: 'site',
-      source: { repo: 'nuxt/nuxt.com', branch: siteRef(), contentDir: 'content', prefix: '/', local: true, schema: SITE_SCHEMA }
+      source: { repo: 'zhcndoc/nuxt', branch: siteRef(), contentDir: 'content', prefix: '/', local: true, schema: SITE_SCHEMA }
     }
   }
   if (key === 'examples') {
