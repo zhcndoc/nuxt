@@ -2,30 +2,83 @@
 import { motion, AnimatePresence } from 'motion-v'
 import type { DropdownMenuItem } from '@nuxt/ui'
 import type { Module } from '#shared/types'
-import { joinURL } from 'ufo'
+import { joinURL, withQuery } from 'ufo'
+import { resolveModuleCategory } from '#shared/utils/modules'
+import { isNavigationFailure, NavigationFailureType } from 'vue-router'
+import type { LocationQuery } from 'vue-router'
 
 definePageMeta({
-  heroBackground: 'opacity-50'
+  heroBackground: 'opacity-50',
+  middleware: [
+    function (to) {
+      const category = to.query.category
+      if (typeof category === 'string' && resolveModuleCategory(category) !== category) {
+        return navigateTo({ ...to, query: { ...to.query, category: resolveModuleCategory(category) } }, { redirectCode: 301 })
+      }
+    }
+  ]
 })
 
 const input = useTemplateRef('input')
 const modulesToAdd = ref<Module[]>([])
 const el = useTemplateRef<HTMLElement>('el')
 
-const { replaceRoute } = useFilters('modules')
-const { fetchList, filteredModules, q, categories, modules, stats, selectedSort, selectedOrder, selectedCategory, sorts } = useModules()
+const route = useRoute()
+const router = useRouter()
+const { fetchList, filteredModules, q, categories, modules, stats, selectedSort, selectedOrder, selectedCategory, sorts, category, sortBy, orderBy } = useModules()
+
+const filters = { q, category, sortBy, orderBy }
+
+function applyQuery(query: LocationQuery) {
+  for (const [key, filter] of Object.entries(filters)) {
+    const value = query[key]
+    filter.value = typeof value === 'string' ? value : ''
+  }
+}
+
+// A navigation to `/modules?…` (shared link, back/forward, a link elsewhere) sets the filters.
+watch(() => route.query, applyQuery, { immediate: true })
+
+// The router does not see filter changes, so a link to the route it is still on (such as the
+// header "Modules" link after a search) is a duplicated navigation that leaves `route.query` unchanged.
+const removeAfterEach = router.afterEach((to, _from, failure) => {
+  if (isNavigationFailure(failure, NavigationFailureType.duplicated)) applyQuery(to.query)
+})
+onBeforeUnmount(removeAfterEach)
+
+// Filtering happens in memory, so only mirror the filters in the URL: a router navigation
+// would fetch `_payload.json` for this ISR route on every keystroke.
+watch(Object.values(filters), () => {
+  // Keep unrelated params (e.g. `utm_*`) from the last navigation.
+  const query = { ...route.query, ...Object.fromEntries(Object.entries(filters).map(([key, filter]) => [key, filter.value || undefined])) }
+  const { fullPath, href } = router.resolve({ path: route.path, query, hash: route.hash })
+  // vue-router writes `state.current` back to the URL on the next push, so keep it in sync.
+  history.replaceState({ ...history.state, current: fullPath }, '', href)
+})
+
+function resetFilters() {
+  for (const filter of Object.values(filters)) filter.value = ''
+}
+
+function filterKey(param: string | { key: string | number }) {
+  return typeof param === 'string' ? param : String(param?.key ?? '')
+}
+
 const { health } = useModuleHealth()
 const { track } = useAnalytics()
 const { openInCursor, openInClaudeCode, openInVSCode } = useIdeDeeplink()
 
-// Merge via computed, not mutation: useFetch `data` is a shallowRef (Nuxt 4
-// default), so writing module.health in place would not trigger a re-render.
-const filteredModulesWithHealth = computed(() =>
-  filteredModules.value.map(m => ({
-    ...m,
-    health: health.value[m.name] ?? m.health ?? null
-  }))
-)
+// Health and the matched provider are merged only for visible rows so typing in search does not remap the full list.
+const searchRegExp = computed(() => q.value ? searchTextRegExp(q.value) : undefined)
+function withModuleHealth(module: Module) {
+  const query = searchRegExp.value
+  return {
+    ...module,
+    health: health.value[module.name] ?? module.health ?? null,
+    // Shows why a module matched when only one of its providers did (e.g. "cloudinary" → @nuxt/image).
+    matchedProvider: query && !moduleMatchesSearch(module, query) ? findModuleProvider(module, query) : undefined
+  }
+}
 
 const cacheControl = useResponseHeader('Cache-Control')
 const cdnCacheControl = useResponseHeader('CDN-Cache-Control')
@@ -39,21 +92,35 @@ if (!page.value) {
 
 const pageData = computed(() => page.value!.data)
 
+const site = useSiteConfig()
 const title = pageData.value.head?.title || pageData.value.title
 const description = pageData.value.head?.description || pageData.value.description
 
+// `?category=` is server-rendered (ISR entry per category), so each category is indexed as its own page.
+const seo = computed(() => {
+  const category = selectedCategory.value?.key as string | undefined
+  if (!category) return { title, description }
+  const count = modules.value.filter(m => category === 'Official' ? m.type === 'official' : m.category === category).length
+  return moduleCategorySeo(category, count)
+})
+
 useSeoMeta({
-  titleTemplate: '%s - Nuxt 中文文档',
-  title,
-  description
+  titleTemplate: '%s',
+  title: () => seo.value.title,
+  description: () => seo.value.description,
+  ogTitle: () => seo.value.title,
+  ogDescription: () => seo.value.description
 })
 useCanonical('/raw/modules.md')
+// useCanonical() drops the query: a category page is its own canonical URL (the last canonical link wins).
+useHead({
+  link: () => selectedCategory.value
+    ? [{ rel: 'canonical', href: withQuery(joinURL(site.url, '/modules'), { category: selectedCategory.value.key }) }]
+    : []
+})
 
 if (import.meta.server) {
-  const site = useSiteConfig()
   useSeoMeta({
-    ogDescription: description,
-    ogTitle: title,
     ogImage: joinURL(site.url, '/modules-social-card.jpg'),
     twitterImage: joinURL(site.url, '/modules-social-card.jpg')
   })
@@ -121,7 +188,7 @@ const isLoading = ref(false)
 let loadMoreTimer: ReturnType<typeof setTimeout> | null = null
 
 const displayedModules = computed(() =>
-  filteredModulesWithHealth.value.slice(0, visibleCount.value)
+  filteredModules.value.slice(0, visibleCount.value).map(withModuleHealth)
 )
 
 const { y: scrollY } = useWindowScroll()
@@ -175,8 +242,8 @@ const copyAllInstallCommands = () => {
   const command = buildModuleInstallCommand(moduleNames)
   track('Modules Bulk Install Copied', { count: modulesToAdd.value.length, modules: moduleNames.join(' ') })
   copy(command, {
-    title: 'Install command copied to clipboard:',
-    description: `Ready to install ${modulesToAdd.value.length} module${modulesToAdd.value.length > 1 ? 's' : ''} at once`
+    title: '安装命令已复制到剪贴板：',
+    description: `即将一次安装 ${modulesToAdd.value.length} 个模块`
   })
 }
 
@@ -185,8 +252,8 @@ const copyAgentPrompt = () => {
   const moduleNames = modulesToAdd.value.map(m => m.name).join(' ')
   track('Modules Agent Prompt Copied', { count: modulesToAdd.value.length, modules: moduleNames })
   copy(prompt, {
-    title: 'Agent prompt copied to clipboard!',
-    description: `Prompt ready for ${modulesToAdd.value.length} module${modulesToAdd.value.length > 1 ? 's' : ''}`,
+    title: 'AI 助手提示已复制到剪贴板！',
+    description: `已为 ${modulesToAdd.value.length} 个模块准备好提示词`,
     icon: 'i-custom-ai'
   })
 }
@@ -208,22 +275,22 @@ function openBulkPromptInVSCode() {
 
 const agentPromptItems = computed<DropdownMenuItem[]>(() => [
   {
-    label: 'Copy agent prompt',
+    label: '复制 AI 助手提示',
     icon: 'i-custom-ai',
     onSelect: copyAgentPrompt
   },
   {
-    label: 'Open in Cursor',
+    label: '在 Cursor 中打开',
     icon: 'i-simple-icons-cursor',
     onSelect: openBulkPromptInCursor
   },
   {
-    label: 'Open in Claude Code',
+    label: '在 Claude Code 中打开',
     icon: 'i-simple-icons-anthropic',
     onSelect: openBulkPromptInClaudeCode
   },
   {
-    label: 'Open in VS Code',
+    label: '在 VS Code 中打开',
     icon: 'i-simple-icons-visualstudiocode',
     onSelect: openBulkPromptInVSCode
   }
@@ -245,32 +312,31 @@ const clearAllModules = () => {
       class="z-20 relative pt-24"
       :ui="{
         title: 'text-4xl sm:text-7xl text-balance max-w-4xl mx-auto',
-        links: 'max-w-2xl mx-auto'
+        links: 'max-w-6xl mx-auto'
       }"
     >
       <template #title>
-        使用 <span class="text-primary">{{ modules.length }}+</span> 个 Nuxt 模块更快地构建
+        使用 <span class="text-primary">{{ modules.length }}+</span> 个 Nuxt 模块，加速开发
       </template>
 
       <template #description>
-        发现我们的模块列表，以增强您的 Nuxt 项目。由来自 Nuxt 团队和社区的超过 {{ stats.contributors.toString() }} 人创建和维护。
+        浏览 Nuxt 模块目录，为您的项目扩展功能。这些模块由 Nuxt 团队和社区的 {{ stats.contributors.toString() }} 多位成员创建并维护。
       </template>
 
       <template #links>
-        <div class="flex flex-col w-full gap-3">
+        <div class="flex flex-col w-full max-w-2xl mx-auto gap-3">
           <div class="flex flex-col sm:flex-row w-full gap-2 relative">
             <UInput
               ref="input"
-              :model-value="q"
+              v-model="q"
               name="q"
               icon="i-lucide-search"
-              placeholder="搜索模块..."
+              placeholder="搜索模块……"
               class="w-full"
               size="lg"
               autofocus
               autocomplete="off"
               variant="subtle"
-              @update:model-value="replaceRoute('q', $event as string)"
             >
               <template #trailing>
                 <UButton
@@ -279,7 +345,7 @@ const clearAllModules = () => {
                   variant="link"
                   size="lg"
                   icon="i-lucide-x"
-                  @click="replaceRoute('q', '')"
+                  @click="q = ''"
                 />
                 <UKbd v-else value="/" class="hidden sm:flex" />
               </template>
@@ -293,7 +359,7 @@ const clearAllModules = () => {
                 color="neutral"
                 class="w-auto"
                 variant="outline"
-                @update:model-value="replaceRoute('sortBy', $event)"
+                @update:model-value="sortBy = filterKey($event)"
               />
 
               <UButton
@@ -301,9 +367,9 @@ const clearAllModules = () => {
                 size="lg"
                 color="neutral"
                 variant="outline"
-                @click="replaceRoute('orderBy', selectedOrder.key === 'desc' ? 'asc' : 'desc')"
+                @click="orderBy = selectedOrder.key === 'desc' ? 'asc' : 'desc'"
               >
-                <span class="sr-only">Sort by {{ selectedOrder.label }}</span>
+                <span class="sr-only">按{{ selectedOrder.label }}排序</span>
               </UButton>
             </div>
           </div>
@@ -316,8 +382,9 @@ const clearAllModules = () => {
               color="neutral"
               variant="outline"
               class="flex-1"
-              placeholder="Select category"
-              @update:model-value="replaceRoute('category', $event)"
+              :ui="{ content: 'min-w-fit' }"
+              placeholder="选择分类"
+              @update:model-value="category = filterKey($event)"
             />
             <UButton
               v-if="selectedCategory"
@@ -325,8 +392,8 @@ const clearAllModules = () => {
               size="lg"
               color="neutral"
               variant="outline"
-              aria-label="Clear category filter"
-              @click="replaceRoute('category', '')"
+              aria-label="清除分类筛选"
+              @click="category = ''"
             />
             <USelectMenu
               :model-value="selectedSort"
@@ -335,23 +402,23 @@ const clearAllModules = () => {
               color="neutral"
               class="w-1/3"
               variant="outline"
-              @update:model-value="replaceRoute('sortBy', $event)"
+              @update:model-value="sortBy = filterKey($event)"
             />
             <UButton
               :icon="selectedOrder.icon"
               size="lg"
               color="neutral"
               variant="outline"
-              @click="replaceRoute('orderBy', selectedOrder.key === 'desc' ? 'asc' : 'desc')"
+              @click="orderBy = selectedOrder.key === 'desc' ? 'asc' : 'desc'"
             />
           </div>
         </div>
 
         <div class="hidden sm:flex mt-6 flex-wrap gap-1.5 justify-center">
           <UButton
-            v-for="category in categories"
-            :key="category.key"
-            v-bind="category"
+            v-for="categoryFilter in categories"
+            :key="categoryFilter.key"
+            v-bind="categoryFilter"
             color="neutral"
             variant="outline"
             active-color="primary"
@@ -368,11 +435,11 @@ const clearAllModules = () => {
           <div class="flex justify-between mb-4 text-muted text-xs">
             <div class="flex items-center gap-2">
               <span class="flex items-center gap-1.5">
-                <UKbd value="meta" size="sm" />+click to select · Shift+click for a range · Esc to clear
+                <UKbd value="meta" size="sm" />+单击选择 · Shift+单击连续选择 · Esc 清除
               </span>
             </div>
             <ULink to="/docs/guide/modules/getting-started" class="hidden md:flex items-center gap-1">
-              Create your own module
+              创建自己的模块
               <UIcon name="i-lucide-arrow-right" class="size-4" />
             </ULink>
           </div>
@@ -382,6 +449,7 @@ const clearAllModules = () => {
               v-for="module in displayedModules"
               :key="module.name"
               :module="module"
+              :provider="module.matchedProvider"
               :is-added="addedModuleNames.has(module.name)"
               :sort-key="String(selectedSort.key)"
               selectable
@@ -405,14 +473,14 @@ const clearAllModules = () => {
             </template>
           </UPageGrid>
 
-          <EmptyCard v-else :label="`没有找到 ${q} 模块，成为第一个创建它的人！`">
+          <EmptyCard v-else :label="`${q || selectedCategory?.label} 暂无模块。成为第一个创建模块的人吧！`">
             <UButton
               label="在 GitHub 上贡献"
               color="neutral"
               to="https://github.com/nuxt/modules"
               target="_blank"
               size="md"
-              @click="$router.replace({ query: {} })"
+              @click="resetFilters"
             />
             <UButton to="/docs/guide/going-further/modules" color="neutral" size="md" label="如何创建模块？" />
           </EmptyCard>
@@ -454,7 +522,7 @@ const clearAllModules = () => {
 
               <div class="relative z-10 bg-default/80 backdrop-blur-lg rounded-full p-1 border border-default dark:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.9)] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] flex items-center gap-4">
                 <motion.div class="flex items-center gap-1">
-                  <UTooltip text="Copy install command">
+                  <UTooltip text="复制安装命令">
                     <Motion :press="{ scale: 0.99 }">
                       <UButton
                         color="primary"
@@ -464,14 +532,14 @@ const clearAllModules = () => {
                         class="font-medium rounded-full"
                         @click="copyAllInstallCommands"
                       >
-                        Install {{ modulesToAdd.length }} module{{ modulesToAdd.length > 1 ? 's' : '' }}
+                        安装 {{ modulesToAdd.length }} 个模块
                       </UButton>
                     </Motion>
                   </UTooltip>
 
                   <Motion :press="{ scale: 0.99 }">
                     <UFieldGroup>
-                      <UTooltip text="Copy agent prompt to install & configure">
+                      <UTooltip text="复制 AI 助手提示以安装和配置模块">
                         <UButton
                           color="neutral"
                           variant="soft"
@@ -489,13 +557,13 @@ const clearAllModules = () => {
                           size="lg"
                           icon="i-lucide-chevron-down"
                           class="rounded-e-full"
-                          aria-label="More agent prompt options"
+                          aria-label="更多 AI 助手提示选项"
                         />
                       </UDropdownMenu>
                     </UFieldGroup>
                   </Motion>
 
-                  <UTooltip text="Clear selection">
+                  <UTooltip text="清除选择">
                     <Motion :press="{ scale: 0.99 }">
                       <UButton
                         color="neutral"

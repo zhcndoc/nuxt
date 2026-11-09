@@ -8,7 +8,7 @@ const [{ data: page }, { data: courses }] = await Promise.all([
 ])
 
 if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+  throw createError({ statusCode: 404, statusMessage: '未找到页面', fatal: true })
 }
 
 const pageData = computed(() => page.value!.data)
@@ -25,7 +25,7 @@ useSeoMeta({
 })
 useCanonical()
 defineOgImage('Docs.takumi', {
-  headline: 'Resources',
+  headline: '学习资源',
   title,
   description
 })
@@ -36,7 +36,7 @@ defineOgImage('Docs.takumi', {
     <UPageHero
       :title="pageData.title"
       :description="pageData.description"
-      :links="pageData.links"
+      :links="pickLinks(pageData.links)"
     />
     <UPageBody>
       <UContainer>
@@ -72,7 +72,7 @@ defineOgImage('Docs.takumi', {
             />
             <UBadge
               v-else
-              label="Free"
+              label="免费"
               color="info"
               variant="subtle"
               class="rounded-full"
@@ -84,7 +84,7 @@ defineOgImage('Docs.takumi', {
               trailing-icon="i-lucide-arrow-right"
               size="sm"
               color="success"
-              label="Discover course"
+              label="查看课程"
             />
             <UButton
               v-else
@@ -94,7 +94,7 @@ defineOgImage('Docs.takumi', {
               variant="link"
               size="sm"
               color="neutral"
-              label="Discover course"
+              label="查看课程"
             />
           </li>
         </ul>

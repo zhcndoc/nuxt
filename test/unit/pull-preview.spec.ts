@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import memoryDriver from 'unstorage/drivers/memory'
 import type { NavigationItem } from 'comark-content'
 import { instanceSource } from '../../server/utils/content/instances'
-import { findByPath } from '../../server/utils/content/navigation'
+import { findByPath, moduleDocsTrees } from '../../server/utils/content/navigation'
 import type { ContentInstanceKey } from '../../shared/utils/content'
 
 const SHA = 'a'.repeat(40)
@@ -35,6 +35,7 @@ vi.stubGlobal('contentCacheDriver', () => undefined)
 vi.stubGlobal('recordDuration', () => 0)
 vi.stubGlobal('getInstanceAtHead', async (key: ContentInstanceKey) => ({ stat: headStat, navigation: async () => headNavs.get(key) ?? [] }))
 vi.stubGlobal('findByPath', findByPath)
+vi.stubGlobal('moduleDocsTrees', moduleDocsTrees)
 
 type PullModule = typeof import('../../server/utils/content/pull')
 let { pullInstanceKey, pullLandingPath, pullNavigation, pullPages, resolvePullPreview } = {} as PullModule
@@ -48,8 +49,8 @@ function pull(number: number, overrides: Record<string, unknown> = {}) {
   return {
     number,
     title: 'docs: typo',
-    html_url: `https://github.com/zhcndoc/nuxt-docs/pull/${number}`,
-    head: { sha: SHA, repo: { full_name: 'zhcndoc/nuxt-docs' } },
+    html_url: `https://github.com/nuxt/nuxt/pull/${number}`,
+    head: { sha: SHA, repo: { full_name: 'nuxt/nuxt' } },
     base: { ref: 'main' },
     labels: [{ name: 'preview:enabled' }],
     ...overrides
@@ -88,14 +89,15 @@ afterEach(() => {
 
 describe('pullInstanceKey', () => {
   it('maps a base branch to the instance reading it', () => {
-    expect(pullInstanceKey('zhcndoc/nuxt-docs', 'main')).toBe('docs:5.x')
-    expect(pullInstanceKey('zhcndoc/nuxt-docs', '4.x')).toBe('docs:4.x')
-    expect(pullInstanceKey('zhcndoc/nuxt', 'main')).toBe('site')
-    expect(pullInstanceKey('zhcndoc/nuxt-docs', 'feat/x')).toBeUndefined()
+    expect(pullInstanceKey('nuxt/nuxt', 'main')).toBe('docs:5.x')
+    expect(pullInstanceKey('nuxt/nuxt', '4.x')).toBe('docs:4.x')
+    expect(pullInstanceKey('nuxt/nuxt', '2.x')).toBe('docs:2.x')
+    expect(pullInstanceKey('nuxt/nuxt.com', 'main')).toBe('site')
+    expect(pullInstanceKey('nuxt/nuxt', 'feat/x')).toBeUndefined()
   })
 
   it('picks the current version when several read the branch', () => {
-    expect(pullInstanceKey('zhcndoc/nuxt-cli', 'main')).toBe('cli:4.x')
+    expect(pullInstanceKey('nuxt/cli', 'main')).toBe('cli:4.x')
   })
 })
 
@@ -190,7 +192,7 @@ describe('resolvePullPreview', () => {
     answer([pull(5)])
     await resolvePullPreview(target(5))
 
-    answer([pull(5, { head: { sha: NEXT_SHA, repo: { full_name: 'zhcndoc/nuxt-docs' } } })])
+    answer([pull(5, { head: { sha: NEXT_SHA, repo: { full_name: 'nuxt/nuxt' } } })])
     vi.setSystemTime(601_000)
 
     await expect(resolvePullPreview(target(5))).resolves.toMatchObject({ sha: NEXT_SHA })
@@ -290,6 +292,26 @@ describe('pullLandingPath', () => {
 
     expect(path).toBe('/docs/5.x/getting-started/installation')
   })
+
+  it('skips navigation files, which comark-content resolves to an entry but no page', async () => {
+    const entries: Record<string, { path: string, data: { title: string } }> = {
+      '.navigation.yml': { path: '/docs/5.x/.navigation', data: { title: 'Docs' } },
+      '1.getting-started/.navigation.yml': { path: '/docs/5.x/getting-started/.navigation', data: { title: 'Get Started' } },
+      '1.getting-started/2.installation.md': { path: '/docs/5.x/getting-started/installation', data: { title: 'Installation' } }
+    }
+    pageStat.mockImplementation((key: string) => entries[key])
+
+    const path = await pullLandingPath({
+      target: { repo: 'nuxt', number: 1 },
+      title: '',
+      url: '',
+      sha: SHA,
+      instanceKey: 'docs:5.x',
+      files: changed('docs/.navigation.yml', 'docs/1.getting-started/.navigation.yml', 'docs/1.getting-started/2.installation.md')
+    })
+
+    expect(path).toBe('/docs/5.x/getting-started/installation')
+  })
 })
 
 describe('pullNavigation', () => {
@@ -304,6 +326,7 @@ describe('pullNavigation', () => {
     headNavs.set('cli:4.x', [nav('/docs/4.x/api/commands')])
     headNavs.set('examples', [nav('/docs/examples')])
     headNavs.set('site', [nav('/blog')])
+    headNavs.set('module:icon', [nav('/modules', [nav('/modules/icon', [nav('/modules/icon/usage')])])])
 
     const tree = await pullNavigation('4.x', {
       target: { repo: 'nuxt', number: 1 },
@@ -314,7 +337,7 @@ describe('pullNavigation', () => {
       files: []
     })
 
-    expect(tree.map(item => item.path)).toEqual(['/docs/4.x', '/blog'])
+    expect(tree.map(item => item.path)).toEqual(['/docs/4.x', '/blog', '/modules/icon'])
     expect(tree[0]!.children!.map(item => item.path)).toEqual([
       '/docs/4.x/getting-started',
       '/docs/4.x/api',

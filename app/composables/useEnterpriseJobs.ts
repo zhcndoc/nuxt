@@ -19,11 +19,11 @@ export const useEnterpriseJobs = () => {
   const mapRemote = (remoteType: string) => {
     switch (remoteType) {
       case 'ONLY':
-        return 'Remote Only'
+        return '仅远程'
       case 'ALLOWED':
-        return 'Remote Allowed'
+        return '可远程'
       default:
-        return 'Onsite'
+        return '现场办公'
     }
   }
 

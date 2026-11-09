@@ -9,13 +9,7 @@ definePageMeta({
 
 const route = useRoute()
 
-const redirect = computed(() => {
-  const value = route.query.redirect
-  if (typeof value !== 'string' || !value.startsWith('/') || value.startsWith('//')) {
-    return null
-  }
-  return value
-})
+const redirect = computed(() => safeRedirectPath(route.query.redirect))
 
 const githubHref = computed(() => {
   if (!redirect.value) return '/api/auth/github'
@@ -23,36 +17,36 @@ const githubHref = computed(() => {
 })
 
 useSeoMeta({
-  title: 'Sign in',
-  description: 'Sign in to nuxt.com with your GitHub account to access chat history and more.'
+  title: '登录',
+  description: '使用 GitHub 账号登录 Nuxt 中文文档，访问聊天记录等功能。'
 })
 
 const features = [
   {
     icon: 'i-lucide-history',
-    title: 'Chat history',
-    description: 'Conversations saved across all your devices.'
+    title: '聊天记录',
+    description: '在您的所有设备上保存对话记录。'
   },
   {
     icon: 'i-lucide-message-circle',
-    title: 'Ask Nuxi',
-    description: 'Powered by the official documentation.'
+    title: '向 Nuxi 提问',
+    description: '基于官方文档提供解答。'
   },
   {
     icon: 'i-lucide-git-branch',
-    title: 'Branch & explore',
-    description: 'Explore different directions without losing your thread.'
+    title: '分支探索',
+    description: '探索不同方向，同时保留原有对话。'
   }
 ]
 
 const chatPreview = [
-  { from: 'user', text: 'How do I deploy a Nuxt app to Vercel?', sources: undefined },
+  { from: 'user', text: '如何将 Nuxt 应用部署到 Vercel？', sources: undefined },
   {
     from: 'nuxi',
-    text: 'Just import your repo on Vercel, Nuxt is auto-detected and `nuxt build` runs with zero config. The Vercel preset is applied automatically.',
-    sources: ['Deploy on Vercel', 'Nitro presets']
+    text: '只需在 Vercel 导入您的仓库，Nuxt 会自动检测，`nuxt build` 无需配置即可运行。系统会自动应用 Vercel 预设。',
+    sources: ['部署到 Vercel', 'Nitro 预设']
   },
-  { from: 'user', text: 'Can you show me how to enable ISR?', sources: undefined }
+  { from: 'user', text: '能告诉我如何启用 ISR 吗？', sources: undefined }
 ]
 
 function parseMessage(text: string) {
@@ -64,10 +58,10 @@ function parseMessage(text: string) {
 }
 
 const recentChats = [
-  { title: 'Deploy a Nuxt app to Vercel', time: '2m ago', branched: false },
-  { title: 'useFetch vs useAsyncData', time: '1h ago', branched: true },
-  { title: 'File-based routing in Nuxt', time: 'Yesterday', branched: false },
-  { title: 'Adding authentication', time: '2 days ago', branched: false }
+  { title: '将 Nuxt 应用部署到 Vercel', time: '2 分钟前', branched: false },
+  { title: 'useFetch 与 useAsyncData 的区别', time: '1 小时前', branched: true },
+  { title: 'Nuxt 文件系统路由', time: '昨天', branched: false },
+  { title: '添加身份验证', time: '2 天前', branched: false }
 ]
 </script>
 
@@ -81,10 +75,10 @@ const recentChats = [
           variant="ghost"
           size="sm"
           icon="i-lucide-arrow-left"
-          label="Back"
+          label="返回"
           class="-ml-2"
         />
-        <NuxtLink to="/" aria-label="Nuxt home" class="inline-flex opacity-80 hover:opacity-100 transition-opacity">
+        <NuxtLink to="/" aria-label="Nuxt 首页" class="inline-flex opacity-80 hover:opacity-100 transition-opacity">
           <NuxtLogo class="h-6 w-auto" />
         </NuxtLink>
       </div>
@@ -97,17 +91,17 @@ const recentChats = [
       >
         <div class="flex flex-col gap-4">
           <h1 class="text-3xl sm:text-4xl font-semibold text-highlighted tracking-[-0.02em] leading-[1.1]">
-            Sign in to unlock the full experience.
+            登录以解锁完整体验。
           </h1>
           <p class="text-sm/6 text-muted">
-            Use your GitHub account to save your progress and access every feature of nuxt.com.
+            使用 GitHub 账号保存进度并访问 Nuxt 中文文档的所有功能。
           </p>
         </div>
 
         <UButton
           :to="githubHref"
           icon="i-simple-icons-github"
-          label="Continue with GitHub"
+          label="使用 GitHub 继续"
           color="neutral"
           variant="solid"
           size="lg"
@@ -139,7 +133,7 @@ const recentChats = [
         </ul>
 
         <p class="text-[0.6875rem] text-dimmed leading-relaxed">
-          We never store your GitHub token. Only your username and avatar are saved to your account.
+          我们不会保存您的 GitHub 令牌。账号中只会保存用户名和头像。
         </p>
       </motion.div>
     </div>
@@ -165,7 +159,7 @@ const recentChats = [
 
             <div class="px-4 py-3 border-b border-default flex items-center gap-2.5">
               <p class="text-xs font-medium text-default truncate flex-1 min-w-0">
-                Deploying a Nuxt app to Vercel
+                正在将 Nuxt 应用部署到 Vercel
               </p>
               <UIcon name="i-lucide-more-horizontal" class="size-3.5 text-dimmed" />
             </div>
@@ -215,7 +209,7 @@ const recentChats = [
                         class="flex items-center gap-1 hover:text-primary transition-colors"
                       >
                         <UIcon name="i-lucide-git-branch" class="size-3" />
-                        Branch
+                        分支
                       </button>
                     </div>
                   </div>
@@ -242,7 +236,7 @@ const recentChats = [
             <div class="px-3 pb-3">
               <div class="rounded-xl border border-default bg-elevated/30 pl-3.5 pr-1.5 py-1.5 flex items-center gap-2">
                 <p class="flex-1 min-w-0 text-xs text-dimmed truncate">
-                  Ask Nuxi anything...
+                  向 Nuxi 提问……
                 </p>
                 <div class="size-6 rounded-md bg-primary/15 border border-primary/25 flex items-center justify-center shrink-0">
                   <UIcon name="i-lucide-arrow-up" class="size-3.5 text-primary" />
@@ -259,7 +253,7 @@ const recentChats = [
           class="relative w-full max-w-md flex flex-col gap-2"
         >
           <p class="text-[0.6875rem] font-medium uppercase tracking-[0.15em] text-dimmed px-1">
-            Recent
+            最近
           </p>
           <ul role="list" class="flex flex-col">
             <motion.li

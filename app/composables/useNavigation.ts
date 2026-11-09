@@ -1,4 +1,5 @@
 import type { CommandPaletteGroup } from '@nuxt/ui'
+import type { NuxterSummary } from '#shared/types'
 import { createSharedComposable } from '@vueuse/core'
 
 function _useHeaderLinks() {
@@ -7,120 +8,116 @@ function _useHeaderLinks() {
 
   const headerLinks = computed(() => {
     const to = docsMeta.value.path
+    const archived = docsMeta.value.status === 'archived'
 
     return [{
-      label: '开发文档',
+      label: '文档',
       icon: 'i-lucide-book-marked',
       to,
       search: false,
       active: route.path.startsWith(to) || route.path.startsWith(`/deploy`),
       children: [{
         label: '开始使用',
-        description: '学习如何开始使用 Nuxt 构建您的第一个应用程序。',
+        description: '了解如何使用 Nuxt 构建您的第一个应用。',
         icon: 'i-lucide-rocket',
         to: `${to}/getting-started/installation`,
         active: route.path.startsWith(`${to}/getting-started`)
       }, {
-        label: '结构',
+        label: '目录结构',
         description: '了解 Nuxt 项目的目录结构。',
         icon: 'i-lucide-folder-open',
         to: `${to}/directory-structure`,
         active: route.path.startsWith(`${to}/directory-structure`)
       }, {
         label: '指南',
-        description: '获取关键概念、目录结构和最佳实践。',
+        description: '了解核心概念、目录结构和最佳实践。',
         icon: 'i-lucide-book-open',
         to: `${to}/guide`,
         active: route.path.startsWith(`${to}/guide`) && !route.path.startsWith(`${to}/guide/directory-structure`)
       }, {
         label: 'API',
-        description: '探索 Nuxt 组件、组合函数、工具及其他内容。',
+        description: '探索 Nuxt 组件、组合式函数、工具等内容。',
         icon: 'i-lucide-code-xml',
         to: `${to}/api`,
         active: route.path.startsWith(`${to}/api`)
-      }, {
-        label: '部署',
-        description: '将您的 Nuxt 项目部署到任何地方。',
-        icon: 'i-lucide-cloud',
-        to: '/deploy',
-        active: route.path.startsWith('/deploy')
-      }, {
-        label: '示例',
-        description: '发现和探索官方和社区示例。',
-        icon: 'i-lucide-app-window-mac',
-        to: '/docs/examples',
-        active: route.path.startsWith('/docs/examples')
-      }, {
-        label: '社区',
-        description: '从热情的开源社区中寻找问题答案和支持帮助。',
-        icon: 'i-lucide-messages-square',
-        to: `${to}/community`,
-        active: route.path.startsWith(`${to}/community`)
-      }]
+      },
+      // Archived versions have no deploy guides, examples or community section.
+      ...(archived
+        ? []
+        : [{
+            label: '部署',
+            description: '将 Nuxt 项目部署到任意平台。',
+            icon: 'i-lucide-cloud',
+            to: '/deploy',
+            active: route.path.startsWith('/deploy')
+          }, {
+            label: '示例',
+            description: '探索官方和社区提供的示例。',
+            icon: 'i-lucide-app-window-mac',
+            to: '/docs/examples',
+            active: route.path.startsWith('/docs/examples')
+          }, {
+            label: '社区',
+            description: '在社区中寻找问题的答案和支持。',
+            icon: 'i-lucide-messages-square',
+            to: `${to}/community`,
+            active: route.path.startsWith(`${to}/community`)
+          }])]
     }, {
       label: '模块',
       icon: 'i-lucide-puzzle',
       to: '/modules',
-      description: '通过模块增强您的 Nuxt 项目。'
+      description: '使用模块扩展 Nuxt 项目。'
     }, {
       label: '模板',
       icon: 'i-lucide-app-window',
-      description: '使用 Nuxt 模板开始您的下一个项目。',
-      to: '/templates'
+      to: '/templates',
+      description: '使用 Nuxt 模板启动下一个项目。',
+      active: route.path.startsWith('/templates')
     }, {
-      label: '学习资源',
+      label: '案例展示',
+      icon: 'i-lucide-presentation',
+      description: '探索使用 Nuxt 构建的项目。',
+      to: '/showcase'
+    }, {
+      label: 'Nuxters',
+      icon: 'i-lucide-award',
+      description: '认识 Nuxt 生态的贡献者，并分享您的 Nuxter 个人资料。',
+      to: '/nuxters',
+      active: route.path.startsWith('/nuxters')
+    }, {
+      label: '动态',
+      icon: 'i-lucide-newspaper',
+      to: '/updates',
+      description: 'Nuxt 团队的版本发布和博客文章。',
+      active: route.path.startsWith('/updates') || route.path.startsWith('/blog') || route.path.startsWith('/changelog')
+    }, {
+      label: '更多',
       icon: 'i-lucide-library',
-      to: '/showcase',
+      to: '/video-courses',
       search: false,
-      active: route.path.startsWith('/video-courses') || route.path.startsWith('/showcase'),
+      active: ['/video-courses', '/enterprise', '/sponsors'].some(path => route.path.startsWith(path)),
       children: [{
-        label: '展示',
-        description: '发现和探索使用 Nuxt 构建的项目。',
-        icon: 'i-lucide-presentation',
-        to: '/showcase'
-      }, {
         label: '视频课程',
-        description: '通过观看视频课程来学习使用 Nuxt 框架。',
+        description: '通过视频课程学习 Nuxt。',
         icon: 'i-lucide-graduation-cap',
         to: '/video-courses'
       }, {
+        label: '合作机构',
+        description: '专注于 Nuxt 开发的机构。',
+        icon: 'i-lucide-handshake',
+        to: '/enterprise/agencies'
+      }, {
+        label: '赞助商',
+        description: '支持 Nuxt 持续发展。',
+        icon: 'i-lucide-hand-heart',
+        to: '/sponsors'
+      }, {
         label: 'Nuxt 认证',
-        description: '通过 Nuxt 认证来获取您的编程水平证明。',
+        description: '获取 Nuxt 能力认证。',
         icon: 'i-lucide-medal',
         to: 'https://certification.nuxt.com',
         target: '_blank'
-      }]
-    }, {
-      label: '企业支持',
-      icon: 'i-lucide-building-2',
-      to: '/enterprise',
-      search: false,
-      children: [{
-        label: '机构',
-        to: '/enterprise/agencies',
-        description: '专注于 Nuxt 开发的机构。',
-        icon: 'i-lucide-handshake'
-      }, {
-        label: '赞助商',
-        to: '/enterprise/sponsors',
-        description: '帮助我们维持 Nuxt 的开发。',
-        icon: 'i-lucide-hand-heart'
-      }]
-    }, {
-      label: '资讯',
-      icon: 'i-lucide-newspaper',
-      search: false,
-      to: '/blog',
-      children: [{
-        label: 'Nuxt 博客',
-        to: '/blog',
-        description: '关于 Nuxt 的新闻和更新。',
-        icon: 'i-lucide-newspaper'
-      }, {
-        label: '变更日志',
-        to: '/changelog',
-        description: '最新的 Nuxt 和官方模块的发布信息。',
-        icon: 'i-lucide-history'
       }]
     }]
   })
@@ -134,8 +131,7 @@ const footerLinks = [{
   label: '社区',
   children: [{
     label: 'Nuxters',
-    to: 'https://nuxters.nuxt.com',
-    target: '_blank'
+    to: '/nuxters'
   }, {
     label: '团队',
     to: '/team'
@@ -146,23 +142,23 @@ const footerLinks = [{
 }, {
   label: '探索',
   children: [{
-    label: 'Templates',
+    label: '模板',
     to: '/templates'
   }, {
-    label: 'Showcase',
+    label: '案例展示',
     to: '/showcase'
   }, {
-    label: 'AI Evals',
+    label: 'AI 评测',
     to: '/evals'
   }]
 }, {
-  label: '企业',
+  label: '企业服务',
   children: [{
-    label: '机构',
+    label: '合作机构',
     to: '/enterprise/agencies'
   }, {
     label: '赞助商',
-    to: '/enterprise/sponsors'
+    to: '/sponsors'
   }]
 }]
 
@@ -196,7 +192,11 @@ const _useNavigation = () => {
     }
     return [link]
   }), {
-    label: 'Team',
+    label: '更新日志',
+    icon: 'i-lucide-history',
+    to: '/changelog'
+  }, {
+    label: '团队',
     icon: 'i-lucide-users',
     to: '/team'
   }, {
@@ -204,11 +204,11 @@ const _useNavigation = () => {
     icon: 'i-lucide-palette',
     to: '/design-kit'
   }, {
-    label: 'AI Evals',
+    label: 'AI 评测',
     icon: 'i-lucide-brain',
     to: '/evals'
   }, {
-    label: 'Newsletter',
+    label: '新闻通讯',
     icon: 'i-lucide-mail',
     to: '/newsletter'
   }, {
@@ -256,6 +256,36 @@ const _useNavigation = () => {
     to: article.path
   })))
 
+  // Nuxters: 27k usernames, so the server searches them (lazy, one request per pause in typing).
+  const nuxterResults = ref<NuxterSummary[]>([])
+  let nuxtersRequest = 0
+  watchDebounced(searchTerm, async (term) => {
+    const query = term.trim()
+    const current = ++nuxtersRequest
+    if (query.length < 2) {
+      nuxterResults.value = []
+      return
+    }
+    const items = await $fetch<NuxterSummary[]>('/api/search/nuxters', { query: { q: query, limit: 5 } }).catch(() => [])
+    // A slower, older request must not replace newer results.
+    if (current === nuxtersRequest) nuxterResults.value = items
+  }, { debounce: 200 })
+
+  const { format } = new Intl.NumberFormat('en-US')
+  const nuxterItems = computed(() => nuxterResults.value.map(nuxter => ({
+    id: `nuxter-${nuxter.githubId}`,
+    label: nuxter.username,
+    suffix: `第 ${format(nuxter.rank)} 名 · ${format(nuxter.score)} 分`,
+    // UAvatar renders with <NuxtImg> (IPX): pass the source path, not an IPX URL.
+    avatar: {
+      src: `/gh_avatar/${nuxter.username}`,
+      alt: nuxter.username,
+      densities: 'x1 x2',
+      ui: { root: 'rounded-md' }
+    },
+    to: `/nuxters/${nuxter.username}`
+  })))
+
   const postFilter = (searchTerm: string, items: any[]) => {
     if (!searchTerm) {
       return []
@@ -265,18 +295,25 @@ const _useNavigation = () => {
 
   const searchGroups = computed<CommandPaletteGroup[]>(() => [{
     id: 'modules-search',
-    label: 'Modules',
+    label: '模块',
     items: modulesItems.value,
     postFilter
   }, {
     id: 'hosting-search',
-    label: 'Hosting',
+    label: '托管服务',
     items: hostingItems.value,
     postFilter
   }, {
     id: 'blog-search',
-    label: 'Blog',
+    label: '博客',
     items: blogItems.value,
+    postFilter
+  }, {
+    id: 'nuxters-search',
+    label: 'Nuxters',
+    items: nuxterItems.value,
+    // Already filtered and ranked by the server
+    ignoreFilter: true,
     postFilter
   }, {
     id: 'ask-ai-search',
@@ -301,12 +338,6 @@ const _useNavigation = () => {
       fetchBlog()
     }
   })
-
-  watchDebounced(searchTerm, (term) => {
-    if (term) {
-      track('Search Performed', { term })
-    }
-  }, { debounce: 500 })
 
   return {
     searchTerm,

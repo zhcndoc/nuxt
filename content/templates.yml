@@ -1,20 +1,17 @@
-title: Nuxt 模板
+title: '开始您的下一个 Nuxt 项目'
+hero:
+  title: 开始您的下一个
+  highlight: Nuxt 项目
+head:
+  title: 'Nuxt 模板：开启 Nuxt 新项目'
 navigation:
-  title: Nuxt 模板
+  title: 模板
   icon: i-lucide-app-window
-description: '探索社区模板，只需几秒钟即可开始运行。'
-align: center
-links:
-  - label: 'Nuxt 启动模板'
-    to: 'https://nuxt.new'
-    icon: 'i-simple-icons-nuxt'
-    target: '_blank'
-    variant: solid
-    color: neutral
-    size: md
-  - label: '全栈模板'
-    to: 'https://hub.nuxt.com/templates'
-    target: '_blank'
-    variant: subtle
-    color: neutral
-    size: md
+description: '从空白项目或完整应用开始。每个开源模板都会在干净环境中每日安装和构建，确保可用后再供您复制。'
+gallery:
+  title: 模板
+  searchPlaceholder: '搜索模板……'
+  empty: '没有符合这些筛选条件的模板。'
+submit:
+  title: 分享您的模板
+  description: '模板以 YAML 文件形式保存在此仓库中。提交包含模板的拉取请求后，它会加入每日检查，并在构建成功时显示在这里。'

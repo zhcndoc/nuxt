@@ -2,9 +2,9 @@ import { createStorage } from 'unstorage'
 import type { H3Event } from 'h3'
 import type { ComarkContent, NavigationItem } from 'comark-content'
 import type { PullPreviewSummary } from '#shared/types'
-import { cliDocsPathPrefix } from '#shared/utils/cli'
-import { CONTENT_INSTANCE_KEYS, cliInstanceKey, docsInstanceKey, type ContentInstanceKey } from '#shared/utils/content'
-import { docsPathPrefix, EXAMPLES_PATH_PREFIX, type DocVersion } from '#shared/utils/docs'
+import { cliDocsPathPrefix, hasCliDocs } from '#shared/utils/cli'
+import { CONTENT_INSTANCE_KEYS, cliInstanceKey, docsInstanceKey, hasModuleDocsSearch, isNavigationConfig, type ContentInstanceKey } from '#shared/utils/content'
+import { docsPathPrefix, EXAMPLES_PATH_PREFIX, hasExamples, type DocVersion } from '#shared/utils/docs'
 import { isPullContentPage, parsePullTarget, pullRepoName, type PullTarget } from '#shared/utils/pull'
 import { createRuntimeInstance } from '../../../utils/factory'
 
@@ -287,7 +287,8 @@ function previewedPage(path: string): string | undefined {
 /** The pages the PR adds, changes or removes; a removed page is read from production, the PR's commit no longer has it. */
 export async function pullPages(preview: PullPreview): Promise<PullPreviewSummary['pages']> {
   const dir = instanceContentDir(preview.instanceKey)
-  const files = preview.files.filter(file => file.path.startsWith(dir))
+  // comark-content gives `.navigation.yml` a path but it's no page
+  const files = preview.files.filter(file => file.path.startsWith(dir) && !isNavigationConfig(file.path))
   const [content, production] = await Promise.all([
     getInstanceAtPull(preview.instanceKey, preview.sha),
     files.some(file => file.removed) ? getInstanceAtHead(preview.instanceKey) : undefined
@@ -344,12 +345,13 @@ export async function pullNavigation(version: DocVersion, preview: PullPreview):
   }
 
   const prefix = docsPathPrefix(version)
-  const [[docs], commands, examples, blog] = await Promise.all([
+  const [[docs], commands, examples, blog, modules] = await Promise.all([
     subtree(docsInstanceKey(version), prefix),
     // Optional grafts, as in production: losing one keeps the rest of the tree.
-    subtree(cliInstanceKey(version), cliDocsPathPrefix(version)).catch(() => []),
-    subtree('examples', EXAMPLES_PATH_PREFIX).catch(() => []),
-    subtree('site', '/blog').catch(() => [])
+    hasCliDocs(version) ? subtree(cliInstanceKey(version), cliDocsPathPrefix(version)).catch(() => []) : [],
+    hasExamples(version) ? subtree('examples', EXAMPLES_PATH_PREFIX).catch(() => []) : [],
+    subtree('site', '/blog').catch(() => []),
+    hasModuleDocsSearch(version) ? moduleDocsTrees(key => getInstanceForPull(preview, key)) : []
   ])
 
   // Examples after the API section, commands after its utils.
@@ -357,5 +359,5 @@ export async function pullNavigation(version: DocVersion, preview: PullPreview):
     ? { ...item, children: insertAfter(item.children ?? [], `${prefix}/api/utils`, commands) }
     : item)
 
-  return [{ ...(docs ?? { title: 'Docs', path: prefix }), children }, ...blog]
+  return [{ ...(docs ?? { title: 'Docs', path: prefix }), children }, ...blog, ...modules]
 }

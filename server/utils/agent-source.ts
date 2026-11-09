@@ -1,12 +1,12 @@
 import type { ComarkContent, NavigationItem } from 'comark-content'
 import { createComarkSource } from '#agent-discovery/comark'
-import { DOC_VERSIONS } from '#shared/utils/docs'
+import { AGENT_DOC_VERSIONS } from '#shared/utils/docs'
 
 /**
  * Content source for nuxt-agent-discovery, bridging the comark instances.
  *
  * The module's comark adapter works on one content surface; nuxt.com serves
- * eight instances (see `server/utils/content/instances.ts`). This facade
+ * several instances (see `server/utils/content/instances.ts`). This facade
  * routes `get()` to the instance owning the path and merges every instance's
  * navigation for `list()`/`firstLeaf()` (the cli reference grafted into its
  * docs version through the same `docTree()` the UI navigation uses), so the
@@ -23,12 +23,12 @@ function prune(items: NavigationItem[]): NavigationItem[] {
 
 const facade = {
   async navigation() {
-    const [site, examplesContent, versions] = await Promise.all([
+    const [site, examplesContent, versions, moduleDocs] = await Promise.all([
       getInstanceAtHead('site').then(content => content.navigation()),
       getInstanceAtHead('examples').catch(() => null),
-      // Examples are not passed into the version trees: they are one shared
-      // subtree, listed once below rather than under every version.
-      Promise.all(DOC_VERSIONS.map(version => docTree(version, []).catch(() => [] as NavigationItem[])))
+      // Examples are left out of the version trees
+      Promise.all(AGENT_DOC_VERSIONS.map(version => docTree(version, { withExamples: false }).catch(() => [] as NavigationItem[]))),
+      moduleDocsTrees()
     ])
 
     const examples = examplesContent ? findByPath(await examplesContent.navigation(), '/docs/examples') : undefined
@@ -36,7 +36,8 @@ const facade = {
     return [
       ...prune(site),
       ...versions.flat(),
-      ...(examples ? [examples] : [])
+      ...(examples ? [examples] : []),
+      ...moduleDocs
     ]
   },
   async get(path: string) {

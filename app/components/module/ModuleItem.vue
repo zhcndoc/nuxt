@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { Module } from '#shared/types'
+import type { Module, ModuleProvider } from '#shared/types'
+import { hasModuleDocs } from '#shared/utils/module-docs'
 
 const emit = defineEmits<{
   add: [module: Module]
@@ -10,6 +11,8 @@ const emit = defineEmits<{
 const props = withDefaults(
   defineProps<{
     module: Module
+    /** Provider that matched the search, shown when the module itself did not */
+    provider?: ModuleProvider
     showBadge?: boolean
     isAdded: boolean
     showAddButton?: boolean
@@ -42,8 +45,8 @@ const relativeDate = computed(() =>
 
 const staticModuleDate = computed(() =>
   props.sortKey === 'publishedAt'
-    ? formatDateByLocale('en', props.module.stats.publishedAt)
-    : formatDateByLocale('en', props.module.stats.createdAt)
+    ? formatDateByLocale('zh-CN', props.module.stats.publishedAt)
+    : formatDateByLocale('zh-CN', props.module.stats.createdAt)
 )
 
 function toggleModule(m: Module) {
@@ -67,34 +70,34 @@ function handleCardClick(event: MouseEvent) {
 const items = computed(() => [
   [
     {
-      label: props.isAdded ? 'Remove module' : 'Add module',
+      label: props.isAdded ? '移除模块' : '添加模块',
       icon: props.isAdded ? 'i-lucide-minus' : 'i-lucide-plus',
       onSelect: () => toggleModule(props.module)
     },
     {
-      label: 'Copy install command',
+      label: '复制安装命令',
       icon: 'i-lucide-terminal',
       onSelect: copyInstallCommand
     },
     {
-      label: 'Copy agent prompt',
+      label: '复制 AI 助手提示',
       icon: 'i-custom-ai',
       onSelect: copyAgentPrompt
     }
   ],
   [
     {
-      label: 'Open in Cursor',
+      label: '在 Cursor 中打开',
       icon: 'i-simple-icons-cursor',
       onSelect: openPromptInCursor
     },
     {
-      label: 'Open in Claude Code',
+      label: '在 Claude Code 中打开',
       icon: 'i-simple-icons-anthropic',
       onSelect: openPromptInClaudeCode
     },
     {
-      label: 'Open in VS Code',
+      label: '在 VS Code 中打开',
       icon: 'i-simple-icons-visualstudiocode',
       onSelect: openPromptInVSCode
     }
@@ -102,18 +105,20 @@ const items = computed(() => [
   [
     {
       icon: 'i-lucide-book',
-      label: 'Documentation',
-      to: `${props.module.website}?utm_source=nuxt.com&utm_medium=aside-module&utm_campaign=nuxt.com`,
-      target: '_blank'
+      label: '文档',
+      // Hosted docs live on the module page, not on the registry `website`.
+      ...(hasModuleDocs(props.module.name)
+        ? { to: `/modules/${props.module.name}` }
+        : { to: `${props.module.website}?utm_source=nuxt.com&utm_medium=aside-module&utm_campaign=nuxt.com`, target: '_blank' })
     },
     {
-      label: 'View on GitHub',
+      label: '在 GitHub 上查看',
       icon: 'i-lucide-github',
       to: `https://github.com/${props.module.repo}`,
       target: '_blank'
     },
     {
-      label: 'View on npm',
+      label: '在 npm 上查看',
       icon: 'i-lucide-package',
       to: `https://npmx.dev/package/${props.module.npm}`,
       target: '_blank'
@@ -155,7 +160,7 @@ const items = computed(() => [
         class="shine absolute top-4 right-4 sm:top-6 sm:right-6"
         variant="subtle"
         color="primary"
-        label="Official"
+        label="官方"
       />
 
       <UBadge
@@ -163,15 +168,21 @@ const items = computed(() => [
         class="shine absolute top-4 right-4 sm:top-6 sm:right-6"
         variant="subtle"
         color="important"
-        label="Sponsor"
+        label="赞助商"
       />
 
       <template #footer>
+        <p v-if="provider" class="flex items-center gap-1.5 mb-3 text-sm text-muted">
+          <!-- Keyed by name: Nuxt Icon's CSS mode writes a late-loading icon under the current name, so a reused instance can show the previous provider's icon. -->
+          <UIcon :key="provider.icon" :name="provider.icon || 'i-lucide-plug'" class="size-4 shrink-0" />
+          <span>支持 <span class="font-medium text-highlighted">{{ provider.label }}</span></span>
+        </p>
+
         <USeparator type="dashed" class="mb-4" />
 
         <div class="flex items-center justify-between gap-3 -my-1 text-muted">
           <div class="flex items-center gap-3 flex-wrap">
-            <UTooltip text="Monthly NPM Downloads">
+            <UTooltip text="NPM 月下载量">
               <NuxtLink
                 class="flex items-center gap-1 hover:text-highlighted"
                 :to="`https://npmx.dev/package-stats/${module.npm}/v/${module.stats.version}?granularity=monthly`"
@@ -182,7 +193,7 @@ const items = computed(() => [
               </NuxtLink>
             </UTooltip>
 
-            <UTooltip text="GitHub Stars">
+            <UTooltip text="GitHub 星标数">
               <NuxtLink
                 class="flex items-center gap-1 hover:text-highlighted"
                 :to="`https://github.com/${module.repo}`"
@@ -194,7 +205,7 @@ const items = computed(() => [
             </UTooltip>
 
             <template v-if="module.health">
-              <UTooltip :text="`Health: ${module.health.status} - ${module.health.score}/100`">
+              <UTooltip :text="`健康评分：${module.health.score}/100`">
                 <NuxtLink
                   :to="`https://nuxt.care/?search=npm:${module.npm}`"
                   class="flex items-center gap-1 hover:text-highlighted"
@@ -208,7 +219,7 @@ const items = computed(() => [
               </UTooltip>
             </template>
 
-            <UTooltip v-if="sortKey === 'publishedAt'" :text="`Updated ${formatDateByLocale('en', module.stats.publishedAt)}`">
+            <UTooltip v-if="sortKey === 'publishedAt'" :text="`更新于 ${formatDateByLocale('zh-CN', module.stats.publishedAt)}`">
               <NuxtLink
                 class="flex items-center gap-1 hover:text-highlighted"
                 :to="`https://github.com/${module.repo}`"
@@ -226,7 +237,7 @@ const items = computed(() => [
               </NuxtLink>
             </UTooltip>
 
-            <UTooltip v-if="sortKey === 'createdAt'" :text="`Created ${formatDateByLocale('en', module.stats.createdAt)}`">
+            <UTooltip v-if="sortKey === 'createdAt'" :text="`创建于 ${formatDateByLocale('zh-CN', module.stats.createdAt)}`">
               <NuxtLink
                 class="flex items-center gap-1 hover:text-highlighted"
                 :to="`https://github.com/${module.repo}`"
@@ -246,7 +257,7 @@ const items = computed(() => [
           </div>
 
           <div class="flex items-center gap-2">
-            <UTooltip v-if="showAddButton" :text="isAdded ? 'Remove module' : 'Add module'">
+            <UTooltip v-if="showAddButton" :text="isAdded ? '移除模块' : '添加模块'">
               <UButton
                 :icon="isAdded ? 'i-lucide-check' : 'i-lucide-plus'"
                 color="neutral"
@@ -254,10 +265,10 @@ const items = computed(() => [
                 variant="outline"
                 @click="toggleModule(module)"
               >
-                <span class="sr-only">{{ isAdded ? 'Remove module' : 'Add module' }}</span>
+                <span class="sr-only">{{ isAdded ? '移除模块' : '添加模块' }}</span>
               </UButton>
             </UTooltip>
-            <UTooltip text="Copy install command">
+            <UTooltip text="复制安装命令">
               <UButton
                 icon="i-lucide-terminal"
                 color="neutral"
@@ -265,7 +276,7 @@ const items = computed(() => [
                 variant="outline"
                 @click="copyInstallCommand"
               >
-                <span class="sr-only">Copy command to install {{ module.name }}</span>
+                <span class="sr-only">复制用于安装 {{ module.name }} 的命令</span>
               </UButton>
             </UTooltip>
           </div>

@@ -2,8 +2,8 @@ import { readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { createRouter } from 'radix3'
 import { describe, expect, it } from 'vitest'
-import { CONTENT_INSTANCE_KEYS, cliInstanceKey, docsInstanceKey, instanceBasePath, instanceBlobPath, instanceName, isContentInstanceKey, navPathsForInstance, navigationPath } from '../../shared/utils/content'
-import { DOC_VERSIONS, EXAMPLES_PATH_PREFIX, isCanonicalDocsPath } from '../../shared/utils/docs'
+import { CONTENT_INSTANCE_KEYS, cliInstanceKey, docsInstanceKey, instanceBasePath, instanceBlobPath, instanceName, isContentInstanceKey, navPathsForInstance, navigationPath, type ContentInstanceKey } from '../../shared/utils/content'
+import { DOC_VERSIONS, EXAMPLES_PATH_PREFIX, isArchivedDocVersion, isCanonicalDocsPath } from '../../shared/utils/docs'
 import { instanceSource } from '../../server/utils/content/instances'
 
 describe('content instance paths', () => {
@@ -32,6 +32,12 @@ describe('instanceName', () => {
       expect(instanceName(key), key).toBe(instanceSource(key).name)
     }
   })
+
+  it('names each module\'s docs apart, as a comark identifier', () => {
+    // Every module's docs share one search hub, which rejects duplicate names; comark rejects `-`.
+    expect(instanceName('module:icon')).toBe('module_icon')
+    expect(instanceName('module:color-mode' as ContentInstanceKey)).toBe('module_color_mode')
+  })
 })
 
 describe('navPathsForInstance', () => {
@@ -44,6 +50,11 @@ describe('navPathsForInstance', () => {
     const everyVersion = DOC_VERSIONS.map(navigationPath)
     expect(navPathsForInstance('site')).toEqual(everyVersion)
     expect(navPathsForInstance('examples')).toEqual(everyVersion)
+  })
+
+  it('fans a module docs push out to every version whose tree grafts it — not the archived ones', () => {
+    expect(navPathsForInstance('module:icon')).toEqual(DOC_VERSIONS.filter(version => !isArchivedDocVersion(version)).map(navigationPath))
+    expect(navPathsForInstance('module:icon')).not.toContain(navigationPath('2.x'))
   })
 })
 
@@ -65,9 +76,10 @@ describe('navigation route', () => {
 })
 
 describe('isCanonicalDocsPath', () => {
-  it('accepts supported versions and the unversioned examples', () => {
+  it('accepts published versions, archived ones included, and the unversioned examples', () => {
     expect(isCanonicalDocsPath('/docs/4.x')).toBe(true)
     expect(isCanonicalDocsPath('/docs/3.x/guide/introduction')).toBe(true)
+    expect(isCanonicalDocsPath('/docs/2.x/getting-started/installation')).toBe(true)
     expect(isCanonicalDocsPath(EXAMPLES_PATH_PREFIX)).toBe(true)
     expect(isCanonicalDocsPath(`${EXAMPLES_PATH_PREFIX}/hello-world`)).toBe(true)
   })
@@ -87,6 +99,14 @@ describe('isContentInstanceKey', () => {
       expect(isContentInstanceKey(`docs:${version}`)).toBe(true)
       expect(isContentInstanceKey(`cli:${version}`)).toBe(true)
     }
+  })
+
+  it('gives an archived version its docs but no command reference', () => {
+    // Nuxt 2 predates `nuxi`: a `cli:2.x` instance would read a `nuxt/cli` branch that doesn't exist.
+    expect(isContentInstanceKey('docs:2.x')).toBe(true)
+    expect(isContentInstanceKey('cli:2.x')).toBe(false)
+    expect(CONTENT_INSTANCE_KEYS).toContain('docs:2.x')
+    expect(CONTENT_INSTANCE_KEYS).not.toContain('cli:2.x')
   })
 
   it('rejects anything else', () => {

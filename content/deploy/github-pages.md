@@ -14,9 +14,21 @@ GitHub Pages 仅支持静态站点，Nuxt 将会将您的应用预渲染为静�
 ::
 
 ::caution
-如果您**没有**使用自定义域名，您需要将 `NUXT_APP_BASE_URL` 设置为您的存储库标识以进行构建步骤。
+如果您部署的是**项目站点**且没有自定义域名，需要在构建时将 `NUXT_APP_BASE_URL` 设置为仓库名称。
+:br
+**项目站点示例**：`https://<user>.github.io/<repository>/`：`NUXT_APP_BASE_URL=/<repository>/ npx nuxt build --preset github_pages`
+::
 
-**示例**: `https://<user>.github.io/<repository>/`: `NUXT_APP_BASE_URL=/<repository>/ npx nuxt build --preset github_pages`
+::tip
+**通用 GitHub Actions 配置 ✨**
+:br
+对于没有自定义域名的项目站点，可以将 GitHub Actions 上下文变量 `github.event.repository.name` 传入 `NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/`。请参阅下方的[部署](/deploy/github-pages#deployment)步骤。
+:br
+对于名为 `<owner>.github.io` 的用户或组织站点，或使用了自定义域名的站点，请省略 `NUXT_APP_BASE_URL` 或将其设为 `/`。
+::
+
+::read-more{to="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#github-context" target="_blank"}
+请查看 **GitHub Actions 上下文**，了解更多上下文变量。
 ::
 
 ## 设置
@@ -25,11 +37,11 @@ GitHub Pages 仅支持静态站点，Nuxt 将会将您的应用预渲染为静�
 
 ## 部署
 
-下面是一个示例的 GitHub Actions 工作流程，使用 `github_pages` 预设将您的网站部署到 GitHub Pages：
+下面是一个示例 GitHub Actions 工作流程，使用 `github_pages` 预设将网站部署到 GitHub Pages：
 
 ```yaml [.github/workflows/deploy.yml]
 # https://github.com/actions/deploy-pages#usage
-name: 部署到 GitHub Pages
+name: Deploy Nuxt App to GitHub Pages
 on:
   workflow_dispatch:
   push:
@@ -39,38 +51,52 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: corepack enable
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
         with:
-          node-version: "20"
-      # 选择您自己的包管理器和构建脚本
+          persist-credentials: false
+      - run: corepack enable
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+      # Pick your own package manager and build script
       - run: npm install
+      # Drop the env var below if your GitHub Pages is configured for a custom domain
       - run: npx nuxt build --preset github_pages
-      - name: 上传构建产物
-        uses: actions/upload-pages-artifact@v3
+        env:
+          NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./.output/public
-  # 部署任务
+  # Deployment job
   deploy:
-    # 添加对构建任务的依赖
+    # Add a dependency to the build job
     needs: build
-    # 授予 GITHUB_TOKEN 所需的权限以进行部署到 Pages
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
-      pages: write      # 部署到 Pages
-      id-token: write   # 验证部署源是否合适
-    # 部署到 github_pages 环境
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    # Deploy to the github_pages environment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    # 指定运行环境和部署步骤
+    # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
-      - name: 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 ```
 
-::read-more{to="https://nitro.zhcndoc.com/deploy/providers/github-pages" target="_blank"}
+::read-more{to="https://nitro.unjs.io/deploy/providers/github-pages" target="_blank"}
 请访问 **Nitro 文档** 了解更多关于 github-pages 部署预设的信息。
+::
+
+## 网站图标
+
+网站图标通常需要放在托管域名的根目录。部署到 GitHub Pages 时，这种方式无法正常工作。
+因此，页面头部的网站图标 URL 应以 GitHub Pages 的 base URL 作为绝对路径。这样，无论是单页应用还是多路由应用都能正常显示图标。
+
+::note
+网站图标文件应放在项目的 `public/` 文件夹中，并且需要按照[SEO 与元数据](/docs/getting-started/seo-meta#nuxt-config)中的说明配置 `app/app.vue`，以使用 `NUXT_APP_BASE_URL` 定义的基础 URL。
 ::

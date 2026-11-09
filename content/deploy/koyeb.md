@@ -15,10 +15,12 @@ Nuxt 支持在 [Koyeb 无服务器平台](https://www.koyeb.com/docs) 上进行�
 
 2. 在项目的 `package.json` 文件中设置 `engines.node` 字段为 [Koyeb 支持的 Node.js 版本](https://www.koyeb.com/docs/build-and-deploy/build-from-git/nodejs#runtime)：
 
+    <!-- Supported Node versions: https://www.koyeb.com/docs/build-and-deploy/build-from-git/nodejs -->
+
     ```json [package.json]
     {
       "engines": {
-          "node": "20.x"
+          "node": "24.x"
       }
     }
     ```

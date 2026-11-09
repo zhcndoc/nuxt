@@ -19,22 +19,27 @@ export const formatDateByLocale = (locale: string, d: string | number | Date) =>
   })
 }
 
+// In UTC, so the server and the browser render the same day
+export const formatShortDate = (date: string | number | Date) => {
+  return new Date(date).toLocaleDateString('zh-CN', { dateStyle: 'medium', timeZone: 'UTC' })
+}
+
 export const toRelativeDate = (date: string | number | Date) => {
   const diff = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000)
   if (diff < 60) {
-    return 'just now'
+    return '刚刚'
   } else if (diff < 3600) {
-    return `${Math.floor(diff / 60)} minutes ago`
+    return `${Math.floor(diff / 60)} 分钟前`
   } else if (diff < 86400) {
-    return `${Math.floor(diff / 3600)} hours ago`
+    return `${Math.floor(diff / 3600)} 小时前`
   } else if (diff < 604800) {
-    return `${Math.floor(diff / 86400)} days ago`
+    return `${Math.floor(diff / 86400)} 天前`
   } else if (diff < 2592000) {
-    return `${Math.floor(diff / 604800)} weeks ago`
+    return `${Math.floor(diff / 604800)} 周前`
   } else if (diff < 31536000) {
-    return `${Math.floor(diff / 2592000)} months ago`
+    return `${Math.floor(diff / 2592000)} 个月前`
   } else {
-    return `${Math.floor(diff / 31536000)} years ago`
+    return `${Math.floor(diff / 31536000)} 年前`
   }
 }
 
@@ -44,7 +49,7 @@ export const random = (arr: Array<any>) => {
   return arr[Math.floor(Math.random() * arr.length)]
 }
 
-export const createBreadcrumb = (link: string = 'Missing link') => {
+export const createBreadcrumb = (link: string = '链接缺失') => {
   if (link.startsWith('http')) {
     return link
   }

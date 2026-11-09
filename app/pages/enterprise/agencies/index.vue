@@ -9,7 +9,7 @@ const { filteredAgencies, fetchList, services, regions } = useEnterpriseAgencies
 
 const { data: page } = await useAsyncData('agencies-landing', () => useContent('site').get('/enterprise/agencies'))
 if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+  throw createError({ statusCode: 404, statusMessage: '未找到页面', fatal: true })
 }
 
 const pageData = computed(() => page.value!.data)
@@ -26,7 +26,7 @@ useSeoMeta({
 useCanonical()
 
 defineOgImage('Docs.takumi', {
-  headline: 'Enterprise',
+  headline: '企业服务',
   title,
   description
 })
@@ -46,7 +46,7 @@ await fetchList()
     <UPageHero
       :title="pageData.title"
       :description="pageData.description"
-      :links="pageData.links"
+      :links="pickLinks(pageData.links)"
     />
 
     <UContainer>
@@ -83,9 +83,9 @@ await fetchList()
             </UPageCard>
           </UPageGrid>
 
-          <EmptyCard v-else label="No agency matches your criteria for now.">
+          <EmptyCard v-else label="目前没有符合筛选条件的合作机构。">
             <UButton
-              label="Clear filters"
+              label="清除筛选"
               color="neutral"
               variant="subtle"
               trailing-icon="i-lucide-circle-x"
@@ -97,7 +97,7 @@ await fetchList()
               target="_blank"
               color="neutral"
               size="md"
-              label="Become a partner"
+              label="成为合作伙伴"
             />
           </EmptyCard>
         </UPageBody>

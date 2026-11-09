@@ -21,8 +21,8 @@ export const useIdeDeeplink = () => {
     try {
       await navigator.clipboard.writeText(prompt)
       toast.add({
-        title: 'Prompt copied',
-        description: `The opened prompt was shortened — paste the full prompt with ${pasteShortcut.value} if needed`,
+        title: '提示词已复制',
+        description: `打开的提示词过长，已被截短；如有需要，请使用 ${pasteShortcut.value} 粘贴完整提示词。`,
         icon: 'i-lucide-clipboard-check'
       })
     } catch {

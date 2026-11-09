@@ -10,7 +10,7 @@ const props = withDefaults(
   }>(),
   {
     size: 'md',
-    label: 'Install this module'
+    label: '安装此模块'
   }
 )
 
@@ -19,29 +19,29 @@ const { installCommand, copyInstall, copyPrompt, openCursor, openClaude, openVSC
 const items = computed<DropdownMenuItem[][]>(() => [
   [
     {
-      label: 'Copy install command',
+      label: '复制安装命令',
       icon: 'i-lucide-terminal',
       onSelect: copyInstall
     },
     {
-      label: 'Copy agent prompt',
+      label: '复制 AI 助手提示',
       icon: 'i-custom-ai',
       onSelect: copyPrompt
     }
   ],
   [
     {
-      label: 'Open in Cursor',
+      label: '在 Cursor 中打开',
       icon: 'i-simple-icons-cursor',
       onSelect: openCursor
     },
     {
-      label: 'Open in Claude Code',
+      label: '在 Claude Code 中打开',
       icon: 'i-simple-icons-anthropic',
       onSelect: openClaude
     },
     {
-      label: 'Open in VS Code',
+      label: '在 VS Code 中打开',
       icon: 'i-simple-icons-visualstudiocode',
       onSelect: openVSCode
     }
@@ -51,7 +51,7 @@ const items = computed<DropdownMenuItem[][]>(() => [
 
 <template>
   <UFieldGroup :size="size">
-    <UTooltip :text="`Copy: ${installCommand}`" class="grow">
+    <UTooltip :text="`复制：${installCommand}`" class="grow">
       <UButton
         color="neutral"
         variant="solid"
@@ -67,7 +67,7 @@ const items = computed<DropdownMenuItem[][]>(() => [
         color="neutral"
         variant="solid"
         icon="i-lucide-chevron-down"
-        aria-label="More install options"
+        aria-label="更多安装选项"
         class="shrink-0"
       />
     </UDropdownMenu>

@@ -13,6 +13,8 @@ website: "https://zerops.io"
 
 :read-more{title="Zerops" to="https://zerops.io"}
 
+<!-- Supported Node versions: https://docs.zerops.io/zerops-yaml/base-list -->
+
 ::tip
 **Nuxt x Zerops 快速运行 ✨**
 :br
@@ -46,7 +48,7 @@ services:
 zerops:
   - setup: app
     build:
-      base: nodejs@20
+      base: nodejs@24
       buildCommands:
         - yarn
         - yarn nuxi generate
@@ -68,7 +70,7 @@ project:
 
 services:
   - hostname: app
-    type: nodejs@20
+    type: nodejs@24
 ```
 
 这将创建一个名为 `recipe-nuxt` 的项目，配有一个名为 `app` 的 Zerops Node.js 服务。
@@ -81,14 +83,14 @@ services:
 zerops:
   - setup: nuxt
     build:
-      base: nodejs@20
+      base: nodejs@24
       buildCommands:
         - yarn
         - yarn build
       deployFiles:
         - .output/~
     run:
-      base: nodejs@20
+      base: nodejs@24
       ports:
         - port: 3000
           httpSupport: true

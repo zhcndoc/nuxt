@@ -37,7 +37,7 @@ async function submit() {
     <template v-if="state === 'success'">
       <div class="flex items-center gap-2.5 px-3 py-2.5">
         <UIcon name="i-lucide-circle-check" class="size-4 text-success shrink-0" />
-        <span class="text-sm text-highlighted">Feedback sent, thank you!</span>
+        <span class="text-sm text-highlighted">反馈已发送，谢谢！</span>
       </div>
     </template>
 
@@ -47,7 +47,7 @@ async function submit() {
           v-model="feedback"
           :rows="2"
           :disabled="state === 'submitting'"
-          placeholder="Anything to add? (optional)"
+          placeholder="还有补充吗？（可选）"
           size="sm"
           autoresize
           class="w-full"
@@ -55,25 +55,25 @@ async function submit() {
       </div>
 
       <p class="px-3 pt-1 pb-2 text-xs text-dimmed">
-        The conversation context is automatically attached.
+        对话上下文会自动附上。
       </p>
       <div class="flex items-center gap-2 px-3 py-2 border-t border-default">
         <UButton
           size="xs"
           color="neutral"
           variant="subtle"
-          label="Report issue"
+          label="提交问题"
           leading-icon="i-lucide-send"
           :loading="state === 'submitting'"
           @click="submit"
         />
-        <span v-if="state === 'error'" class="text-xs text-error">Something went wrong, try again.</span>
+        <span v-if="state === 'error'" class="text-xs text-error">发生错误，请重试。</span>
         <UButton
           v-else
           size="xs"
           color="neutral"
           variant="ghost"
-          label="Dismiss"
+          label="关闭"
           :disabled="state === 'submitting'"
           class="text-muted"
           @click="dismissed = true"

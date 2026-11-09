@@ -7,7 +7,7 @@ const { fetchList, providers } = useHostingProviders()
 
 const { data: page } = await useAsyncData('deploy-landing', () => useContent('site').get('/deploy'))
 if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+  throw createError({ statusCode: 404, statusMessage: '未找到页面', fatal: true })
 }
 
 const pageData = computed(() => page.value!.data)
@@ -44,7 +44,7 @@ await fetchList()
             :items="providers.map(provider => ({
               label: provider.title,
               to: provider.path,
-              badge: provider.sponsor ? 'Sponsor' : undefined
+              badge: provider.sponsor ? '赞助商' : undefined
             })).sort((a, b) => a.label.localeCompare(b.label))"
           />
         </UPageAside>
@@ -72,7 +72,7 @@ await fetchList()
               class="shine absolute top-4 right-4 sm:top-6 sm:right-6"
               variant="subtle"
               color="important"
-              label="Sponsor"
+              label="赞助商"
             />
             <template #title>
               {{ deployment.title }}

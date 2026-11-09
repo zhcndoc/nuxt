@@ -39,7 +39,7 @@ function openInVSCode() {
 function copyPrompt() {
   track('Nuxi Prompt Copied', { source: 'nuxt-agent' })
   copy(props.prompt, {
-    title: 'Prompt copied!',
+    title: '提示词已复制！',
     description: props.description,
     icon: 'i-lucide-clipboard-check'
   })
@@ -69,7 +69,7 @@ function copyPrompt() {
         class="mt-1 text-[11px] text-dimmed hover:text-default transition-colors"
         @click="expanded = !expanded"
       >
-        {{ expanded ? 'Show less' : 'Show full prompt' }}
+        {{ expanded ? '收起' : '显示完整提示词' }}
       </button>
     </div>
 
@@ -78,7 +78,7 @@ function copyPrompt() {
         arrow
         :delay-duration="700"
         :content="{ side: 'top', sideOffset: 6 }"
-        text="Open prompt in Cursor"
+        text="在 Cursor 中打开提示词"
       >
         <span class="inline-flex">
           <UButton
@@ -86,7 +86,7 @@ function copyPrompt() {
             color="neutral"
             variant="outline"
             icon="i-simple-icons-cursor"
-            label="Open in Cursor"
+            label="在 Cursor 中打开"
             @click="openInCursor"
           />
         </span>
@@ -96,14 +96,14 @@ function copyPrompt() {
         arrow
         :delay-duration="700"
         :content="{ side: 'top', sideOffset: 6 }"
-        text="Prefill prompt in Claude Code"
+        text="在 Claude Code 中预填提示词"
       >
         <span class="inline-flex">
           <UButton
             size="xs"
             color="neutral"
             variant="outline"
-            label="Open in Claude Code"
+            label="在 Claude Code 中打开"
             @click="openInClaudeCode"
           >
             <template #leading>
@@ -117,7 +117,7 @@ function copyPrompt() {
         arrow
         :delay-duration="700"
         :content="{ side: 'top', sideOffset: 6 }"
-        text="Open prompt in VS Code (Copilot Chat)"
+        text="在 VS Code（Copilot Chat）中打开提示词"
       >
         <span class="inline-flex">
           <UButton
@@ -125,7 +125,7 @@ function copyPrompt() {
             color="neutral"
             variant="outline"
             icon="i-simple-icons-visualstudiocode"
-            label="Open in VS Code"
+            label="在 VS Code 中打开"
             @click="openInVSCode"
           />
         </span>
@@ -135,7 +135,7 @@ function copyPrompt() {
         arrow
         :delay-duration="700"
         :content="{ side: 'top', sideOffset: 6 }"
-        text="Copy prompt"
+        text="复制提示词"
         class="ml-auto"
       >
         <span class="inline-flex">
@@ -144,7 +144,7 @@ function copyPrompt() {
             color="neutral"
             variant="ghost"
             :icon="copied ? 'i-lucide-check' : 'i-lucide-copy'"
-            :label="copied ? 'Copied' : 'Copy'"
+            :label="copied ? '已复制' : '复制'"
             @click="copyPrompt"
           />
         </span>

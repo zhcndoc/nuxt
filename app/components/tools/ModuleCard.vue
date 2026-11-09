@@ -20,7 +20,7 @@ const props = defineProps<{
 const displayTitle = computed(() => {
   const fromNpm = props.npm?.trim()
   if (fromNpm) return fromNpm
-  return props.slug?.trim() || 'Module'
+  return props.slug?.trim() || '模块'
 })
 
 const { copyInstall, copyPrompt } = useModuleInstallActions(() => ({
@@ -61,7 +61,7 @@ const { copyInstall, copyPrompt } = useModuleInstallActions(() => ({
         </span>
         <NuxtLink v-if="website" :to="website" target="_blank" class="flex items-center gap-1 hover:text-default transition-colors">
           <UIcon name="i-lucide-book" class="size-3" />
-          Docs
+          文档
         </NuxtLink>
         <NuxtLink v-if="repo" :to="`https://github.com/${repo}`" target="_blank" class="flex items-center gap-1 hover:text-default transition-colors">
           <UIcon name="i-lucide-github" class="size-3" />
@@ -71,7 +71,7 @@ const { copyInstall, copyPrompt } = useModuleInstallActions(() => ({
 
       <UButton
         icon="i-custom-ai"
-        label="Prompt"
+        label="提示词"
         size="xs"
         color="neutral"
         variant="outline"
@@ -79,7 +79,7 @@ const { copyInstall, copyPrompt } = useModuleInstallActions(() => ({
       />
       <UButton
         icon="i-lucide-terminal"
-        label="Install"
+        label="安装"
         size="xs"
         color="primary"
         variant="soft"

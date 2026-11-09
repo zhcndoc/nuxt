@@ -1,24 +1,27 @@
 <script setup lang="ts">
 import { getLocalTimeZone, CalendarDate, today } from '@internationalized/date'
-import { formatDateRange } from 'little-date'
 
 const { dateRange, setDateRange, setPresetRange } = useDateRange()
 
 const formattedDateRange = computed(() => {
-  if (dateRange.value.start && dateRange.value.end) {
-    return formatDateRange(dateRange.value.start, dateRange.value.end, {
-      includeTime: false
-    })
-  }
-  return null
+  const { start, end } = dateRange.value
+  if (!start || !end) return null
+
+  const currentYear = new Date().getFullYear()
+  const inCurrentYear = start.getFullYear() === currentYear && end.getFullYear() === currentYear
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: inCurrentYear ? undefined : 'numeric'
+  }).formatRange(start, end)
 })
 
 const ranges = [
-  { label: 'Last 7 days', preset: 'week' as const },
-  { label: 'Last 30 days', preset: 'month' as const },
-  { label: 'Last 3 months', preset: '3months' as const },
-  { label: 'Last 6 months', preset: '6months' as const },
-  { label: 'Last year', preset: 'year' as const }
+  { label: '最近 7 天', preset: 'week' as const },
+  { label: '最近 30 天', preset: 'month' as const },
+  { label: '最近 3 个月', preset: '3months' as const },
+  { label: '最近 6 个月', preset: '6months' as const },
+  { label: '最近一年', preset: 'year' as const }
 ]
 
 const toCalendarDate = (date: Date) => {

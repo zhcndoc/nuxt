@@ -16,9 +16,11 @@ Nuxt 支持在 [Render](https://render.com/) 上进行部署，并且配置最�
 3. 根据您的包管理器，将构建命令设置为 `yarn && yarn build`、`npm install && npm run build` 或者 `pnpm i --shamefully-hoist && pnpm build`。
 4. 将启动命令更新为 `node .output/server/index.mjs`。
 5. 点击 '高级' 并添加以下环境变量
+
+    <!-- Supported Node versions: https://render.com/docs/node-version -->
     ```bash
     SERVER_PRESET=render_com
-    NODE_VERSION=20
+    NODE_VERSION=24
     ```
 6. 点击 `创建 Web 服务`。
 

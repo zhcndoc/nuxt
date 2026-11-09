@@ -134,11 +134,13 @@ export default defineNuxtConfig({
 
 您可以在配置中设置自定义 Node.js 版本：
 
+<!-- Supported Node runtimes: https://docs.cloud.google.com/functions/docs/runtime-support -->
+
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
   nitro: {
     firebase: {
-      nodeVersion: '18' // 可以是 '16' 或 '18' 或 '20'
+      nodeVersion: '24'
     },
   },
 });
@@ -152,12 +154,12 @@ Firebase 工具使用 `package.json` 中的 `engines.node` 版本来确定要为
 {
   "functions": {
     "source": ".output/server",
-    "runtime": "nodejs20"
+    "runtime": "nodejs24"
   }
 }
 ```
 
-::阅读更多{to="https://firebase.google.com/docs/functions/manage-functions?gen=2nd#set_nodejs_version" target="_blank"}
+::read-more{to="https://firebase.google.com/docs/functions/manage-functions?gen=2nd#set_nodejs_version" target="_blank"}
 您可以在 **Firebase 文档** 中了解更多信息。
 ::
 

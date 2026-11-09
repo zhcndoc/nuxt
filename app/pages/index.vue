@@ -26,7 +26,9 @@ const [{ data: page }, { data: officialModules }, { data: showcase }, { data: sp
           sponsors: sponsors.map(s => ({
             sponsorName: s.sponsorName,
             sponsorLogo: s.sponsorLogo,
-            sponsorUrl: s.sponsorUrl
+            sponsorUrl: s.sponsorUrl,
+            sponsorDescription: s.sponsorDescription,
+            since: s.since
           }))
         }))
     }
@@ -133,8 +135,7 @@ const groupedFoundationItems = computed(() => {
 // Embla writes inline transforms on init, which @nuxt/hints flags as a hydration mismatch.
 const isMounted = useMounted()
 
-// The eight logos only fit on one row from `lg`; below that they scroll in a marquee.
-const isMobile = useMediaQuery('(max-width: 1023.98px)')
+useNuxtBirthday()
 </script>
 
 <template>
@@ -149,7 +150,8 @@ const isMobile = useMediaQuery('(max-width: 1023.98px)')
       }"
     >
       <template #headline>
-        <NuxtLink :to="pageData.hero.cta.to">
+        <HomeBirthdayBadge class="[html:not([data-nuxt-birthday])_&]:hidden" />
+        <NuxtLink :to="pageData.hero.cta.to" class="[html[data-nuxt-birthday]_&]:hidden">
           <UBadge variant="subtle" size="lg" class="px-3 relative rounded-full font-semibold dark:hover:bg-primary-400/15 dark:hover:ring-primary-700">
             {{ pageData?.hero.cta.label }}
             <UIcon
@@ -200,7 +202,7 @@ const isMobile = useMediaQuery('(max-width: 1023.98px)')
       </template>
 
       <UPageCard
-        class="overflow-auto lg:absolute [@media(min-width:2400px)]:relative lg:-mt-16 [@media(min-width:2400px)]:mt-8 right-0 [@media(min-width:2400px)]:right-auto w-screen lg:w-[calc(50%-2rem)] [@media(min-width:2400px)]:w-full max-w-[800px] [@media(min-width:2400px)]:mx-auto rounded-none lg:rounded-l-[calc(var(--ui-radius)*4)] [@media(min-width:2400px)]:rounded-2xl -mx-4 sm:-mx-6 lg:mx-0"
+        class="overflow-auto lg:absolute [@media(min-width:2400px)]:relative lg:-mt-16 [@media(min-width:2400px)]:mt-8 right-0 [@media(min-width:2400px)]:right-auto w-screen lg:w-[calc(50%-2rem)] [@media(min-width:2400px)]:w-full lg:max-w-[800px] [@media(min-width:2400px)]:mx-auto rounded-none lg:rounded-l-[calc(var(--ui-radius)*4)] [@media(min-width:2400px)]:rounded-2xl -mx-4 sm:-mx-6 lg:mx-0"
         variant="subtle"
         :ui="{ container: 'sm:pt-4.5 lg:pr-0 [@media(min-width:2400px)]:px-6 w-full' }"
       >
@@ -223,27 +225,15 @@ const isMobile = useMediaQuery('(max-width: 1023.98px)')
       </UPageCard>
     </UPageHero>
     <UPageSection :ui="{ container: '!pt-0' }">
-      <UPageLogos :marquee="isMobile" :title="pageData?.logos.title" :ui="{ title: 'text-left text-muted font-medium text-lg', logos: isMobile ? 'mt-4' : 'mt-4 justify-between [--gap:--spacing(6)]' }">
-        <Motion
-          v-for="(company, index) in (pageData?.logos.companies as any[])"
-          :key="company.alt"
-          as-child
-          :initial="{ opacity: 0, transform: 'translateY(20px)' }"
-          :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
-          :transition="{ delay: 0.4 + 0.2 * index }"
-          :in-view-options="{ once: true }"
-        >
-          <div class="opacity-0">
-            <BrandLogo
-              :src="company.src"
-              :alt="`${company.alt} logo`"
-              :height="company.height"
-              :width="company.width"
-              class="h-6 shrink-0 max-w-[140px] text-muted"
-            />
-          </div>
-        </Motion>
-      </UPageLogos>
+      <div>
+        <h2 class="mb-4">
+          <NuxtLink to="/showcase" class="group inline-flex items-center gap-1.5 text-lg font-medium text-muted transition-colors hover:text-highlighted">
+            {{ pageData?.logos.title }}
+            <UIcon name="i-lucide-arrow-right" class="size-4 opacity-0 -translate-x-1 transition-[opacity,translate] duration-200 group-hover:opacity-100 group-hover:translate-x-0 group-focus-visible:opacity-100 group-focus-visible:translate-x-0 pointer-coarse:opacity-100 pointer-coarse:translate-x-0" />
+          </NuxtLink>
+        </h2>
+        <HomeLogoCarousel :companies="pageData.logos.companies" />
+      </div>
     </UPageSection>
     <UPageSection
       :title="pageData?.features.title"
@@ -266,7 +256,7 @@ const isMobile = useMediaQuery('(max-width: 1023.98px)')
           :in-view-options="{ once: true }"
         >
           <UPageFeature
-            v-bind="feature"
+            v-bind="pickFeature(feature)"
             orientation="vertical"
           />
         </Motion>
@@ -298,7 +288,7 @@ const isMobile = useMediaQuery('(max-width: 1023.98px)')
       }"
     >
       <UUser
-        v-bind="pageData.testimonial.author"
+        v-bind="pickUser(pageData.testimonial.author)"
         size="xl"
         class="justify-center"
       />
@@ -427,7 +417,7 @@ const isMobile = useMediaQuery('(max-width: 1023.98px)')
               <p class="text-muted text-center">
                 {{ pageData.stats.community.description }}
               </p>
-              <UButton class="mt-4 w-fit" v-bind="pageData.stats.cta" />
+              <UButton class="mt-4 w-fit" v-bind="pickLink(pageData.stats.cta)" />
             </div>
           </UPageCard>
         </div>
@@ -466,7 +456,7 @@ const isMobile = useMediaQuery('(max-width: 1023.98px)')
 
     <UPageSection
       :description="pageData.modules.description"
-      :links="pageData.modules.links"
+      :links="pickLinks(pageData.modules.links)"
       :ui="{
         root: 'bg-linear-to-b border-t border-default from-muted dark:from-muted/40 to-default',
         title: 'text-left',
@@ -498,7 +488,7 @@ const isMobile = useMediaQuery('(max-width: 1023.98px)')
     <UPageSection
       :title="pageData.deploy.title"
       :description="pageData.deploy.description"
-      :links="pageData.deploy.links"
+      :links="pickLinks(pageData.deploy.links)"
       orientation="horizontal"
       :ui="{
         root: 'bg-linear-to-b border-t border-default from-muted dark:from-muted/40 to-default'
@@ -517,7 +507,7 @@ const isMobile = useMediaQuery('(max-width: 1023.98px)')
     <UPageSection
       :title="pageData.contributors.title"
       :description="pageData.contributors.description"
-      :links="pageData.contributors.links"
+      :links="pickLinks(pageData.contributors.links)"
       orientation="horizontal"
       reverse
       :ui="{
@@ -593,68 +583,20 @@ const isMobile = useMediaQuery('(max-width: 1023.98px)')
     <UPageSection
       :title="pageData.sponsors.title"
       :description="pageData.sponsors.description"
-      :links="pageData.sponsors.links"
+      :links="pickLinks(pageData.sponsors.links)"
       class="relative"
       :ui="{
         root: 'bg-linear-to-b border-t border-default from-muted dark:from-muted/40 to-default',
         container: 'py-12 sm:py-16 lg:py-20'
       }"
     >
-      <div class="flex flex-col items-center">
-        <template v-for="({ tier, sponsors }) of sponsorGroups" :key="tier">
-          <div class="w-full mb-24">
-            <UBadge color="neutral" variant="subtle" class="capitalize mb-2">
-              {{ tier }} sponsors
-            </UBadge>
-
-            <div class="w-full border border-default rounded-lg">
-              <table class="w-full">
-                <tbody>
-                  <template v-for="(_, rowIndex) in Math.ceil(sponsors.length / 3)" :key="rowIndex">
-                    <tr>
-                      <template v-for="colIndex in 3" :key="colIndex">
-                        <td
-                          v-if="(rowIndex * 3) + colIndex - 1 < sponsors.length"
-                          class="border-b border-r border-default p-0 w-1/3 h-[120px]"
-                          :class="{
-                            'border-r-0': colIndex === 3,
-                            'border-b-0': rowIndex === Math.ceil(sponsors.length / 3) - 1
-                          }"
-                        >
-                          <NuxtLink
-                            :to="sponsors[(rowIndex * 3) + colIndex - 1].sponsorUrl"
-                            target="_blank"
-                            class="flex items-center gap-2 justify-center h-full hover:bg-muted/50 transition-colors"
-                          >
-                            <NuxtImg
-                              :src="sponsors[(rowIndex * 3) + colIndex - 1].sponsorLogo"
-                              :alt="`${sponsors[(rowIndex * 3) + colIndex - 1].sponsorName} logo`"
-                              loading="lazy"
-                              class="h-10 max-w-[140px] object-contain rounded-lg"
-                              height="40"
-                              width="40"
-                            />
-                            <span class="text-base hidden sm:block font-semibold">{{ sponsors[(rowIndex * 3) + colIndex - 1].sponsorName }}</span>
-                          </NuxtLink>
-                        </td>
-                        <td
-                          v-else
-                          class="border-b border-r border-default p-0 w-1/3 h-[120px]"
-                          :class="{
-                            'border-r-0': colIndex === 3,
-                            'border-b-0': rowIndex === Math.ceil(sponsors.length / 3) - 1
-                          }"
-                        >
-                          <div class="h-full" />
-                        </td>
-                      </template>
-                    </tr>
-                  </template>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </template>
+      <div class="border border-default rounded-lg divide-y divide-default overflow-hidden">
+        <div v-for="({ tier, sponsors }) of sponsorGroups" :key="tier" class="relative">
+          <UBadge color="neutral" variant="subtle" class="absolute top-3 left-3 z-10 capitalize pointer-events-none">
+            {{ tier }}
+          </UBadge>
+          <SponsorsGrid :sponsors="sponsors" :featured="tier === 'diamond'" :columns="tier === 'diamond' ? 2 : 3" />
+        </div>
       </div>
     </UPageSection>
   </div>

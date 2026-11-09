@@ -42,17 +42,17 @@ defineProps<{
         </span>
         <NuxtLink v-if="website" :to="website" target="_blank" class="flex items-center gap-1 hover:text-default transition-colors">
           <UIcon name="i-lucide-globe" class="size-3" />
-          Website
+          网站
         </NuxtLink>
         <NuxtLink v-if="nitroPreset" :to="`https://nitro.unjs.io/deploy/providers/${nitroPreset}`" target="_blank" class="flex items-center gap-1 hover:text-default transition-colors">
           <UIcon name="i-lucide-book" class="size-3" />
-          Nitro Docs
+          Nitro 文档
         </NuxtLink>
       </div>
 
       <UButton
         icon="i-lucide-arrow-right"
-        label="Guide"
+        label="指南"
         size="xs"
         color="primary"
         variant="soft"

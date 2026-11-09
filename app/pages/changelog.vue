@@ -5,9 +5,9 @@ definePageMeta({
   heroBackground: 'opacity-0'
 })
 
-const title = 'Changelog'
+const title = '更新日志'
 const seoTitle = `Nuxt ${title}`
-const description = 'Discover the latest releases from Nuxt and the official modules.'
+const description = '查看 Nuxt 及其官方模块的最新版本发布。'
 
 useSeoMeta({
   titleTemplate: '%s',
@@ -18,7 +18,7 @@ useSeoMeta({
 })
 useCanonical('/raw/changelog.md')
 defineOgImage('Docs.takumi', {
-  headline: 'Updates',
+  headline: '更新日志',
   title: seoTitle,
   description
 })
@@ -40,19 +40,11 @@ const repoLinks = computed(() => {
   return links
 })
 
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString('en', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  })
-}
-
 function copyRelease(release: Release) {
   const md = `# ${release.title}\n\n${release.markdown}`
   copy(md, {
-    title: 'Release notes copied!',
-    description: `${release.title} markdown copied to clipboard.`,
+    title: '发行说明已复制！',
+    description: `已将 ${release.title} 的 Markdown 复制到剪贴板。`,
     icon: 'i-lucide-clipboard-check'
   })
 }
@@ -68,7 +60,7 @@ function copyRelease(release: Release) {
           {{ title }}
         </h1>
         <p class="text-lg/7 text-muted max-w-sm mt-4">
-          Latest changes, improvements, and fixes across Nuxt core and the official modules.
+          查看 Nuxt 核心及官方模块的最新变更、改进和修复。
         </p>
 
         <div class="flex items-center gap-1 mt-8 -ms-2.5">
@@ -81,9 +73,9 @@ function copyRelease(release: Release) {
             color="neutral"
           />
           <UButton
-            to="/blog"
+            to="/updates"
             icon="i-lucide-newspaper"
-            label="Blog"
+            label="动态"
             variant="ghost"
             color="neutral"
           />
@@ -114,7 +106,7 @@ function copyRelease(release: Release) {
           :to="release.url"
           target="_blank"
           :title="release.title"
-          :date="formatDate(release.date)"
+          :date="formatShortDate(release.date)"
           :ui="{
             root: 'flex items-start',
             container: 'max-w-xl 2xl:mx-12 w-full relative',
@@ -141,7 +133,7 @@ function copyRelease(release: Release) {
                 </NuxtLink>
               </div>
               <UButton
-                label="Copy release"
+                label="复制发行说明"
                 size="xs"
                 color="neutral"
                 variant="link"
@@ -174,7 +166,7 @@ function copyRelease(release: Release) {
                   icon="i-lucide-chevron-down"
                   color="neutral"
                   variant="outline"
-                  label="Expand release"
+                  label="展开发行说明"
                   class="group"
                   @click="openStates[release.tag] = true"
                 />
@@ -186,7 +178,7 @@ function copyRelease(release: Release) {
                 icon="i-lucide-chevron-up"
                 color="neutral"
                 variant="outline"
-                label="Collapse release"
+                label="收起发行说明"
                 @click="openStates[release.tag] = false"
               />
             </div>

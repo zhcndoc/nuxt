@@ -3,22 +3,22 @@ const { meta: docsMeta } = useDocsVersion()
 </script>
 
 <template>
-  <div v-if="docsMeta.status === 'unsupported'" class="py-4 sm:py-6">
+  <div v-if="docsMeta.endOfLife" class="pt-4 sm:pt-6">
     <UAlert
       icon="i-lucide-triangle-alert"
       variant="subtle"
       color="warning"
-      :title="`Nuxt ${docsMeta.major} reached end of life${docsMeta.endOfLife ? ` on ${docsMeta.endOfLife}` : ''}`"
+      :title="`Nuxt ${docsMeta.major} 已于 ${docsMeta.endOfLife} 结束生命周期`"
     >
       <template #description>
-        It no longer receives bug fixes or security patches.
-        <NuxtLink to="/docs/4.x/getting-started/upgrade" class="underline">
-          Upgrade to Nuxt 4
+        此版本将不再接收错误修复或安全补丁。
+        <NuxtLink :to="docsMeta.upgradePath" class="underline">
+          升级到 Nuxt 4
         </NuxtLink>
         <template v-if="docsMeta.extendedSupport">
-          or get
+          或获取
           <NuxtLink :to="docsMeta.extendedSupport" target="_blank" class="underline">
-            extended support from HeroDevs
+            HeroDevs 提供的延长支持
           </NuxtLink>
         </template>
       </template>

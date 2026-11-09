@@ -1,11 +1,12 @@
 <script setup lang="ts">
 const { footerLinks } = useFooterLinks()
+const locale = useDocsLocale()
 </script>
 
 <template>
   <USeparator icon="i-simple-icons-nuxtdotjs" class="h-px" />
 
-  <UFooter :ui="{ top: 'border-b border-default' }">
+  <UFooter :lang="locale ?? 'zh-CN'" :ui="{ top: 'border-b border-default' }">
     <template #top>
       <UContainer>
         <UFooterColumns :columns="footerLinks">
@@ -32,7 +33,7 @@ const { footerLinks } = useFooterLinks()
         target="_blank"
         icon="i-simple-icons-x"
       >
-        <span class="sr-only">Nuxt on X</span>
+        <span class="sr-only">Nuxt 在 X 平台</span>
       </UButton>
       <UButton
         color="neutral"
@@ -41,7 +42,7 @@ const { footerLinks } = useFooterLinks()
         target="_blank"
         icon="i-simple-icons-bluesky"
       >
-        <span class="sr-only">Nuxt on BlueSky</span>
+        <span class="sr-only">Nuxt 在 Bluesky 平台</span>
       </UButton>
       <UButton
         color="neutral"
@@ -50,7 +51,7 @@ const { footerLinks } = useFooterLinks()
         target="_blank"
         icon="i-simple-icons-linkedin"
       >
-        <span class="sr-only">Nuxt on LinkedIn</span>
+        <span class="sr-only">Nuxt 在 LinkedIn 平台</span>
       </UButton>
       <UButton
         color="neutral"
@@ -59,7 +60,7 @@ const { footerLinks } = useFooterLinks()
         target="_blank"
         icon="i-simple-icons-discord"
       >
-        <span class="sr-only">Nuxt on Discord</span>
+        <span class="sr-only">Nuxt Discord 社区</span>
       </UButton>
       <UButton
         color="neutral"
@@ -68,7 +69,7 @@ const { footerLinks } = useFooterLinks()
         target="_blank"
         icon="i-simple-icons-github"
       >
-        <span class="sr-only">Nuxt on GitHub</span>
+        <span class="sr-only">Nuxt 在 GitHub 上</span>
       </UButton>
     </template>
   </UFooter>

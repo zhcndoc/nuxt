@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { L10N_STRINGS } from '#shared/utils/l10n'
+
+defineOptions({ inheritAttrs: false })
+
 const props = defineProps({
   to: {
     type: String,
@@ -11,13 +15,21 @@ const props = defineProps({
   }
 })
 
+const attrs = useAttrs()
+const isTitleAttr = (name: string) => name.startsWith('data-l10n') || name === 'lang'
+const calloutAttrs = computed(() => Object.fromEntries(Object.entries(attrs).filter(([name]) => !isTitleAttr(name))))
+const titleAttrs = computed(() => Object.fromEntries(Object.entries(attrs).filter(([name]) => isTitleAttr(name))))
+
+const locale = useDocsLocale()
+const label = computed(() => locale.value ? L10N_STRINGS[locale.value].readMore : { before: '在 ', after: ' 中查看详情' })
+
 const computedTitle = computed<string>(() => props.title || createBreadcrumb(props.to))
 </script>
 
 <template>
-  <ProseCallout icon="i-lucide-bookmark" :to="to" :aria-label="computedTitle">
+  <ProseCallout icon="i-lucide-bookmark" :to="to" :aria-label="computedTitle" v-bind="calloutAttrs">
     <slot mdc-unwrap="p">
-      在 <span class="font-bold" v-text="computedTitle" /> 中查看详情
+      {{ label.before }}<span class="font-bold" v-bind="titleAttrs" v-text="computedTitle" />{{ label.after }}
     </slot>
   </ProseCallout>
 </template>

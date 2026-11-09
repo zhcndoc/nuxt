@@ -21,10 +21,12 @@ Nuxt 支持在 [DigitalOcean App 平台](https://docs.digitalocean.com/products/
 
 3. 您需要确保在应用程序的 `package.json` 中设置一个 `engines.node` 字段，以确保 DigitalOcean 使用支持的 Node.js 版本：
 
+    <!-- Supported Node versions: https://docs.digitalocean.com/products/app-platform/reference/buildpacks/nodejs/ -->
+
     ```json [package.json]
     {
       "engines": {
-          "node": "20.x"
+          "node": "24.x"
       }
     }
     ```

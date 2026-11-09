@@ -3,11 +3,11 @@
     <iframe
       v-if="url"
       :src="url"
-      title="Sandbox editor"
+      title="在线沙盒编辑器"
       sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
       class="w-full h-full min-h-[700px] overflow-hidden bg-gray-100 dark:bg-gray-800"
     />
-    <span v-else class="flex-1 text-white">Loading Sandbox...</span>
+    <span v-else class="flex-1 text-white">正在加载在线沙盒……</span>
   </div>
 </template>
 

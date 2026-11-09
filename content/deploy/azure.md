@@ -12,7 +12,7 @@ website: 'https://azure.microsoft.com/en-us/services/app-service/static/'
 ::tip
 **零配置 ✨**
 :br
-与 Azure 静态网站供应商的集成可实现零配置，[了解更多](https://nitro.zhcndoc.com/deploy#zero-config-providers)。
+与 Azure 静态网站供应商的集成可实现零配置，[了解更多](https://nitro.unjs.io/deploy#zero-config-providers)。
 ::
 
 Azure 静态网站的设计初衷是在 [GitHub Actions 工作流程](https://docs.microsoft.com/en-us/azure/static-web-apps/github-actions-workflow) 中连续部署。默认情况下，Nuxt 会检测此部署环境以启用 `azure` 预设。
@@ -38,13 +38,15 @@ Azure 静态网站使用 `staticwebapp.config.json` 文件进行[配置](https:/
 
 | 属性 | 标准 | 默认值 |
 | --- | --- | --- |
-| **[platform.apiRuntime](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#platform)** | 根据包的配置自动设置为 `node:16` 或 `node:14`。 | `node:16` |
+| **[platform.apiRuntime](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#platform)** | 根据 `package.json` 中的 `engines.node` 字段设置为 `node:20` 或 `node:22`。 | `node:22` |
 | **[navigationFallback.rewrite](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#fallback-routes)** | 始终为 `/api/server` | `/api/server` |
 | **[routes](https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#routes)** | 添加所有预渲染路由。此外，如果没有 `index.html` 文件，将为您创建一个空白文件以实现兼容性，还会重定向到 `/index.html` 的请求将重定向到由 `/api/server` 处理的根目录。  | `[]` |
 
 ### 自定义配置
 
 您可以使用 `azure.config` 选项更改生成的配置。例如，如果您想为 Azure Functions 指定一个 Node 运行时，请编辑您的 `nuxt.config.ts` 文件如下：
+
+<!-- Supported apiRuntime versions: https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#select-the-api-language-runtime-version -->
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -54,7 +56,7 @@ export default defineNuxtConfig({
       config: {
         // ...
         platform: {
-          apiRuntime: 'node:18'
+          apiRuntime: 'node:22'
         }
       }
     }
@@ -94,6 +96,6 @@ output_location: '.output/public'
 
 ## 更多选项
 
-::read-more{to="https://nitro.zhcndoc.com/deploy/providers/azure" target="_blank"}
+::read-more{to="https://nitro.unjs.io/deploy/providers/azure" target="_blank"}
 在 Nitro 文档中了解其他 Azure 部署预设的信息。
 ::

@@ -32,6 +32,8 @@ deployctl deploy --project=my-project server/index.ts --token=<DENO_DEPLOY_TOKEN
 
 在你的仓库中创建一个 GitHub action 文件：
 
+<!-- Supported Node versions: https://github.com/actions/setup-node#supported-version-syntax -->
+
 ```yaml [.github/workflows/deno_deploy.yml]
 name: deno-deploy
 on:
@@ -44,11 +46,13 @@ on:
 jobs:
   deploy:
     steps:
-      - uses: actions/checkout@v3
-      - run: corepack enable
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v7
         with:
-          node-version: 18
+          persist-credentials: false
+      - run: corepack enable
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
           cache: pnpm
       - run: pnpm install
       - run: pnpm build

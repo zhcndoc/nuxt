@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ChartCategory } from '@nuxt/ui'
+
 type PageAnalytic = {
   path: string
   total: number
@@ -65,6 +67,11 @@ watch(() => props.pageAnalytics, (analytics) => {
   }
 }, { immediate: true })
 
+// `UChart` positions points by label, so ranges longer than a year need the year to keep days unique
+function formatDay(date: Date, daysDiff: number) {
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: daysDiff > 365 ? 'numeric' : undefined })
+}
+
 const overallChartData = computed(() => {
   const data: any[] = []
   const endDate = dateRange.value.end
@@ -103,7 +110,7 @@ const overallChartData = computed(() => {
 
     const entry: any = {
       date: dateStr,
-      day: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+      day: formatDay(date, daysDiff)
     }
 
     if (hasValidData.value && dailyScores[dateStr] && dailyScores[dateStr].length > 0) {
@@ -132,7 +139,7 @@ const timeBasedChartData = computed(() => {
       date.setDate(date.getDate() - i)
       data.push({
         date: date.toISOString().split('T')[0],
-        day: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        day: formatDay(date, daysDiff),
         placeholder: 0
       })
     }
@@ -146,7 +153,7 @@ const timeBasedChartData = computed(() => {
   for (const page of selectedPages) {
     if (!page || !page.feedback) continue
 
-    const pageKey = page.path.split('/').pop()?.replace(/[^a-z0-9]/gi, '') || 'page'
+    const pageKey = page.path
 
     for (const feedback of page.feedback) {
       const feedbackDate = new Date(feedback.createdAt)
@@ -175,13 +182,13 @@ const timeBasedChartData = computed(() => {
 
     const entry: any = {
       date: dateStr,
-      day: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+      day: formatDay(date, daysDiff)
     }
 
     for (const page of selectedPages) {
       if (!page) continue
 
-      const pageKey = page.path.split('/').pop()?.replace(/[^a-z0-9]/gi, '') || 'page'
+      const pageKey = page.path
 
       if (dailyScores[dateStr] && dailyScores[dateStr][pageKey] && dailyScores[dateStr][pageKey].length > 0) {
         const dayAverage = dailyScores[dateStr][pageKey].reduce((sum, score) => sum + score, 0) / dailyScores[dateStr][pageKey].length
@@ -199,17 +206,25 @@ const timeBasedChartData = computed(() => {
 
 const comparisonChartData = computed(() => {
   if (!hasValidData.value || selectedPagePaths.value.length === 0 || !props.pageAnalytics) {
-    return [{ page: 'No Data', positive: 0, negative: 0 }]
+    return [{ page: '暂无数据', positive: 0, negative: 0 }]
   }
+
+  // `UChart` positions bars by label, so truncated titles must stay unique
+  const labels = new Set<string>()
 
   return props.pageAnalytics
     .filter(p => p && selectedPagePaths.value.includes(p.path))
     .map((page) => {
       const title = page.lastFeedback?.title || page.path
       const shortTitle = title.length > 15 ? title.substring(0, 15) + '...' : title
+      let label = shortTitle
+      for (let count = 2; labels.has(label); count++) {
+        label = `${shortTitle} (${count})`
+      }
+      labels.add(label)
 
       return {
-        page: shortTitle,
+        page: label,
         positive: page.positive,
         negative: page.negative
       }
@@ -222,72 +237,36 @@ const chartData = computed(() => {
   return timeBasedChartData.value
 })
 
-const chartCategories = computed(() => {
+const chartCategories = computed<ChartCategory[]>(() => {
   if (!hasValidData.value) {
-    return {
-      placeholder: {
-        name: 'No Data Available',
-        color: '#6b7280'
-      }
-    }
+    return [{ key: 'placeholder', label: '暂无数据', color: 'neutral' }]
   }
 
   if (chartType.value === 'compare') {
-    return {
-      positive: {
-        name: 'Positive',
-        color: 'var(--ui-success)'
-      },
-      negative: {
-        name: 'Negative',
-        color: 'var(--ui-error)'
-      }
-    }
+    return [
+      { key: 'positive', label: '正面', color: 'success' },
+      { key: 'negative', label: '负面', color: 'error' }
+    ]
   }
 
   if (chartType.value === 'overall') {
-    return {
-      average: {
-        name: 'Overall Rating',
-        color: '#3b82f6'
-      }
-    }
+    return [{ key: 'average', label: '总体评分' }]
   }
 
   if (selectedPagePaths.value.length === 0 || !props.pageAnalytics) {
-    return {
-      placeholder: {
-        name: 'No Pages Selected',
-        color: '#6b7280'
+    return [{ key: 'placeholder', label: '未选择页面', color: 'neutral' }]
+  }
+
+  return props.pageAnalytics
+    .filter(p => p && selectedPagePaths.value.includes(p.path))
+    .map((page) => {
+      const title = page.lastFeedback?.title || page.path
+      return {
+        key: page.path,
+        label: title.length > 25 ? title.substring(0, 25) + '...' : title
       }
-    }
-  }
-
-  const selectedPages = props.pageAnalytics.filter(p => p && selectedPagePaths.value.includes(p.path))
-  const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#84cc16', '#f97316']
-
-  return selectedPages.reduce((acc, page, index) => {
-    if (!page) return acc
-
-    const key = page.path.split('/').pop()?.replace(/[^a-z0-9]/gi, '') || 'page'
-    const title = page.lastFeedback?.title || page.path
-    acc[key] = {
-      name: title.length > 25 ? title.substring(0, 25) + '...' : title,
-      color: colors[index % colors.length]
-    }
-    return acc
-  }, {} as Record<string, { name: string, color: string }>)
+    })
 })
-
-const xFormatter = (index: number) => {
-  if (chartType.value === 'compare') {
-    return comparisonChartData.value[index]?.page || ''
-  }
-  if (chartType.value === 'overall') {
-    return overallChartData.value[index]?.day || ''
-  }
-  return timeBasedChartData.value[index]?.day || ''
-}
 
 const yFormatter = (value: number) => {
   if (chartType.value === 'compare') {
@@ -298,40 +277,40 @@ const yFormatter = (value: number) => {
 
 const dateRangeLabel = computed(() => {
   if (chartType.value === 'compare') {
-    return `Selected Pages (${selectedPagePaths.value.length})`
+    return `已选页面（${selectedPagePaths.value.length}）`
   }
 
   const daysDiff = Math.ceil((dateRange.value.end.getTime() - dateRange.value.start.getTime()) / (1000 * 60 * 60 * 24))
-  if (daysDiff <= 7) return `Last ${daysDiff} days`
-  if (daysDiff <= 31) return `Last ${daysDiff} days`
-  if (daysDiff <= 93) return `Last ${Math.round(daysDiff / 30)} months`
-  if (daysDiff <= 186) return `Last ${Math.round(daysDiff / 30)} months`
-  return `Last ${Math.round(daysDiff / 365)} year${daysDiff > 730 ? 's' : ''}`
+  if (daysDiff <= 7) return `最近 ${daysDiff} 天`
+  if (daysDiff <= 31) return `最近 ${daysDiff} 天`
+  if (daysDiff <= 93) return `最近 ${Math.round(daysDiff / 30)} 个月`
+  if (daysDiff <= 186) return `最近 ${Math.round(daysDiff / 30)} 个月`
+  return `最近 ${Math.round(daysDiff / 365)} 年`
 })
 
 const chartTitle = computed(() => {
   switch (chartType.value) {
     case 'line':
-      return 'Rating Evolution'
+      return '评分变化'
     case 'compare':
-      return 'Page Comparison'
+      return '页面比较'
     case 'overall':
-      return 'Overall Documentation Rating'
+      return '文档总体评分'
     default:
-      return 'Rating Evolution'
+      return '评分变化'
   }
 })
 
 const chartDescription = computed(() => {
   switch (chartType.value) {
     case 'line':
-      return 'Track selected pages satisfaction over time'
+      return '跟踪所选页面满意度的变化'
     case 'compare':
-      return 'Compare feedback distribution across pages'
+      return '比较各页面的反馈分布'
     case 'overall':
-      return 'Global documentation satisfaction evolution'
+      return '文档总体满意度变化'
     default:
-      return 'Track selected pages satisfaction over time'
+      return '跟踪所选页面满意度的变化'
   }
 })
 
@@ -349,9 +328,9 @@ const chartIcon = computed(() => {
 })
 
 const availableChartTypes = [
-  { value: 'line' as const, label: 'Line', icon: 'i-lucide-trending-up' },
-  { value: 'compare' as const, label: 'Compare', icon: 'i-lucide-bar-chart-4' },
-  { value: 'overall' as const, label: 'Overall', icon: 'i-lucide-activity' }
+  { value: 'line' as const, label: '趋势', icon: 'i-lucide-trending-up' },
+  { value: 'compare' as const, label: '比较', icon: 'i-lucide-bar-chart-4' },
+  { value: 'overall' as const, label: '总览', icon: 'i-lucide-activity' }
 ]
 
 function togglePageSelection(pagePath: string) {
@@ -453,49 +432,25 @@ function selectWorstPages(count: number) {
     <div class="relative rounded-xl overflow-hidden mb-8">
       <div class="dot-pattern h-[300px] -top-5 left-0 right-0" />
 
-      <LineChart
-        v-if="chartType === 'overall'"
+      <UChart
+        :key="chartType"
+        :type="chartType === 'compare' ? 'bar' : 'line'"
         :data="chartData"
+        :index="chartType === 'compare' ? 'page' : 'day'"
         :categories="chartCategories"
-        :x-formatter="xFormatter"
-        :y-formatter="yFormatter"
+        :stacked="chartType === 'compare'"
+        :grid="chartType !== 'compare'"
+        :format="yFormatter"
         :x-label="dateRangeLabel"
-        y-label="Rating (out of 4)"
-        :show-tooltip="true"
-      />
-
-      <LineChart
-        v-else-if="chartType === 'line'"
-        :data="chartData"
-        :categories="chartCategories"
-        :x-formatter="xFormatter"
-        :y-formatter="yFormatter"
-        :x-label="dateRangeLabel"
-        y-label="Rating (out of 4)"
-        :show-tooltip="true"
-        class="min-h-[300px]"
-      />
-
-      <BarChart
-        v-else-if="chartType === 'compare'"
-        :data="chartData"
-        :categories="chartCategories"
-        :y-axis="['positive', 'negative']"
-        :stacked="true"
-        :x-formatter="xFormatter"
-        :y-formatter="yFormatter"
-        :x-label="dateRangeLabel"
-        y-label="Feedback Count"
-        :height="300"
-        :bar-padding="0.2"
-        :y-grid-line="false"
-        class="min-h-[300px]"
+        :y-label="chartType === 'compare' ? '反馈数' : '评分（满分 4 分）'"
+        :aria-label="chartTitle"
+        class="relative"
       />
     </div>
 
     <div v-if="!hasValidData" class="text-center py-4">
       <p class="text-sm text-muted">
-        Chart shows no data - will display real trends once feedback is collected
+        暂无图表数据，收集到反馈后将在此显示实际趋势。
       </p>
     </div>
 
@@ -513,36 +468,36 @@ function selectWorstPages(count: number) {
             />
             <div class="space-y-3">
               <h3 class="text-lg font-semibold">
-                Select Pages to {{ chartType === 'line' ? 'Track' : 'Compare' }}
+                {{ chartType === 'line' ? '选择要跟踪的页面' : '选择要比较的页面' }}
               </h3>
               <div class="flex items-center gap-2 flex-wrap">
-                <span class="text-sm text-muted font-medium">Quick select:</span>
+                <span class="text-sm text-muted font-medium">快速选择：</span>
                 <UButton
                   size="sm"
                   variant="soft"
                   color="neutral"
-                  label="Best Rated 5"
+                  label="评分最高的 5 个"
                   @click="selectBestRatedPages(5)"
                 />
                 <UButton
                   size="sm"
                   variant="soft"
                   color="neutral"
-                  label="Most Popular 5"
+                  label="最受欢迎的 5 个"
                   @click="selectTopPages(5)"
                 />
                 <UButton
                   size="sm"
                   variant="soft"
                   color="neutral"
-                  label="Worst Rated 5"
+                  label="评分最低的 5 个"
                   @click="selectWorstPages(5)"
                 />
                 <UButton
                   size="sm"
                   variant="soft"
                   color="neutral"
-                  label="Worst Rated 10"
+                  label="评分最低的 10 个"
                   @click="selectWorstPages(10)"
                 />
               </div>
@@ -552,7 +507,7 @@ function selectWorstPages(count: number) {
           <div class="mb-4">
             <UInput
               v-model="pageSearchQuery"
-              placeholder="Search pages..."
+              placeholder="搜索页面……"
               icon="i-lucide-search"
               class="w-full"
               :ui="{ trailing: 'pe-1' }"
@@ -563,7 +518,7 @@ function selectWorstPages(count: number) {
                   variant="link"
                   size="sm"
                   icon="i-lucide-circle-x"
-                  aria-label="Clear input"
+                  aria-label="清除输入"
                   @click="pageSearchQuery = ''"
                 />
               </template>
@@ -625,30 +580,6 @@ function selectWorstPages(count: number) {
 
 <style>
 :root {
-  --vis-tooltip-background-color: rgba(255, 255, 255, 0.95) !important;
-  --vis-tooltip-border-color: rgba(0, 0, 0, 0.1) !important;
-  --vis-tooltip-text-color: rgba(0, 0, 0, 0.9) !important;
-  --vis-tooltip-label-color: rgba(0, 0, 0, 0.7) !important;
-  --vis-tooltip-value-color: rgba(0, 0, 0, 1) !important;
-
-  --vis-axis-grid-color: rgba(255, 255, 255, 0.1) !important;
-  --vis-axis-tick-label-color:  var(--ui-text-muted) !important;
-  --vis-axis-label-color: var(--ui-text-toned) !important;
-  --vis-legend-label-color: var(--ui-text-muted) !important;
-  --vis-tooltip-title-color: var(--ui-text) !important;
-  --vis-tooltip-title-border-bottom: 1px solid var(--ui-border) !important;
-  --vis-tooltip-title-padding: 0.2rem !important;
-  --vis-tooltip-box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
-  --vis-tooltip-border-radius: 8px !important;
-  --vis-tooltip-border-color: var(--ui-border) !important;
-  --vis-tooltip-background-color: var(--ui-bg) !important;
-  --vis-tooltip-text-color: var(--ui-text) !important;
-  --vis-tooltip-divider: var(--ui-border) !important;
-  --vis-tooltip-value-font-size: 0.875rem !important;
-  --vis-tooltip-value-font-weight: 600 !important;
-  --vis-tooltip-value-color: var(--ui-text) !important;
-  --vis-tooltip-label-color: var(--ui-text-muted) !important;
-
   --dot-pattern-color: #111827;
 }
 
