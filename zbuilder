@@ -16,11 +16,11 @@ FROM node:24-bookworm-slim
 
 WORKDIR /app
 
-RUN mkdir -p .data/db
-
 ENV NODE_ENV=production \
     NITRO_HOST=0.0.0.0 \
     PORT=8080
+
+COPY --from=builder /app/.data/db/sqlite.db ./.data/db/sqlite.db
 
 COPY --from=builder /app/.output ./.output
 
