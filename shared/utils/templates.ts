@@ -26,8 +26,15 @@ export const CURRENT_NUXT_MAJOR = 4
 
 export const SITE_URL = 'https://nuxt.zhcndoc.com'
 
-/** How long a live preview sandbox runs before Vercel stops it. */
+/** How long a live preview sandbox runs before Vercel stops it, and how much each extension adds. */
 export const PREVIEW_TIMEOUT_MS = 10 * 60 * 1000
+
+/** The longest a live preview can run with extensions, from when it started. */
+export const PREVIEW_MAX_LIFETIME_MS = 30 * 60 * 1000
+
+/** Admins work on templates: their previews start with longer and can run longer. */
+export const PREVIEW_ADMIN_TIMEOUT_MS = 30 * 60 * 1000
+export const PREVIEW_ADMIN_MAX_LIFETIME_MS = 2 * 60 * 60 * 1000
 
 export function isStarter(template: Pick<Template, 'kind'>): boolean {
   return template.kind === 'starter'
@@ -124,10 +131,11 @@ export function buildCreateCommand(template: Template, packageManager: PackageMa
   return `${RUNNERS[packageManager](defaultProjectName(template))} -t ${source}`
 }
 
-/** A Vercel Deploy Button URL: clones the template into the visitor's GitHub and deploys it, asking for its environment variables. */
+/** Hosts with a one-click deploy link that clones the template's repository. */
 export const DEPLOY_PROVIDERS: Array<{ value: TemplateDeployProvider, label: string, icon: string }> = [
   { value: 'vercel', label: 'Vercel', icon: 'i-simple-icons-vercel' },
-  { value: 'netlify', label: 'Netlify', icon: 'i-simple-icons-netlify' }
+  { value: 'netlify', label: 'Netlify', icon: 'i-simple-icons-netlify' },
+  { value: 'cloudflare', label: 'Cloudflare', icon: 'i-simple-icons-cloudflare' }
 ]
 
 export function deployProviders(template: Pick<Template, 'deploy'>): TemplateDeployProvider[] {
@@ -144,7 +152,14 @@ export function buildDeployUrl(template: Template, provider: TemplateDeployProvi
   if (!deployProviders(template).includes(provider)) return undefined
   const url = template.deploy?.repositoryUrl || templateRepoUrl(template)
   if (!url) return undefined
-  return provider === 'netlify' ? buildNetlifyDeployUrl(template, url) : buildVercelDeployUrl(template, url)
+  switch (provider) {
+    case 'cloudflare':
+      return `https://deploy.workers.cloudflare.com/?${new URLSearchParams({ url }).toString()}`
+    case 'netlify':
+      return buildNetlifyDeployUrl(template, url)
+    case 'vercel':
+      return buildVercelDeployUrl(template, url)
+  }
 }
 
 function buildNetlifyDeployUrl(template: Template, url: string): string | undefined {

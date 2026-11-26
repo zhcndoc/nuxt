@@ -14,7 +14,7 @@ const failures = { install: '安装失败', build: '构建失败', start: '启�
 </script>
 
 <template>
-  <span v-if="check" class="inline-flex items-center gap-1.5 min-w-0">
+  <span v-if="check" class="inline-flex items-center gap-1.5 min-w-0 max-w-full">
     <template v-if="check.status === 'failed'">
       <UIcon name="i-lucide-circle-x" class="size-[1.15em] shrink-0 text-error" />
       <span class="truncate text-error">{{ failures[check.step || 'build'] }}</span>

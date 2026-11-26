@@ -12,9 +12,39 @@ const liveUrl = ref<string>()
 const status = ref<LivePreviewStatus>()
 const readyIn = ref<number>()
 const device = ref<'desktop' | 'mobile'>('desktop')
+const downloading = ref(false)
 
-const { preview: livePreview, reloadRequest } = useLivePreview()
+const { preview: livePreview, editor, reloadRequest, startEditing } = useLivePreview()
+const { open: openNuxi } = useNuxtAgent()
 const { track } = useAnalytics()
+const toast = useToast()
+
+async function downloadProject() {
+  if (!livePreview.value || downloading.value) return
+  downloading.value = true
+  try {
+    const zip = await $fetch<Blob>(`/api/templates/preview/${livePreview.value.id}/download`, { responseType: 'blob' })
+    const url = URL.createObjectURL(zip)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `${props.template.slug}.zip`
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    setTimeout(() => URL.revokeObjectURL(url), 1000)
+    track('Template Action', { template: props.template.name, action: 'Download ZIP' })
+  } catch {
+    toast.add({ title: '下载失败', description: '请在预览运行时重试。', color: 'error' })
+  } finally {
+    downloading.value = false
+  }
+}
+
+function editWithNuxi() {
+  track('Template Action', { template: props.template.name, action: 'Edit with Nuxi' })
+  startEditing()
+  openNuxi()
+}
 
 const image = computed(() => templateImage(props.template))
 const canGoLive = computed(() => canLivePreview(props.template) && !!props.health?.check?.live)
@@ -23,29 +53,90 @@ const livePage = computed(() => liveUrl.value && `${liveUrl.value}${livePreview.
 const address = computed(() => (live.value ? livePage.value || '正在启动预览……' : props.template.demo || templateRepoUrl(props.template))?.replace(/^https?:\/\//, '').replace(/\/$/, ''))
 const openUrl = computed(() => live.value ? livePage.value : props.template.demo)
 
-const startedAt = ref(0)
+/** When the sandbox stops: an estimate until the server reports it, then moved by each extension. */
+const expiresAt = ref(0)
+const canExtend = ref(true)
+const extending = ref(false)
 const now = useNow({ interval: 1000 })
-const remaining = computed(() => Math.max(0, PREVIEW_TIMEOUT_MS - (now.value.getTime() - startedAt.value)))
+const remaining = computed(() => Math.max(0, expiresAt.value - now.value.getTime()))
 const countdown = computed(() => {
   const seconds = Math.ceil(remaining.value / 1000)
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`
 })
-watch(remaining, value => live.value && value === 0 && stop())
+/** Warns before the sandbox stops, so a visitor editing it can keep it running or download their changes first. */
+const EXPIRY_WARNING_MS = 2 * 60_000
+const EXPIRY_TOAST = 'live-preview-expiry'
+/** The stop time the visitor was last warned about: an extension moves it, so they are warned again before the new one. */
+let warnedFor = 0
+// An extension in flight at zero may have reached the server: its response decides, and a failed one stops the preview then.
+watch([remaining, extending], ([value]) => {
+  if (!live.value || status.value !== 'live') return
+  if (value === 0) {
+    if (extending.value) return
+    stop()
+    toast.add({ title: '在线预览已停止', description: '预览已到期。重新启动即可继续试用模板。', icon: 'i-lucide-timer-off', color: 'neutral' })
+  } else if (value <= EXPIRY_WARNING_MS && warnedFor !== expiresAt.value) {
+    warnedFor = expiresAt.value
+    toast.add({
+      id: EXPIRY_TOAST,
+      title: '在线预览即将停止',
+      description: canExtend.value ? '可延长预览时间，或下载项目。' : '预览已无法延长，请下载项目以保留更改。',
+      icon: 'i-lucide-timer',
+      color: 'warning',
+      duration: 0,
+      actions: [
+        ...(canExtend.value ? [{ label: `延长 ${PREVIEW_TIMEOUT_MS / 60_000} 分钟`, icon: 'i-lucide-clock-plus', onClick: extend }] : []),
+        { label: '下载 ZIP', icon: 'i-lucide-download', color: 'neutral' as const, variant: 'outline' as const, closeOnClick: false, onClick: downloadProject }
+      ]
+    })
+  }
+})
+
+function resetTimer() {
+  expiresAt.value = Date.now() + PREVIEW_TIMEOUT_MS
+  canExtend.value = true
+}
 
 function start() {
   track('Template Action', { template: props.template.name, action: 'Try Live Preview' })
-  startedAt.value = Date.now()
+  resetTimer()
   live.value = true
 }
 
 function onStatus(value: LivePreviewStatus, ms?: number) {
   // "Try Again" boots a new sandbox, with a new timeout.
-  if (value === 'booting') startedAt.value = Date.now()
+  if (value === 'booting') resetTimer()
   status.value = value
   if (ms) readyIn.value = ms
 }
 
+async function extend() {
+  if (!livePreview.value || extending.value) return
+  const id = livePreview.value.id
+  // A response for a preview that stopped, or was replaced, must not move the current one's deadline.
+  const current = () => live.value && livePreview.value?.id === id
+  extending.value = true
+  try {
+    const result = await $fetch<{ expiresAt: number, canExtend: boolean }>(`/api/templates/preview/${id}/extend`, { method: 'POST' })
+    if (!current()) return
+    expiresAt.value = result.expiresAt
+    canExtend.value = result.canExtend
+    toast.remove(EXPIRY_TOAST)
+    track('Template Action', { template: props.template.name, action: 'Extend Live Preview' })
+  } catch (error: any) {
+    if (!current()) return
+    if (error?.statusCode === 409) canExtend.value = false
+    toast.add({ title: '无法延长预览时间', description: error?.data?.message || '请重试。', color: 'error' })
+  } finally {
+    extending.value = false
+  }
+}
+
+// The warning stays open until dismissed: leaving the page stops the preview, so it goes too.
+onBeforeUnmount(() => toast.remove(EXPIRY_TOAST))
+
 function stop() {
+  toast.remove(EXPIRY_TOAST)
   live.value = false
   liveUrl.value = undefined
   status.value = undefined
@@ -56,7 +147,7 @@ function stop() {
 
 <template>
   <div class="rounded-xl bg-elevated/40 ring ring-default p-1 shadow-xs">
-    <div class="h-9 ps-2.5 pe-1 grid grid-cols-[1fr_minmax(0,auto)_1fr] items-center gap-3">
+    <div class="h-9 ps-2.5 pe-1 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3">
       <div class="min-w-0 flex items-center gap-2 text-xs">
         <template v-if="live">
           <span class="relative flex size-2 shrink-0">
@@ -69,10 +160,24 @@ function stop() {
           <span class="font-medium text-highlighted">{{ status === 'live' ? '运行中' : status === 'failed' ? '已停止' : '正在启动' }}</span>
           <UTooltip
             v-if="status === 'live'"
-            :text="`${readyIn ? `${(readyIn / 1000).toFixed(1)} 秒后就绪。` : ''}预览将在 ${PREVIEW_TIMEOUT_MS / 60_000} 分钟后自动关闭。`"
+            :text="`${readyIn ? `耗时 ${(readyIn / 1000).toFixed(1)} 秒。` : ''}计时结束后预览将自动关闭。`"
             :ui="{ content: 'max-w-xs h-auto py-1.5', text: 'whitespace-normal text-pretty' }"
           >
             <span class="hidden sm:inline font-mono text-muted tabular-nums cursor-default" :class="remaining < 60_000 && 'text-warning'">剩余 {{ countdown }}</span>
+          </UTooltip>
+          <UTooltip v-if="status === 'live' && canExtend" :text="`延长 ${PREVIEW_TIMEOUT_MS / 60_000} 分钟`">
+            <UButton
+              icon="i-lucide-clock-plus"
+              :aria-label="`将预览运行时间延长 ${PREVIEW_TIMEOUT_MS / 60_000} 分钟`"
+              color="neutral"
+              variant="ghost"
+              size="xs"
+              class="hidden sm:inline-flex size-6 justify-center text-dimmed hover:text-muted"
+              :class="remaining < 60_000 && 'text-warning hover:text-warning'"
+              :ui="{ leadingIcon: 'size-3.5' }"
+              :loading="extending"
+              @click="extend"
+            />
           </UTooltip>
         </template>
       </div>
@@ -80,18 +185,44 @@ function stop() {
       <div class="min-w-0 flex items-center justify-center gap-1.5 text-xs text-muted">
         <UIcon v-if="!live" name="i-lucide-lock" class="size-3 shrink-0 text-dimmed" />
         <span class="truncate font-mono">{{ address }}</span>
+        <UTooltip v-if="live && editor === 'on'" text="正在运行 nuxt dev，更改会实时显示">
+          <span class="shrink-0 px-1.5 rounded-sm bg-primary/10 text-primary font-mono text-[10px] leading-4 cursor-default">dev</span>
+        </UTooltip>
+        <UTooltip v-if="live && status === 'live'" text="重新加载">
+          <UButton
+            icon="i-lucide-rotate-cw"
+            aria-label="重新加载预览"
+            color="neutral"
+            variant="ghost"
+            size="xs"
+            class="size-6 justify-center text-dimmed hover:text-muted"
+            :ui="{ leadingIcon: 'size-3' }"
+            @click="reloadRequest++"
+          />
+        </UTooltip>
       </div>
 
       <div class="flex items-center justify-end gap-0.5">
         <template v-if="live">
-          <UTooltip v-if="status === 'live'" text="重新加载">
+          <UTooltip v-if="status === 'live'" text="下载 ZIP">
             <UButton
-              icon="i-lucide-rotate-cw"
-              aria-label="重新加载预览"
+              icon="i-lucide-download"
+              aria-label="将项目下载为 ZIP"
               color="neutral"
               variant="ghost"
               size="xs"
-              @click="reloadRequest++"
+              :loading="downloading"
+              @click="downloadProject"
+            />
+          </UTooltip>
+          <UTooltip v-if="status === 'live'" text="使用 Nuxi 编辑">
+            <UButton
+              icon="i-custom-nuxi"
+              aria-label="使用 Nuxi 编辑"
+              color="neutral"
+              variant="ghost"
+              size="xs"
+              @click="editWithNuxi"
             />
           </UTooltip>
           <UTooltip v-for="item in ([{ value: 'desktop', icon: 'i-lucide-monitor', label: '桌面' }, { value: 'mobile', icon: 'i-lucide-smartphone', label: '移动端' }] as const)" :key="item.value" :text="item.label">
@@ -109,7 +240,7 @@ function stop() {
           <button
             type="button"
             aria-label="停止在线预览"
-            class="group ms-1 me-0.5 h-6 ps-2 pe-2.5 flex items-center gap-1.5 rounded-full bg-error/10 ring ring-error/25 text-xs font-medium text-error transition-[background-color,scale] duration-150 ease-snappy hover:bg-error/15 active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-error"
+            class="group ms-1 me-0.5 h-6 ps-2 pe-2.5 flex items-center gap-1.5 rounded-full bg-error/10 ring ring-error/25 text-xs font-medium text-error transition-[background-color,scale] duration-150 ease-snappy hover:bg-error/15 active:scale-[0.96] outline-error/25 focus-visible:outline-3"
             @click="stop"
           >
             <span class="size-2 rounded-[2px] bg-current transition-transform duration-150 ease-snappy group-hover:scale-110" />
@@ -159,9 +290,21 @@ function stop() {
           class="absolute inset-y-0 left-1/2 -translate-x-1/2 transition-[width] duration-300 ease-snappy"
           :class="device === 'mobile' ? 'w-[390px] max-w-full border-x border-default' : 'w-full'"
         >
-          <TemplatesLivePreview :template="template" @url="liveUrl = $event" @status="onStatus" />
+          <NuxtErrorBoundary @error="onStatus('failed')">
+            <LazyTemplatesLivePreview :template="template" @url="liveUrl = $event" @status="onStatus" @expires="expiresAt = $event" />
+            <template #error>
+              <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6" role="alert">
+                <p class="text-sm text-highlighted">
+                  无法加载预览。
+                </p>
+                <UButton label="重新加载页面" color="neutral" variant="subtle" icon="i-lucide-rotate-ccw" @click="reloadNuxtApp()" />
+              </div>
+            </template>
+          </NuxtErrorBoundary>
         </div>
       </Transition>
+
+      <TemplatesPreviewIsland :active="live && status === 'live'" />
 
       <Transition
         enter-from-class="opacity-0 translate-y-2"

@@ -19,9 +19,9 @@ const locale = useDocsLocale()
 
     <template #left>
       <p class="text-muted text-sm">
-        <a target="_blank" href="https://www.zhcndoc.com">简中文档</a>
+        <a class="hover:underline rounded-xs outline-primary/25 focus-visible:outline-3" target="_blank" href="https://www.zhcndoc.com">简中文档</a>
         <span>｜</span>
-        <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn">沪ICP备2024070610号-3</a>
+        <a class="hover:underline rounded-xs outline-primary/25 focus-visible:outline-3" rel="nofollow" target="_blank" href="https://beian.miit.gov.cn">沪ICP备2024070610号-3</a>
       </p>
     </template>
 

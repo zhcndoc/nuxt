@@ -4,7 +4,6 @@ import type { DropdownMenuItem } from '@nuxt/ui'
 const { user, clear } = useUserSession()
 const colorMode = useColorMode()
 const route = useRoute()
-const deleteAccount = useDeleteAccount()
 
 // Middleware that require a session, see app/middleware/
 const AUTH_MIDDLEWARE = ['auth', 'admin']
@@ -39,6 +38,10 @@ const items = computed<DropdownMenuItem[][]>(() => {
     label: '我的 Nuxter 个人资料',
     icon: 'i-lucide-award',
     to: '/nuxters'
+  }, {
+    label: '设置',
+    icon: 'i-lucide-settings',
+    to: '/dashboard/settings'
   }]
   if (user.value?.role === 'admin') {
     accountItems.push({
@@ -72,11 +75,6 @@ const items = computed<DropdownMenuItem[][]>(() => {
     label: '退出登录',
     icon: 'i-lucide-log-out',
     onSelect: logout
-  }, {
-    label: '删除账户',
-    icon: 'i-lucide-user-x',
-    color: 'error',
-    onSelect: deleteAccount
   }])
 
   return groups

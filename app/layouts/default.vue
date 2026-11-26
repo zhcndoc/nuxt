@@ -54,6 +54,6 @@ onMounted(() => {
       <NuxtPage />
     </UMain>
 
-    <AppFooter />
+    <LazyAppFooter hydrate-on-visible />
   </div>
 </template>

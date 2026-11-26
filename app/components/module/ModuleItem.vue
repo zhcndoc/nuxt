@@ -156,7 +156,7 @@ const items = computed(() => [
       </template>
 
       <UBadge
-        v-show="showBadge && module.type === 'official'"
+        v-if="showBadge && module.type === 'official'"
         class="shine absolute top-4 right-4 sm:top-6 sm:right-6"
         variant="subtle"
         color="primary"
@@ -164,7 +164,7 @@ const items = computed(() => [
       />
 
       <UBadge
-        v-show="showBadge && module.sponsor"
+        v-if="showBadge && module.sponsor"
         class="shine absolute top-4 right-4 sm:top-6 sm:right-6"
         variant="subtle"
         color="important"
@@ -184,7 +184,7 @@ const items = computed(() => [
           <div class="flex items-center gap-3 flex-wrap">
             <UTooltip text="NPM 月下载量">
               <NuxtLink
-                class="flex items-center gap-1 hover:text-highlighted"
+                class="flex items-center gap-1 rounded-sm hover:text-highlighted outline-primary/25 focus-visible:outline-3"
                 :to="`https://npmx.dev/package-stats/${module.npm}/v/${module.stats.version}?granularity=monthly`"
                 target="_blank"
               >
@@ -195,7 +195,7 @@ const items = computed(() => [
 
             <UTooltip text="GitHub 星标数">
               <NuxtLink
-                class="flex items-center gap-1 hover:text-highlighted"
+                class="flex items-center gap-1 rounded-sm hover:text-highlighted outline-primary/25 focus-visible:outline-3"
                 :to="`https://github.com/${module.repo}`"
                 target="_blank"
               >
@@ -208,7 +208,7 @@ const items = computed(() => [
               <UTooltip :text="`健康评分：${module.health.score}/100`">
                 <NuxtLink
                   :to="`https://nuxt.care/?search=npm:${module.npm}`"
-                  class="flex items-center gap-1 hover:text-highlighted"
+                  class="flex items-center gap-1 rounded-sm hover:text-highlighted outline-primary/25 focus-visible:outline-3"
                   target="_blank"
                 >
                   <UIcon name="i-lucide-heart-pulse" class="size-4 shrink-0" :style="{ color: module.health.color }" />
@@ -221,7 +221,7 @@ const items = computed(() => [
 
             <UTooltip v-if="sortKey === 'publishedAt'" :text="`更新于 ${formatDateByLocale('zh-CN', module.stats.publishedAt)}`">
               <NuxtLink
-                class="flex items-center gap-1 hover:text-highlighted"
+                class="flex items-center gap-1 rounded-sm hover:text-highlighted outline-primary/25 focus-visible:outline-3"
                 :to="`https://github.com/${module.repo}`"
                 target="_blank"
               >
@@ -239,7 +239,7 @@ const items = computed(() => [
 
             <UTooltip v-if="sortKey === 'createdAt'" :text="`创建于 ${formatDateByLocale('zh-CN', module.stats.createdAt)}`">
               <NuxtLink
-                class="flex items-center gap-1 hover:text-highlighted"
+                class="flex items-center gap-1 rounded-sm hover:text-highlighted outline-primary/25 focus-visible:outline-3"
                 :to="`https://github.com/${module.repo}`"
                 target="_blank"
               >
@@ -285,18 +285,3 @@ const items = computed(() => [
     </UPageCard>
   </UContextMenu>
 </template>
-
-<style lang="postcss" scoped>
-.shine {
-  text-decoration: none;
-  display: inline-block;
-  mask-image: linear-gradient(-75deg, rgba(255,255,255,.8) 30%, #fff 50%, rgba(255,255,255,.8) 70%);
-  mask-size: 200%;
-  animation: shine 2s linear infinite;
-}
-
-@keyframes shine {
-  from { -webkit-mask-position: 150%; }
-  to { -webkit-mask-position: -50%; }
-}
-</style>

@@ -2,8 +2,8 @@ hero:
   title: '全栈 Vue 框架'
   description: 使用 Vue 快速构建可用于生产环境的 Web 应用。基于文件的路由、自动导入和服务器端渲染，所有功能均已开箱即用。
   cta:
-    label: Nuxt DevTools v4 已发布
-    to: /blog/devtools-v4
+    label: Nuxt 4.7 已发布
+    to: /blog/v4-7
     icon: i-lucide-arrow-right
   tabs:
     - title: 最小化
